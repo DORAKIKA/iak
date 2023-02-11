@@ -1,0 +1,104 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import { site } from 'src/config';
+import Layout from '../../layouts/Layout.astro';
+import Twikoo from '@components/Third/Twikoo.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('posts');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'posts'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title + ' | ' + site} description={post.data.description} cover={post.data.cover}>
+	<h1 class="article-title">{ post.data.title }</h1>
+	<div class="article-meta">
+		<div class="meta-section">
+
+			{post.data.category ? (<div class="meta-item">
+				<div class="key"><span>分类</span></div>
+				<div class="value">
+					<i class="fas fa-meteor"></i>
+					<span class="category">{ post.data.category }</span>
+				</div>
+			</div>) : ''}
+
+			{ post.data.tags?.map((tag:string) => (
+				<div class="meta-item">
+					<div class="key">Tag</div>
+					<div class="value">
+						<i class="fas fa-hashtag"></i>
+						<span class="tag">{ tag }</span>
+					</div>
+				</div>
+			)) }
+			
+			<div class="meta-item">
+				<div class="key">日期</div>
+				<div class="value">
+					<i class="fas fa-calendar-day"></i>
+					<span class="date">{ post.data.date?.toISOString().substring(0, 10) }</span>
+				</div>
+			</div>
+		</div>
+		<div class="meta-section">
+			<div class="meta-item"><span class="description">{ post.data.description }</span></div>
+		</div>
+	</div>
+	<article id="post">
+		<Content />
+	</article>
+	<Twikoo/>
+</Layout>
+
+
+<style>
+	
+.article-title{
+    line-height: 2;
+}
+.article-meta{
+    display: flex;
+    justify-content: space-between;
+}
+.article-meta .meta-section{
+    max-width: 47%;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.article-meta .meta-item{
+    width: max-content;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    padding: 16px;
+    border-radius: 8px;
+    line-height: 1.5;
+}
+.article-meta .meta-item .key{
+    opacity: 0.8;
+    font-size: 0.8em;
+}
+.article-meta .meta-item .value .fas{
+    margin-right: 4px;
+}
+.article-meta .description{
+    display: inline-block;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+</style>

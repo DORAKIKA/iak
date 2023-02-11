@@ -1,0 +1,165 @@
+<script setup lang="ts">
+// import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import { ref, computed } from 'vue';
+import { CollectionEntry, getCollection } from 'astro:content';
+
+const posts = ref<CollectionEntry<"posts">[]>()
+getCollection('posts', ({data}) => {
+    return data.star;
+}).then((ps) => {
+    posts.value = ps
+    posts.value.sort((a,b)=>a.slug>b.slug?1:-1)
+})
+
+const limit = posts.value?.length || 1;
+
+const current = ref(0)
+const prev = computed(() => (current.value - 1 + limit) % limit);
+const next = computed(() => (current.value + 1) % limit);
+const handlePrev = () => current.value = prev.value;
+const handleNext = () => current.value = next.value;
+const sliderClick = (num:number) => {
+    current.value = num
+}
+</script>
+
+<template>
+    <div class="post-slider">
+        <div
+            v-for="article,index in posts"
+            :key="article.slug"
+            class="article"
+            :class="{prev: index===prev, next: index === next, current: index === current}"
+            :style="`transform: translateX(${(index - current)*100}%)`"
+        >
+            <img :src="article.data.cover" alt="" class="cover">
+            <div class="meta">
+                <div class="title">{{ article.data.title }}</div>
+                <div class="tags">
+                    <span class="category">{{article.data.category}}</span>
+                    <span class="tag" v-for="tag in article.data.tags">{{tag}}</span>
+                </div>
+                <p class="desc">{{ article.data.description }}</p>
+                <a :href="`/posts/${article.slug}`" class="button">GO</a>
+            </div>
+        </div>
+        <div class="slider-container">
+            <div class="slider-item" v-for="slider,index in posts" :key="index" @click="sliderClick(index)" :class="{active: index === current}"></div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+.post-slider{
+    width: 100%;
+    height: 25vw;
+    min-height: 300px;
+    /* background-color: var(--main-color); */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.post-slider .slider-container{
+    position: absolute;
+    bottom: 1rem;
+    padding: 1rem;
+    background-color: var(--main-color);
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 2;
+    box-shadow: 0 0 0 2px white;
+}
+.post-slider .slider-container .slider-item{
+    width: 1rem;
+    height: 1rem;
+    border: 0.4rem solid white;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.post-slider .slider-container .slider-item.active{
+    border-width: 0.3rem;
+    border-radius: 0 50% 50% 50%;
+}
+.post-slider .article{
+    padding: 3rem 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.post-slider .article .cover{
+    width: 50%;
+    height: 100%;
+    border: 4px solid white;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    /* position: absolute; */
+    background-color: var(--main-color);
+}
+.post-slider .article .meta{
+    width: 50%;
+    height: 100%;
+    padding: 0 2rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.post-slider .article .meta .title{
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.post-slider .article .meta .desc{
+    margin: 0;
+    line-height: 1.5;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.post-slider .article .meta .tags{
+    display: flex;
+    gap: 0.4rem;
+}
+@media (max-width: 768px) {
+    .post-slider .article .meta .tags{
+        display: none;
+    }
+}
+.post-slider .article .meta .category,
+.post-slider .article .meta .tags .tag{
+    display: inline-block;
+    width: fit-content;
+    padding: 0.2rem 0.3rem;
+    background: var(--main-color);
+    box-shadow: 0 0 0 2px white;
+    border-radius: 0.4rem;
+}
+.post-slider .article .meta .button{
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    border-radius: 3rem;
+    border: 4px solid white;
+    background-color: blueviolet;
+    transition: 0.1s;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+.post-slider .article .meta .button:hover{
+    background-color: rgb(167, 73, 255);
+}
+</style>

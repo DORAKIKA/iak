@@ -1,8 +1,12 @@
 ---
-title: "Markdown Style Guide"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-pubDate: "Jul 01 2022"
-heroImage: "/placeholder-hero.jpg"
+title: "Markdown基本语法"
+description: "常用的Markdown语法示例"
+date: "2023-02-10"
+cover: "/placeholder-hero.jpg"
+tags: 
+ - doc
+category: doc
+slug: '20230210'
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
@@ -51,9 +55,9 @@ The blockquote element represents content that is quoted from another source, op
 
 ## Tables
 
-| Italics   | Bold     | Code   |
-| --------- | -------- | ------ |
-| _italics_ | **bold** | `code` |
+| Italics   | Bold     | Code   | Link |
+| --------- | -------- | ------ | ---- |
+| _italics_ | **bold** | `code` |[link](https://dorakika.cn)|
 
 ## Code Blocks
 
@@ -102,6 +106,6 @@ H<sub>2</sub>O
 
 X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
 
-Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.
+Press<kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd> to end the session.
 
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.

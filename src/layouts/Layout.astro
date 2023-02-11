@@ -1,0 +1,22 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import TheHeader from "@components/The/Header.vue"
+import TheFooter from '../components/The/Footer.vue';
+
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<TheHeader client:only="vue"/>
+        <main style="padding: 0 var(--side-padding)">
+            <slot></slot>
+        </main>
+		<TheFooter />
+	</body>
+</html>

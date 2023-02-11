@@ -1,0 +1,82 @@
+---
+import Layout from "@layouts/Layout.astro"
+import Twikoo from "@components/Third/Twikoo.astro"
+// @ts-ignore
+import friends from "../content/friends/_index.yml"
+
+import { site } from "src/config";
+---
+
+<Layout title={'友情链接 | '+site} description={site + '的友链'}>
+    <div id="friends">
+        <div class="list-card">
+            {friends.map((friend:any) => (
+                <a class="friend-item" href={friend.link} target="_blank">
+                    <img src={friend.avatar} alt={friend.name} class="avatar">
+                    <div class="info">
+                        <div class="name">{friend.name}</div>
+                        <div class="desc">{friend.descr}</div>
+                    </div>
+                </a>
+            ))}
+            
+        </div>
+    </div>
+
+    <Twikoo />
+</Layout>
+
+
+<style>
+#friends{
+    margin: 1rem 0;
+}
+.list-card{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+}
+.list-card .friend-item{
+    padding: 16px;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--font-color);
+    transition: 0.3s;
+    --avatar: 64px;
+}
+.list-card .friend-item:hover{
+    background-color: rgba(255,255,255,0.5);
+    --avatar: 0px;
+}
+.list-card .friend-item .avatar{
+    width: var(--avatar);
+    height: var(--avatar);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+.list-card .friend-item .info{
+    width: calc(100% - var(--avatar) - 16px);
+    transition: 0.3s;
+}
+.list-card .friend-item .name{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.list-card .friend-item .desc{
+    height: 34px;
+    font-size: 12px;
+    line-height: 17px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+</style>

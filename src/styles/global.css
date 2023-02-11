@@ -1,67 +1,163 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+:root {
+	--header-height: 70px;
+	--footer-height: 200px;
+	--side-padding: 7vw;
+  
+  --main-color-meta: 50, 201, 235;
+	--main-color: rgb(var(--main-color-meta));
+  --active-color-meta: 255, 85, 0;
+	--active-color: rgba(var(--active-color-meta), 1);
+
+	--font-color: rgba(255,255,255,0.8);
+  --deep-bg: rgba(255,255,255,0.8);
+  --light-bg: rgba(255,255,255,0.2);
+}
+* {
+box-sizing: border-box;
+}
+html{
+scroll-behavior: smooth;
+}
+::-webkit-scrollbar{
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgba(255, 255, 255, 0.2);
+}
 body {
-	font-family: Verdana, sans-serif;
-	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
-	text-align: left;
-	background-color: #fff;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444;
+margin: 0;
+font-family: "Microsoft YaHei", Georgia, "Nimbus Roman No9 L", "Songti SC",
+  "Noto Serif CJK SC", "Source Han Serif SC", "Source Han Serif CN", STSong,
+  "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung",
+  "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK",
+  "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
+font-size: 16px;
+color: var(--font-color);
+position: relative;
+display: flex;
+flex-direction: column;
+width: 100%;
+min-height: 100vh;
+color: var(--font-color);
+background-color: var(--main-color);
+--kk-texture-color: rgba(255,255,255,0.2);
+background-image: url(/bg-zigzag.svg);
+animation: 60s linear -30s infinite alternate none running background-slide;
+background-size: 1500px;
+/* color: white; */
+  line-height: 1.5;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong,
-b {
-	color: #222;
+@keyframes background-slide{
+  from{
+    background-position: 0 0;
+  }to{
+    background-position: 1500px 0;
+  }
 }
-a {
-	color: #3273dc;
+a{
+  color: currentColor;
+  text-decoration: none;
 }
-nav a {
-	margin-right: 10px;
+svg.icon {
+fill: currentColor;
 }
-textarea {
-	width: 100%;
-	font-size: 16px;
+svg.icon path {
+fill: currentColor;
 }
-input {
-	font-size: 16px;
+
+
+
+/* article */
+
+article{
+line-height: 2;
+padding: 2rem 4rem;
+margin: 2rem 0 0;
+background-color: rgba(255, 255, 255, 0.9);
+border-radius: 1rem;
+/* font-size: 1rem; */
+--font-color: #2d2d2d;
+color: var(--font-color);
 }
-content {
-	line-height: 1.6;
+article h1,
+article h1>a,
+article h2>a,
+article h3>a,
+article h4>a,
+article h5>a,
+article h6>a
+{
+  color: #232323;
+  text-decoration: none;
 }
-table {
-	width: 100%;
+article h1{
+  font-size: 2rem;
+  margin: 1.25rem 0 1rem;
+  color: #0a0a0a;
 }
-img {
-	max-width: 100%;
-	height: auto;
+article h2{
+  font-size: 1.75rem;
+  margin: 1.25rem 0 1rem;
+  color: #0a0a0a;
 }
-code {
-	padding: 2px 5px;
-	background-color: #f2f2f2;
+article h3{
+  font-size: 1.5rem;
+  margin: 1.25rem 0 1rem;
+  color: #0a0a0a;
 }
-pre {
-	padding: 1rem;
+article h4{
+  font-size: 1.25rem;
+  margin: 1rem 0 0.75rem;
+  color: #0a0a0a;
 }
-pre > code {
-	all: unset;
+article h5{
+  font-size: 1.1rem;
+  margin: 1rem 0 0.75rem;
+  color: #0a0a0a;
 }
-blockquote {
-	border: 1px solid #999;
-	color: #222;
-	padding: 2px 0px 2px 20px;
-	margin: 0px;
-	font-style: italic;
+article h6{
+  font-size: 1rem;
+  margin: 1rem 0 0.5rem;
+  color: #0a0a0a;
 }
+article a{
+  color: var(--main-color);
+  transition: text-decoration-color 0.3s;
+  text-decoration-line: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: transparent;
+}
+article a:is(:hover, :focus-within){
+  text-decoration-color: var(--main-color);
+}
+article code:not(pre code){
+  background-color: rgba(var(--main-color-meta), 0.15);
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: rgb(var(--main-color-meta));
+}
+article blockquote{
+  margin: 0;
+  border-left: 4px solid rgba(var(--main-color-meta), 0.5);
+  padding: 0.1rem 0 0.1rem 1rem;
+  background: rgba(var(--main-color-meta), 0.2);
+  border-radius: 8px;
+}
+article pre{
+  line-height: 1.2;
+}
+article .astro-code{
+  padding: 1rem;
+  border-radius: 8px;
+}
+article kbd{
+  background-color: rgb(var(--main-color-meta));
+  color: white;
+  margin: 0 2px;
+  padding: 0 4px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4), 2px 2px 2px rgba(255, 255, 255, 0.4) inset;
+}
+
+

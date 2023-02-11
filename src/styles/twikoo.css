@@ -1,0 +1,84 @@
+/* twikoo */
+#twikoo{
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    --light-color: rgba(255,255,255,0.8);
+    --light-bg: rgba(255,255,255,0.2);
+    --sub-font-color: rgba(255,255,255,0.5);
+    /* --active-color: var(var(--active-color)); */
+    color: var(--light-color);
+    background-color: var(--light-bg);
+}
+.tk-avatar .tk-avatar-img{
+    color: var(--light-color);
+    border-radius: 8px;
+}
+.tk-meta-input .el-input,.el-textarea{
+    background-color: var(--light-bg);
+}
+/* 可能是新增的缘故，一起写不生效，必须一个一个设置 */
+.twikoo .el-input__inner::-webkit-input-placeholder{
+    color: var(--sub-font-color);
+}
+.twikoo .el-input__inner:-ms-input-placeholder{
+    color: var(--sub-font-color);
+}
+.twikoo .el-input__inner::-moz-placeholder{
+    color: var(--sub-font-color);
+}
+.twikoo .el-textarea__inner::-webkit-input-placeholder{
+    color: var(--sub-font-color);
+}
+.twikoo .el-textarea__inner:-ms-input-placeholder{
+    color: var(--sub-font-color);
+}
+.twikoo .el-textarea__inner::-moz-placeholder{
+    color: var(--sub-font-color);
+}
+.twikoo .el-input-group__append, .twikoo .el-input-group__prepend{
+    background-color: var(--light-bg);
+    /* border-color: var(--light-color); */
+    border: none;
+    color: var(--light-color); 
+}
+.twikoo .el-input__inner, .twikoo .el-textarea__inner{
+    border: none;
+    transition: 0.3s;
+}
+.twikoo .el-input__inner:hover, .twikoo .el-textarea__inner:hover,
+.twikoo .el-input__inner:focus, .twikoo .el-textarea__inner:focus{
+    background-color: var(--light-bg);
+}
+.twikoo .el-button:not(.el-button--primary):not(.el-button--text){
+    background-color: var(--light-bg);
+    border-color: var(--light-color);
+    color: var(--light-color);
+}
+.twikoo .el-button:not(.el-button--primary):not(.el-button--text):active, .twikoo .el-button:not(.el-button--primary):not(.el-button--text):focus, .twikoo .el-button:not(.el-button--primary):not(.el-button--text):hover{
+    background-color: var(--light-bg);
+    border-color: var(--light-color);
+    color: var(--light-color);
+}
+
+.tk-content{
+    background-color: var(--light-bg);
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+.tk-extras,.tk-icon.__comments,.tk-action-icon,.tk-submit-action-icon.__markdown{
+    color: var(--light-color);
+}
+.tk-footer{
+    color: var(--main-color);
+    font-weight: bold;
+    text-shadow: 0 0 1px white;
+}
+.tk-footer a:hover{
+    transition: 0.3s;
+    color: var(--light-color);
+}
+.tk-preview-container{
+    border-color: var(--light-bg);
+    background-color: var(--light-bg);
+}

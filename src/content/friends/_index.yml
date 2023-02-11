@@ -1,0 +1,237 @@
+- name: DORAKIKA
+  link: https://blog.dorakika.cn
+  avatar: https://img.dorakika.cn/avatar/dorakika.cn.webp
+  descr: 热爱漫无边际，生活自有分寸！
+  theme_color: 'rgb(255, 197, 0)'
+  date: 2023-02-10
+
+- name: 小冰
+  link: https://zfe.space
+  avatar: https://img.dorakika.cn/avatar/zfe.space.webp
+  descr: 做个有梦想的人！
+  theme_color: '#b30070'
+  date: 2021-10-17
+
+- name: Akilar
+  link: https://akilar.top/
+  avatar: https://img.dorakika.cn/avatar/akilar.top.webp
+  descr: 期待您的光临！
+  theme_color: '#ff8080'
+  date: 2021-12-29
+
+- name: Heo
+  link: https://blog.zhheo.com/
+  avatar: https://img.dorakika.cn/avatar/blog.zhheo.com.webp
+  descr: 爱折腾的设计师 
+  theme_color: '#425aef'
+  date: 2022-01-18
+
+- name: 贰猹
+  link: https://noionion.top/
+  avatar: https://img.dorakika.cn/avatar/noionion.top.webp
+  descr: 用这生命中的每一秒，给自己一个不后悔的未来
+  theme_color: '#a153ff'
+  date: 2022-03-13
+
+- name: 御网尚书
+  link: https://www.siteweb.cn/
+  avatar: https://img.dorakika.cn/avatar/hack-gov.cn.webp
+  descr: 源自于热爱网络安全
+  theme_color: '#881B12'
+  date: 2022-03-02
+
+- name: 陈YF
+  link: https://blog.cyfan.top/
+  avatar: https://img.dorakika.cn/avatar/blog.cyfan.top.webp
+  descr: 一个在互联网角落挣扎的小小博客，很小很小。
+  theme_color: '#f6b352'
+  date: 2022-03-13
+
+- name: 云游君
+  link: https://www.yunyoujun.cn/
+  avatar: https://img.dorakika.cn/avatar/yunyoujun.cn.webp
+  descr: 希望能成为一个有趣的人
+  theme_color: '#0078e7'
+  date: 2022-05-09
+
+- name: Eurkon
+  link: https://blog.eurkon.com
+  avatar: https://img.dorakika.cn/avatar/blog.eurkon.com.webp
+  descr: 不只是代码的搬运工
+  theme_color: '#49b1f5'
+  date: 2022-03-13
+
+# Saiodgm
+- name: Liynw
+  link: https://blog.liynw.top/
+  # avatar: https://img.dorakika.cn/avatar/saiodgm.gq.webp
+  avatar: https://cdn.afdelivr.top/npm/liynw-blog@1.0.2/img/avatar.webp
+  descr: Every little helps
+  theme_color: '#99ebff'
+  date: 2022-06-07
+
+- name: Gahotx
+  link: https://gahotx.cn/
+  avatar: https://img.dorakika.cn/avatar/gahotx.cn.webp
+  descr: Don’t repeat yourself
+  theme_color: '#9bd9b5'
+  date: 2022-04-01
+
+# Hassan
+- name: Harris
+  link: https://blog.harriswong.top/
+  avatar: https://cdn.jsdelivr.net/npm/hassan-assets/img/avatar_blog.jpg
+  descr: 时不我待，只争朝夕
+  date: 2022-03-17
+
+- name: 欢乐小王
+  link: https://happyking.top/
+  avatar: https://img.dorakika.cn/avatar/happyking.top.webp
+  descr: 聚散无常,别来无恙.
+  theme_color: '#e0f9fd'
+  date: 2022-05-03
+
+- name: 韩小韩
+  link: https://www.vvhan.com/
+  avatar: https://img.dorakika.cn/avatar/vvhan.com.webp
+  descr: 要变得更完美
+  theme_color: '#9999ff'
+  date: 2022-04-12
+
+- name: UtopiaXC
+  link: https://blog.utopiaxc.cn/
+  avatar: https://img.dorakika.cn/avatar/utopiaxc.cn.webp
+  descr: 尽管如此，世界依旧美丽
+  theme_color: '#d9a0ff'
+  date: 2022-05-12
+
+- name: 风渐远
+  link: https://www.naraku.cn/
+  avatar: https://img.dorakika.cn/avatar/naraku.cn.webp
+  descr: 临渊羡鱼,莫如退而结网
+  date: 2022-03-30
+
+- name: Leonus
+  link: https://blog.leonus.cn/
+  avatar: https://img.dorakika.cn/avatar/leonus.cn.webp
+  descr: 进一寸有进一寸的欢喜。
+  date: 2022-07-12
+
+- name: 不予
+  link: https://www.shibuyu.fun
+  avatar: https://img.dorakika.cn/avatar/shibuyu.fun.webp
+  descr: 整理记录自己的测试学习历程
+  date: 2022-07-30
+
+- name: MrZeFr
+  link: https://blog.mrzefr.cn
+  avatar: https://img.dorakika.cn/avatar/blog.mrzefr.cn.webp
+  descr: Hello World
+  date: 2022-08-18
+
+- name: Ethan.Tzy
+  link: https://tzy1997.com/
+  avatar: https://img.dorakika.cn/avatar/tzy1997.com.webp
+  descr: 古今之成大事者，不惟有超世之才，亦必有坚忍不拔之志
+  theme_color: '#6f42c1'
+  date: 2022-08-22
+
+- name: LYX
+  link: https://yisous.xyz
+  avatar: https://img.dorakika.cn/avatar/yisous.xyz.webp
+  descr: 人有悲欢离合 月有阴晴圆缺
+  date: 2022-08-22
+
+- name: Fomalhaut🥝
+  link: https://www.fomal.cc/
+  avatar: https://img.dorakika.cn/avatar/fomal.cc.webp
+  descr: Future is now 🍭🍭🍭
+  siteshot: https://image.thum.io/get/allowJPG/wait/20/width/600/crop/950/https://fomal.cc/
+  date: 2022-09-06
+
+- name: Jayhrn
+  link: https://blog.jayhrn.com
+  avatar: https://img.dorakika.cn/avatar/blog.jayhrn.com.webp
+  descr: 念念不忘，必有回响
+  date: 2022-09-10
+
+- name: btwoa
+  link: https://blog.btwoa.com/
+  avatar: https://img.dorakika.cn/avatar/btwoa.com.webp
+  descr: 我仍相信人间滚烫
+  theme_color: '#dbbdfd'
+  date: 2022-09-10
+
+- name: 七鳄
+  link: https://blog.gmcj0816.top/
+  avatar: https://img.dorakika.cn/avatar/blog.gmcj0816.top.webp
+  descr: 如果世界多了精彩，每一位都是创造者，大家都是你的观众
+  date: 2022-09-16
+
+- name: roydon
+  link: https://roydon.xyz/
+  avatar: https://img.dorakika.cn/avatar/roydon.xyz.webp
+  descr: 如琉璃般飘落
+  theme_color: 'pink'
+  date: 2022-09-23
+
+- name: KING
+  link: https://king-cc.cn
+  avatar: https://img.dorakika.cn/avatar/king-cc.cn.webp
+  descr: 盛年不重来，一日难再晨
+  theme_color: '#32c9eb'
+  date: 2022-10-19
+
+- name: BOY-WDY
+  link: https://boyblog.pages.dev
+  avatar: https://img.dorakika.cn/avatar/boyblog.pages.dev.webp
+  descr: Good Job!
+  siteshot: https://i.postimg.cc/R0rBLM6d/2022-10-06-10-43-27.png
+  date: 2022-10-24
+
+- name: 丘卡
+  link: https://blog.zerolacqua.top
+  avatar: https://img.dorakika.cn/avatar/zerolacqua.top.webp
+  descr: 要来点喝的吗？
+  theme_color: '#64BAF6'
+  date: 2022-10-24
+
+- name: 生活倒影
+  link: https://poetize.cn
+  avatar: https://img.dorakika.cn/avatar/poetize.cn.webp
+  descr: 这是一个 Vue2 Vue3 与 SpringBoot 结合的产物～
+  siteshot: https://file.poetize.cn/webBackgroundImage/Sara11667133092544218
+  date: 2022-11-01
+
+- name: 猪梨村
+  link: https://zoulicheng.cn/
+  avatar: https://img.dorakika.cn/avatar/zoulicheng.cn.webp
+  descr: 我想呼风唤雨~
+  theme_color: '#b9b9b9'
+  date: 2022-11-26
+
+- name: 竹山一叶
+  link: https://zsyyblog.com
+  avatar: https://img.zsyyblog.com/favicon.jpg
+  descr: 来了就不想走的小家
+  siteshot: https://img.zsyyblog.com/siteshot.png
+  date: 2023-01-12
+
+- name: 爱吃肉的猫
+  link: https://meuicat.com/
+  avatar: https://meuicat.com/media/favicon.png
+  descr: 有肉有猫有生活.
+  theme_color: ‘#0084FF’
+  date: 2023-01-15
+
+- name: LyShark - 孤风洗剑
+  link: https://www.lyshark.com
+  avatar: https://www.lyshark.com/images/baidu_logo.png
+  descr: 道，可道，非常道；名，可名，非常名。—— 老子《道德经》
+  date: 2023-01-18
+
+- name: 怕冷爱上雪
+  link: https://blog.4t.pw/
+  avatar: https://blog.4t.pw/img/favicon.webp
+  descr: 千里之行，始于足下。
+  date: 2023-02-03
