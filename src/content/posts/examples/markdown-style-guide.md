@@ -7,6 +7,7 @@ tags:
  - doc
 category: doc
 slug: '20230210'
+star: 1
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
