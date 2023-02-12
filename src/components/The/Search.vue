@@ -81,7 +81,7 @@ defineExpose({
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
     z-index: 8000;
 }
 .the-search-loading{
@@ -90,7 +90,7 @@ defineExpose({
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -148,7 +148,7 @@ defineExpose({
     width: 100%;
     height: 48px;
     line-height: 48px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--light-bg);
     color: var(--font-color);
     border: none;
     outline: none;
@@ -157,7 +157,7 @@ defineExpose({
     transition: 0.3s;
 }
 .the-search .the-search-input:focus{
-    background-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5);
 }
 .the-search .the-search-result{
     overflow-y: overlay;
@@ -173,10 +173,10 @@ defineExpose({
     height: 8px;
 }
 .the-search .the-search-result::-webkit-scrollbar-thumb{
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--light-bg);
 }
 .the-search .search-result-item{
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--light-bg);
     border-radius: 8px;
     padding: 8px;
     text-decoration: none;
@@ -184,7 +184,7 @@ defineExpose({
     transition: 0.3s;
 }
 .the-search .search-result-item:hover{
-    background-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.4);
 }
 .the-search .search-result-item .title{
     font-size: 1.2em;

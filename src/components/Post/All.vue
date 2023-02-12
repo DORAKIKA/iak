@@ -63,7 +63,7 @@ const filterArticles = computed(() => {
 .pagination .pagination-item{
     width: 40px;
     height: 40px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--light-bg);
     border-radius: 8px;
     line-height: 40px;
     text-align: center;

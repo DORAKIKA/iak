@@ -43,7 +43,7 @@ defineProps(['article'])
     top: 0.5rem;
     left: 0.5rem;
     border-radius: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--deep-bg);
     color: #232323;
     font-weight: bold;
     padding: 0.3rem 0.5rem;

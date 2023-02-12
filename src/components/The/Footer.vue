@@ -54,7 +54,7 @@ import { beian, footer_links, author, slogan } from 'src/config';
     display: inline-flex;
     width: 36px;
     height: 36px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--deep-bg);
     justify-content: center;
     align-items: center;
     border-radius: 18px;

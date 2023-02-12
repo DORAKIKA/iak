@@ -73,12 +73,12 @@ const props = defineProps<Props>()
     padding: 0.5rem 1rem;
     width: 100%;
     border-radius: 0.25rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--deep-bg);
     text-decoration: none;
     transition: 0.3s;
 }
 .the-menu .children .menu-item:hover{
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--deep-bg);
     color: var(--main-color);
 }
 </style>
