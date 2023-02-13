@@ -1,20 +1,20 @@
 ---
-title: "Markdown基本语法"
-description: "常用的Markdown语法示例"
+title: "Astro中的Markdown基本语法"
+description: "常用的Markdown语法示例：标题、引用、图片、粗体、斜体、超链接等"
 date: "2023-02-10"
 cover: "/placeholder-hero.jpg"
 tags: 
- - doc
+ - markdown
 category: doc
 slug: '20230210'
 star: 1
 ---
 
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+本文档为Markdown的基本语法展示，并作博客文章示例及博客文档用途。
 
-## Headings
+## 标题
 
-The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
+正常来讲是支持`<h1>`到`<h6>`六级标题，但作为博客文章内容来说，建议使用2-6级标题进行写作。从而保证整个页面只有文章标题一个1级标题，有利于SEO。但此处作为展示，列出了全部六级标题
 
 # H1
 
@@ -28,46 +28,45 @@ The following HTML `<h1>`—`<h6>` elements represent six levels of section head
 
 ###### H6
 
-## Paragraph
+## 段落
 
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
+段落语法无任何符号，直接新起一行书写即可被解析为段落，不出意外这应该是你文章的主体内容。
 
-Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
+长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示长文本展示
 
-## Images
+## 图片
+
+图片是一个行级块，即会与相邻的文本显示在同一行。如![ICON](https://img.dorakika.cn/avatar/dorakika.cn.webp)。如果你想单独一行显示图片，请换行：
 
 ![This is a placeholder image description](/placeholder-social.jpg)
 
-## Blockquotes
+## 引用块
 
-The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
+引用块通常被用来标注 一个引用（即说明这段话出处不是本文章），通常可配合脚注使用。但作为博客文章，我喜欢将它用于作者题外话的标注（大部分是作者碎碎念或者补充说明）
 
-#### Blockquote without attribution
+#### 配合脚注使用
 
-> Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+> 一行引用。
+> 
+> 我再换一行[^1]
 
-#### Blockquote with attribution
+[^1]: 这里如果没有中间的`>`，就会被渲染成两个引用块，而不是一个引用块中两个段落。
 
-> Don't communicate by sharing memory, share memory by communicating.<br>
-> — <cite>Rob Pike[^1]</cite>
 
-[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
+## 表格与行内块
 
-## Tables
-
-| Italics   | Bold     | Code   | Link |
+| 斜体   | 粗体     | 代码   | 链接 |
 | --------- | -------- | ------ | ---- |
-| _italics_ | **bold** | `code` |[link](https://dorakika.cn)|
+| _斜体_ | **粗体** | `code` |[链接](https://dorakika.cn)|
 
-## Code Blocks
+## 代码块
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
+    <title>HTML5 Document</title>
   </head>
   <body>
     <p>Test</p>
@@ -75,38 +74,46 @@ The blockquote element represents content that is quoted from another source, op
 </html>
 ```
 
-## List Types
+## 列表类型
 
-#### Ordered List
+#### 有序列表
 
-1. First item
-2. Second item
-3. Third item
+1. 第一个子项
+2. 第二个子项
+3. 这是第三个
 
-#### Unordered List
+#### 无序列表
 
-- List item
-- Another item
-- And another item
+- 一个
+- 两个
+- 三个
 
-#### Nested list
+#### 嵌套
 
-- Fruit
+- 这是个无序列表
   - Apple
   - Orange
   - Banana
-- Dairy
-  - Milk
-  - Cheese
+- 这是个有序列表
+  1. Milk
+  2. Cheese
 
-## Other Elements — abbr, sub, sup, kbd, mark
+## 分隔线
+---
+---
+
+## 其他 — abbr, sub, sup, kbd, mark
 
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
 
+#### 上标
 H<sub>2</sub>O
 
+#### 下标
 X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
 
+#### kbd键盘按键
 Press<kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd> to end the session.
 
+#### 标记块
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
