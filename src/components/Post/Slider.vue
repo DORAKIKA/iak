@@ -34,10 +34,10 @@ const sliderClick = (num:number) => {
         >
             <img :src="article.data.cover" alt="" class="cover">
             <div class="meta">
-                <div class="title">{{ article.data.title }}</div>
+                <div class="title">{{ article.data.title }}
+            <span class="category">{{article.data.category}}</span></div>
                 <div class="tags">
-                    <span class="category">{{article.data.category}}</span>
-                    <span class="tag" v-for="tag in article.data.tags">{{tag}}</span>
+                    <span class="tag" v-for="tag in article.data.tags">#{{tag}}</span>
                 </div>
                 <p class="desc">{{ article.data.description }}</p>
                 <a :href="`/posts/${article.slug}`" class="button">GO</a>
@@ -52,8 +52,9 @@ const sliderClick = (num:number) => {
 <style scoped>
 .post-slider{
     width: 100%;
-    height: 25vw;
+    height: 22vw;
     min-height: 300px;
+    margin: 3rem 0 1rem;
     /* background-color: var(--main-color); */
     position: relative;
     display: flex;
@@ -86,7 +87,7 @@ const sliderClick = (num:number) => {
     border-radius: 0 50% 50% 50%;
 }
 .post-slider .article{
-    padding: 3rem 0;
+    padding: 0 0 2rem;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -139,13 +140,17 @@ const sliderClick = (num:number) => {
         display: none;
     }
 }
-.post-slider .article .meta .category,
+.post-slider .article .category{
+    box-shadow: 0 0 0 2px white;
+    background: var(--light-bg);
+    padding: 2px 4px;
+    border-radius: 0.4rem;
+    font-size: 0.8em;
+}
 .post-slider .article .meta .tags .tag{
     display: inline-block;
     width: fit-content;
-    padding: 0.2rem 0.3rem;
-    background: var(--main-color);
-    box-shadow: 0 0 0 2px white;
+    padding: 2px 4px;
     border-radius: 0.4rem;
 }
 .post-slider .article .meta .button{
