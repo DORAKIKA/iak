@@ -11,6 +11,9 @@
       ],
       "@styles/*": [
         "src/styles/*"
+      ],
+      "@mdx/*": [
+        "src/components/MDX/*"
       ]
     },
     "jsx": "preserve"

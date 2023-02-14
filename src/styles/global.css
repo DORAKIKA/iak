@@ -169,3 +169,20 @@ article hr{
   box-shadow: none;
   border-style: solid;
 }
+
+
+/* mdx */
+
+article details{
+  border: 1px solid var(--main-color);
+  padding: var(--base-radius);
+  border-radius: var(--base-radius);
+  background-color: rgba(var(--main-color-meta), 0.1);
+}
+article details summary{
+  user-select: none;
+  cursor: pointer;
+}
+article details:is([open]) summary{
+  border-bottom: 1px solid var(--main-color);
+}
