@@ -134,14 +134,14 @@ defineExpose({
     min-height: 300px;
     border: 4px solid white;
     background: var(--main-color);
-    border-radius: 16px;
+    border-radius: var(--base-radius);
     padding: 16px;
     transform: scale(1);
     transition: 0.3s;
 }
 .enter-emoji{
     position: absolute;
-    right: 24px;
+    right: calc(16px + var(--base-radius));
     line-height: 48px;
 }
 .the-search .the-search-input{
@@ -153,7 +153,7 @@ defineExpose({
     border: none;
     outline: none;
     padding: 0 16px;
-    border-radius: 8px;
+    border-radius: var(--base-radius);
     transition: 0.3s;
 }
 .the-search .the-search-input:focus{
@@ -177,8 +177,8 @@ defineExpose({
 }
 .the-search .search-result-item{
     background-color: var(--light-bg);
-    border-radius: 8px;
-    padding: 8px;
+    border-radius: var(--base-radius);
+    padding: var(--base-radius);
     text-decoration: none;
     color: var(--font-color);
     transition: 0.3s;

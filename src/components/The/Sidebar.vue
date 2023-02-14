@@ -56,7 +56,7 @@ defineExpose({
 .menus .menu-item{
     line-height: 48px;
     height: 48px;
-    border-radius: 8px;
+    border-radius: var(--base-radius);
     padding-left: 16px;
     text-decoration: none;
     color: var(--font-color);

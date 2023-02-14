@@ -2,7 +2,7 @@
 #twikoo{
     margin: 1rem 0;
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: var(--base-radius);
     --light-color: rgba(255,255,255,0.8);
     --light-bg: rgba(255,255,255,0.2);
     --sub-font-color: rgba(255,255,255,0.5);
@@ -12,7 +12,7 @@
 }
 .tk-avatar .tk-avatar-img{
     color: var(--light-color);
-    border-radius: 8px;
+    border-radius: var(--base-radius);
 }
 .tk-meta-input .el-input,.el-textarea{
     background-color: var(--light-bg);
@@ -64,7 +64,7 @@
 .tk-content{
     background-color: var(--light-bg);
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: var(--base-radius);
 }
 .tk-extras,.tk-icon.__comments,.tk-action-icon,.tk-submit-action-icon.__markdown{
     color: var(--light-color);

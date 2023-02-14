@@ -64,7 +64,7 @@ const filterArticles = computed(() => {
     width: 40px;
     height: 40px;
     background-color: var(--light-bg);
-    border-radius: 8px;
+    border-radius: var(--base-radius);
     line-height: 40px;
     text-align: center;
     cursor: pointer;

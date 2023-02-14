@@ -24,7 +24,7 @@ defineProps(['article'])
     width: 100%;
     aspect-ratio: 2/1;
     border: 4px solid rgba(255, 255, 255, 0.5);
-    border-radius: 0.5rem;
+    border-radius: var(--base-radius);
     position: relative;
     overflow: hidden;
     transition: 0.3s;
@@ -42,11 +42,11 @@ defineProps(['article'])
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: calc(0.75 * var(--base-radius));
     background-color: var(--deep-bg);
     color: #232323;
     font-weight: bold;
-    padding: 0.3rem 0.5rem;
+    padding: 4px calc(0.75 * var(--base-radius));
     font-size: 0.7rem;
 }
 .article .meta{

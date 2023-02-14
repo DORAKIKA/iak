@@ -67,7 +67,7 @@ const sliderClick = (num:number) => {
     bottom: 1rem;
     padding: 1rem;
     background-color: var(--main-color);
-    border-radius: 0.5rem;
+    border-radius: var(--base-radius);
     display: flex;
     gap: 1rem;
     z-index: 2;
@@ -101,7 +101,7 @@ const sliderClick = (num:number) => {
     width: 50%;
     height: 100%;
     border: 4px solid white;
-    border-radius: 0.5rem;
+    border-radius: var(--base-radius);
     object-fit: cover;
     /* position: absolute; */
     background-color: var(--main-color);
@@ -144,14 +144,13 @@ const sliderClick = (num:number) => {
     box-shadow: 0 0 0 2px white;
     background: var(--light-bg);
     padding: 2px 4px;
-    border-radius: 0.4rem;
+    border-radius: var(--base-radius);
     font-size: 0.8em;
 }
 .post-slider .article .meta .tags .tag{
     display: inline-block;
     width: fit-content;
     padding: 2px 4px;
-    border-radius: 0.4rem;
 }
 .post-slider .article .meta .button{
     align-self: flex-end;

@@ -39,7 +39,7 @@ const props = defineProps<Props>()
     background-color: var(--main-color);
     /* box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8); */
     border: 4px solid rgba(255, 255, 255, 0.8);
-    border-radius: 0.5rem;
+    border-radius: var(--base-radius);
     opacity: 0;
     pointer-events: none;
     display: flex;
@@ -72,7 +72,7 @@ const props = defineProps<Props>()
     display: inline-flex;
     padding: 0.5rem 1rem;
     width: 100%;
-    border-radius: 0.25rem;
+    border-radius: calc( 0.5 * var(--base-radius));
     color: var(--deep-bg);
     text-decoration: none;
     transition: 0.3s;

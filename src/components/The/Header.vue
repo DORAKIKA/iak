@@ -85,7 +85,7 @@ const randomPage = () => {
 #header .nav-button{
     width: 36px;
     height: 36px;
-    border-radius: 6px;
+    border-radius: var(--base-radius);
     display: flex;
     justify-content: center;
     align-items: center;

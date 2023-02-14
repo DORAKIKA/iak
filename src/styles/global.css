@@ -1,6 +1,5 @@
 :root {
 	--header-height: 70px;
-	--footer-height: 200px;
 	--side-padding: 7vw;
   
   --main-color-meta: 50, 201, 235;
@@ -11,9 +10,11 @@
 	--font-color: rgba(255,255,255,0.8);
   --deep-bg: rgba(255,255,255,0.8);
   --light-bg: rgba(255,255,255,0.2);
+
+  --base-radius: 8px;
 }
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 html{
 scroll-behavior: smooth;
@@ -75,7 +76,7 @@ line-height: 2;
 padding: 2rem 4rem;
 margin: 2rem 0 0;
 background: rgba(255, 255, 255, 0.9);
-border-radius: 1rem;
+border-radius: var(--base-radius);
 /* font-size: 1rem; */
 --font-color: #2d2d2d;
 color: var(--font-color);
@@ -134,7 +135,7 @@ article a:is(:hover, :focus-within){
 article code:not(pre code){
   background-color: rgba(var(--main-color-meta), 0.15);
   padding: 4px 8px;
-  border-radius: 6px;
+  border-radius: calc(var(--base-radius) * 0.75);
   color: rgb(var(--main-color-meta));
 }
 article blockquote{
@@ -142,21 +143,21 @@ article blockquote{
   border-left: 4px solid rgba(var(--main-color-meta), 0.5);
   padding: 0.1rem 0 0.1rem 1rem;
   background: rgba(var(--main-color-meta), 0.2);
-  border-radius: 8px;
+  border-radius: var(--base-radius);
 }
 article pre{
   line-height: 1.2;
 }
 article .astro-code{
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: var(--base-radius);
 }
 article kbd{
   background-color: rgb(var(--main-color-meta));
   color: white;
   margin: 0 2px;
-  padding: 0 4px;
-  border-radius: 4px;
+  padding: 0 calc(0.5 * var(--base-radius));
+  border-radius: calc(0.5 * var(--base-radius));
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4), 2px 2px 2px rgba(255, 255, 255, 0.4) inset;
 }
 article img{

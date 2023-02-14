@@ -5,16 +5,19 @@ import IakDrawer from "@components/Iak/drawer.vue"
 
 const styleShow = ref(false)
 const styleConfig = useLocalStorage('styleConfig', {
-    themeColor: '50, 201, 235'
+    themeColor: '50, 201, 235',
+    baseRadius: '8px'
 })
 const styleHTML = computed(() => `
     :root{
-        --main-color-meta: ${styleConfig.value.themeColor}
+        --main-color-meta: ${styleConfig.value.themeColor};
+        --base-radius: ${styleConfig.value.baseRadius};
     }
 `)
 useStyleTag(styleHTML)
 
-const themeColors = ['50, 201, 235', '231, 147, 73', '144, 83, 144', '52, 175, 86']
+const themeColors = ['50, 201, 235', '231, 147, 73', '144, 83, 144', '52, 175, 86', '47, 50, 55'];
+const radiusValue = ['8px', '16px']
 const toggleStyle = () => {
     styleShow.value = !styleShow.value;
 }
@@ -40,6 +43,18 @@ defineExpose({
                     ></div>
                 </div>
             </div>
+            <div class="style-item style-border-radius">
+                <div class="label">圆角</div>
+                <div class="value">
+                    <div class="style-border-radius-item"
+                        v-for="r in radiusValue"
+                        :key="r"
+                        @click="styleConfig.baseRadius=r"
+                        :class="r===styleConfig.baseRadius?'active':''"
+                        :style="`border-radius: calc(${r} / 2)`"
+                    ></div>
+                </div>
+            </div>
         </template>
     </IakDrawer>
 </template>
@@ -52,18 +67,21 @@ defineExpose({
     align-items: center;
     justify-content: space-between;
 }
-.style-theme-color .value{
+.style-theme-color .value,
+.style-border-radius .value{
     display: flex;
     gap: 8px;
 }
-.style-theme-color .value .style-theme-color-item{
+.style-theme-color .value .style-theme-color-item,
+.style-border-radius .value .style-border-radius-item{
     width: 16px;
     height: 16px;
-    border-radius: 2px;
+    border-radius: calc(0.5 * var(--base-radius));
     border: 3px solid rgba(255, 255, 255, 0.5);
     cursor: pointer;
 }
-.style-theme-color .value .style-theme-color-item.active{
+.style-theme-color .value .style-theme-color-item.active,
+.style-border-radius .value .style-border-radius-item.active{
     border: 4px solid rgba(255, 255, 255, 0.9);
 }
 </style>
