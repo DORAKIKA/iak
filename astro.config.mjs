@@ -6,7 +6,7 @@ import vue from "@astrojs/vue";
 // yaml
 import yaml from "@rollup/plugin-yaml"
 
-// https://astro.build/config
+
 
 // https://astro.build/config
 export default defineConfig({
