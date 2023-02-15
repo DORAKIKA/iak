@@ -139,7 +139,7 @@ article code:not(pre code){
   color: rgb(var(--main-color-meta));
 }
 article blockquote{
-  margin: 0;
+  margin: 0.5em 0;
   border-left: 4px solid rgba(var(--main-color-meta), 0.5);
   padding: 0.1rem 0 0.1rem 1rem;
   background: rgba(var(--main-color-meta), 0.2);
@@ -169,7 +169,9 @@ article hr{
   box-shadow: none;
   border-style: solid;
 }
-
+article p{
+  margin: 0.5em 0;
+}
 
 /* mdx */
 
