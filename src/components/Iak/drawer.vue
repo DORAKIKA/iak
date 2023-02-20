@@ -25,7 +25,7 @@ const emits = defineEmits<{
     </teleport>
 </template>
 
-<style>
+<style scoped>
 .k-drawer__wrapper{
     position: fixed;
     top: 0;

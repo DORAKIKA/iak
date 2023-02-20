@@ -44,7 +44,7 @@ const randomPage = () => {
     </header>
 </template>
 
-<style>
+<style scoped>
 #header{
     position: sticky;
     height: var(--header-height);

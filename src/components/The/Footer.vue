@@ -23,7 +23,7 @@ import { beian, footer_links, author, slogan } from 'src/config';
 </template>
 
 
-<style>
+<style scoped>
 #footer{
     padding: 60px var(--side-padding);
     margin-top: 2rem;

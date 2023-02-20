@@ -59,7 +59,7 @@ defineExpose({
     </IakDrawer>
 </template>
 
-<style>
+<style scoped>
 .style-item{
     padding: 0 16px;
     height: 48px;

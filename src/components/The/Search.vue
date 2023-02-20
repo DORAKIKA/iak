@@ -74,7 +74,7 @@ defineExpose({
     </teleport>
 </template>
 
-<style>
+<style scoped>
 .the-search-wrapper{
     position: fixed;
     top: 0;
