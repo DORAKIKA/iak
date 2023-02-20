@@ -52,3 +52,7 @@ export const footer_links = [
         title: 'Mail'
     },
 ]
+
+
+// twikoo
+export const twikoo_url = "https://twikoo.dorakika.cn"
