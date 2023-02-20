@@ -10,75 +10,83 @@
     color: var(--light-color);
     background-color: var(--light-bg);
 }
-.tk-avatar .tk-avatar-img{
+#twikoo .tk-avatar .tk-avatar-img{
     color: var(--light-color);
     border-radius: var(--base-radius);
 }
-.tk-meta-input .el-input,.el-textarea{
+#twikoo .tk-meta-input .el-input,
+#twikoo .el-textarea{
     background-color: var(--light-bg);
 }
 /* 可能是新增的缘故，一起写不生效，必须一个一个设置 */
-.twikoo .el-input__inner::-webkit-input-placeholder{
+#twikoo.twikoo .el-input__inner::-webkit-input-placeholder{
     color: var(--sub-font-color);
 }
-.twikoo .el-input__inner:-ms-input-placeholder{
+#twikoo.twikoo .el-input__inner:-ms-input-placeholder{
     color: var(--sub-font-color);
 }
-.twikoo .el-input__inner::-moz-placeholder{
+#twikoo.twikoo .el-input__inner::-moz-placeholder{
     color: var(--sub-font-color);
 }
-.twikoo .el-textarea__inner::-webkit-input-placeholder{
+#twikoo.twikoo .el-textarea__inner::-webkit-input-placeholder{
     color: var(--sub-font-color);
 }
-.twikoo .el-textarea__inner:-ms-input-placeholder{
+#twikoo.twikoo .el-textarea__inner:-ms-input-placeholder{
     color: var(--sub-font-color);
 }
-.twikoo .el-textarea__inner::-moz-placeholder{
+#twikoo.twikoo .el-textarea__inner::-moz-placeholder{
     color: var(--sub-font-color);
 }
-.twikoo .el-input-group__append, .twikoo .el-input-group__prepend{
+#twikoo.twikoo .el-input-group__append,
+#twikoo.twikoo .el-input-group__prepend{
     background-color: var(--light-bg);
     /* border-color: var(--light-color); */
     border: none;
     color: var(--light-color); 
 }
-.twikoo .el-input__inner, .twikoo .el-textarea__inner{
+#twikoo.twikoo .el-input__inner,
+#twikoo.twikoo .el-textarea__inner{
     border: none;
     transition: 0.3s;
 }
-.twikoo .el-input__inner:hover, .twikoo .el-textarea__inner:hover,
-.twikoo .el-input__inner:focus, .twikoo .el-textarea__inner:focus{
+#twikoo.twikoo .el-input__inner:hover, .twikoo .el-textarea__inner:hover,
+#twikoo.twikoo .el-input__inner:focus, .twikoo .el-textarea__inner:focus{
     background-color: var(--light-bg);
 }
-.twikoo .el-button:not(.el-button--primary):not(.el-button--text){
+#twikoo.twikoo .el-button:not(.el-button--primary):not(.el-button--text){
     background-color: var(--light-bg);
     border-color: var(--light-color);
     color: var(--light-color);
 }
-.twikoo .el-button:not(.el-button--primary):not(.el-button--text):active, .twikoo .el-button:not(.el-button--primary):not(.el-button--text):focus, .twikoo .el-button:not(.el-button--primary):not(.el-button--text):hover{
+#twikoo.twikoo .el-button:not(.el-button--primary):not(.el-button--text):active,
+#twikoo.twikoo .el-button:not(.el-button--primary):not(.el-button--text):focus,
+#twikoo.twikoo .el-button:not(.el-button--primary):not(.el-button--text):hover{
     background-color: var(--light-bg);
     border-color: var(--light-color);
     color: var(--light-color);
 }
 
-.tk-content{
+#twikoo .tk-content{
     background-color: var(--light-bg);
     padding: 8px 16px;
     border-radius: var(--base-radius);
 }
-.tk-extras,.tk-icon.__comments,.tk-action-icon,.tk-submit-action-icon.__markdown{
+#twikoo .tk-extras,
+#twikoo .tk-icon.__comments,
+#twikoo .tk-action-icon,
+#twikoo .tk-submit-action-icon.__markdown{
     color: var(--light-color);
 }
-.tk-footer{
+#twikoo .tk-footer{
     color: var(--main-color);
     font-weight: bold;
     text-shadow: 0 0 1px white;
 }
-.tk-footer a:hover{
+#twikoo .tk-footer a:hover{
     transition: 0.3s;
     color: var(--light-color);
 }
-.tk-preview-container{
+#twikoo .tk-preview-container{
     border-color: var(--light-bg);
     background-color: var(--light-bg);
 }
