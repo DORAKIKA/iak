@@ -7,7 +7,12 @@ import { beian, footer_links, author, slogan } from 'src/config';
         <div class="footer-left">
             <h2 class="footer-title">{{author}}'S BLOG</h2>
             <p>{{ slogan }}</p>
-            <a href="https://beian.miit.gov.cn/" target="_blank">{{beian}}</a>
+            <p>
+                <a href="https://beian.miit.gov.cn/" target="_blank">{{beian}}</a>
+                |
+                Theme By <a href="https://astro.build/" target="_blank">Astro</a> & <a target="_blank" href="https://github.com/DORAKIKA/iak">Iak</a>
+            </p>
+            
         </div>
         <ul class="footer-right">
             <li v-for="flink in footer_links" :key="flink.href">
