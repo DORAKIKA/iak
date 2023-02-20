@@ -35,7 +35,7 @@ export const slogan = "热爱漫无边际，生活自有分寸！"
 export const footer_links = [
     {
         href: 'https://dorakika.cn',
-        icon: '<img src="/images/dorakika.png" />',
+        icon: '<img src="/images/dorakika.png" class="icon" />',
         title: 'DORAKIKA'
     },
     {

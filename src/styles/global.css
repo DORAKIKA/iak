@@ -60,8 +60,10 @@ a{
   color: currentColor;
   text-decoration: none;
 }
-svg.icon {
+svg.icon,img.icon {
 fill: currentColor;
+width: 1em;
+height: 1em;
 }
 svg.icon path {
 fill: currentColor;

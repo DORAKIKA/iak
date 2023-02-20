@@ -64,16 +64,9 @@ import { beian, footer_links, author, slogan } from 'src/config';
     align-items: center;
     border-radius: 18px;
     transition: background-color 0.3s;
+    color: black;
 }
 #footer .footer-right .footer-icon:hover{
     background-color: white;
-}
-#footer .footer-right svg,
-#footer .footer-right img{
-    width: 18px;
-    height: 18px;
-}
-#footer .footer-right path{
-    fill: #233742;
 }
 </style>

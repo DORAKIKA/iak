@@ -99,7 +99,6 @@ const randomPage = () => {
 #header .nav-button .icon{
     width: 18px;
     height: 18px;
-    
 }
 
 #header .sidebar-toggle{
