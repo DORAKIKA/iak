@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import TheMenu from "@components/The/Menu.vue"
+import TheMenu from "./Menu.vue"
 import TheStyle from './Style.vue';
 import TheSidebar from './Sidebar.vue'
 import TheSearch from './Search.vue'
 import { menus } from "src/config";
 import { ref } from "vue"
 import { CollectionEntry, getCollection } from "astro:content";
+
+
 const styleRef = ref<InstanceType<typeof TheStyle> | null>(null)
 const sidebarRef = ref<InstanceType<typeof TheSidebar> | null>(null)
 const searchRef = ref<InstanceType<typeof TheSearch> | null>(null)
@@ -43,73 +45,3 @@ const randomPage = () => {
         </ul>
     </header>
 </template>
-
-<style scoped>
-#header{
-    position: sticky;
-    height: var(--header-height);
-    padding: 0 var(--side-padding);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 4px solid rgba(255, 255, 255, 0.2);
-    color: rgba(255,255,255,0.8);
-    font-weight: bold;
-    z-index: 200;
-}
-#header .site-home{
-    width: 28px;
-    height: 28px;
-}
-#header .site-home img{
-    width: 100%;
-    height: 100%;
-}
-#header .nav{
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-}
-#header .nav-links{
-    display: flex;
-    gap: 40px;
-    list-style: none;
-    line-height: 2;
-}
-
-#header .nav-buttons{
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-#header .nav-button{
-    width: 36px;
-    height: 36px;
-    border-radius: var(--base-radius);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
-#header .nav-button:hover{
-    color: var(--main-color);
-    background: rgba(255, 255, 255, 0.8);
-}
-#header .nav-button .icon{
-    width: 18px;
-    height: 18px;
-}
-
-#header .sidebar-toggle{
-    display: none;
-}
-@media (max-width: 900px){
-    #header .nav{
-        display: none;
-    }
-    #header .sidebar-toggle{
-        display: flex;
-    }
-}
-</style>

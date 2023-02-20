@@ -1,6 +1,7 @@
 <script setup lang="ts">
 interface Props{
-    show: boolean
+    show: boolean,
+    class?: string
 }
 const props = defineProps<Props>()
 const emits = defineEmits<{
@@ -11,7 +12,7 @@ const emits = defineEmits<{
 <template>
     <teleport to='body'>
         <transition name="slide">
-            <div class="k-drawer__wrapper" v-if="props.show" @click.self="emits('update:show', false)">
+            <div class="k-drawer__wrapper" :class="props.class" v-if="props.show" @click.self="emits('update:show', false)">
                 <div class="k-drawer__content">
                     <div class="k-drawer__header">
                         <slot name="title"/>
@@ -72,6 +73,8 @@ const emits = defineEmits<{
 }
 .k-drawer__header .close{
     cursor: pointer;
+    width: 1.5em;
+    height: 1.5em;
 }
 .k-drawer__content .k-drawer__body{
     flex: 1;

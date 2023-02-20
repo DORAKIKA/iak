@@ -58,30 +58,3 @@ defineExpose({
         </template>
     </IakDrawer>
 </template>
-
-<style scoped>
-.style-item{
-    padding: 0 16px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.style-theme-color .value,
-.style-border-radius .value{
-    display: flex;
-    gap: 8px;
-}
-.style-theme-color .value .style-theme-color-item,
-.style-border-radius .value .style-border-radius-item{
-    width: 16px;
-    height: 16px;
-    border-radius: calc(0.5 * var(--base-radius));
-    border: 3px solid rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-}
-.style-theme-color .value .style-theme-color-item.active,
-.style-border-radius .value .style-border-radius-item.active{
-    border: 4px solid rgba(255, 255, 255, 0.9);
-}
-</style>
