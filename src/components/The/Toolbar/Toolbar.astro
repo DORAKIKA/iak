@@ -1,8 +1,11 @@
 ---
 import Backtop from "./backtop.astro";
+import Headings from "./Headings.vue"
+const {headings} = Astro.props;
 ---
 <div class="the-toolbar">
     <Backtop className="the-toolbar-item"/>
+    {headings ? (<Headings headings={headings} className="the-toolbar-item" client:only="vue"/>) : ''}
 </div>
 
 <style>
@@ -29,6 +32,9 @@ import Backtop from "./backtop.astro";
     border-radius: calc(var(--base-radius) / 2);
     background: var(--main-color);
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: 0.3s;
 }
 .the-toolbar .the-toolbar-item:hover{

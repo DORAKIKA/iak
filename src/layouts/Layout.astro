@@ -6,17 +6,17 @@ import TheFooter from '@components/The/Footer.astro';
 import TheToolbar from '@components/The/Toolbar/Toolbar.astro'
 
 
-const { title, description } = Astro.props;
+const { title, description, headings } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
 
 	<body>
 		<TheHeader client:only/>
-		<TheToolbar/>
+		<TheToolbar headings={headings}/>
         <main style="padding: 0 var(--side-padding)">
             <slot></slot>
         </main>

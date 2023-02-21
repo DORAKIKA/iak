@@ -3,6 +3,7 @@ import { CollectionEntry, getCollection } from 'astro:content';
 import { site } from 'src/config';
 import Layout from '../../layouts/Layout.astro';
 import Twikoo from '@components/Third/Twikoo.astro';
+import { log } from 'astro/dist/core/logger/core';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('posts');
@@ -14,10 +15,15 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'posts'>;
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 ---
 
-<Layout title={post.data.title + ' | ' + site} description={post.data.description} cover={post.data.cover}>
+<Layout
+	title={post.data.title + ' | ' + site}
+	description={post.data.description}
+	cover={post.data.cover}
+	headings={JSON.stringify(headings)}
+>
 	<h1 class="article-title">{ post.data.title }</h1>
 	<div class="article-meta">
 		<div class="meta-section">
