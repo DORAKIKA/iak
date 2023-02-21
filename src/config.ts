@@ -54,5 +54,8 @@ export const footer_links = [
 ]
 
 
-// twikoo
-export const twikoo_url = "https://twikoo.dorakika.cn"
+// twikoo => https://twikoo.js.org/
+export const twikoo = {
+    enabled: true,
+    url: "https://twikoo.dorakika.cn"
+}

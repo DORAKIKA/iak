@@ -1,16 +1,21 @@
 ---
 import "@styles/twikoo.css"
-import { twikoo_url } from "src/config"
+import { twikoo } from "src/config"
 
 const twikoo_script = `
 window.addEventListener("load", () => {
     twikoo.init({
-        envId:"${twikoo_url}",
+        envId:"${twikoo.url}",
         el: "#iak-twikoo"
     })
 })
 `
 ---
-<div id="iak-twikoo"></div>
-<script is:inline src="https://cdn.staticfile.org/twikoo/1.6.9/twikoo.all.min.js"></script>
-<script is:inline set:html={twikoo_script}></script>
+{
+    twikoo.enabled ? (
+        <div id="iak-twikoo"></div>
+        <script is:inline src="https://cdn.staticfile.org/twikoo/1.6.9/twikoo.all.min.js"></script>
+        <script is:inline set:html={twikoo_script}></script>
+    ) : ''
+}
+
