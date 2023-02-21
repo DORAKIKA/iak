@@ -1,0 +1,39 @@
+---
+import Backtop from "./backtop.astro";
+---
+<div class="the-toolbar">
+    <Backtop className="the-toolbar-item"/>
+</div>
+
+<style>
+.the-toolbar{
+    position: fixed;
+    bottom: 2rem;
+    right: -2em;
+    transition: 0.3s;
+    padding: calc(var(--base-radius) / 2);
+    background: var(--main-color);
+    border: 4px solid var(--deep-bg);
+    border-right: none;
+    border-radius: var(--base-radius) 0 0 var(--base-radius);
+    z-index: 102;
+}
+.the-toolbar:hover{
+    right: 0;
+}
+.the-toolbar .the-toolbar-item{
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    line-height: 2em;
+    border-radius: calc(var(--base-radius) / 2);
+    background: var(--main-color);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.the-toolbar .the-toolbar-item:hover{
+    background: var(--deep-bg);
+    color: var(--main-color);
+}
+
+</style>

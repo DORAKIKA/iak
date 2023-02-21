@@ -22,9 +22,10 @@ scroll-behavior: smooth;
 ::-webkit-scrollbar{
   width: 4px;
   height: 4px;
+  background: var(--light-bg);
 }
 ::-webkit-scrollbar-thumb{
-  background-color: var(--light-bg);
+  background-color: var(--deep-bg);
 }
 body {
 margin: 0;
