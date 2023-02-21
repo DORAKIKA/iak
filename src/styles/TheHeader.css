@@ -59,7 +59,7 @@
     display: none;
 }
 @media (max-width: 900px){
-    #header .nav{
+    #header .menu-button{
         display: none;
     }
     #header .sidebar-toggle{

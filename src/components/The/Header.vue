@@ -29,7 +29,7 @@ const randomPage = () => {
             <img src="/images/dorakika.png" alt="">
         </a>
         <ul class="nav-buttons">
-            <TheMenu class="nav-button" v-for="menu in menus" :key="menu.name" :menu="menu" />
+            <TheMenu class="nav-button menu-button" v-for="menu in menus" :key="menu.name" :menu="menu" />
             <li class="nav-button" @click="styleRef?.toggleStyle" title="博客设置">
                 <TheStyle ref="styleRef"/>
             </li>
