@@ -78,5 +78,6 @@ const emits = defineEmits<{
 }
 .k-drawer__content .k-drawer__body{
     flex: 1;
+    overflow-y: scroll;
 }
 </style>
