@@ -11,7 +11,6 @@ const headingsShow = ref(false)
 const toggleSidebar = () => {
     headingsShow.value = !headingsShow.value;
 }
-console.log(headings)
 </script>
 
 <template>

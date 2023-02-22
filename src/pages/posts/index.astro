@@ -4,7 +4,7 @@ import Layout from "@layouts/Layout.astro"
 import PostAll from '@components/Post/All.vue'
 import { site } from "src/config";
 ---
-<Layout title={'文章归档 | ' + site} description="所有文章">
+<Layout title={'文章归档 | ' + site.name} description="所有文章">
 	<h1>文章归档</h1>
 	<section class="posts">
 		<PostAll client:load/>

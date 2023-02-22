@@ -3,11 +3,11 @@ import Layout from "@layouts/Layout.astro"
 import PostSlider from "@components/Post/Slider.vue"
 import PostRecent from "@components/Post/Recent.astro"
 
-import { default_cover, description, site } from "src/config";
+import { default_cover, site } from "src/config";
 ---
 
 
-<Layout title={site} description={description}>
+<Layout title={site.name} description={site.description}>
 	<PostSlider client:load/>
 	<PostRecent/>
 </Layout>

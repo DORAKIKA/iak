@@ -2,7 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
-import { default_cover } from "../config"
+import { default_cover, site } from "../config"
 
 export interface Props {
 	title: string;
@@ -18,7 +18,7 @@ const { title = "DORAKIKA", description = "", cover = default_cover } = Astro.pr
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href={site.favicon} />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->

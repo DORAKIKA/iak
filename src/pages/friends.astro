@@ -7,7 +7,7 @@ import friends from "../content/friends/_index.yml"
 import { site } from "src/config";
 ---
 
-<Layout title={'友情链接 | '+site} description={site + '的友链'}>
+<Layout title={'友情链接 | '+site.name} description={site.author + '的友链'}>
     <div id="friends">
         <div class="list-card">
             {friends.map((friend:any) => (

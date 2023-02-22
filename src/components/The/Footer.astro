@@ -1,20 +1,19 @@
 ---
-import { beian, footer_links, author, slogan } from 'src/config';
+import { site, footer } from 'src/config';
 ---
 
 <footer id="footer" class="the-footer">
     <div class="footer-left">
-        <h2 class="footer-title">{author}'S BLOG</h2>
-        <p>{ slogan }</p>
+        <h2 class="footer-title">{site.author}'S BLOG</h2>
+        <p>{ footer.slogan }</p>
         <p>
-            <a href="https://beian.miit.gov.cn/" target="_blank">{beian}</a>
-            |
+            {footer.beian.enabled ? (<span><a href="https://beian.miit.gov.cn/" target="_blank">{footer.beian.value}</a> | </span>) : ''}
             Theme By <a href="https://astro.build/" target="_blank">Astro</a> & <a target="_blank" href="https://github.com/DORAKIKA/iak">Iak</a>
         </p>
         
     </div>
     <ul class="footer-right">
-        {footer_links.map(flink => (
+        {footer.links.map(flink => (
             <li>
                 <a href={flink.href} class="footer-icon" title={flink.title} set:html={flink.icon}></a>
             </li>

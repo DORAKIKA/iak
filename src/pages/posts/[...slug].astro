@@ -19,7 +19,7 @@ const { Content, headings } = await post.render();
 ---
 
 <Layout
-	title={post.data.title + ' | ' + site}
+	title={post.data.title + ' | ' + site.name}
 	description={post.data.description}
 	cover={post.data.cover}
 	headings={JSON.stringify(headings)}
