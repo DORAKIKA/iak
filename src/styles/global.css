@@ -13,11 +13,17 @@
 
   --base-radius: 8px;
 }
+@media (max-width: 900px){
+  :root{
+    --side-padding: 3vw;
+  }
+}
 * {
   box-sizing: border-box;
 }
 html{
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 ::-webkit-scrollbar{
   width: 4px;
@@ -71,123 +77,3 @@ fill: currentColor;
 }
 
 
-
-/* article */
-
-article{
-line-height: 2;
-padding: 2rem 4rem;
-margin: 2rem 0 0;
-background: rgba(255, 255, 255, 0.9);
-border-radius: var(--base-radius);
-/* font-size: 1rem; */
---font-color: #2d2d2d;
-color: var(--font-color);
-}
-article h1,
-article h1>a,
-article h2>a,
-article h3>a,
-article h4>a,
-article h5>a,
-article h6>a
-{
-  color: #232323;
-  text-decoration: none;
-}
-article h1{
-  font-size: 2rem;
-  margin: 1.25rem 0 1rem;
-  color: #0a0a0a;
-}
-article h2{
-  font-size: 1.75rem;
-  margin: 1.25rem 0 1rem;
-  color: #0a0a0a;
-}
-article h3{
-  font-size: 1.5rem;
-  margin: 1.25rem 0 1rem;
-  color: #0a0a0a;
-}
-article h4{
-  font-size: 1.25rem;
-  margin: 1rem 0 0.75rem;
-  color: #0a0a0a;
-}
-article h5{
-  font-size: 1.1rem;
-  margin: 1rem 0 0.75rem;
-  color: #0a0a0a;
-}
-article h6{
-  font-size: 1rem;
-  margin: 1rem 0 0.5rem;
-  color: #0a0a0a;
-}
-article a{
-  color: var(--main-color);
-  transition: text-decoration-color 0.3s;
-  text-decoration-line: underline;
-  text-decoration-thickness: 3px;
-  text-decoration-color: transparent;
-}
-article a:is(:hover, :focus-within){
-  text-decoration-color: var(--main-color);
-}
-article code:not(pre code){
-  background-color: rgba(var(--main-color-meta), 0.15);
-  padding: 4px 8px;
-  border-radius: calc(var(--base-radius) * 0.75);
-  color: rgb(var(--main-color-meta));
-}
-article blockquote{
-  margin: 0.5em 0;
-  border-left: 4px solid rgba(var(--main-color-meta), 0.5);
-  padding: 0.1rem 0 0.1rem 1rem;
-  background: rgba(var(--main-color-meta), 0.2);
-  border-radius: var(--base-radius);
-}
-article pre{
-  line-height: 1.2;
-}
-article .astro-code{
-  padding: 1rem;
-  border-radius: var(--base-radius);
-}
-article kbd{
-  background-color: rgb(var(--main-color-meta));
-  color: white;
-  margin: 0 2px;
-  padding: 0 calc(0.5 * var(--base-radius));
-  border-radius: calc(0.5 * var(--base-radius));
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4), 2px 2px 2px rgba(255, 255, 255, 0.4) inset;
-}
-article img{
-  max-width: 100%;
-}
-article hr{
-  border-color: var(--main-color);
-  border-width: 2px;
-  box-shadow: none;
-  border-style: solid;
-}
-article p{
-  margin: 0.5em 0;
-}
-
-/* mdx */
-
-article details{
-  border: 1px solid var(--main-color);
-  padding: var(--base-radius);
-  border-radius: var(--base-radius);
-  background-color: rgba(var(--main-color-meta), 0.1);
-}
-article details summary{
-  user-select: none;
-  cursor: pointer;
-}
-article details:is([open]) summary{
-  border-bottom: 1px solid var(--main-color);
-}
