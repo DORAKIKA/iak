@@ -14,8 +14,15 @@ import robotsTxt from "astro-robots-txt";
 // https://docs.astro.build/zh-cn/guides/integrations-guide/partytown/
 import partytown from "@astrojs/partytown";
 
-// https://astro.build/config
-export default defineConfig({
+// serviceWorder 支持
+// https://github.com/tatethurston/astrojs-service-worker#readme
+import serviceWorker from "astrojs-service-worker"
+
+
+
+
+
+const devConfig = {
   site: site.origin,
   integrations: [mdx(), sitemap(), vue(), robotsTxt({
     // host 用于配置多镜像网站的首选域 - 设为true则使用上方的site配置项
@@ -25,9 +32,32 @@ export default defineConfig({
     config: {
       forward: ['twikoo.init']
     }
-  })
+  }),
+  // serviceWorker(), // 本地调试url会错误
 ],
   vite: {
     plugins: [yaml()]
   }
-});
+}
+const prodConfig = {
+  site: site.origin,
+  integrations: [mdx(), sitemap(), vue(), robotsTxt({
+    // host 用于配置多镜像网站的首选域 - 设为true则使用上方的site配置项
+    host: true
+  }),
+  partytown({
+    config: {
+      forward: ['twikoo.init']
+    }
+  }),
+  serviceWorker()
+],
+  vite: {
+    plugins: [yaml()]
+  }
+}
+
+
+
+// https://astro.build/config
+export default defineConfig(process.env.NODE_ENV === 'development' ? devConfig : prodConfig);
