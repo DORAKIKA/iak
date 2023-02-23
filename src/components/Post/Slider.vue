@@ -8,7 +8,7 @@ getCollection('posts', ({data}) => {
     return data.star;
 }).then((ps) => {
     posts.value = ps
-    posts.value.sort((a,b)=>a.slug>b.slug?1:-1)
+    posts.value.sort((a,b)=>a.data.star&&b.data.star&&a.data.star>b.data.star?1:-1)
 })
 
 const limit = posts.value?.length || 1;
