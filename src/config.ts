@@ -3,6 +3,8 @@
 
 // 站点信息
 export const site = {
+    // 你将要部署到的站点地址
+    origin: 'https://iak.dorakika.cn',
     // 站点图标链接
     favicon: '/favicon.svg',
     // 站点名称
