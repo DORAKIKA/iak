@@ -143,9 +143,9 @@ const sliderClick = (num:number) => {
 .post-slider .article .category{
     box-shadow: 0 0 0 2px white;
     background: var(--light-bg);
-    padding: 2px 4px;
+    padding: 4px 8px;
     border-radius: var(--base-radius);
-    font-size: 0.8em;
+    font-size: 0.5em;
 }
 .post-slider .article .meta .tags .tag{
     display: inline-block;
