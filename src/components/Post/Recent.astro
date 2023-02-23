@@ -12,7 +12,7 @@ const recentPosts = (await getCollection("posts")).sort((a,b) => {
         {recentPosts.map(post => (
             <div class="article">
                 <div class="cover">
-                    <img src={post.data.cover} alt="" class="cover-img"/>
+                    <img src={post.data.cover} alt={post.data.title} class="cover-img"/>
                     <span class="category">{post.data.category}</span>
                 </div>
                 

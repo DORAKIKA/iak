@@ -7,7 +7,7 @@ import { default_cover, site } from "src/config";
 ---
 
 
-<Layout title={site.name} description={site.description}>
+<Layout title={site.name + ' | ' + site.description} description={site.description}>
 	<PostSlider client:load/>
 	<PostRecent/>
 </Layout>

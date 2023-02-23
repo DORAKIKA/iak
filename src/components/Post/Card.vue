@@ -4,7 +4,7 @@ defineProps(['article'])
 <template>
     <div class="article">
         <div class="cover">
-            <img :src="article.data.cover" alt="" class="cover-img"/>
+            <img :src="article.data.cover" :alt="article.data.title" class="cover-img"/>
             <span class="category">{{article.data.category}}</span>
         </div>
         
