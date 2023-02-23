@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^0.16.0",
+		"@astrojs/partytown": "^1.0.3",
 		"@astrojs/rss": "^2.1.0",
 		"@astrojs/sitemap": "^1.0.1",
 		"@vueuse/core": "^9.12.0",
