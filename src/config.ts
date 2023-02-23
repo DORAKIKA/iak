@@ -40,7 +40,7 @@ export const footer = {
     links: [
         {
             href: 'https://dorakika.cn',
-            icon: '<img src="/images/dorakika.png" class="icon" />',
+            icon: '<img src="/images/dorakika.png" class="icon" alt="DORAKIKA" />',
             title: 'DORAKIKA'
         },
         {

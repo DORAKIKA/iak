@@ -3,7 +3,7 @@ import TheMenu from "./Menu.vue"
 import TheStyle from './Style.vue';
 import TheSidebar from './Sidebar.vue'
 import TheSearch from './Search.vue'
-import { menus } from "src/config";
+import { menus,site } from "src/config";
 import { ref } from "vue"
 import { CollectionEntry, getCollection } from "astro:content";
 
@@ -26,7 +26,7 @@ const randomPage = () => {
 <template>
     <header id="header" class="the-header">
         <a href="/" class="site-home">
-            <img src="/images/dorakika.png" alt="">
+            <img :src="site.favicon" :alt="site.name">
         </a>
         <ul class="nav-buttons">
             <TheMenu class="nav-button menu-button" v-for="menu in menus" :key="menu.name" :menu="menu" />

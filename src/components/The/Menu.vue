@@ -13,7 +13,7 @@ interface Props {
 const props = defineProps<Props>()
 </script>
 <template>
-    <div class="the-menu">
+    <li class="the-menu">
         <div class="trigger">
             <span>{{menu.name}}</span>
         </div>
@@ -22,5 +22,5 @@ const props = defineProps<Props>()
                 <a class="menu-item" :href="menuItem.href">{{menuItem.name}}</a>
             </li>
         </ul>
-    </div>
+    </li>
 </template>
