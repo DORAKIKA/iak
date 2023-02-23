@@ -18,11 +18,11 @@ import partytown from "@astrojs/partytown";
 // https://github.com/tatethurston/astrojs-service-worker#readme
 import serviceWorker from "astrojs-service-worker"
 
+import loadVersion from "vite-plugin-package-version"
 
 
 
-
-const devConfig = {
+const baseConfig = {
   site: site.origin,
   integrations: [mdx(), sitemap(), vue(), robotsTxt({
     // host 用于配置多镜像网站的首选域 - 设为true则使用上方的site配置项
@@ -36,28 +36,12 @@ const devConfig = {
   // serviceWorker(), // 本地调试url会错误
 ],
   vite: {
-    plugins: [yaml()]
+    plugins: [yaml(), loadVersion()],
   }
 }
-const prodConfig = {
-  site: site.origin,
-  integrations: [mdx(), sitemap(), vue(), robotsTxt({
-    // host 用于配置多镜像网站的首选域 - 设为true则使用上方的site配置项
-    host: true
-  }),
-  partytown({
-    config: {
-      forward: ['twikoo.init']
-    }
-  }),
-  serviceWorker()
-],
-  vite: {
-    plugins: [yaml()]
-  }
+if(process.env.NODE_ENV === "production"){
+  baseConfig.integrations.push(serviceWorker())
 }
-
-
 
 // https://astro.build/config
-export default defineConfig(process.env.NODE_ENV === 'development' ? devConfig : prodConfig);
+export default defineConfig(baseConfig);
