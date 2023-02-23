@@ -64,3 +64,15 @@ export const twikoo = {
 
 // 文章标题目录深度（1-6）
 export const headings_depth = 3
+
+// 主题配置
+export const theme = {
+    main_colors: ['50, 201, 235','244,149,162', '144, 83, 144', '52, 175, 86', '47, 50, 55'],
+    border_radius: ['8px', '16px'],
+    brightness: {
+        default: 1,
+        min: 0.5,
+        max: 1.1,
+        step: 0.1
+    }
+}

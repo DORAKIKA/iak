@@ -2,22 +2,26 @@
 import { ref,computed } from 'vue'
 import { useLocalStorage, useStyleTag } from '@vueuse/core'
 import IakDrawer from "@components/Iak/drawer.vue"
+import IakSlider from "@components/Iak/Slider.vue"
+import { theme } from '../../config'
 
 const styleShow = ref(false)
 const styleConfig = useLocalStorage('styleConfig', {
-    themeColor: '50, 201, 235',
-    baseRadius: '8px'
+    themeColor: theme.main_colors[0],
+    baseRadius: theme.border_radius[0],
+    brightness: theme.brightness.default
 })
 const styleHTML = computed(() => `
     :root{
-        --main-color-meta: ${styleConfig.value.themeColor};
-        --base-radius: ${styleConfig.value.baseRadius};
+        --main-color-meta: ${styleConfig.value.themeColor || theme.main_colors[0]};
+        --base-radius: ${styleConfig.value.baseRadius || theme.border_radius[0]};
+    }
+    html{
+        filter: brightness(${styleConfig.value.brightness || theme.brightness.default})
     }
 `)
 useStyleTag(styleHTML)
 
-const themeColors = ['50, 201, 235', '231, 147, 73', '144, 83, 144', '52, 175, 86', '47, 50, 55'];
-const radiusValue = ['8px', '16px']
 const toggleStyle = () => {
     styleShow.value = !styleShow.value;
 }
@@ -35,7 +39,7 @@ defineExpose({
                 <div class="label">主题色</div>
                 <div class="value">
                     <div class="style-theme-color-item"
-                        v-for="tc in themeColors"
+                        v-for="tc in theme.main_colors"
                         :key="tc"
                         @click="styleConfig.themeColor=tc"
                         :class="tc===styleConfig.themeColor?'active':''"
@@ -47,13 +51,17 @@ defineExpose({
                 <div class="label">圆角</div>
                 <div class="value">
                     <div class="style-border-radius-item"
-                        v-for="r in radiusValue"
+                        v-for="r in theme.border_radius"
                         :key="r"
                         @click="styleConfig.baseRadius=r"
                         :class="r===styleConfig.baseRadius?'active':''"
                         :style="`border-radius: calc(${r} / 2)`"
                     ></div>
                 </div>
+            </div>
+            <div class="style-item">
+                <div class="key">亮度</div>
+                <div class="value"><IakSlider :min="theme.brightness.min" :max="theme.brightness.max" :step="theme.brightness.step" v-model:value="styleConfig.brightness"/></div>
             </div>
         </template>
     </IakDrawer>
