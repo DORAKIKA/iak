@@ -24,6 +24,11 @@ import loadVersion from "vite-plugin-package-version"
 
 const baseConfig = {
   site: site.origin,
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark-dimmed'
+    }
+  },
   integrations: [mdx(), sitemap(), vue(), robotsTxt({
     // host 用于配置多镜像网站的首选域 - 设为true则使用上方的site配置项
     host: true
