@@ -1,0 +1,48 @@
+---
+import { site } from '../../config'
+const { title } = Astro.props
+
+---
+
+<div class="post-copyright">
+    <div class="post-copyright__title">{ title }</div>
+    <div class="post-copyright__href"><a href={Astro.url.href}>{ Astro.url.href }</a></div>
+    <div class="post-copyright__notice">
+        除特殊注明外，本博客文章均采用
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-ND 4.0</a>
+        协议，完整转载请注明来自 
+        <a href={site.origin}>{site.author}</a>
+    </div>
+    <svg viewBox="0 0 512 512" class="post-copyright__icon" width="1.2em" height="1.2em" style="display: inline-block;"><path fill="currentColor" d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256s114.6 256 256 256zm-56.6-199.4c31.2 31.2 81.9 31.2 113.1 0c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9c-50 50-131 50-181 0s-50-131 0-181s131-50 181 0c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0c-31.2-31.2-81.9-31.2-113.1 0s-31.2 81.9 0 113.1z"></path></svg>
+</div>
+
+<style>
+    .post-copyright{
+        margin: 1em 0;
+        background: var(--deep-bg);
+        color: #333;
+        padding: 1.5em;
+        border-radius: var(--base-radius);
+        position: relative;
+        line-height: 1,5;
+    }
+    .post-copyright__title{
+        font-weight: bold;
+        font-size: 1.25em;
+        line-height: 1.5;
+    }
+    .post-copyright__href{
+        color: var(--main-color);
+        opacity: 0.7;
+    }
+    .post-copyright__href:is(:hover, :focus-within){
+        opacity: 1;
+    }
+    .post-copyright__icon{
+        width: 1.5em;
+        height: 1.5em;
+        position: absolute;
+        top: 1em;
+        right: 1em;
+    }
+</style>

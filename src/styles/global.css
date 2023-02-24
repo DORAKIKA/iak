@@ -66,6 +66,7 @@ background-size: 1500px;
 a{
   color: currentColor;
   text-decoration: none;
+  font-weight: 600;
 }
 svg.icon,img.icon {
 fill: currentColor;

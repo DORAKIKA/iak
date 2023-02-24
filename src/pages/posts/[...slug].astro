@@ -3,6 +3,7 @@ import { CollectionEntry, getCollection } from 'astro:content';
 import { site } from 'src/config';
 import Layout from '../../layouts/Layout.astro';
 import Twikoo from '@components/Third/Twikoo.astro';
+import PostCopyright from '@components/Post/Copyright.astro'
 import '@styles/article.css'
 
 export async function getStaticPaths() {
@@ -61,6 +62,7 @@ const { Content, headings } = await post.render();
 	<article id="post">
 		<Content />
 	</article>
+	<PostCopyright title={post.data.title} />
 	<Twikoo/>
 </Layout>
 
