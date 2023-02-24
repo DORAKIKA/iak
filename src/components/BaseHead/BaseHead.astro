@@ -1,15 +1,16 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '../styles/global.css';
-import { default_cover, site } from "../config"
+import '@styles/global.css';
+import { default_cover, site } from "../../config"
+import ProductionInject from './ProductionInject.astro';
 
 export interface Props {
 	title: string;
 	description: string;
 	cover?: string;
 }
-
+const isPROD = import.meta.env.PROD
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title = "DORAKIKA", description = "", cover = default_cover } = Astro.props;
@@ -44,3 +45,5 @@ const { title = "DORAKIKA", description = "", cover = default_cover } = Astro.pr
 <meta property="twitter:image" content={new URL(cover, Astro.url)} />
 
 <script src="/src/log.ts" />
+
+{isPROD ? <ProductionInject/> : ''}
