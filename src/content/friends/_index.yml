@@ -1,6 +1,8 @@
-- name: DORAKIKA
-  link: https://blog.dorakika.cn
-  avatar: https://img.dorakika.cn/avatar/dorakika.cn.webp
-  descr: 热爱漫无边际，生活自有分寸！
-  theme_color: 'rgb(255, 197, 0)'
-  date: 2023-02-10
+- list_name: 推荐
+  list_data:
+    - name: DORAKIKA
+      link: https://blog.dorakika.cn
+      avatar: https://img.dorakika.cn/avatar/dorakika.cn.webp
+      descr: 热爱漫无边际，生活自有分寸！
+      theme_color: 'rgb(255, 197, 0)'
+      date: 2023-02-10

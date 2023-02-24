@@ -3,26 +3,41 @@ import Layout from "@layouts/Layout.astro"
 import Twikoo from "@components/Third/Twikoo.astro"
 // @ts-ignore
 import friends from "../content/friends/_index.yml"
+import "@styles/article.css"
 
 import { site } from "src/config";
+import { getEntryBySlug } from "astro:content";
+
+const entry = await getEntryBySlug('friends', 'index');
+const { Content } = await entry.render();
 ---
 
 <Layout title={'友情链接 | '+site.name} description={site.author + '的友链'}>
+    <article class="article-block">
+        <Content/>
+    </article>
     <div id="friends">
+        {friends.map((list:any) => (
+            <div class="friends-list">
+                <h2 class="list-name">{list.list_name}</h2>
+                <div class="list-card">
+                    {list.list_data.map((friend:any) => (
+                        <a class="friend-item" href={friend.link} target="_blank">
+                            <img src={friend.avatar} alt={friend.name} class="avatar">
+                            <div class="info">
+                                <div class="name">{friend.name}</div>
+                                <div class="desc">{friend.descr}</div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        )
+        )}
         <div class="list-card">
-            {friends.map((friend:any) => (
-                <a class="friend-item" href={friend.link} target="_blank">
-                    <img src={friend.avatar} alt={friend.name} class="avatar">
-                    <div class="info">
-                        <div class="name">{friend.name}</div>
-                        <div class="desc">{friend.descr}</div>
-                    </div>
-                </a>
-            ))}
             
         </div>
     </div>
-
     <Twikoo />
 </Layout>
 
