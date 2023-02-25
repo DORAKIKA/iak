@@ -38,24 +38,22 @@ const recentPosts = (await getCollection("posts")).sort((a,b) => {
 }
 .post-recent .post-list-container{
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
+.article{
+    width: calc(calc(100% - 2em) / 3);
+}
 @media (max-width: 1200px){
-    .post-recent .post-list-container{
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .article{
+        width: calc(calc(100% - 1em) / 2);
+}
 }
 @media (max-width: 768px){
-    .post-recent .post-list-container{
-        grid-template-columns: 1fr;
+    .article{
+        width: 100%;
     }
-}
-.article{
-    width: 100%;
-    height: 100%;
 }
 .article .cover{
     width: 100%;

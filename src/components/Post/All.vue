@@ -48,24 +48,26 @@ const filterArticles = computed(() => {
 
 .post-container{
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+.post-card{
+    width: calc(calc(100% - 3em) / 4);
 }
 @media (max-width: 1500px){
-    .post-container{
-        grid-template-columns: repeat(3, 1fr);
+    .post-card{
+        width: calc(calc(100% - 2em) / 3);
     }
 }
 @media (max-width: 1200px){
-    .post-container{
-        grid-template-columns: repeat(2, 1fr);
+    .post-card{
+        width: calc(calc(100% - 1em) / 2);
     }
 }
 @media (max-width: 768px){
-    .post-container{
-        grid-template-columns: 1fr;
+    .post-card{
+        width: 100%;
     }
 }
 .pagination{
