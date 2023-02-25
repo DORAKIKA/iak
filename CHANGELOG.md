@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/DORAKIKA/iak/compare/v0.1.0...v0.1.1) (2023-02-25)
+
+
+### Features
+
+* **theme:** 顶栏可选择固定 ([57b5306](https://github.com/DORAKIKA/iak/commit/57b5306bad25b5df7a4b36f946dddf5c8596d29f))
+
 ## 0.1.0 (2023-02-24)
 
 
