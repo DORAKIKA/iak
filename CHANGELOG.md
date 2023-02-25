@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/DORAKIKA/iak/compare/v0.1.1...v0.2.0) (2023-02-25)
+
+
+### Features
+
+* 文章归档采用分页器开启分页 ([e9d2653](https://github.com/DORAKIKA/iak/commit/e9d2653b460e2208e5478b16a2afb89c0c5b7c0a))
+
+
+### Bug Fixes
+
+* grid换flex解决样式错乱 ([c73c90b](https://github.com/DORAKIKA/iak/commit/c73c90b59fa237c04af39b64960b875ab039cb17))
+
 ### [0.1.1](https://github.com/DORAKIKA/iak/compare/v0.1.0...v0.1.1) (2023-02-25)
 
 
