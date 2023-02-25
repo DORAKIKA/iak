@@ -39,9 +39,19 @@ const recentPosts = (await getCollection("posts")).sort((a,b) => {
 .post-recent .post-list-container{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
+}
+@media (max-width: 1200px){
+    .post-recent .post-list-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px){
+    .post-recent .post-list-container{
+        grid-template-columns: 1fr;
+    }
 }
 .article{
     width: 100%;

@@ -1,6 +1,7 @@
 /* 因为目前astro在打包的时候会有bug，会把带有client:only指令的组件的css漏掉，所以先单独引入一下，看后续bug修不修 */
 #header{
     position: sticky;
+    width: 100%;
     height: var(--header-height);
     padding: 0 var(--side-padding);
     display: flex;

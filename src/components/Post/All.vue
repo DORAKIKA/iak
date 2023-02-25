@@ -49,9 +49,24 @@ const filterArticles = computed(() => {
 .post-container{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
+}
+@media (max-width: 1500px){
+    .post-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 1200px){
+    .post-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px){
+    .post-container{
+        grid-template-columns: 1fr;
+    }
 }
 .pagination{
     display: flex;
