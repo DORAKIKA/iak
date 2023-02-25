@@ -15,7 +15,7 @@ import { site, footer } from 'src/config';
     <ul class="footer-right">
         {footer.links.map(flink => (
             <li>
-                <a href={flink.href} class="footer-icon" title={flink.title} set:html={flink.icon}></a>
+                <a href={flink.href} class="footer-icon" title={flink.title} set:html={flink.icon} target='_blank'></a>
             </li>
         ))}
     </ul>
