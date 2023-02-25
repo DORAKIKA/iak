@@ -34,27 +34,27 @@ html{
   background-color: var(--deep-bg);
 }
 body {
-margin: 0;
-font-family: "Microsoft YaHei", Georgia, "Nimbus Roman No9 L", "Songti SC",
-  "Noto Serif CJK SC", "Source Han Serif SC", "Source Han Serif CN", STSong,
-  "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung",
-  "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK",
-  "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
-font-size: 16px;
-color: var(--font-color);
-position: relative;
-display: flex;
-flex-direction: column;
-width: 100%;
-min-height: 100vh;
-color: var(--font-color);
-background-color: var(--main-color);
---kk-texture-color: rgba(255,255,255,0.2);
-background-image: url(/bg-zigzag.svg);
-animation: 60s linear -30s infinite alternate none running background-slide;
-background-size: 1500px;
-/* color: white; */
+  margin: 0;
+  font-family: "Microsoft YaHei", Georgia, "Nimbus Roman No9 L", "Songti SC",
+    "Noto Serif CJK SC", "Source Han Serif SC", "Source Han Serif CN", STSong,
+    "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung",
+    "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK",
+    "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
+  font-size: 16px;
+  color: var(--font-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  color: var(--font-color);
+  background-color: var(--main-color);
+  --kk-texture-color: rgba(255,255,255,0.2);
+  background-image: url(/bg-zigzag.svg);
+  animation: 60s linear -30s infinite alternate none running background-slide;
+  background-size: 1500px;
   line-height: 1.5;
+  transition: background 0.3s;
 }
 @keyframes background-slide{
   from{
