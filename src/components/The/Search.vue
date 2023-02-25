@@ -57,7 +57,7 @@ window.iak.toggleSearch = toggleSearch
                             class="search-result-item"
                             v-for="item in state.results"
                             :key="item.slug"
-                            :href="`/posts/${item.slug}`"
+                            :href="`/post/${item.slug}`"
                             @click="toggleSearch(false)"
                         >
                             <div class="title">{{ item.data.title }}</div>

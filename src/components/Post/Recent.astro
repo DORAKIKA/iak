@@ -17,7 +17,7 @@ const recentPosts = (await getCollection("posts")).sort((a,b) => {
                 </div>
                 
                 <div class="meta">
-                    <a href={`/posts/${post.slug}`} class="title">{ post.data.title }</a>
+                    <a href={`/post/${post.slug}`} class="title">{ post.data.title }</a>
                     <div class="desc">{ post.data.description }</div>
                 </div>
             </div>

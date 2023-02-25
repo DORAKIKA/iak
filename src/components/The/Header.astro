@@ -8,7 +8,7 @@ import { getCollection } from "astro:content";
 
 
 const articles = await getCollection("posts")
-const injectAllPostUrl = `const allPostUrl = [${articles.map(a => `"/posts/${a.slug}"`).join(',')}]`;
+const injectAllPostUrl = `const allPostUrl = [${articles.map(a => `"/post/${a.slug}"`).join(',')}]`;
 
 ---
 <script set:html={injectAllPostUrl}/>
