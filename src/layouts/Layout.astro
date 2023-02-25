@@ -1,6 +1,6 @@
 ---
 import BaseHead from '@components/BaseHead/BaseHead.astro';
-import TheHeader from "@components/The/Header.vue"
+import TheHeader from "@components/The/Header.astro"
 import "@styles/TheHeader.css"
 import TheFooter from '@components/The/Footer.astro';
 import TheToolbar from '@components/The/Toolbar/Toolbar.astro'
@@ -15,7 +15,12 @@ const { title, description, headings } = Astro.props;
 	</head>
 
 	<body>
-		<TheHeader client:only/>
+		<script is:inline>
+			// iak 全局对象，之后会注入一些函数以便调用
+			// @ts-ignore
+			window.iak = {}
+		</script>
+		<TheHeader/>
 		<TheToolbar headings={headings}/>
         <main style="padding: 0 var(--side-padding)">
             <slot></slot>

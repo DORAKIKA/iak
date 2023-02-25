@@ -1,0 +1,23 @@
+---
+import { menus } from 'src/config';
+
+const { className } = Astro.props
+---
+{
+    menus.map(menu => (
+        <li class={"the-menu " + className}>
+            <div class="trigger">
+                <span>{menu.name}</span>
+            </div>
+            <ul class="children">
+                {
+                    menu.children.map(menuItem => (
+                        <li>
+                            <a class="menu-item" href={menuItem.href}>{menuItem.name}</a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </li>
+    ))
+}
