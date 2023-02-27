@@ -30,7 +30,7 @@ export const menus = [
     }
 ]
 
-export const default_cover = "https://img.dorakika.cn/md/default.png"
+export const default_cover = "/placeholder-hero.jpg"
 
 // 页脚信息
 export const footer = {
