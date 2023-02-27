@@ -14,7 +14,7 @@ const { title, description, cover } = Astro.props;
 <div id="share-card">
     <h3>复制图片以分享</h3>
 </div>
-<script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script is:inline src="//html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script is:inline>
 document.getElementById('share-card').addEventListener('click', function(e) {
     if(e.target === this)toggleShare(false);
