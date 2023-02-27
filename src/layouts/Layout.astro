@@ -4,14 +4,15 @@ import TheHeader from "@components/The/Header.astro"
 import "@styles/TheHeader.css"
 import TheFooter from '@components/The/Footer.astro';
 import TheToolbar from '@components/The/Toolbar/Toolbar.astro'
+import ShareCard from "@components/Third/ShareCard.astro";
 
 
-const { title, description, headings } = Astro.props;
+const { title, description, headings, cover } = Astro.props;
 ---
 
 <html lang="zh-CN">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} cover={cover} />
 	</head>
 
 	<body>
@@ -26,5 +27,6 @@ const { title, description, headings } = Astro.props;
             <slot></slot>
         </main>
 		<TheFooter />
+		<ShareCard title={title} description={description} cover={cover}/>
 	</body>
 </html>

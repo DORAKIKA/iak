@@ -1,0 +1,121 @@
+---
+import { default_cover, site } from "src/config";
+
+const { title, description, cover } = Astro.props;
+---
+<div id="share-card-template">
+    <img src={new URL(cover || default_cover, Astro.url).toString()} alt={title} class="cover">
+    <div class="info">
+        <div class="title">{title}</div>
+        <div class="desc">{description}</div>
+        <div class="url"><img class="icon" src={new URL(site.favicon, Astro.url).toString()} alt={site.author}><span>{Astro.url.href}</span></div>
+    </div>
+</div>
+<div id="share-card">
+    <h3>复制图片以分享</h3>
+</div>
+<script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script is:inline>
+document.getElementById('share-card').addEventListener('click', function(e) {
+    if(e.target === this)toggleShare(false);
+})
+let shareCardLoaded = false
+function toggleShare(flag){
+    if(!window.html2canvas)return;
+    const shareCard = document.getElementById('share-card')
+    if(!shareCardLoaded){
+        const template = document.getElementById('share-card-template')
+        html2canvas(template, {
+            allowTaint: true,
+            backgroundColor: "transparent"
+        }).then(canvas => {
+            document.body.removeChild(template)
+            shareCardLoaded = true
+            document.getElementById('share-card').appendChild(canvas)
+        })
+    }
+    if(flag !== undefined){
+        if(flag){
+            shareCard.classList.add('show')
+        }else{
+            shareCard.classList.remove('show')
+        }
+    }else{
+        shareCard.classList.toggle('show')
+    }
+}
+</script>
+<style>
+#share-card-template{
+    position: fixed;
+    top: -200%;
+    left: -200%;
+    width: 800px;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    border-radius: 20px;
+    border: 2px solid #fff;
+    overflow: hidden;
+    z-index: -1000;
+}
+#share-card-template .cover{
+    width: 100%;
+    aspect-ratio: 16/7;
+    object-fit: cover;
+}
+#share-card-template .info{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+#share-card-template .title{
+    font-size: 24px;
+    font-weight: bold;
+}
+#share-card-template .desc{
+    flex: 1;
+}
+#share-card-template .url{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#share-card-template .icon{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+#share-card{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: hidden;
+    opacity: 0;
+    background: var(--deep-bg);
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease-in-out;
+    color: #1a1a1a;
+}
+#share-card.show{
+    opacity: 1;
+    pointer-events: all;
+}
+</style>
+<style is:global>
+@media (max-width: 900px){
+    #share-card canvas{
+        width: 80vw!important;
+        height: auto!important;
+    }
+}
+</style>
