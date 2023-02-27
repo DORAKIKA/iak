@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/DORAKIKA/iak/compare/v0.2.0...v0.3.0) (2023-02-27)
+
+
+### Features
+
+* 添加分享卡片 ([b1913f2](https://github.com/DORAKIKA/iak/commit/b1913f2b5d59be382271fbb988b05d3b428d850b))
+
+
+### Bug Fixes
+
+* html2canvas 路径更改 ([bf9e3a9](https://github.com/DORAKIKA/iak/commit/bf9e3a9db75d7a8e38343fb0dacfb3a193e432b0))
+
 ## [0.2.0](https://github.com/DORAKIKA/iak/compare/v0.1.1...v0.2.0) (2023-02-25)
 
 
