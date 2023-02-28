@@ -63,13 +63,9 @@ export const footer = {
 
 
 // twikoo => https://twikoo.js.org/
-// export const twikoo = {
-//     enabled: false,
-//     url: "your.twikoo.url"
-// }
 export const twikoo = {
-    enabled: true,
-    url: "https://twikoo.dorakika.cn"
+    enabled: false,
+    url: "your.twikoo.url"
 }
 
 // 文章标题目录深度（1-6）
