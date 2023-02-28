@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 import PostCard from "@components/Post/Card.astro"
 
 export async function getStaticPaths({ paginate } : { paginate: Function}){
-	const posts = await getCollection('posts');
+	const posts = (await getCollection('posts')).sort((a,b) => a.data.date > b.data.date ? -1 : 1);
 	return paginate(posts, { pageSize: 12 })
 }
 
