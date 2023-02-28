@@ -20,20 +20,20 @@ const emits = defineEmits<{
         height: 1.5em;
         /* background: black; */
         padding: 0.25em 1.5em 0.25em 0.25em;
-        background: var(--light-bg);
+        background: var(--white-op);
         border-radius: 0.75em;
         transition: 0.3s;
         cursor: pointer;
     }
     .iak-switch.active{
         padding: 0.25em 0.5em 0.25em 1.75em;
-        background: var(--deep-bg);
+        background: var(--white-deep-op);
     }
     .iak-switch__core{
         width: 1em;
         height: 1em;
         border-radius: 0.5em;
-        background: var(--deep-bg);
+        background: var(--white-deep-op);
         opacity: 0.5;
     }
     .iak-switch.active .iak-switch__core{

@@ -142,7 +142,7 @@ const sliderClick = (num:number) => {
 }
 .post-slider .article .category{
     box-shadow: 0 0 0 2px white;
-    background: var(--light-bg);
+    background: var(--white-op);
     padding: 4px 8px;
     border-radius: var(--base-radius);
     font-size: 0.5em;

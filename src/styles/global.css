@@ -8,8 +8,9 @@
 	--active-color: rgba(var(--active-color-meta), 1);
 
 	--font-color: rgba(255,255,255,0.8);
-  --deep-bg: rgba(255,255,255,0.8);
-  --light-bg: rgba(255,255,255,0.2);
+  --white-deep-op: rgba(255,255,255,0.8);
+  --white-op: rgba(255,255,255,0.2);
+  --kk-texture-color: rgba(255,255,255,0.2);
 
   --base-radius: 8px;
 }
@@ -24,14 +25,15 @@
 html{
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
+  overflow-y: overlay;
 }
 ::-webkit-scrollbar{
   width: 4px;
   height: 4px;
-  background: var(--light-bg);
+  background: var(--white-op);
 }
 ::-webkit-scrollbar-thumb{
-  background-color: var(--deep-bg);
+  background-color: var(--white-deep-op);
 }
 body {
   margin: 0;
@@ -49,7 +51,6 @@ body {
   min-height: 100vh;
   color: var(--font-color);
   background-color: var(--main-color);
-  --kk-texture-color: rgba(255,255,255,0.2);
   background-image: url(/bg-zigzag.svg);
   animation: 60s linear -30s infinite alternate none running background-slide;
   background-size: 1500px;

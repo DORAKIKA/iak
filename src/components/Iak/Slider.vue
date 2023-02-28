@@ -36,19 +36,19 @@ for(let i = props.min; i <= props.max; i+=props.step){
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    background: var(--light-bg);
+    background: var(--white-op);
 }
 .iak-slider .button{
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--light-bg);
+    background: var(--white-op);
     cursor: pointer;
     transition: 0.3s;
 }
 .iak-slider .button.active{
     width: 16px;
     height: 16px;
-    background: var(--deep-bg);
+    background: var(--white-deep-op);
 }
 </style>

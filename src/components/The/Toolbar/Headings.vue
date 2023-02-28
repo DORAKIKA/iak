@@ -40,7 +40,7 @@ const toggleSidebar = () => {
     transition: 0.3s;
 }
 .toolbar-headings-item:is(:hover, :focus-within){
-    background: var(--deep-bg);
+    background: var(--white-deep-op);
     color: var(--main-color);
 }
 .toolbar-headings-item::before{
@@ -48,8 +48,8 @@ const toggleSidebar = () => {
     display: inline-block;
     width: 1.5em;
     height: 1.5em;
-    background: var(--light-bg);
-    color: var(--deep-bg);
+    background: var(--white-op);
+    color: var(--white-deep-op);
     text-align: center;
     border-radius: var(--base-radius);
 }
