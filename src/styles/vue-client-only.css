@@ -355,3 +355,54 @@
 .k-drawer__content .k-drawer__body{
     flex: 1;
 }
+
+/* headings */
+
+.toolbar-headings{
+    padding: 1rem;
+}
+.toolbar-headings-item{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: calc(var(--base-radius) / 2);
+    border-radius: calc(var(--base-radius) / 2);
+    transition: 0.3s;
+}
+.toolbar-headings-item:is(:hover, :focus-within){
+    background: var(--white-deep-op);
+    color: var(--main-color);
+}
+.toolbar-headings-item::before{
+    content: "";
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--white-op);
+    color: var(--white-deep-op);
+    text-align: center;
+    border-radius: var(--base-radius);
+}
+.toolbar-headings-item.h1::before{
+    content: "Ⅰ";
+}
+.toolbar-headings-item.h2::before{
+    content: "Ⅱ";
+    width: 2em;
+}
+.toolbar-headings-item.h3::before{
+    content: "Ⅲ";
+    width: 2.5em;
+}
+.toolbar-headings-item.h4::before{
+    content: "Ⅳ";
+    width: 3em;
+}
+.toolbar-headings-item.h5::before{
+    content: "Ⅴ";
+    width: 3.5em;
+}
+.toolbar-headings-item.h6::before{
+    content: "Ⅵ";
+    width: 4em;
+}
