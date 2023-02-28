@@ -11,7 +11,7 @@ const articles = await getCollection("posts")
 const injectAllPostUrl = `const allPostUrl = [${articles.map(a => `"/post/${a.slug}"`).join(',')}]`;
 
 ---
-<script set:html={injectAllPostUrl}/>
+<script set:html={injectAllPostUrl}></script>
 <script is:inline>
     window.iak.randomPage = () => {
         if(allPostUrl.length){
