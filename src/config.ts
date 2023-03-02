@@ -10,9 +10,9 @@ export const site = {
     // 站点名称
     name: 'IAK',
     // 站点描述
-    description: '一个基于Astro搭建的简单博客',
+    description: '这里是一个基于Astro框架搭建的简单博客，主要使用Astro原生与Vue3.0+TypeScript开发',
     // 站点关键词
-    keywords: 'Astro,博客',
+    keywords: 'Astro,博客,Vue3.0,TypeScript',
     // 站点作者
     author: 'DORAKIKA'
 }
