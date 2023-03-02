@@ -13,7 +13,7 @@ const { className } = Astro.props
                 {
                     menu.children.map(menuItem => (
                         <li>
-                            <a class="menu-item" href={menuItem.href}>{menuItem.name}</a>
+                            <a class="menu-item" href={menuItem.href} title={menuItem.name}>{menuItem.name}</a>
                         </li>
                     ))
                 }
