@@ -7,7 +7,7 @@ console.log(
 )
 
 console.log(
-    `%c ${site.name} %c ${site.description} `,
+    `%c ${site.name} %c ${site.slogan} `,
     'background:#35495e ; padding: 3px; border-radius: 3px 0 0 3px;  color: #fff; font-size: 16px;',
     'background:#905390 ; padding: 3px; border-radius: 0 3px 3px 0;  color: #fff; font-size: 16px;'
 )
