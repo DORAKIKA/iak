@@ -2,7 +2,7 @@
 const { className } = Astro.props;
 ---
 
-<div class={"backtop " + className} onclick="document.documentElement.scrollTo(0,0)" title="返回顶部">
+<div class={"backtop " + className} onclick="document.body.scrollIntoView()" title="返回顶部">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9017" width="128" height="128">
         <path d="M146.304 135.637333a71.637333 71.637333 0 1 0 0 143.232H877.653333a71.637333 71.637333 0 1 0 0-143.232H146.346667zM562.645333 400.426667a71.637333 71.637333 0 0 0-101.290666 0l-365.696 365.696a71.637333 71.637333 0 1 0 101.248 101.290666L512 552.32l315.050667 315.093333a71.637333 71.637333 0 0 0 101.290666-101.290666l-365.696-365.696z" p-id="9018"></path>
     </svg>
