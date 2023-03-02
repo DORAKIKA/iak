@@ -79,7 +79,7 @@ export const headings_depth = 3
 // 此配置只做选项与默认项，具体配置会读取用户浏览器的LocalStorage数据
 export const theme = {
     main_colors: ['50, 201, 235','244,149,162', '144, 83, 144', '52, 175, 86', '47, 50, 55'],
-    border_radius: ['8px', '16px'],
+    large_border_radius: true,
     brightness: {
         default: 1,
         min: 0.5,

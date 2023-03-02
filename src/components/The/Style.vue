@@ -5,24 +5,38 @@ import IakDrawer from "@components/Iak/drawer.vue"
 import IakSlider from "@components/Iak/Slider.vue"
 import IakSwitch from "@components/Iak/Switch.vue"
 import { theme } from '../../config'
+import { z } from 'zod'
 
-const styleShow = ref(false)
-const styleConfig = useLocalStorage('styleConfig', {
+const default_style = {
     themeColor: theme.main_colors[0],
-    baseRadius: theme.border_radius[0],
+    largeBorderRadius: theme.large_border_radius,
     brightness: theme.brightness.default,
     headerFixed: theme.headerFixed,
-})
-// 补undefined - 更新后可能会添加配置，但用户缓存中没有这个配置项，就会undefined
-styleConfig.value.themeColor ??= theme.main_colors[0];
-styleConfig.value.baseRadius ??= theme.border_radius[0];
-styleConfig.value.brightness ??= theme.brightness.default;
-styleConfig.value.headerFixed ??= theme.headerFixed;
+}
+
+const styleShow = ref(false)
+const styleConfig = useLocalStorage('styleConfig', default_style)
+
+async function validate(){
+    const schema = z.object({
+        themeColor: z.string(),
+        largeBorderRadius: z.boolean(),
+        brightness: z.number().min(theme.brightness.min).max(theme.brightness.max),
+        headerFixed: z.boolean(),
+    })
+    try {
+        await schema.parseAsync(styleConfig.value)
+    } catch (error) {
+        styleConfig.value = default_style;
+        console.warn('主题配置加载错误，已重载默认配置');
+    }
+}
+validate()
 
 const styleHTML = computed(() => `
     :root{
         --main-color-meta: ${styleConfig.value.themeColor};
-        --base-radius: ${styleConfig.value.baseRadius};
+        --base-radius: ${styleConfig.value.largeBorderRadius ? '16px' : '8px'};
     }
     html{
         filter: brightness(${styleConfig.value.brightness})
@@ -64,21 +78,15 @@ window.iak.toggleStyle = toggleStyle
                     ></div>
                 </div>
             </div>
-            <div class="style-item style-border-radius">
-                <div class="label">圆角</div>
-                <div class="value">
-                    <div class="style-border-radius-item"
-                        v-for="r in theme.border_radius"
-                        :key="r"
-                        @click="styleConfig.baseRadius=r"
-                        :class="r===styleConfig.baseRadius?'active':''"
-                        :style="`border-radius: calc(${r} / 2)`"
-                    ></div>
-                </div>
-            </div>
             <div class="style-item">
                 <div class="key">亮度</div>
                 <div class="value"><IakSlider :min="theme.brightness.min" :max="theme.brightness.max" :step="theme.brightness.step" v-model:value="styleConfig.brightness"/></div>
+            </div>
+            <div class="style-item style-border-radius">
+                <div class="label">大圆角</div>
+                <div class="value">
+                    <IakSwitch v-model:value="styleConfig.largeBorderRadius" />
+                </div>
             </div>
             <div class="style-item">
                 <div class="key">顶栏固定</div>
