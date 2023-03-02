@@ -175,3 +175,11 @@ article details:is([open]) summary{
     background: var(--main-color);
     color: var(--white-deep-op);
 }
+
+
+@media screen and (max-width: 900px) {
+    article ul,
+    article ol{
+        padding-left: 1.25em;
+    }
+}
