@@ -1,7 +1,11 @@
 ---
 import { default_cover, site } from "src/config";
 
-const { title, description, cover } = Astro.props;
+const { page_meta: {
+    title,
+    description,
+    cover
+} } = Astro.props;
 ---
 <div id="share-card-template">
     <img src={new URL(cover || default_cover, Astro.url).toString()} alt={title} class="cover">

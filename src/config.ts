@@ -9,6 +9,8 @@ export const site = {
     favicon: '/favicon.svg',
     // 站点名称
     name: 'IAK',
+    // 站点标语
+    slogan: '一个简单的Astro博客',
     // 站点描述
     description: '这里是一个基于Astro框架搭建的简单博客，主要使用Astro原生与Vue3.0+TypeScript开发',
     // 站点关键词

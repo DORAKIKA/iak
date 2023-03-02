@@ -1,9 +1,10 @@
 ---
 
 import Layout from "@layouts/Layout.astro"
-import { site } from "src/config";
+import { default_cover, site } from "src/config";
 import { getCollection } from "astro:content";
 import PostCard from "@components/Post/Card.astro"
+import { generateOpenGraph } from "src/tools/open_graph";
 
 export async function getStaticPaths({ paginate } : { paginate: Function}){
 	const posts = (await getCollection('posts')).sort((a,b) => a.data.date > b.data.date ? -1 : 1);
@@ -11,14 +12,26 @@ export async function getStaticPaths({ paginate } : { paginate: Function}){
 }
 
 const { page } = Astro.props
+
+const page_meta = {
+	title: '文章归档 | ' + site.name,
+	description: '所有文章',
+	keywords: '文章归档,博客',
+	cover: default_cover
+}
+
+const meta_og = generateOpenGraph(Astro, page_meta)
 ---
-<Layout title={'文章归档 | ' + site.name} description="所有文章" keywords="文章归档,博客">
+<Layout
+	page_meta={page_meta}
+	meta_og={meta_og}
+>
 	<h1>文章归档 - {page.currentPage}</h1>
 	<section id="posts">
 		<div class="post-list">
 			<div class="post-container">
 				{page.data.map((post: any) => (
-                    <PostCard post={JSON.stringify(post)} />
+                    <PostCard post={post} />
 				))}
 			</div>
 			<div class="pagination">

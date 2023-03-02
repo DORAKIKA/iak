@@ -3,10 +3,19 @@ import Layout from "@layouts/Layout.astro"
 import PostSlider from "@components/Post/Slider.vue"
 
 import { site } from "src/config";
+import { generateOpenGraph } from "src/tools/open_graph";
+
+const page_meta = {
+    title: '404' + site.name,
+}
+const meta_og = generateOpenGraph(Astro, page_meta)
 ---
 
 
-<Layout title={ '404 | ' + site.name}>
+<Layout
+    page_meta={page_meta}
+    meta_og={meta_og}
+>
     <h1 style="">404 | 页面不存在</h1>
 	<PostSlider client:load/>
 </Layout>

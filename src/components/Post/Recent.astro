@@ -6,12 +6,11 @@ const recentPosts = (await getCollection("posts")).sort((a,b) => {
 }).slice(0,6)
 ---
 
-
 <div class="post-recent">
     <h2 class="title">最近文章</h2>
     <div class="post-list-container">
         {recentPosts.map(post => (
-            <PostCard post={JSON.stringify(post)} />
+            <PostCard post={post} />
         ))}
     </div>
 </div>

@@ -1,18 +1,17 @@
 ---
 const { post } = Astro.props
 
-const tPost = JSON.parse(post)
 ---
 
 <div class="post-card">
     <div class="cover">
-        <img src={tPost.data.cover} alt={tPost.data.title} class="cover-img"/>
-        <span class="category">{tPost.data.category}</span>
+        <img src={post.data.cover} alt={post.data.title} class="cover-img"/>
+        <span class="category">{post.data.category}</span>
     </div>
     
     <div class="meta">
-        <a href={`/post/${tPost.slug}`} class="title">{ tPost.data.title }</a>
-        <div class="desc">{ tPost.data.description }</div>
+        <a href={`/post/${post.slug}`} class="title">{ post.data.title }</a>
+        <div class="desc">{ post.data.description }</div>
     </div>
 </div>
 

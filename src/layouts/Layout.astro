@@ -7,12 +7,19 @@ import TheToolbar from '@components/The/Toolbar/Toolbar.astro'
 import ShareCard from "@components/Third/ShareCard.astro";
 
 
-const { title, description, headings, cover, keywords } = Astro.props;
+const {
+	page_meta,
+	headings,
+	meta_og
+ } = Astro.props;
 ---
 
 <html lang="zh-CN">
 	<head>
-		<BaseHead title={title} description={description} cover={cover} keywords={keywords} />
+		<BaseHead
+			page_meta={page_meta}
+			meta_og={meta_og}
+		/>
 	</head>
 
 	<body>
@@ -26,6 +33,6 @@ const { title, description, headings, cover, keywords } = Astro.props;
             <slot></slot>
         </main>
 		<TheFooter />
-		<ShareCard title={title} description={description} cover={cover}/>
+		<ShareCard page_meta={page_meta} />
 	</body>
 </html>

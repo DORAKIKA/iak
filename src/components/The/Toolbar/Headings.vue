@@ -4,7 +4,7 @@ import { ref } from "vue";
 import { headings_depth } from "../../../config"
 
 const props = defineProps(['headings', 'className']);
-const headings = JSON.parse(props.headings).filter((h:any) => h.depth <= headings_depth);
+const headings = props.headings.filter((h:any) => h.depth <= headings_depth);
 
 
 const headingsShow = ref(false)

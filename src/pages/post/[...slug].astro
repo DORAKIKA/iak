@@ -5,6 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 import Twikoo from '@components/Third/Twikoo.astro';
 import PostCopyright from '@components/Post/Copyright.astro'
 import '@styles/article.css'
+import { generatePostOpenGraph } from 'src/tools/open_graph';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('posts');
@@ -19,14 +20,21 @@ const post = Astro.props;
 const { Content, headings } = await post.render();
 
 const keywords = post.data.tags?.concat([post.data.category??'']).join(',') || '';
+
+const page_meta = {
+	title: post.data.title + ' | ' + site.name,
+	description: post.data.description,
+	keywords: keywords,
+	cover: post.data.cover,
+}
+// 生成 Open Graph 网站与文章类型数据
+const meta_og = generatePostOpenGraph(Astro, post);
 ---
 
 <Layout
-	title={post.data.title + ' | ' + site.name}
-	description={post.data.description}
-	keywords={keywords}
-	cover={post.data.cover}
-	headings={JSON.stringify(headings)}
+	page_meta={page_meta}
+	headings={headings}
+	meta_og={meta_og}
 >
 	<h1 class="article-title">{ post.data.title }</h1>
 	<div class="article-meta">
