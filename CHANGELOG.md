@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/DORAKIKA/iak/compare/v0.3.2...v0.3.3) (2023-03-02)
+
+
+### Features
+
+* 动画优化 ([da2612b](https://github.com/DORAKIKA/iak/commit/da2612b016e249225c6df667d69a17b307d5abe8))
+* 添加星标文章轮播的最大数限制 ([2620511](https://github.com/DORAKIKA/iak/commit/262051169ecd6f76da8e7979654a6f58a0cc230f))
+* 添加主题配置的验证与大圆角的启用 ([b4efcd8](https://github.com/DORAKIKA/iak/commit/b4efcd8d545971d2bd3c1edb8e35137ae94c5c5e))
+
+
+### Bug Fixes
+
+* 解决移动端scrollTo失效问题 ([9b1a55a](https://github.com/DORAKIKA/iak/commit/9b1a55aa4a038e926b0cc95b5bdb26214e0ff54a))
+* 缩短窄屏下列表内边距，容纳更多内容 ([6d041e6](https://github.com/DORAKIKA/iak/commit/6d041e627b1d6081c3d346410b53934b5c5bc592))
+* 修复分享卡片图片不居中的问题 ([783bb0c](https://github.com/DORAKIKA/iak/commit/783bb0c7dd8dcf71518ad6e55826531a184b4b03))
+* 修复vue-client的样式打包问题 ([1517e41](https://github.com/DORAKIKA/iak/commit/1517e41233e533edc23f067e1e26d1f0a73ad63d))
+
 ### [0.3.2](https://github.com/DORAKIKA/iak/compare/v0.3.1...v0.3.2) (2023-03-02)
 
 
