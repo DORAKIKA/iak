@@ -65,6 +65,10 @@ export const footer = {
     ]
 }
 
+export const post_slider = {
+    limit: 5
+}
+
 
 // twikoo => https://twikoo.js.org/
 export const twikoo = {

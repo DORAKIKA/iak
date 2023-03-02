@@ -2,20 +2,22 @@
 // import { ParsedContent } from '@nuxt/content/dist/runtime/types';
 import { ref, computed } from 'vue';
 import { CollectionEntry, getCollection } from 'astro:content';
+import { post_slider } from 'src/config';
 
 const posts = ref<CollectionEntry<"posts">[]>()
 getCollection('posts', ({data}) => {
     return data.star;
 }).then((ps) => {
     posts.value = ps
-    posts.value.sort((a,b)=>a.data.star&&b.data.star&&a.data.star>b.data.star?1:-1)
+    limit.value = Math.min(post_slider.limit, posts.value.length);
+    posts.value.sort((a,b)=>a.data.star&&b.data.star&&a.data.star>b.data.star?1:-1);
+    posts.value.length = limit.value;
 })
 
-const limit = posts.value?.length || 1;
-
+const limit = ref(0)
 const current = ref(0)
-const prev = computed(() => (current.value - 1 + limit) % limit);
-const next = computed(() => (current.value + 1) % limit);
+const prev = computed(() => (current.value - 1 + limit.value) % limit.value);
+const next = computed(() => (current.value + 1) % limit.value);
 const handlePrev = () => current.value = prev.value;
 const handleNext = () => current.value = next.value;
 const sliderClick = (num:number) => {
