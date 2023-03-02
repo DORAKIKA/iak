@@ -11,6 +11,8 @@ export const site = {
     name: 'IAK',
     // 站点描述
     description: '一个基于Astro搭建的简单博客',
+    // 站点关键词
+    keywords: 'Astro,博客',
     // 站点作者
     author: 'DORAKIKA'
 }

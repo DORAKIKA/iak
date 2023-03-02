@@ -17,11 +17,14 @@ type Props = CollectionEntry<'posts'>;
 
 const post = Astro.props;
 const { Content, headings } = await post.render();
+
+const keywords = post.data.tags?.concat([post.data.category??'']).join(',') || '';
 ---
 
 <Layout
 	title={post.data.title + ' | ' + site.name}
 	description={post.data.description}
+	keywords={keywords}
 	cover={post.data.cover}
 	headings={JSON.stringify(headings)}
 >

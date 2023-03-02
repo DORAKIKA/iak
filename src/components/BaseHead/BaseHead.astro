@@ -9,11 +9,12 @@ export interface Props {
 	title: string;
 	description: string;
 	cover?: string;
+	keywords?: string;
 }
 const isPROD = import.meta.env.PROD
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title = "DORAKIKA", description = "", cover = default_cover } = Astro.props;
+const { title = site.name, description=site.description, keywords=site.keywords, cover = default_cover } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -29,6 +30,7 @@ const { title = "DORAKIKA", description = "", cover = default_cover } = Astro.pr
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />

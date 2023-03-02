@@ -12,7 +12,7 @@ const entry = await getEntryBySlug('friends', 'index');
 const { Content } = await entry.render();
 ---
 
-<Layout title={'友情链接 | '+site.name} description={site.author + '的友链'}>
+<Layout title={'友情链接 | '+site.name} description={site.author + '的友链'} keywords="友链,IAK,DORAKIKA">
     <article class="article-block">
         <Content/>
     </article>

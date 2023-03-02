@@ -12,7 +12,7 @@ export async function getStaticPaths({ paginate } : { paginate: Function}){
 
 const { page } = Astro.props
 ---
-<Layout title={'文章归档 | ' + site.name} description="所有文章">
+<Layout title={'文章归档 | ' + site.name} description="所有文章" keywords="文章归档,博客">
 	<h1>文章归档 - {page.currentPage}</h1>
 	<section id="posts">
 		<div class="post-list">
