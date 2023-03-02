@@ -8,7 +8,7 @@ const { page_meta: {
 } } = Astro.props;
 ---
 <div id="share-card-template">
-    <img src={new URL(cover || default_cover, Astro.url).toString()} alt={title} class="cover">
+    <div style={`background-image: url(${new URL(cover || default_cover, Astro.url).toString()});`} class="cover"></div>
     <div class="info">
         <div class="title">{title}</div>
         <div class="desc">{description}</div>
@@ -64,7 +64,8 @@ function toggleShare(flag){
 #share-card-template .cover{
     width: 100%;
     aspect-ratio: 16/7;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
 }
 #share-card-template .info{
     padding: 20px;
