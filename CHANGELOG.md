@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/DORAKIKA/iak/compare/v0.3.1...v0.3.2) (2023-03-02)
+
+
+### Features
+
+* open graph meta标签、重构了一些代码 ([86de15b](https://github.com/DORAKIKA/iak/commit/86de15bdca1da76246c1f02c8ff91d3e313511e5))
+* SEO:a标签优化 ([8337f77](https://github.com/DORAKIKA/iak/commit/8337f772ac778c93b02fb8a9d7acca7abe5f3cb3))
+* SEO:TDK优化 ([abd29d5](https://github.com/DORAKIKA/iak/commit/abd29d590d64d1cfdea8e48ae3dbec28bfa46398))
+
+
+### Bug Fixes
+
+* 首页icon背景大小与居中 ([213313c](https://github.com/DORAKIKA/iak/commit/213313cd72e307d9437bd0f0606b17b9a49135dc))
+* 提供默认的作者与封面 ([0c76e4b](https://github.com/DORAKIKA/iak/commit/0c76e4b4ddd883d78a8569f4b2890fd6ce98f94f))
+* 文章归档按时间排序 ([3f81375](https://github.com/DORAKIKA/iak/commit/3f813756479e46c8d0cded1c2bf9b6bc7036050b))
+* 修复文章目录样式打包丢失问题 ([a663362](https://github.com/DORAKIKA/iak/commit/a663362203052ee7781744216134af889dcf00bf))
+
 ### [0.3.1](https://github.com/DORAKIKA/iak/compare/v0.3.0...v0.3.1) (2023-02-28)
 
 ## [0.3.0](https://github.com/DORAKIKA/iak/compare/v0.2.0...v0.3.0) (2023-02-27)
