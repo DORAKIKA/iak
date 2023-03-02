@@ -46,7 +46,7 @@ const emits = defineEmits<{
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: 0.3s;
+    transition: 0.3s cubic-bezier(.34,.99,.6,1);
 }
 .slide-enter-from, .slide-leave-to{
     opacity: 0;
@@ -55,7 +55,7 @@ const emits = defineEmits<{
     opacity: 1;
 }
 .slide-enter-active,.slide-leave-active{
-    transition: 0.3s;
+    transition: 0.3s cubic-bezier(.34,.99,.6,1);
 }
 .slide-enter-from .k-drawer__content, .slide-leave-to .k-drawer__content{
     transform: translateX(100%);
