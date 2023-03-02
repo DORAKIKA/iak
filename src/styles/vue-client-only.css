@@ -232,6 +232,56 @@
     flex: 1;
 }
 
+/* iak-slider */
+.iak-slider{
+    height: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    background: var(--white-op);
+}
+.iak-slider .button{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--white-op);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.iak-slider .button.active{
+    width: 16px;
+    height: 16px;
+    background: var(--white-deep-op);
+}
+/* iak-switch */
+.iak-switch{
+    width: 2.75em;
+    height: 1.5em;
+    /* background: black; */
+    padding: 0.25em 1.5em 0.25em 0.25em;
+    background: var(--white-op);
+    border-radius: 0.75em;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.iak-switch.active{
+    padding: 0.25em 0.5em 0.25em 1.75em;
+    background: var(--white-deep-op);
+}
+.iak-switch__core{
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    background: var(--white-deep-op);
+    opacity: 0.5;
+}
+.iak-switch.active .iak-switch__core{
+    width: 0.5em;
+    opacity: 1;
+    background: var(--main-color);
+}
+
 /* headings */
 
 .toolbar-headings{
