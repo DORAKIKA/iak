@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/DORAKIKA/iak/compare/v0.3.3...v0.3.4) (2023-03-03)
+
+
+### Features
+
+* 友链tag标记 ([abacbcd](https://github.com/DORAKIKA/iak/commit/abacbcd47fa2141b416cd6ec13be7bbc4b80f6d0))
+* add snackbar.js ([23d8635](https://github.com/DORAKIKA/iak/commit/23d8635cc9f436a8f7c950152091391505583b1a))
+
 ### [0.3.3](https://github.com/DORAKIKA/iak/compare/v0.3.2...v0.3.3) (2023-03-02)
 
 
