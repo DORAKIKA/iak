@@ -35,6 +35,7 @@ const meta_og = generateOpenGraph(Astro, page_meta)
                 <div class="list-card">
                     {list.list_data.map((friend:any) => (
                         <a class="friend-item" href={friend.link} target="_blank">
+                            {friend.tag ? (<span class="tag">{friend.tag}</span>) : null}
                             <img src={friend.avatar} alt={friend.name} class="avatar">
                             <div class="info">
                                 <div class="name">{friend.name}</div>
@@ -73,7 +74,23 @@ const meta_og = generateOpenGraph(Astro, page_meta)
     text-decoration: none;
     color: var(--font-color);
     transition: 0.3s;
+    position: relative;
+    overflow: hidden;
     --avatar: 64px;
+}
+.list-card .friend-item:has(.tag){
+    border: 4px solid var(--white-op);
+}
+.list-card .friend-item .tag{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 12px;
+    background: var(--white-deep-op);
+    color: var(--main-color);
+    display: inline-block;
+    padding: 4px 8px;
+    border-bottom-left-radius: var(--base-radius);
 }
 .list-card .friend-item:hover{
     background: rgba(255,255,255,0.5);

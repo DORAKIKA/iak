@@ -4,5 +4,11 @@
       link: https://blog.dorakika.cn
       avatar: https://img.dorakika.cn/avatar/dorakika.cn.webp
       descr: 热爱漫无边际，生活自有分寸！
+      tag: 博客
       theme_color: 'rgb(255, 197, 0)'
       date: 2023-02-10
+    - name: Astro
+      link: https://astro.build/
+      avatar: https://astro.build/favicon.svg
+      descr: Astro 是集多功能于一体的 Web 框架，用于构建快速、以内容为中心的网站
+      tag: 框架
