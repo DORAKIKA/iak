@@ -8,15 +8,29 @@ import { getCollection } from "astro:content";
 
 
 const articles = await getCollection("posts")
-const injectAllPostUrl = `const allPostUrl = [${articles.map(a => `"/post/${a.slug}"`).join(',')}]`;
+
+const injectAllPost = articles.map(post => ({
+    title: post.data.title,
+    url: `/post/${post.slug}`,
+    date: post.data.date,
+    tags: post.data.tags,
+    cover: post.data.cover,
+    description: post.data.description
+}))
+const injectAllPostString = 'const allPost = ' + JSON.stringify(injectAllPost);
 
 ---
-<script set:html={injectAllPostUrl}></script>
+<script set:html={injectAllPostString}></script>
 <script is:inline>
     window.iak.randomPage = () => {
-        if(allPostUrl.length){
-            const rand = Math.floor(Math.random() * allPostUrl.length);
-            window.open(allPostUrl[rand],'_self')
+        if(allPost.length){
+            const rand = Math.floor(Math.random() * allPost.length);
+            SnackBar({
+                message: `随机文章为 <a href="${allPost[rand].url}" target="_self">「${allPost[rand].title}」</a>`,
+                fixed: true,
+                position: 'tc',
+                timeout: 5000,
+            })
         }
     }
 </script>

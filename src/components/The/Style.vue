@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref,computed } from 'vue'
-import { useLocalStorage, useStyleTag } from '@vueuse/core'
+import { ref,computed, watch } from 'vue'
+import { useLocalStorage, useStyleTag, useThrottleFn } from '@vueuse/core'
 import IakDrawer from "@components/Iak/drawer.vue"
 import IakSlider from "@components/Iak/Slider.vue"
 import IakSwitch from "@components/Iak/Switch.vue"
@@ -25,13 +25,14 @@ async function validate(){
         headerFixed: z.boolean(),
     })
     try {
-        await schema.parseAsync(styleConfig.value)
+        styleConfig.value = await schema.parseAsync(styleConfig.value)
     } catch (error) {
         styleConfig.value = default_style;
-        console.warn('主题配置加载错误，已重载默认配置');
+        // @ts-ignore
+        SnackBar({message: '样式配置错误，已重置为默认配置', type: 'error', fixed: true, position: 'bl'})
     }
 }
-validate()
+watch(styleConfig, useThrottleFn(validate));
 
 const styleHTML = computed(() => `
     :root{
