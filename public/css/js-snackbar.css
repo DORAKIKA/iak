@@ -51,6 +51,10 @@
     top: unset;
     transform: translateX(-50%);
 }
+.js-snackbar-container--top-center,
+.js-snackbar-container--bottom-center {
+    align-items: center;
+}
 
 .js-snackbar-container--fixed {
     position: fixed;
