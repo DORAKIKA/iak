@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # vscode
 .vscode/
+
+# test
+src/content/posts/test/
