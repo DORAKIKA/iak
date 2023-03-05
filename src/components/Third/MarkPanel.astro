@@ -35,6 +35,7 @@ const filterMarks = arr.sort((a: any, b: any) => {
 
 <style>
 .mark-panel {
+    min-width: 330px;
     flex: 2;
     border: 1px solid var(--white-op);
     padding: 1em;
@@ -91,6 +92,11 @@ const filterMarks = arr.sort((a: any, b: any) => {
 }
 .mark-item .title{
     transition: 0.6s;
+    display: inline-block;
+    max-width: calc(100% - 12em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .mark-item:hover .title{
     text-shadow: 0 0 3px var(--white-deep-op),0 0 5px var(--white-deep-op),0 0 5px var(--white-deep-op);
