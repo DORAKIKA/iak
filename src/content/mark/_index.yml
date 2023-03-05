@@ -1,0 +1,50 @@
+- name: 游戏
+  type: horizontal
+  prefix: 游玩
+  icon: <svg t="1678001849886" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2897" width="128" height="128"><path d="M298.666667 298.666667h426.666666c140.8 0 256 115.2 256 256s-115.2 256-256 256c-72.533333 0-140.8-29.866667-192-85.333334h-46.933333c-93.866667 106.666667-256 115.2-362.666667 21.333334s-115.2-256-21.333333-362.666667C157.866667 328.533333 226.133333 298.666667 298.666667 298.666667m-42.666667 128v85.333333H170.666667v85.333333h85.333333v85.333334h85.333333v-85.333334h85.333334v-85.333333H341.333333v-85.333333H256m405.333333 128c-34.133333 0-64 29.866667-64 64s29.866667 64 64 64 64-29.866667 64-64-29.866667-64-64-64m128-128c-34.133333 0-64 29.866667-64 64s29.866667 64 64 64 64-29.866667 64-64-29.866667-64-64-64z" p-id="2898"></path></svg>
+  values:
+    - title: 空洞骑士
+      poster: https://steamcdn-a.akamaihd.net/steam/apps/367520/header.jpg
+      star: ⭐⭐⭐⭐⭐
+      time: 2021-12-04
+      url: https://www.xiaoheihe.cn/games/detail/367520
+    - title: 哈迪斯
+      poster: https://steamcdn-a.akamaihd.net/steam/apps/1145360/header.jpg?t=1566497973
+      star: ⭐⭐⭐⭐⭐
+      time: 2023-01-30
+      url: https://www.xiaoheihe.cn/games/detail/1145360
+    - title: 冰汽时代
+      poster: https://cdn.max-c.com/heybox/game/header/323190_CxfhM.jpg
+      star: ⭐⭐⭐⭐⭐
+      time: 2022-04-20
+      url: https://www.xiaoheihe.cn/games/detail/323190
+    - title: 异形工厂
+      poster: https://cdn.max-c.com/heybox/game/header/1318690_oCJib.jpg
+      star: ⭐⭐⭐⭐⭐
+      time: 2022-09-05
+      url: https://www.xiaoheihe.cn/games/detail/1318690
+    - title: 我的世界
+      poster: https://www.minecraft.net/content/dam/games/minecraft/key-art/MC_The-Wild-Update_540x300.jpg
+      star: ⭐⭐⭐⭐⭐
+      time: 2022-12-15
+      url: https://www.minecraft.net/
+- name: 影视
+  type: vertical 
+  prefix: 看过
+  icon: <svg t="1678001886963" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3894" width="128" height="128"><path d="M896 305.066667a72.533333 72.533333 0 0 0-78.933333 12.8l-91.733334 85.333333V341.333333a128 128 0 0 0-128-128H213.333333a128 128 0 0 0-128 128v341.333334a128 128 0 0 0 128 128h384a128 128 0 0 0 128-128v-61.866667l92.16 85.333333a74.24 74.24 0 0 0 49.493334 19.2 71.68 71.68 0 0 0 29.44-6.4 68.266667 68.266667 0 0 0 42.666666-63.146666V368.213333A68.266667 68.266667 0 0 0 896 305.066667z" p-id="3895"></path></svg>
+  values:
+    - title: 哆啦A梦：大雄的平行西游记
+      poster: https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2520700785.jpg
+      star: ⭐⭐⭐⭐⭐
+      time: 2022-12-01
+      url: https://movie.douban.com/subject/1458896/
+    - title: 哆啦A梦：大雄与梦幻三剑士
+      time: 2022-10-22
+      poster: https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2520701848.jpg
+      star: ⭐⭐⭐⭐⭐
+      url: https://movie.douban.com/subject/1458902/
+    - title: 星际穿越
+      time: 2022-11-20
+      poster: https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2614988097.jpg
+      star: ⭐⭐⭐⭐⭐
+      url: https://movie.douban.com/subject/1889243/

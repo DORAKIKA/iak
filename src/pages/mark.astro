@@ -1,0 +1,118 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { site } from "src/config";
+// @ts-ignore
+import marks from "../content/mark/_index.yml"
+const page_meta = {
+    title: '足迹 | '+site.name,
+    description: site.author + '的友链',
+}
+---
+
+<Layout
+    page_meta={page_meta}
+>
+    <div id="mark-page">
+        <h1 class="page-title">足迹</h1>
+        {marks.map((group: any) => (
+                <div class="mark-group">
+                    <div class="group-name">{group.name}</div>
+                    <div class={`group-container ${group.type}`}>
+                        {
+                            group.values.map((mark: any) => (
+                                <a href={mark.url} class="mark-item">
+                                    <img class="poster" src={mark.poster}/>
+                                    <div class="top">
+                                        <div class="icon" set:html={group.icon}></div>
+                                        <div class="time">{mark.time ? new Date(mark.time).toLocaleDateString() : ''}</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="title">{mark.title}</div>
+                                        <div class="star">{mark.star}</div>
+                                    </div>
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+            ))}
+    </div>
+</Layout>
+
+<style>
+.page-title{
+    margin: 2em 0;
+    text-align: center;
+}
+.mark-group {
+    margin: 0 0 20px 0;
+    user-select: none;
+}
+.mark-group .group-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+.mark-group .group-container {
+    display: grid;
+    gap: 2em;
+}
+.mark-group .group-container.horizontal {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.mark-group .group-container.vertical {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.mark-item {
+    flex-grow: 1;
+    border-radius: var(--base-radius);
+    overflow: hidden;
+    box-shadow: 0 0 0 4px var(--white-op);
+    position: relative;
+    display: flex;
+    transition: 0.3s;
+}
+.mark-item:hover {
+    box-shadow: 0 0 0 4px var(--white-deep-op);
+}
+.horizontal .poster{
+    aspect-ratio: 2/1;
+}
+.vertical .poster{
+    /* aspect-ratio: 11/16; */
+}
+.mark-item .poster{
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: 0.3s;
+}
+.mark-item:hover .poster{
+    filter: brightness(1);
+}
+.mark-item .top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: calc(var(--base-radius) / 2) var(--base-radius);
+    line-height: 1;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mark-item .icon{
+    font-size: 1.25em;
+}
+.mark-item .bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: var(--base-radius);
+}
+.mark-item .title{
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--white-deep-op);
+}
+</style>

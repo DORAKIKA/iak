@@ -24,6 +24,7 @@ export const menus = [
         name: '时',
         children: [
             {name: '文章归档', href: '/posts'},
+            {name: '吾之足迹', href: '/mark'}
             // {name: '与昨日书', href: '/memos'}
         ]
     },{

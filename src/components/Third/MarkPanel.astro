@@ -1,0 +1,92 @@
+---
+import { formatDateTime } from "src/tools/tools";
+// @ts-ignore
+import marks from "../../content/mark/_index.yml"
+const arr = [] as any[];
+marks.forEach((group: any) => {
+    group.values.forEach((mark: any) => {
+        arr.push({
+            ...mark,
+            group: group.name,
+            prefix: group.prefix
+        })
+    })
+});
+const filterMarks = arr.sort((a: any, b: any) => {
+    return new Date(b.time).getTime() - new Date(a.time).getTime();
+}).splice(0,10);
+---
+
+<aside class="mark-panel">
+    <div class="title">足迹</div>
+    <div class="mark-container">
+        {
+            filterMarks.map(mark => (
+                <a class="mark-item" href={mark.url}>
+                    <span class="time">{formatDateTime(new Date(mark.time || 0))}</span>
+                    <div class="line"></div>
+                    <span class="prefix">{mark.prefix}</span>
+                    <span class="title">{mark.title}</span>
+                </a>
+            ))
+        }
+    </div>
+</aside>
+
+<style>
+.mark-panel {
+    flex: 2;
+    border: 1px solid var(--white-op);
+    padding: 1em;
+    border-radius: var(--base-radius);
+    background: var(--white-op);
+}
+.mark-panel>.title {
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+.mark-panel .mark-container{
+    display: flex;
+    flex-direction: column;
+}
+.mark-item{
+    display: flex;
+    font-size: 14px;
+    line-height: 2;
+    align-items: center;
+    gap: 0.5em;
+}
+.mark-item .line{
+    width: 2em;
+    height: 2em;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.mark-item .line::before{
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--white-deep-op);
+}
+.mark-item .line::after{
+    position: absolute;
+    content: "";
+    display: block;
+    width: 2px;
+    height: 100%;
+    background: var(--white-op);
+}
+.mark-item .prefix{
+    margin-right: 1em;
+}
+.mark-item .time{
+    font-weight: 500;
+    font-size: 12px;
+}
+</style>

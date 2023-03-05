@@ -9,14 +9,14 @@ const tags = Array.from(new Set(
 )
 ---
 
-<div class="post-tags">
+<aside class="post-tags">
     <div class="title">Tags</div>
     <div class="container">
         {tags.map(tag => (
             <a class="tag" href={`/tag/${tag}`}>{tag}</a>
         ))}
     </div>
-</div>
+</aside>
 
 <style>
 .post-tags {

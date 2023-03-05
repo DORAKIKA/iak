@@ -1,5 +1,6 @@
 ---
 import PostTags from "@components/Post/Tags.astro"
+import MarkPanel from "@components/Third/MarkPanel.astro";
 ---
 
 <div id="the-panel" class="hide">
@@ -10,6 +11,7 @@ import PostTags from "@components/Post/Tags.astro"
     </div>
     <div class="the-panel__container">
         <PostTags/>
+        <MarkPanel/>
     </div>
 </div>
 
@@ -63,5 +65,10 @@ import PostTags from "@components/Post/Tags.astro"
     border: none;
     font-size: 20px;
     cursor: pointer;
+}
+#the-panel .the-panel__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 </style>
