@@ -49,13 +49,13 @@ const meta_og = generatePostOpenGraph(Astro, post);
 			</div>) : ''}
 
 			{ post.data.tags?.map((tag:string) => (
-				<div class="meta-item">
+				<a class="meta-item" href={`/tag/${tag}`}>
 					<div class="key">Tag</div>
 					<div class="value">
 						<i class="fas fa-hashtag"></i>
 						<span class="tag">{ tag }</span>
 					</div>
-				</div>
+				</a>
 			)) }
 			
 			<div class="meta-item">

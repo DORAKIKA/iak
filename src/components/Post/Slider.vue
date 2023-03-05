@@ -39,7 +39,7 @@ const sliderClick = (num:number) => {
                 <div class="title">{{ article.data.title }}
             <span class="category">{{article.data.category}}</span></div>
                 <div class="tags">
-                    <span class="tag" v-for="tag in article.data.tags">#{{tag}}</span>
+                    <a :href="`/tag/${tag}`" rel="nofollow" class="tag" v-for="tag in article.data.tags">#{{tag}}</a>
                 </div>
                 <p class="desc">{{ article.data.description }}</p>
                 <a :href="`/post/${article.slug}`" class="button" :title="article.data.title">GO<span style="display:inline-block;opacity:0;font-size:0;">{{ article.data.title }}</span></a>
