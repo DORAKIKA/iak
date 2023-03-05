@@ -38,6 +38,10 @@ const tags = Array.from(new Set(
 .post-tags .tag{
     padding: 4px;
     border-radius: var(--base-radius);
-    /* background-color: var(--white-op); */
+    transition: 0.3s;
+}
+.post-tags .tag:hover{
+    text-shadow: 0 0 3px var(--white-deep-op),0 0 5px var(--white-deep-op),0 0 5px var(--white-deep-op);
+    color: var(--main-color);
 }
 </style>
