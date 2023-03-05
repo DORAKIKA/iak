@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+
+const tags = Array.from(new Set(
+    (await getCollection('posts'))
+    .map(post => post.data.tags)
+    .flat()
+    .filter(tag => tag !== undefined))
+)
+---
+
+<div class="post-tags">
+    <div class="title">Tags</div>
+    <div class="container">
+        {tags.map(tag => (
+            <a class="tag" href={`/tag/${tag}`}>{tag}</a>
+        ))}
+    </div>
+</div>
+
+<style>
+.post-tags {
+    border: 1px solid var(--white-op);
+    padding: 1em;
+    border-radius: var(--base-radius);
+    background: var(--white-op);
+}
+.post-tags .title {
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+.post-tags .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2em;
+}
+.post-tags .tag{
+    padding: 4px;
+    border-radius: var(--base-radius);
+    /* background-color: var(--white-op); */
+}
+</style>

@@ -5,6 +5,7 @@ import "@styles/vue-client-only.css"
 import TheFooter from '@components/The/Footer.astro';
 import TheToolbar from '@components/The/Toolbar/Toolbar.astro'
 import ShareCard from "@components/Third/ShareCard.astro";
+import GlobalInject from '@components/The/GlobalInject.astro';
 
 
 const {
@@ -34,5 +35,7 @@ const {
         </main>
 		<TheFooter />
 		<ShareCard page_meta={page_meta} />
+
+		<GlobalInject/>
 	</body>
 </html>
