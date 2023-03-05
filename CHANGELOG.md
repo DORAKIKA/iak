@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/DORAKIKA/iak/compare/v0.3.4...v0.4.0) (2023-03-05)
+
+
+### Features
+
+* 添加全站面板与标签云 ([e9677e1](https://github.com/DORAKIKA/iak/commit/e9677e1c98828791de9a7f0e7d1bcfd09425d092))
+* 添加一个标记书影音游的页面 ([ce03819](https://github.com/DORAKIKA/iak/commit/ce03819c15a6903b5a23aa357b2c808b29be4382))
+* 主题添加图片背景控制 ([460471e](https://github.com/DORAKIKA/iak/commit/460471ea4ca60a80bdcddedffb530f515cdc9db0))
+* hover样式 ([08617fa](https://github.com/DORAKIKA/iak/commit/08617fa3f05ee3939a3c43b135a68a952bbe1fb9))
+* tag页面 ([a692e6b](https://github.com/DORAKIKA/iak/commit/a692e6bb20f3bb502b2a83dfbdf331a45b9b6aa9))
+
+
+### Bug Fixes
+
+* 修复布局问题 ([1464fc5](https://github.com/DORAKIKA/iak/commit/1464fc5a3a2c36472adf7b334a6928723a7578a5))
+* snackbar样式 ([d3368b7](https://github.com/DORAKIKA/iak/commit/d3368b7a866748324a74090d7fe4c649eafdd547))
+* tag 链接补充 ([47b05f8](https://github.com/DORAKIKA/iak/commit/47b05f83c465e0749e23aef3b6f3f61e9a0ef9dc))
+
 ### [0.3.4](https://github.com/DORAKIKA/iak/compare/v0.3.3...v0.3.4) (2023-03-03)
 
 
