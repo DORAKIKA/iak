@@ -90,5 +90,11 @@ export const theme = {
         max: 1.1,
         step: 0.1
     },
-    headerFixed: false
+    headerFixed: false,
+    imageBackground: {
+        default: false,
+        url: '/images/bg.webp',
+        // 继承：例如在文章页面，背景会继承文章封面图
+        inherit: true
+    }
 }

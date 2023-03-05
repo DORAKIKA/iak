@@ -12,6 +12,7 @@ const default_style = {
     largeBorderRadius: theme.large_border_radius,
     brightness: theme.brightness.default,
     headerFixed: theme.headerFixed,
+    imageBackground: theme.imageBackground.default,
 }
 
 const styleShow = ref(false)
@@ -23,6 +24,7 @@ async function validate(){
         largeBorderRadius: z.boolean(),
         brightness: z.number().min(theme.brightness.min).max(theme.brightness.max),
         headerFixed: z.boolean(),
+        imageBackground: z.boolean()
     })
     try {
         styleConfig.value = await schema.parseAsync(styleConfig.value)
@@ -42,13 +44,28 @@ const styleHTML = computed(() => `
     html{
         filter: brightness(${styleConfig.value.brightness})
     }
+    ${styleConfig.value.imageBackground ? `
+        html{
+            --bg-image-url: url(${theme.imageBackground.url});
+            background-image: ${theme.imageBackground.inherit ? 'var(--bg-image-url)' : 'url(' + theme.imageBackground.url + ')'};
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        body{
+            background-image: none;
+            animation: none;
+            background-size: unset;
+            background-color: rgba(0,0,0,0.7);
+        }
+    ` : ''}
     ${styleConfig.value.headerFixed ? `
         body{
             padding-top: var(--header-height);
         }
         #header{
             position: fixed;
-            background: rgba(var(--main-color-meta), 0.9);
+            background: ${styleConfig.value.imageBackground ? 'rgba(0,0,0, 0.5)' : 'rgba(var(--main-color-meta), 0.9)'};
             backdrop-filter: blur(4px);
             top: 0;
         }
@@ -92,6 +109,10 @@ window.iak.toggleStyle = toggleStyle
             <div class="style-item">
                 <div class="key">顶栏固定</div>
                 <div class="value"><IakSwitch v-model:value="styleConfig.headerFixed"/></div>
+            </div>
+            <div class="style-item">
+                <div class="key">图片背景</div>
+                <div class="value"><IakSwitch v-model:value="styleConfig.imageBackground"/></div>
             </div>
         </template>
     </IakDrawer>
