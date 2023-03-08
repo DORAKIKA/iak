@@ -22,6 +22,8 @@
 
 示例网站见[Iak示例博客](https://iak.dorakika.cn)、[DORAKIKA的博客](https://blog.dorakika.cn)
 
+![DORAKIKA](https://img.dorakika.cn/md/202303081055.png)
+
 # 如何使用
 ```shell
 # 克隆仓库
@@ -40,9 +42,12 @@ yarn preview
 ```
 
 # 部署
-目前只做了vercel的（因为我用的就是vercel），从vercel直接导入仓库即可，其他可以到Astro官网自行适配
+目前只做了vercel的（因为我用的就是vercel），从vercel直接导入仓库即可，其他可以到Astro官网自行适配（问就是懒
 
 # 使用
-主要配置内容在`/src/config.ts`中
-文章内容在`/src/content/posts/`内，后续可能会添加其他形式的内容（目前设想中会添加一种用来记录某段时间事情的文档模式（差不多是日记周记这个概念））
-友链内容在`/src/content/friends/_index.yml`内配置
+- 主要配置内容在`/src/config.ts`中
+- 文章内容在`/src/content/posts/`内，后续可能会添加其他形式的内容（目前设想中会添加一种用来记录某段时间事情的文档模式（差不多是日记周记这个概念））
+- 友链内容在`/src/content/friends/_index.yml`内配置
+- 书影音游等标记在`/src/content/mark/_index.yml`内配置
+- 新建页面参考`src/pages/friends.astro`建立
+- 启动[twikoo](https://twikoo.js.org/quick-start.html)评论需先部署并获取服务地址（其他评论服务，emm，我只能说：欢迎PR）
