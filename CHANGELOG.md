@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/DORAKIKA/iak/compare/v0.4.0...v0.4.1) (2023-03-09)
+
+
+### Features
+
+* 书影音标记可切换分组 ([7eeb204](https://github.com/DORAKIKA/iak/commit/7eeb2043f2adb0911d7d3d2101e26fece944ab31))
+* 样式修改 ([c7b55e8](https://github.com/DORAKIKA/iak/commit/c7b55e826a7e9994861364c0579a317048e16a00))
+
 ## [0.4.0](https://github.com/DORAKIKA/iak/compare/v0.3.4...v0.4.0) (2023-03-05)
 
 
