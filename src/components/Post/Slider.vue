@@ -152,7 +152,15 @@ const sliderClick = (num:number) => {
 .post-slider .article .meta .tags .tag{
     display: inline-block;
     width: fit-content;
-    padding: 2px 4px;
+    padding: 2px 8px;
+    background: var(--white-op);
+    color: var(--white-deep-op);
+    border-radius: var(--base-radius);
+    transition: 0.3s;
+}
+.post-slider .article .meta .tags .tag:is(:hover, :focus-within){
+    color: var(--main-color);
+    background: var(--white-deep-op);
 }
 .post-slider .article .meta .button{
     align-self: flex-end;

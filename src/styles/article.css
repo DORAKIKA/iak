@@ -140,7 +140,8 @@ article table{
     word-break: break-word;
 }
 article th, article td{
-    border: 1px solid rgba(var(--main-color-meta), 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.02);
     padding: var(--base-radius);
 }
 
