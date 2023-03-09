@@ -8,34 +8,62 @@ const page_meta = {
     description: site.author + '的友链',
 }
 ---
-
+<script is:inline>
+window.addEventListener('load', () => {
+    const groups = document.querySelectorAll('.mark-group');
+    groups.forEach((group) => {
+        group.classList.add('hide')
+    })
+    document.querySelector(`.mark-group`).classList.remove('hide')
+    const groupNav = document.querySelectorAll('.group-nav-input');
+    Array.prototype.forEach.call(groupNav, input => {
+        input.addEventListener('change', onMarkGroupChange)
+    })
+    function onMarkGroupChange(e) {
+        const group = e.target.value;
+        const groups = document.querySelectorAll('.mark-group');
+        groups.forEach((group) => {
+            group.classList.add('hide')
+        })
+        document.querySelector(`.mark-group[data-group="${group}"]`).classList.remove('hide')
+    }
+})
+</script>
 <Layout
     page_meta={page_meta}
 >
     <div id="mark-page">
         <h1 class="page-title">足迹</h1>
+        <div class="group-nav">
+            {
+                marks.map((group: any, index: number) => (
+                    <label class="group-nav-item">
+                        <input class="group-nav-input" checked={index === 0 ? true : false} type="radio" name="mark-group" value={group.name}/>
+                        <span set:html={group.icon || group.name}></span>
+                    </label>
+                    
+                ))
+            }
+        </div>
         {marks.map((group: any) => (
-                <div class="mark-group">
-                    <div class="group-name">{group.name}</div>
-                    <div class={`group-container ${group.type}`}>
-                        {
-                            group.values.map((mark: any) => (
-                                <a href={mark.url} class="mark-item">
-                                    <img class="poster" src={mark.poster}/>
-                                    <div class="top">
-                                        <div class="icon" set:html={group.icon}></div>
-                                        <div class="time">{mark.time ? new Date(mark.time).toLocaleDateString() : ''}</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="title">{mark.title}</div>
-                                        <div class="star">{mark.star}</div>
-                                    </div>
-                                </a>
-                            ))
-                        }
-                    </div>
-                </div>
-            ))}
+            <div class={`mark-group ${group.type}`} data-group={group.name}>
+                {
+                    group.values.map((mark: any) => (
+                        <a href={mark.url} class="mark-item">
+                            <img class="poster" src={mark.poster}/>
+                            <div class="top">
+                                <div class="icon" set:html={group.icon}></div>
+                                <div class="time">{mark.time ? new Date(mark.time).toLocaleDateString() : ''}</div>
+                            </div>
+                            <div class="bottom">
+                                <div class="title">{mark.title}</div>
+                                <div class="star">{mark.star}</div>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        ))}
     </div>
 </Layout>
 
@@ -43,6 +71,28 @@ const page_meta = {
 .page-title{
     margin: 2em 0;
     text-align: center;
+}
+.group-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0.5em 0 1.5em 0;
+}
+.group-nav-item{
+    background-color: var(--white-op);
+    padding: 4px var(--base-radius);
+    border-radius: var(--base-radius);
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+}
+.group-nav-item:has(input:checked){
+    background-color: var(--white-deep-op);
+    color: var(--main-color);
+}
+.group-nav-input{
+    display: none;
 }
 .mark-group {
     margin: 0 0 20px 0;
@@ -53,14 +103,17 @@ const page_meta = {
     font-weight: 600;
     margin: 0 0 10px 0;
 }
-.mark-group .group-container {
+.mark-group{
     display: grid;
     gap: 2em;
 }
-.mark-group .group-container.horizontal {
+.mark-group.hide{
+    display: none;
+}
+.mark-group.horizontal {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
-.mark-group .group-container.vertical {
+.mark-group.vertical {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .mark-item {
