@@ -35,7 +35,7 @@ const baseConfig = {
   }),
   partytown({
     config: {
-      forward: ['twikoo.init']
+      // forward: ['twikoo.init']
     }
   }),
   // serviceWorker(), // 本地调试url会错误
