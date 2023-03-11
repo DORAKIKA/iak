@@ -1,7 +1,9 @@
 import { site } from './config'
 
+import { version } from '../package.json'
+
 console.log(
-    `%c IAK v${import.meta.env.PACKAGE_VERSION} %c https://github.com/DORAKIKA/iak `,
+    `%c IAK v${version} %c https://github.com/DORAKIKA/iak `,
     'background:#030307 ; padding: 4px; border-radius: 3px 0 0 3px;  color: #fadfa3; font-size: 14px;',
     'background:#fadfa3 ; padding: 4px; border-radius: 0 3px 3px 0;  color: #fff; font-size: 14px;',
 )
