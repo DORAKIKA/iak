@@ -14,7 +14,13 @@
       ],
       "@mdx/*": [
         "src/components/MDX/*"
-      ]
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@content/*": [
+        "src/content/*"
+      ],
     },
     "jsx": "preserve"
   }

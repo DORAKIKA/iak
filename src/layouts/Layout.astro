@@ -24,10 +24,7 @@ const {
 	</head>
 
 	<body>
-		<script is:inline>
-			// iak 全局对象，之后会注入一些函数以便调用
-			window.iak = {}
-		</script>
+		<script is:inline src="/js/iak.js"></script>
 		<TheHeader/>
 		<TheToolbar headings={headings}/>
         <main style="padding: 0 var(--side-padding)">

@@ -14,23 +14,11 @@ const injectAllPost = articles.map(post => ({
     cover: post.data.cover,
     description: post.data.description
 }))
-const injectAllPostString = 'const allPost = ' + JSON.stringify(injectAllPost);
+const injectAllPostString = 'iak.data.posts = ' + JSON.stringify(injectAllPost);
 
 ---
 <script set:html={injectAllPostString}></script>
-<script is:inline>
-    window.iak.randomPage = () => {
-        if(allPost.length){
-            const rand = Math.floor(Math.random() * allPost.length);
-            SnackBar({
-                message: `随机文章为 <a href="${allPost[rand].url}" target="_self">「${allPost[rand].title}」</a>`,
-                fixed: true,
-                position: 'tc',
-                timeout: 5000,
-            })
-        }
-    }
-</script>
+
 <header id="header" class="the-header">
     <a href="/" class="site-home" style={`background-image: url('${site.favicon}')`} title={site.name}>
         {site.name}
