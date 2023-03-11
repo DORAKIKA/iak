@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/DORAKIKA/iak/compare/v0.4.1...v0.4.2) (2023-03-11)
+
+
+### Features
+
+* iak全局对象 ([f1a74c0](https://github.com/DORAKIKA/iak/commit/f1a74c0c3c234ff726537ed4c4fdeccdc859989e))
+
+
+### Bug Fixes
+
+* 取消twikoo的partytown配置 ([404a9ec](https://github.com/DORAKIKA/iak/commit/404a9ecb96965f69c66be28026d0431e50ab0d2b))
+* 修复mark页所有分组会闪现的问题 ([d9cd281](https://github.com/DORAKIKA/iak/commit/d9cd2817eab511c91f0f768c26b3765cf8dbc244))
+
 ### [0.4.1](https://github.com/DORAKIKA/iak/compare/v0.4.0...v0.4.1) (2023-03-09)
 
 
