@@ -10,11 +10,6 @@ const page_meta = {
 ---
 <script is:inline>
 window.addEventListener('load', () => {
-    const groups = document.querySelectorAll('.mark-group');
-    groups.forEach((group) => {
-        group.classList.add('hide')
-    })
-    document.querySelector(`.mark-group`).classList.remove('hide')
     const groupNav = document.querySelectorAll('.group-nav-input');
     Array.prototype.forEach.call(groupNav, input => {
         input.addEventListener('change', onMarkGroupChange)
@@ -41,12 +36,11 @@ window.addEventListener('load', () => {
                         <input class="group-nav-input" checked={index === 0 ? true : false} type="radio" name="mark-group" value={group.name}/>
                         <span set:html={group.icon || group.name}></span>
                     </label>
-                    
                 ))
             }
         </div>
-        {marks.map((group: any) => (
-            <div class={`mark-group ${group.type}`} data-group={group.name}>
+        {marks.map((group: any, index: number) => (
+            <div class={`mark-group ${group.type}${(index===0?' ':' hide')}`} data-group={group.name}>
                 {
                     group.values.map((mark: any) => (
                         <a href={mark.url} class="mark-item">
