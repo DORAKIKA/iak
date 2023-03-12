@@ -15,7 +15,7 @@
 		"@astrojs/rss": "^2.1.0",
 		"@astrojs/sitemap": "^1.0.1",
 		"@vueuse/core": "^9.12.0",
-		"astro": "^2.0.14",
+		"astro": "^2.1.2",
 		"astro-robots-txt": "^0.4.0",
 		"astrojs-service-worker": "^0.0.9",
 		"vue": "^3.2.30"

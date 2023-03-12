@@ -7,12 +7,10 @@ import { getCollection } from "astro:content";
 const articles = await getCollection("posts")
 
 const injectAllPost = articles.map(post => ({
-    title: post.data.title,
     url: `/post/${post.slug}`,
-    date: post.data.date,
-    tags: post.data.tags,
-    cover: post.data.cover,
-    description: post.data.description
+    slug: post.slug,
+    ...post.data,
+    data: post.data
 }))
 const injectAllPostString = 'iak.data.posts = ' + JSON.stringify(injectAllPost);
 

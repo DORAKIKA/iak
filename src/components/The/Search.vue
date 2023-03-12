@@ -1,25 +1,27 @@
 <script setup lang="ts">
-import { useThrottleFn, useToggle } from '@vueuse/core';
-import { CollectionEntry, getCollection } from 'astro:content';
-import { ref, reactive } from 'vue'
-// import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+import { useThrottleFn } from '@vueuse/core';
+import type { CollectionEntry } from 'astro:content';
+import { ref, reactive, onMounted } from 'vue'
 const state = reactive({
     loading: false,
     searchInput: '',
     articles: [] as CollectionEntry<"posts">[],
     results: [] as CollectionEntry<"posts">[]
 })
-getCollection('posts').then(ps => {
-    state.articles = ps
-    state.results = ps
+onMounted(() => {
+    // @ts-ignore
+    state.articles = [...window.iak.data.posts]
+    state.results = state.articles
 })
+
 const query = async (e:any) => {
     state.loading = true
+    const queryText = state.searchInput.toLowerCase();
     state.results = state.articles.filter(p => {
-        if(p.data.title && (p.data.title.indexOf(state.searchInput) !== -1))return true;
-        if(p.data.description && (p.data.description.indexOf(state.searchInput) !== -1))return true;
-        if(p.data.category && (p.data.category.indexOf(state.searchInput) !== -1))return true;
-        if(p.data.tags && (p.data.tags.join(' ').indexOf(state.searchInput) !== -1))return true;
+        if(p.data.title && (p.data.title.toLowerCase().indexOf(queryText) !== -1))return true;
+        if(p.data.description && (p.data.description.toLowerCase().indexOf(queryText) !== -1))return true;
+        if(p.data.category && (p.data.category.toLowerCase().indexOf(queryText) !== -1))return true;
+        if(p.data.tags && (p.data.tags.join(' ').toLowerCase().indexOf(queryText) !== -1))return true;
         return false
     })
     state.loading = false
