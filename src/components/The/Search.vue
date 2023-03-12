@@ -71,3 +71,129 @@ window.iak.toggleSearch = toggleSearch
         </transition>
     </teleport>
 </template>
+
+
+<style scoped>
+
+/* TheSearch */
+.the-search-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 8000;
+}
+.the-search-loading{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.the-search-loading .icon{
+    animation: search 0.5s alternate-reverse infinite;
+}
+@keyframes search{
+    0%{
+        transform: translate(20px);
+    }100%{
+        transform: translate(-20px);
+    }
+}
+
+.pop-enter-from, .pop-leave-to{
+    opacity: 0;
+}
+.pop-enter-to, .pop-leave-from{
+    opacity: 1;
+}
+.pop-enter-active,.pop-leave-active{
+    transition: 0.3s cubic-bezier(.14,.99,.55,1.24);
+}
+.pop-enter-from .the-search, .pop-leave-to .the-search{
+    transform: scale(0.2);
+}
+.pop-enter-to .the-search, .pop-leave-from .the-search{
+    transform: scale(1);
+}
+.the-search{
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 50vw;
+    height: 50vh;
+    min-width: 300px;
+    min-height: 300px;
+    border: 4px solid white;
+    background: var(--main-color);
+    border-radius: var(--base-radius);
+    padding: 16px;
+    transform: scale(1);
+    transition: 0.3s cubic-bezier(.14,.99,.55,1.24);
+}
+.enter-emoji{
+    position: absolute;
+    right: calc(16px + var(--base-radius));
+    line-height: 48px;
+}
+.the-search .the-search-input{
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    background-color: var(--white-op);
+    color: var(--font-color);
+    border: none;
+    outline: none;
+    padding: 0 16px;
+    border-radius: var(--base-radius);
+    transition: 0.3s;
+}
+.the-search .the-search-input:focus{
+    background: rgba(255, 255, 255, 0.5);
+}
+.the-search .the-search-result{
+    overflow-y: overlay;
+    overflow-x: hidden;
+    height: calc(100% - 48px);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+}
+.the-search .the-search-result::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+}
+.the-search .the-search-result::-webkit-scrollbar-thumb{
+    background-color: var(--white-op);
+}
+.the-search .search-result-item{
+    background-color: var(--white-op);
+    border-radius: var(--base-radius);
+    padding: var(--base-radius);
+    text-decoration: none;
+    color: var(--font-color);
+    transition: 0.3s;
+}
+.the-search .search-result-item:hover{
+    background: rgba(255, 255, 255, 0.4);
+}
+.the-search .search-result-item .title{
+    font-size: 1.2em;
+    line-height: 1.5;
+    font-weight: bold;
+}
+.the-search .search-result-item .desc{
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+</style>
