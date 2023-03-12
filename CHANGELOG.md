@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/DORAKIKA/iak/compare/v0.4.2...v0.4.3) (2023-03-12)
+
+
+### Features
+
+* 添加@astro/prefetch ([67fd1a3](https://github.com/DORAKIKA/iak/commit/67fd1a3e27381ca81f47348d4520195c73453833))
+
 ### [0.4.2](https://github.com/DORAKIKA/iak/compare/v0.4.1...v0.4.2) (2023-03-11)
 
 
