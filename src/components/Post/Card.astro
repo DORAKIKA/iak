@@ -5,7 +5,7 @@ const { post } = Astro.props
 
 <div class="post-card">
     <div class="cover">
-        <img src={post.data.cover} alt={post.data.title} class="cover-img"/>
+        <img src={post.data.cover} alt={post.data.title} class="cover-img" loading="lazy" />
         <span class="category">{post.data.category}</span>
     </div>
     

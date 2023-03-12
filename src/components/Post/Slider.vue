@@ -37,7 +37,7 @@ const sliderClick = (num:number) => {
             :class="{prev: index===prev, next: index === next, current: index === current}"
             :style="`transform: translateX(${(index - current)*100}%)`"
         >
-            <img :src="article.data.cover" alt="" class="cover">
+            <img :src="article.data.cover" alt="" class="cover" loading="lazy">
             <div class="meta">
                 <div class="title">{{ article.data.title }}
             <span class="category">{{article.data.category}}</span></div>
