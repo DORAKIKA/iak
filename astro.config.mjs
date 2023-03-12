@@ -10,10 +10,12 @@ import yaml from "@rollup/plugin-yaml";
 // https://github.com/alextim/astro-lib/tree/main/packages/astro-robots-txt#readme
 import robotsTxt from "astro-robots-txt";
 
-
 // serviceWorder 支持
 // https://github.com/tatethurston/astrojs-service-worker#readme
 import serviceWorker from "astrojs-service-worker"
+
+// 预加载链接
+import prefetch from '@astrojs/prefetch';
 
 import iak from "./integrations/iak"
 
@@ -25,7 +27,7 @@ const baseConfig = {
       theme: 'github-dark-dimmed'
     }
   },
-  integrations: [mdx(), sitemap(), vue(), robotsTxt({
+  integrations: [mdx(), sitemap(), vue(), prefetch(), robotsTxt({
     // host 用于配置多镜像网站的首选域 - 设为true则使用上方的site配置项
     host: true
   }),

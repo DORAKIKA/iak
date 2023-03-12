@@ -10,7 +10,7 @@ const { post } = Astro.props
     </div>
     
     <div class="meta">
-        <a href={`/post/${post.slug}`} class="title">{ post.data.title }</a>
+        <a href={`/post/${post.slug}`} class="title" rel="prefetch">{ post.data.title }</a>
         <div class="desc">{ post.data.description }</div>
     </div>
 </div>

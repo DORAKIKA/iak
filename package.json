@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^0.18.0",
+		"@astrojs/prefetch": "^0.2.0",
 		"@astrojs/rss": "^2.2.0",
 		"@astrojs/sitemap": "^1.2.0",
 		"@astrojs/vue": "^2.1.0",

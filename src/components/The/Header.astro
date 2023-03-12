@@ -18,7 +18,7 @@ const injectAllPostString = 'iak.data.posts = ' + JSON.stringify(injectAllPost);
 <script set:html={injectAllPostString}></script>
 
 <header id="header" class="the-header">
-    <a href="/" class="site-home" style={`background-image: url('${site.favicon}')`} title={site.name}>
+    <a href="/" class="site-home" rel="prefetch" style={`background-image: url('${site.favicon}')`} title={site.name}>
         {site.name}
     </a>
     <ul class="nav-buttons">
