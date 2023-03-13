@@ -12,6 +12,14 @@
   --white-op: rgba(255,255,255,0.2);
   --kk-texture-color: rgba(255,255,255,0.2);
 
+  /* card */
+  --card-bg: #f4f5f7;
+  --card-tab-bg: #ecedef;
+  --card-text-color: #23272b;
+  --card-sub-text-color: #9ba0a5;
+  --card-inner: #ffffff;
+  --card-active: #2c46f1;
+
   --base-radius: 8px;
 }
 @media (max-width: 900px){
