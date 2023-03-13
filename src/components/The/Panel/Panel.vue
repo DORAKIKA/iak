@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import PanelTags from "@components/The/Panel/Tags.vue";
 import PanelMarks from "@components/The/Panel/Marks.vue";
+import PanelStyle from "@components/The/Panel/Style.vue";
 import { ref } from 'vue';
 
 
@@ -9,7 +10,7 @@ const togglePanel = () => {
     panelShow.value = !panelShow.value;
     console.log('toggle', panelShow.value)
 }
-const tabs = ['tags', 'marks'];
+const tabs = ['style', 'tags', 'marks'];
 const currentTab = ref(tabs[0]);
 
 
@@ -33,11 +34,15 @@ window.iak.togglePanel = togglePanel
                         <button :class="'marks' === currentTab ? 'tab active' : 'tab'" @click="currentTab = 'marks'">
                             <svg t="1678702577311" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4594"><path d="M241.198 65.086h541.604c38.436 0 69.884 31.448 69.884 69.884v768.729c0 0.384-0.003 0.768-0.009 1.151-0.838 51.207-67.281 71.914-99.654 32.23L512 641.633 269.927 938.367c-32.889 40.316-98.188 17.36-98.613-34.668V134.971c-0.001-38.437 31.447-69.885 69.884-69.885z" p-id="4595"></path></svg>
                         </button>
+                        <button :class="'style' === currentTab ? 'tab active' : 'tab'" @click="currentTab = 'style'">
+                            <svg class="icon the-style" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="32" height="32"><path d="M975.04 278.186667c8.32-8.32 8.32-21.866667 0-30.186667L776 48.96c-4.053333-4.053333-9.386667-6.293333-15.04-6.293333s-11.093333 2.24-15.04 6.293333L668.906667 125.866667l229.333333 229.226666 76.8-76.906666zM67.52 736v199.146667c0 11.84 9.493333 21.333333 21.333333 21.333333H288c0.106667 0 0.213333-0.106667 0.426667-0.106667l-220.693334-220.8c-0.106667 0.213333-0.213333 0.32-0.213333 0.426667zM898.24 668.906667l-102.826667 102.933333c-4.16 4.16-9.6 6.293333-15.04 6.293333s-10.88-2.133333-15.04-6.293333c-8.32-8.32-8.32-21.866667 0-30.186667l102.826667-102.933333-60.373333-60.373333-148.906667 148.906666c-4.16 4.16-9.6 6.293333-15.04 6.293334s-10.88-2.133333-15.04-6.293334c-8.32-8.32-8.32-21.866667 0-30.186666L777.493333 548.266667l-36.266666-36.266667 98.026666-98.026667-99.52-99.52L251.733333 802.346667l99.52 99.626666L512 741.226667l233.813333 233.813333c4.053333 4.053333 9.386667 6.293333 15.04 6.293333s11.093333-2.24 15.04-6.293333l199.146667-199.146667c8.32-8.32 8.32-21.866667 0-30.186666l-76.8-76.8zM122.026667 672.64l99.52 99.52 488-488-99.52-99.52-98.026667 98.133333-36.16-36.16-148.8 148.693334c-4.16 4.16-9.6 6.293333-15.04 6.293333s-10.88-2.133333-15.04-6.293333c-8.32-8.32-8.32-21.866667 0-30.186667l148.8-148.8-60.373333-60.373333-102.826667 102.826666c-4.16 4.16-9.6 6.293333-15.04 6.293334s-10.88-2.133333-15.04-6.293334c-8.32-8.32-8.32-21.866667 0-30.186666L355.2 125.866667l-77.013333-77.013334c-8-8-22.186667-8-30.186667 0L48.96 248c-8.32 8.32-8.32 21.866667 0 30.186667L282.773333 512 122.026667 672.64z" p-id="9657"></path></svg>
+                        </button>
                     </div>
                 </header>
                 <div class="panel-container">
-                    <PanelTags v-if="currentTab === 'tags'" />
-                    <PanelMarks v-else-if="currentTab === 'marks'" />
+                    <PanelTags v-show="currentTab === 'tags'" />
+                    <PanelMarks v-show="currentTab === 'marks'" />
+                    <PanelStyle v-show="currentTab === 'style'" />
                 </div>
             </aside>
         </div>
@@ -62,7 +67,7 @@ window.iak.togglePanel = togglePanel
     width: 45vw;
     height: 60vh;
     min-width: 100px;
-    min-height: 300px;
+    min-height: 250px;
     padding: 1em;
     border-radius: var(--base-radius);
     background: var(--card-bg);
@@ -75,6 +80,7 @@ window.iak.togglePanel = togglePanel
 }
 @media (max-width: 1200px) {
     .the-panel__content{
+        right: 10vw;
         width: 80vw;
     }
 }

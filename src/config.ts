@@ -88,7 +88,7 @@ export const theme = {
     brightness: {
         default: 1,
         min: 0.5,
-        max: 1.1,
+        max: 1,
         step: 0.1
     },
     headerFixed: false,

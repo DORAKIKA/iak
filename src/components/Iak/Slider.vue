@@ -36,19 +36,20 @@ for(let i = props.min; i <= props.max; i+=props.step){
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    background: var(--white-op);
+    background: var(--card-inner);
 }
 .iak-slider .button{
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--white-op);
+    background: var(--card-inner);
+    box-shadow: 2px 1px 4px 0px rgba(0,0,0,0.2);
     cursor: pointer;
     transition: 0.3s;
 }
 .iak-slider .button.active{
     width: 16px;
     height: 16px;
-    background: var(--white-deep-op);
+    background: var(--main-color);
 }
 </style>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref,computed, watch } from 'vue'
+import { computed, watch } from 'vue'
 import { useLocalStorage, useStyleTag, useThrottleFn } from '@vueuse/core'
-import IakDrawer from "@components/Iak/drawer.vue"
+
 import IakSlider from "@components/Iak/Slider.vue"
 import IakSwitch from "@components/Iak/Switch.vue"
-import { theme } from '../../config'
+import { theme } from '../../../config'
 import { z } from 'zod'
 
 const default_style = {
@@ -15,7 +15,6 @@ const default_style = {
     imageBackground: theme.imageBackground.default,
 }
 
-const styleShow = ref(false)
 const styleConfig = useLocalStorage('styleConfig', default_style)
 
 async function validate(){
@@ -73,17 +72,11 @@ const styleHTML = computed(() => `
 `)
 useStyleTag(styleHTML)
 
-const toggleStyle = () => {
-    styleShow.value = !styleShow.value;
-}
-
-// @ts-ignore
-window.iak.toggleStyle = toggleStyle
 </script>
 <template>
-    <IakDrawer v-model:show="styleShow">
-        <template #title><span>样式</span></template>
-        <template #default>
+    <section class="panel-style">
+        <h3 class="panel-title">主题配置</h3>
+        <div class="style-container">
             <div class=" style-item style-theme-color">
                 <div class="label">主题色</div>
                 <div class="value">
@@ -114,11 +107,17 @@ window.iak.toggleStyle = toggleStyle
                 <div class="key">图片背景</div>
                 <div class="value"><IakSwitch v-model:value="styleConfig.imageBackground"/></div>
             </div>
-        </template>
-    </IakDrawer>
+        </div>
+    </section>
 </template>
 
 <style scoped>
+.panel-title{
+    text-align: center;
+    font-weight: bold;
+    color: var(--card-text-color);
+    margin: 0;
+}
 
 /* TheStyle */
 .style-item{
@@ -143,7 +142,7 @@ window.iak.toggleStyle = toggleStyle
 }
 .style-theme-color .value .style-theme-color-item.active,
 .style-border-radius .value .style-border-radius-item.active{
-    border: 4px solid rgba(255, 255, 255, 0.9);
+    border: 4px solid rgba(255, 255, 255, 0.7);
 }
 
 </style>

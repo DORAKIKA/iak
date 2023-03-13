@@ -20,7 +20,7 @@ const filterMarks = arr.sort((a: any, b: any) => {
 
 <template>
 
-<section class="marks">
+<section class="panel-marks">
     <h3 class="panel-title">近期</h3>
     <MarkItem :mark="mark"  v-for="mark in filterMarks" :key="mark.url"/>
     
@@ -28,7 +28,7 @@ const filterMarks = arr.sort((a: any, b: any) => {
 </template>
 
 <style scoped>
-.marks{
+.panel-marks{
     height: 100%;
 }
 .panel-title{

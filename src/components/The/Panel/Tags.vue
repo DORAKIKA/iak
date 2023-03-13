@@ -12,10 +12,12 @@ const tags: Array<string> = Array.from(new Set(
 </script>
 
 <template>
-<h3 class="panel-title">Tags</h3>
-<section class="tags">
-    <a :href="`/tag/${tag}`" v-for="tag in tags" :key="tag" class="tag">{{ tag }}</a>
-</section>
+    <section class="panel-tags">
+        <h3 class="panel-title">Tags</h3>
+        <div class="tags">
+            <a :href="`/tag/${tag}`" v-for="tag in tags" :key="tag" class="tag">{{ tag }}</a>
+        </div>
+    </section>
 </template>
 
 <style scoped>
@@ -23,6 +25,7 @@ const tags: Array<string> = Array.from(new Set(
     text-align: center;
     font-weight: bold;
     color: var(--card-text-color);
+    margin: 0 0 0.5em;
 }
 .tags{
     background-color: white;
