@@ -1,50 +1,178 @@
-- name: 游戏
+- name: games
   type: horizontal
   prefix: 游玩
-  icon: <svg t="1678001849886" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2897" width="128" height="128"><path d="M298.666667 298.666667h426.666666c140.8 0 256 115.2 256 256s-115.2 256-256 256c-72.533333 0-140.8-29.866667-192-85.333334h-46.933333c-93.866667 106.666667-256 115.2-362.666667 21.333334s-115.2-256-21.333333-362.666667C157.866667 328.533333 226.133333 298.666667 298.666667 298.666667m-42.666667 128v85.333333H170.666667v85.333333h85.333333v85.333334h85.333333v-85.333334h85.333334v-85.333333H341.333333v-85.333333H256m405.333333 128c-34.133333 0-64 29.866667-64 64s29.866667 64 64 64 64-29.866667 64-64-29.866667-64-64-64m128-128c-34.133333 0-64 29.866667-64 64s29.866667 64 64 64 64-29.866667 64-64-29.866667-64-64-64z" p-id="2898"></path></svg>
+  limit: 10
+  icon: >-
+    <svg t="1678001849886" class="icon" viewBox="0 0 1024 1024" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" p-id="2897" width="128"
+    height="128"><path d="M298.666667 298.666667h426.666666c140.8 0 256 115.2
+    256 256s-115.2 256-256 256c-72.533333
+    0-140.8-29.866667-192-85.333334h-46.933333c-93.866667 106.666667-256
+    115.2-362.666667 21.333334s-115.2-256-21.333333-362.666667C157.866667
+    328.533333 226.133333 298.666667 298.666667 298.666667m-42.666667
+    128v85.333333H170.666667v85.333333h85.333333v85.333334h85.333333v-85.333334h85.333334v-85.333333H341.333333v-85.333333H256m405.333333
+    128c-34.133333 0-64 29.866667-64 64s29.866667 64 64 64 64-29.866667
+    64-64-29.866667-64-64-64m128-128c-34.133333 0-64 29.866667-64 64s29.866667
+    64 64 64 64-29.866667 64-64-29.866667-64-64-64z" p-id="2898"></path></svg>
   values:
     - title: 空洞骑士
-      poster: https://steamcdn-a.akamaihd.net/steam/apps/367520/header.jpg
+      poster: 'https://steamcdn-a.akamaihd.net/steam/apps/367520/header.jpg'
       star: ⭐⭐⭐⭐⭐
-      time: 2021-12-04
-      url: https://www.xiaoheihe.cn/games/detail/367520
+      time: 2021-12-04T00:00:00.000Z
+      url: 'https://www.xiaoheihe.cn/games/detail/367520'
     - title: 哈迪斯
-      poster: https://steamcdn-a.akamaihd.net/steam/apps/1145360/header.jpg?t=1566497973
+      poster: >-
+        https://steamcdn-a.akamaihd.net/steam/apps/1145360/header.jpg?t=1566497973
       star: ⭐⭐⭐⭐⭐
-      time: 2023-01-30
-      url: https://www.xiaoheihe.cn/games/detail/1145360
+      time: 2023-01-30T00:00:00.000Z
+      url: 'https://www.xiaoheihe.cn/games/detail/1145360'
     - title: 冰汽时代
-      poster: https://cdn.max-c.com/heybox/game/header/323190_CxfhM.jpg
+      poster: 'https://cdn.max-c.com/heybox/game/header/323190_CxfhM.jpg'
       star: ⭐⭐⭐⭐⭐
-      time: 2022-04-20
-      url: https://www.xiaoheihe.cn/games/detail/323190
+      time: 2022-04-20T00:00:00.000Z
+      url: 'https://www.xiaoheihe.cn/games/detail/323190'
     - title: 异形工厂
-      poster: https://cdn.max-c.com/heybox/game/header/1318690_oCJib.jpg
+      poster: 'https://cdn.max-c.com/heybox/game/header/1318690_oCJib.jpg'
       star: ⭐⭐⭐⭐⭐
-      time: 2022-09-05
-      url: https://www.xiaoheihe.cn/games/detail/1318690
+      time: 2022-09-05T00:00:00.000Z
+      url: 'https://www.xiaoheihe.cn/games/detail/1318690'
     - title: 我的世界
-      poster: https://www.minecraft.net/content/dam/games/minecraft/key-art/MC_The-Wild-Update_540x300.jpg
+      poster: >-
+        https://www.minecraft.net/content/dam/games/minecraft/key-art/MC_The-Wild-Update_540x300.jpg
       star: ⭐⭐⭐⭐⭐
-      time: 2022-12-15
-      url: https://www.minecraft.net/
-- name: 影视
-  type: vertical 
+      time: 2022-12-15T00:00:00.000Z
+      url: 'https://www.minecraft.net/'
+- name: movies
+  type: vertical
   prefix: 看过
-  icon: <svg t="1678001886963" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3894" width="128" height="128"><path d="M896 305.066667a72.533333 72.533333 0 0 0-78.933333 12.8l-91.733334 85.333333V341.333333a128 128 0 0 0-128-128H213.333333a128 128 0 0 0-128 128v341.333334a128 128 0 0 0 128 128h384a128 128 0 0 0 128-128v-61.866667l92.16 85.333333a74.24 74.24 0 0 0 49.493334 19.2 71.68 71.68 0 0 0 29.44-6.4 68.266667 68.266667 0 0 0 42.666666-63.146666V368.213333A68.266667 68.266667 0 0 0 896 305.066667z" p-id="3895"></path></svg>
+  limit: 20
+  icon: >-
+    <svg t="1678001886963" class="icon" viewBox="0 0 1024 1024" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" p-id="3894" width="128"
+    height="128"><path d="M896 305.066667a72.533333 72.533333 0 0 0-78.933333
+    12.8l-91.733334 85.333333V341.333333a128 128 0 0 0-128-128H213.333333a128
+    128 0 0 0-128 128v341.333334a128 128 0 0 0 128 128h384a128 128 0 0 0
+    128-128v-61.866667l92.16 85.333333a74.24 74.24 0 0 0 49.493334 19.2 71.68
+    71.68 0 0 0 29.44-6.4 68.266667 68.266667 0 0 0
+    42.666666-63.146666V368.213333A68.266667 68.266667 0 0 0 896 305.066667z"
+    p-id="3895"></path></svg>
   values:
-    - title: 哆啦A梦：大雄的平行西游记
-      poster: https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2520700785.jpg
+    - id: 8a7fb2a2-0490-43fa-92cc-9639bc0bd2ce
+      title: 仁医 完结篇
       star: ⭐⭐⭐⭐⭐
-      time: 2022-12-01
-      url: https://movie.douban.com/subject/1458896/
-    - title: 哆啦A梦：大雄与梦幻三剑士
-      time: 2022-10-22
-      poster: https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2520701848.jpg
+      url: 'https://movie.douban.com/subject/4881202/'
+      time: '2023-03-10 00:25:45'
+      poster: >-
+        https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/m_ratio_poster/public/p913363317.jpg
+    - id: ab54cde6-67f4-4a29-8846-0042d69793cc
+      title: 仁医
       star: ⭐⭐⭐⭐⭐
-      url: https://movie.douban.com/subject/1458902/
-    - title: 星际穿越
-      time: 2022-11-20
-      poster: https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2614988097.jpg
+      url: 'https://movie.douban.com/subject/3892394/'
+      time: '2023-03-10 00:25:34'
+      poster: >-
+        https://images.weserv.nl/?url=https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2294396926.jpg
+    - id: d912109e-069e-4a4b-b07c-224c552ee656
+      title: 交换人生
+      star: ⭐⭐⭐
+      url: 'https://movie.douban.com/subject/35513968/'
+      time: '2023-03-04 20:58:29'
+      poster: >-
+        https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2886396440.jpg
+    - id: 9727157c-05c8-4140-92bc-4a7113d43702
+      title: 狂飙
       star: ⭐⭐⭐⭐⭐
-      url: https://movie.douban.com/subject/1889243/
+      url: 'https://movie.douban.com/subject/35465232/'
+      time: '2023-02-06 20:33:53'
+      poster: >-
+        https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/m_ratio_poster/public/p2886376181.jpg
+    - id: 8601f236-9df3-48d5-8628-f23fe3919b54
+      title: 独行月球
+      star: ⭐⭐⭐⭐⭐
+      url: 'https://movie.douban.com/subject/35183042/'
+      time: '2022-12-21 15:40:09'
+      poster: >-
+        https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2876409008.jpg
+- name: books
+  type: horizontal
+  limit: 4
+  icon: >-
+    <svg t="1678717185624" class="icon" viewBox="0 0 1024 1024" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" p-id="6501" width="128"
+    height="128"><path d="M554.666667 512 853.333333 512 853.333333 576
+    554.666667 576M554.666667 405.333333 853.333333 405.333333 853.333333
+    469.333333 554.666667 469.333333M554.666667 618.666667 853.333333 618.666667
+    853.333333 682.666667 554.666667 682.666667M896 170.666667 128
+    170.666667C81.066667 170.666667 42.666667 209.066667 42.666667 256L42.666667
+    810.666667C42.666667 857.6 81.066667 896 128 896L896 896C942.933333 896
+    981.333333 857.6 981.333333 810.666667L981.333333 256C981.333333 209.066667
+    942.933333 170.666667 896 170.666667M896 810.666667 512 810.666667 512 256
+    896 256" p-id="6502"></path></svg>
+  prefix: star
+  values:
+    - id: c5cfaa43-a76b-42df-be72-b6f931ca89ba
+      title: 猫、爱因斯坦和密码学
+      star: ⭐⭐⭐⭐
+      url: 'https://book.douban.com/subject/35269186/'
+      time: '2023-03-08 00:44:45'
+      poster: >-
+        https://images.weserv.nl/?url=https://img1.doubanio.com/view/subject/l/public/s33770597.jpg
+    - id: f35ae152-91d9-41c3-abf2-08972f4b6a9f
+      title: Cocos Creator 3.x 游戏开发入门与实战
+      star: ⭐⭐⭐⭐⭐
+      url: 'https://book.douban.com/subject/36085049/'
+      time: '2022-12-01 13:44:06'
+      poster: >-
+        https://images.weserv.nl/?url=https://img9.doubanio.com/view/subject/l/public/s34303385.jpg
+    - id: b4ce76e7-bf0a-44dc-8fa8-a81d9a07ba4a
+      title: 学习JavaScript数据结构与算法（第3版）
+      star: ⭐⭐⭐⭐⭐
+      url: 'https://book.douban.com/subject/33441631/'
+      time: '2022-09-30 02:32:50'
+      poster: >-
+        https://images.weserv.nl/?url=https://img9.doubanio.com/view/subject/l/public/s32315839.jpg
+    - id: eba60a5d-73ef-4420-9be6-4e89f5935000
+      title: 我的第一本算法书
+      star: ⭐⭐⭐⭐⭐
+      url: 'https://book.douban.com/subject/30357170/'
+      time: '2022-07-19 00:10:21'
+      poster: >-
+        https://images.weserv.nl/?url=https://img9.doubanio.com/view/subject/l/public/s29901301.jpg
+    - id: f7fd74fb-39b4-4d16-9648-6d002d8c574d
+      title: 我们为什么生病
+      star: ⭐⭐⭐⭐
+      url: 'https://book.douban.com/subject/1046620/'
+      time: '2021-09-14 09:53:24'
+      poster: >-
+        https://images.weserv.nl/?url=https://img9.doubanio.com/view/subject/l/public/s1689958.jpg
+- name: musics
+  type: horizontal
+  prefix: star
+  limit: 5
+  icon: >-
+    <svg t="1678719901844" class="icon" viewBox="0 0 1024 1024" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" p-id="21194" width="128"
+    height="128"><path d="M655.747
+    829.416V474.88l208.807-33.857c-33.263-176.266-187.952-309.621-373.887-309.621-210.205
+    0-380.598 170.394-380.598 380.598s170.393 380.598 380.598 380.598c20.389 0
+    40.382-1.654 59.897-4.73 15.273-25.364 42.69-45.718 77.49-54.42 9.193-2.284
+    18.477-3.636 27.693-4.032z m-95.153-666.954l-40.777 178.654h-40.778L449.91
+    162.462c42.724-21.367 110.683 0 110.683 0z m-69.927 490.84c-78.038
+    0-141.301-63.263-141.301-141.3s63.262-141.303 141.3-141.303S631.968 433.961
+    631.968 512s-63.261 141.3-141.3 141.3z m0-249.036c-59.42 0-107.737
+    48.316-107.737 107.735s48.317 107.736 107.737 107.736 107.736-48.317
+    107.736-107.736-48.317-107.736-107.736-107.736z m0 184.689c-42.433
+    0-76.954-34.52-76.954-76.954s34.533-76.953 76.954-76.953c42.443 0 76.942
+    34.52 76.942 76.953s-34.498 76.954-76.942 76.954z m48.735 364.566c1.853
+    10.23 5.908 19.738 11.744 28.278-19.817 2.54-39.974 3.996-60.468
+    3.996-261.259 0-473.805-212.546-473.805-473.794S229.42 38.207 490.667
+    38.207c231.898 0 425.302 167.538 465.847 387.902l-45.997 7.47C873.572 235.36
+    699.427 84.81 490.667 84.81 255.11 84.81 63.477 276.444 63.477 512s191.633
+    427.19 427.19 427.19c15.775 0 31.328-0.922 46.672-2.599 0.14 5.628 0.747
+    11.28 2.063 16.93z m465.451-501.86v410.786c0 34.02-25.364 61.155-64.918
+    71.152-43.434 10.765-85.366-7.422-93.684-40.709-8.331-33.356 20.109-69.113
+    63.532-79.983 19.62-4.847 38.937-3.856 55.096 1.84V567.26L742.803
+    607.85l-1.025 307.886h-0.047c-0.198 29.15-26.483 57.776-64.302 67.132-42.91
+    10.8-87.87-9.624-92.694-40.184-8.25-32.973 19.877-68.379 62.88-79.144
+    19.353-4.812 38.261-3.845 54.154 1.724v-364.45l303.084-49.155z"
+    fill="#515151" p-id="21195"></path></svg>
+  values: []
