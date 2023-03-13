@@ -93,7 +93,7 @@ window.iak.togglePanel = togglePanel
     gap: 0.2em;
     background: var(--card-tab-bg);
     padding: 4px;
-    border-radius: 1em;
+    border-radius: var(--base-radius);
     min-width: 50%;
     display: flex;
     justify-content: center;
@@ -105,6 +105,7 @@ window.iak.togglePanel = togglePanel
     flex: 1;
     border-radius: var(--base-radius);
     background-color: transparent;
+    color: var(--card-text-color);
     border: none;
     cursor: pointer;
     display: flex;
@@ -119,7 +120,7 @@ window.iak.togglePanel = togglePanel
 .panel-container{
     flex: 1;
     border-radius: var(--base-radius);
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 
