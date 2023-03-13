@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/DORAKIKA/iak/compare/v0.4.3...v0.5.0) (2023-03-13)
+
+
+### Features
+
+* 面板从全屏更换为卡片弹窗 ([bcfafae](https://github.com/DORAKIKA/iak/commit/bcfafaec6081a92738730774dcef243e9b131f12))
+* 添加从Notion同步豆瓣书影音的脚本 ([3d3bed0](https://github.com/DORAKIKA/iak/commit/3d3bed0a579915c814548aa27ae0f3f7666e33f1))
+* mark页可选择添加limit限制个数 ([30b1490](https://github.com/DORAKIKA/iak/commit/30b14902d9b1955877a2032cea2304a42fa5efae))
+
 ### [0.4.3](https://github.com/DORAKIKA/iak/compare/v0.4.2...v0.4.3) (2023-03-12)
 
 
