@@ -1,7 +1,7 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 
-// 使用的是github项目将豆瓣数据同步到notion，参考：
+// 使用的是github项目将豆瓣数据同步到notion，参考：https://github.com/lizheming/doumark-action 进行配置
 // 这是notion的数据库id
 const NOTION = {
     MOVIES_ID: '',
