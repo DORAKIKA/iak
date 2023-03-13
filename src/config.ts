@@ -84,18 +84,25 @@ export const headings_depth = 3
 // 此配置只做选项与默认项，具体配置会读取用户浏览器的LocalStorage数据
 export const theme = {
     main_colors: ['50, 201, 235','244,149,162', '144, 83, 144', '52, 175, 86', '47, 50, 55'],
-    large_border_radius: true,
+    large_border_radius: {
+        default: true
+    },
     brightness: {
         default: 1,
         min: 0.5,
         max: 1,
         step: 0.1
     },
-    headerFixed: false,
+    headerFixed: {
+        default: false
+    },
     imageBackground: {
         default: false,
         url: '/images/bg.webp',
         // 继承：例如在文章页面，背景会继承文章封面图
         inherit: true
+    },
+    whiteCard: {
+        default: true,
     }
 }

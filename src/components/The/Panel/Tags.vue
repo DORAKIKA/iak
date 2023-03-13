@@ -28,7 +28,7 @@ const tags: Array<string> = Array.from(new Set(
     margin: 0 0 0.5em;
 }
 .tags{
-    background-color: white;
+    background-color: var(--card-inner);
     padding: var(--base-radius);
     border-radius: var(--base-radius);
     display: flex;

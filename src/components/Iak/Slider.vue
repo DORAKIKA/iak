@@ -50,6 +50,6 @@ for(let i = props.min; i <= props.max; i+=props.step){
 .iak-slider .button.active{
     width: 16px;
     height: 16px;
-    background: var(--main-color);
+    background: var(--card-active);
 }
 </style>

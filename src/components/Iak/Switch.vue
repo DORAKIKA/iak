@@ -42,7 +42,7 @@ const emits = defineEmits<{
     .iak-switch.active .iak-switch__core{
         width: 0.5em;
         opacity: 1;
-        background: var(--main-color);
+        background: var(--card-active);
     }
 
 </style>

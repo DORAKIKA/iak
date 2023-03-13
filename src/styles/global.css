@@ -18,7 +18,7 @@
   --card-text-color: #23272b;
   --card-sub-text-color: #9ba0a5;
   --card-inner: #ffffff;
-  --card-active: #2c46f1;
+  --card-active: var(--main-color);
 
   --base-radius: 8px;
 }

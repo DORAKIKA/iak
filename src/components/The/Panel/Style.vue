@@ -9,10 +9,11 @@ import { z } from 'zod'
 
 const default_style = {
     themeColor: theme.main_colors[0],
-    largeBorderRadius: theme.large_border_radius,
+    largeBorderRadius: theme.large_border_radius.default,
     brightness: theme.brightness.default,
-    headerFixed: theme.headerFixed,
+    headerFixed: theme.headerFixed.default,
     imageBackground: theme.imageBackground.default,
+    whiteCard: theme.whiteCard.default
 }
 
 const styleConfig = useLocalStorage('styleConfig', default_style)
@@ -23,7 +24,8 @@ async function validate(){
         largeBorderRadius: z.boolean(),
         brightness: z.number().min(theme.brightness.min).max(theme.brightness.max),
         headerFixed: z.boolean(),
-        imageBackground: z.boolean()
+        imageBackground: z.boolean(),
+        whiteCard: z.boolean()
     })
     try {
         styleConfig.value = await schema.parseAsync(styleConfig.value)
@@ -33,12 +35,20 @@ async function validate(){
         SnackBar({message: '样式配置错误，已重置为默认配置', type: 'error', fixed: true, position: 'bl'})
     }
 }
-watch(styleConfig, useThrottleFn(validate));
+watch(styleConfig, useThrottleFn(validate), {immediate: true});
 
 const styleHTML = computed(() => `
     :root{
         --main-color-meta: ${styleConfig.value.themeColor};
         --base-radius: ${styleConfig.value.largeBorderRadius ? '16px' : '8px'};
+        ${styleConfig.value.whiteCard ? '':`
+        --card-bg: var(--main-color);
+        --card-tab-bg: var(--white-op);
+        --card-text-color: var(--white-deep-op);
+        --card-sub-text-color: var(--white-deep-op);
+        --card-inner: var(--white-op);
+        --card-active: var(--white-deep-op);
+        `}
     }
     html{
         filter: brightness(${styleConfig.value.brightness})
@@ -102,6 +112,10 @@ useStyleTag(styleHTML)
             <div class="style-item">
                 <div class="key">顶栏固定</div>
                 <div class="value"><IakSwitch v-model:value="styleConfig.headerFixed"/></div>
+            </div>
+            <div class="style-item">
+                <div class="key">来点白色</div>
+                <div class="value"><IakSwitch v-model:value="styleConfig.whiteCard"/></div>
             </div>
             <div class="style-item">
                 <div class="key">图片背景</div>
