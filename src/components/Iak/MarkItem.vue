@@ -3,9 +3,9 @@ const props = defineProps(['mark', 'group'])
 </script>
 <template>
     <a :href="mark.url" class="mark-item">
-        <img class="poster" :src="mark.poster"/>
+        <img class="poster" :src="mark.poster" loading="lazy"/>
         <div class="top">
-            <div class="icon" v-html="group ? group.icon : ''"></div>
+            <div class="icon" v-html="group ? group.icon||'' : ''"></div>
             <div class="time">{{mark.time ? new Date(mark.time).toLocaleDateString() : ''}}</div>
         </div>
         <div class="bottom">
