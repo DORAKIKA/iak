@@ -15,7 +15,7 @@ const props = defineProps(['mark', 'group'])
     </a>
 </template>
 
-<style>
+<style scoped>
 .mark-item {
     flex-grow: 1;
     border-radius: var(--base-radius);
