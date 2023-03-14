@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/DORAKIKA/iak/compare/v0.5.0...v0.5.1) (2023-03-14)
+
+
+### Features
+
+* 标记面板和标签面板合并到站点面板中 ([ced9067](https://github.com/DORAKIKA/iak/commit/ced906754b8703b10820f39136342bd8e1686f06))
+* 将主题配置移入全站面板中，并适配样式 ([c49e8d4](https://github.com/DORAKIKA/iak/commit/c49e8d47daf510c72f3ab3372f3ae45dad884ce2))
+* 可选白色卡片配置 ([c2b9ca2](https://github.com/DORAKIKA/iak/commit/c2b9ca22c0accc10b0466418f146b39122f81982))
+* 样式修改 ([37226f6](https://github.com/DORAKIKA/iak/commit/37226f6b37469ee691f519d46f34d57360d8f4cb))
+
+
+### Bug Fixes
+
+* 补充说明 ([cbd3a3d](https://github.com/DORAKIKA/iak/commit/cbd3a3da54ca84666c17925e0ad9c8a134011478))
+
 ## [0.5.0](https://github.com/DORAKIKA/iak/compare/v0.4.3...v0.5.0) (2023-03-13)
 
 
