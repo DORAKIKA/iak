@@ -36,7 +36,7 @@ const meta_og = generateOpenGraph(Astro, page_meta)
                     {list.list_data.map((friend:any) => (
                         <a class="friend-item" href={friend.link} target="_blank">
                             {friend.tag ? (<span class="tag">{friend.tag}</span>) : null}
-                            <img src={friend.avatar} alt={friend.name} class="avatar">
+                            <img src={friend.avatar} alt={friend.name} class="avatar" loading="lazy">
                             <div class="info">
                                 <div class="name">{friend.name}</div>
                                 <div class="desc">{friend.descr}</div>
