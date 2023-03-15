@@ -29,7 +29,8 @@ marks.forEach((group: any) => {
         arr.push({
             ...mark,
             group: group.name,
-            prefix: group.prefix
+            prefix: group.prefix,
+            icon: group.icon
         })
     })
 });
@@ -52,7 +53,11 @@ const mark = filterMarks[0];
         <section class="panel-card panel-mark">
             <h3 class="panel-title">近期</h3>
             <div class="mark-item">
-                <img class="poster" :src="mark.poster" loading="lazy"/>
+                <div class="poster">
+                    <img class="poster__main" :src="mark.poster" loading="lazy"/>
+                    <span class="poster__icon" v-html="mark.icon"></span>
+                </div>
+                
                 <div class="mark-meta">
                     <div class="mark-item__title">{{ mark.title }}</div>
                     <div class="mark-item__time">{{ formatDateTime(new Date(mark.time)) }}</div>
@@ -108,7 +113,8 @@ const mark = filterMarks[0];
     display: flex;
     width: 100%;
     height: 120px;
-    background-image: linear-gradient(to right, rgba(var(--main-color-meta), 0.2), rgba(var(--main-color-meta), 0.6));
+    background-image: linear-gradient(to right, rgba(var(--main-color-meta), 0.15), rgba(var(--main-color-meta), 0.2) 80%);
+    user-select: none;
 }
 .mark-item .mark-meta{
     flex: 1;
@@ -124,15 +130,38 @@ const mark = filterMarks[0];
     height: auto;
     max-width: 50%;
     max-height: 120px;
-    object-fit: cover;
     flex-shrink: 1;
+    position: relative;
+}
+.mark-item .poster__main{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mark-item .poster__icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(var(--main-color-meta), 0.9);
+    font-size: 30px;
+    opacity: 0;
+    transition: 0.3s;
+    color: var(--white-deep-op);
+}
+.mark-item:hover .poster__icon{
+    opacity: 1;
 }
 .mark-item .mark-item__title{
     font-weight: bold;
-    color: var(--white-deep-op);
+    color: var(--card-text-color);
 }
 .mark-item .mark-item__time{
-    color: var(--white-deep-op);
+    color: var(--card-sub-text-color);
     font-size: 12px;
     opacity: 0.6;
 }
