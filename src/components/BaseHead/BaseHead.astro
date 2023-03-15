@@ -2,7 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '@styles/global.css';
-import { default_cover, site } from "../../config"
+import { default_cover, site, twikoo } from "../../config"
 import ProductionInject from './ProductionInject.astro';
 
 export interface Props {
@@ -49,5 +49,11 @@ const {
 <link rel="stylesheet" href="/css/js-snackbar.css"/>
 <script is:inline src="/js/js-snackbar.js"></script>
 <script src="/src/log.ts" />
+
+{
+	twikoo.enabled? 
+        <script is:inline src="https://cdn.staticfile.org/twikoo/1.6.9/twikoo.all.min.js"></script>
+		: null
+}
 
 {isPROD ? <ProductionInject/> : null}

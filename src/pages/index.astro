@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro"
 import PostSlider from "@components/Post/Slider.vue"
 import PostRecent from "@components/Post/Recent.astro"
+import TwikooRecent from "@components/Third/TwikooRecent.vue";
 
 import { default_cover, site } from "src/config";
 import { generateOpenGraph } from "src/tools/open_graph";
@@ -19,4 +20,5 @@ const meta_og = generateOpenGraph(Astro, page_meta);
 >
 	<PostSlider client:load/>
 	<PostRecent/>
+	<TwikooRecent client:load/>
 </Layout>

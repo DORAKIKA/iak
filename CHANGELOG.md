@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](///compare/v0.5.1...v0.5.2) (2023-03-15)
+
+
+### Features
+
+* 豆瓣同步脚本更新，mark-item类型改为large、medium、small 071956e
+* 首页添加最近评论 4f2cf0b
+* 文章页添加字数统计 55afe3d
+* 友链头像懒加载 f37b78e
+* 站点面板近期标记显示icon f186349
+
+
+### Bug Fixes
+
+* 修复首页轮播图个数限制失效的问题 f5aef69
+
 ### [0.5.1](https://github.com/DORAKIKA/iak/compare/v0.5.0...v0.5.1) (2023-03-14)
 
 
