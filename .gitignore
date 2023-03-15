@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # test
 src/content/posts/test/
+
+# my owo.json
+public/media/owo.json

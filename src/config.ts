@@ -74,7 +74,10 @@ export const post_slider = {
 // twikoo => https://twikoo.js.org/
 export const twikoo = {
     enabled: false,
-    url: "your.twikoo.url"
+    url: "https://twikoo.you.love",
+    recent_limit: 5,
+    // 你的留言板页面，向用户呈现的时候引导用户去留言
+    board_url: ''
 }
 
 // 文章标题目录深度（1-6）
