@@ -31,8 +31,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <h2 v-if="twikoo_config.enabled" class="title">最近评论</h2>
-    <div v-if="twikoo_config.enabled" class="twikoo-recent">
+    <h2 class="title">最近评论</h2>
+    <div class="twikoo-recent">
         <a  class="comment-item" v-for="comment in comments" :key="comment.id" :href="comment.url" :title="comment.commentText">
             <img class="comment-item__avatar" :src="comment.avatar" alt="">
             <span class="comment-item__content">
