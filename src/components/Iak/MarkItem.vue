@@ -63,4 +63,8 @@ const props = defineProps(['mark', 'group'])
     font-weight: 600;
     color: var(--white-deep-op);
 }
+.mark-item .time{
+    font-size: 12px;
+    font-weight: 900;
+}
 </style>

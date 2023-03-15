@@ -1,5 +1,5 @@
 - name: games
-  type: horizontal
+  type: large
   prefix: 游玩
   limit: 10
   icon: >-
@@ -43,7 +43,7 @@
       time: 2022-12-15T00:00:00.000Z
       url: 'https://www.minecraft.net/'
 - name: movies
-  type: vertical
+  type: medium
   prefix: 看过
   limit: 20
   icon: >-
@@ -93,7 +93,7 @@
       poster: >-
         https://images.weserv.nl/?url=https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2876409008.jpg
 - name: books
-  type: horizontal
+  type: large
   limit: 4
   icon: >-
     <svg t="1678717185624" class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -145,7 +145,7 @@
       poster: >-
         https://images.weserv.nl/?url=https://img9.doubanio.com/view/subject/l/public/s1689958.jpg
 - name: musics
-  type: horizontal
+  type: small
   prefix: star
   limit: 5
   icon: >-
@@ -175,4 +175,18 @@
     10.8-87.87-9.624-92.694-40.184-8.25-32.973 19.877-68.379 62.88-79.144
     19.353-4.812 38.261-3.845 54.154 1.724v-364.45l303.084-49.155z"
     fill="#515151" p-id="21195"></path></svg>
-  values: []
+  values:
+    - id: 6365de6e-5f22-4096-8bf4-3b663b0bc76e
+      title: 沈园外
+      star: ⭐⭐⭐⭐⭐
+      url: 'https://music.douban.com/subject/35322796/'
+      time: '2023-03-14 10:52:18'
+      poster: >-
+        https://images.weserv.nl/?url=https://img9.doubanio.com/view/subject/m/public/s33800535.jpg
+    - id: 7a1a07be-0626-44eb-b75b-aab13e9986ab
+      title: 漠河舞厅·2022
+      star: ⭐⭐⭐⭐⭐
+      url: 'https://music.douban.com/subject/35660966/'
+      time: '2022-10-11 00:52:22'
+      poster: >-
+        https://images.weserv.nl/?url=https://img9.doubanio.com/view/subject/m/public/s34041546.jpg

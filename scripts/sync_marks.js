@@ -1,15 +1,17 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
+const { prompt } = require('enquirer');
+require('dotenv').config();
 
 // 使用的是github项目将豆瓣数据同步到notion，参考：https://github.com/lizheming/doumark-action 进行配置
 // 这是notion的数据库id
 const NOTION = {
     MOVIES_ID: '',
-    BOOKS_ID: '',
-    MUSICS_ID: ''
+    BOOKS_ID: '3c8344aa545c4dc787e786cbb6b4b373',
+    MUSICS_ID: '8a7f7ee4c8714518b2c71432bdb7f8e8'
 }
 // 这是notion的token
-const NOTION_API_KEY = "*******aaaabbbbcccc";
+const NOTION_API_KEY = process.env.NOTION_TOKEN || '';
 
 // 豆瓣图片需代理,不然容易403
 const img_prefix = "https://images.weserv.nl/?url=";
@@ -20,23 +22,29 @@ var axios = require('axios');
 
 async function main() {
     let movies, books, musics;
-    if(NOTION.MOVIES_ID){
-        console.log('- get movies ...');
-        movies = await getFromNotion(NOTION.MOVIES_ID);
-        console.log("movies: ", movies && movies.length || 0);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+
+    
+    const { type } = await prompt({
+        type: 'select',
+        name: 'type',
+        message: '同步类型',
+        choices: [
+            { message: '全部', name: 'all' },
+            { message: '电影', name: 'movies' },
+            { message: '书籍', name: 'books' },
+            { message: '音乐', name: 'musics' },
+        ]
+    })
+    console.log(type)
+    if(type === 'all' || type === 'movies'){
+        movies = await syncUnit('movies', NOTION.MOVIES_ID);
     }
-    if(NOTION.BOOKS_ID){
-        console.log('- get books ...');
-        books = await getFromNotion(NOTION.BOOKS_ID);
-        console.log("books: ", books && books.length || 0);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+    if(type === 'all' || type === 'books'){
+        books = await syncUnit('books', NOTION.BOOKS_ID);
     }
-    if(NOTION.MUSICS_ID){
-        console.log('- get musics ...');
-        musics = await getFromNotion(NOTION.MUSICS_ID);
-        console.log("musics: ", musics && musics.length || 0);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+    if(type === 'all' || type === 'musics'){
+        musics = await syncUnit('musics', NOTION.MUSICS_ID);
     }
 
 
@@ -44,6 +52,15 @@ async function main() {
     console.log(`- write to ${yaml_path} ...`)
     writeToYaml({movies,books,musics}, yaml_path);
     console.log("*write completed")
+}
+
+async function syncUnit(type, id){
+    console.log(`- get ${type} ...`);
+    if(!id.trim()) return console.log('id is null');
+    res = await getFromNotion(id);
+    console.log(`${type}: `, res && res.length || 0);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return res;
 }
 
 
