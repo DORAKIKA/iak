@@ -7,7 +7,6 @@ import { ref } from 'vue';
 const panelShow = ref(false)
 const togglePanel = () => {
     panelShow.value = !panelShow.value;
-    console.log('toggle', panelShow.value)
 }
 const currentTab = ref('style');
 

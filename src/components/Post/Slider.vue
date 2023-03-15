@@ -12,11 +12,11 @@ const current = ref(0)
 onMounted(() => {
     // @ts-ignore
     posts.value = window.iak.data.posts.filter(post => post.data.star)
-}),
+    limit.value = Math.min(post_slider.limit, posts.value.length);
+    posts.value.sort((a,b)=>a.data.star&&b.data.star&&a.data.star>b.data.star?1:-1);
+    posts.value.length = limit.value;
+});
 
-limit.value = Math.min(post_slider.limit, posts.value.length);
-posts.value.sort((a,b)=>a.data.star&&b.data.star&&a.data.star>b.data.star?1:-1);
-posts.value.length = limit.value;
 
 
 const prev = computed(() => (current.value - 1 + limit.value) % limit.value);
