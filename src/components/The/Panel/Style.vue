@@ -42,11 +42,11 @@ const styleHTML = computed(() => `
         --main-color-meta: ${styleConfig.value.themeColor};
         --base-radius: ${styleConfig.value.largeBorderRadius ? '16px' : '8px'};
         ${styleConfig.value.whiteCard ? '':`
-        --card-bg: var(--main-color);
+        --bg: var(--main-color);
         --card-tab-bg: var(--white-op);
         --card-text-color: var(--white-deep-op);
         --card-sub-text-color: var(--white-deep-op);
-        --card-inner: var(--white-op);
+        --card-bg: var(--white-op);
         --card-active: var(--white-deep-op);
         `}
     }

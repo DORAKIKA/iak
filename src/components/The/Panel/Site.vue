@@ -77,7 +77,7 @@ const mark = filterMarks[0];
 .panel-card{
     padding: var(--base-radius);
     border-radius: var(--base-radius);
-    background-color: var(--card-inner);
+    background-color: var(--card-bg);
 }
 .panel-title{
     font-weight: bold;
@@ -96,7 +96,7 @@ const mark = filterMarks[0];
     padding: 0.25em 0.75em;
     border-radius: 1em;
     height: fit-content;
-    background-color: var(--card-bg);
+    background-color: var(--bg);
     color: var(--card-sub-text-color);
     min-width: 3em;
     text-align: center;
@@ -104,7 +104,7 @@ const mark = filterMarks[0];
 }
 .tags .tag:hover{
     background-color: var(--card-active);
-    color: var(--card-bg);
+    color: var(--bg);
 }
 </style>
 

@@ -13,11 +13,11 @@
   --kk-texture-color: rgba(255,255,255,0.2);
 
   /* card */
-  --card-bg: #f4f5f7;
+  --bg: #f4f5f7;
   --card-tab-bg: #ecedef;
   --card-text-color: #23272b;
   --card-sub-text-color: #9ba0a5;
-  --card-inner: #ffffff;
+  --card-bg: #ffffff;
   --card-active: var(--main-color);
 
   --base-radius: 8px;

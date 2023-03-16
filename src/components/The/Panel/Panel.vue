@@ -63,7 +63,7 @@ window.iak.togglePanel = togglePanel
     min-height: 250px;
     padding: 1em 0.5em;
     border-radius: var(--base-radius);
-    background: var(--card-bg);
+    background: var(--bg);
     color: var(--card-text-color);
     box-shadow: 0.5vw 0.5vw 16px 0 rgba(0, 0, 0, 0.4);
     transition: 0.3s cubic-bezier(.34,.99,.6,1);
@@ -107,7 +107,7 @@ window.iak.togglePanel = togglePanel
     transition: 0.3s;
 }
 .panel-header .tab.active{
-    background-color: var(--card-inner);
+    background-color: var(--card-bg);
     color: var(--card-text-color);
 }
 .panel-container{
