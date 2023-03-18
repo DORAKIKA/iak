@@ -67,7 +67,7 @@ export const footer = {
 }
 
 export const post_slider = {
-    limit: 5
+    limit: 4
 }
 
 
@@ -101,7 +101,7 @@ export const theme = {
     },
     imageBackground: {
         default: false,
-        url: '/images/bg.webp',
+        url: 'https://img.dorakika.cn/dora/202209.png',
         // 继承：例如在文章页面，背景会继承文章封面图
         inherit: true
     },

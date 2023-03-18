@@ -53,6 +53,6 @@ window.iak.toggleSidebar = toggleSidebar
     transition: 0.3s;
 }
 .the-sidebar .menus .menu-item:hover{
-    background-color: var(--white-op);
+    background-color: var(--color-op);
 }
 </style>

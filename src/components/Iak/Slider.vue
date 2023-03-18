@@ -36,14 +36,14 @@ for(let i = props.min; i <= props.max; i+=props.step){
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    background: var(--card-inner);
+    background: var(--card-inner-bg);
 }
 .iak-slider .button{
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--card-inner);
-    box-shadow: 2px 1px 4px 0px rgba(0,0,0,0.2);
+    background: var(--card-inner-bg);
+    box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.3);
     cursor: pointer;
     transition: 0.3s;
 }

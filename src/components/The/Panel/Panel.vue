@@ -57,7 +57,7 @@ window.iak.togglePanel = togglePanel
     position: absolute;
     right: 3em;
     bottom: 2em;
-    width: 45vw;
+    width: 40vw;
     height: 60vh;
     min-width: 100px;
     min-height: 250px;
@@ -71,7 +71,7 @@ window.iak.togglePanel = togglePanel
     flex-direction: column;
     gap: 1em;
 }
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
     .the-panel__content{
         right: 6vw;
         width: 88vw;
@@ -84,7 +84,7 @@ window.iak.togglePanel = togglePanel
 }
 .tab-container{
     gap: 0.2em;
-    background: var(--card-tab-bg);
+    background: var(--card-inner-bg);
     padding: 4px;
     border-radius: var(--base-radius);
     min-width: 50%;
@@ -107,7 +107,7 @@ window.iak.togglePanel = togglePanel
     transition: 0.3s;
 }
 .panel-header .tab.active{
-    background-color: var(--card-inner);
+    background-color: var(--card-bg);
     color: var(--card-text-color);
 }
 .panel-container{

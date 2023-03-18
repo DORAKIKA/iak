@@ -31,8 +31,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <h2 v-if="twikoo_config.enabled" class="title">最近评论</h2>
-    <div v-if="twikoo_config.enabled" class="twikoo-recent">
+    <h2 class="title">最近评论</h2>
+    <div class="twikoo-recent">
         <a  class="comment-item" v-for="comment in comments" :key="comment.id" :href="comment.url" :title="comment.commentText">
             <img class="comment-item__avatar" :src="comment.avatar" alt="">
             <span class="comment-item__content">
@@ -66,13 +66,13 @@ onMounted(() => {
     max-width: 300px;
     display: flex;
     align-items: center;
-    background-color: var(--white-op);
+    background-color: var(--color-op);
     padding: var(--base-radius);
     border-radius: calc(2 * var(--base-radius));
     transition: 0.3s;
 }
 .comment-item:hover{
-    background-color: var(--white-deep-op);
+    background-color: var(--color-deep-op);
     color: var(--main-color);
 }
 .comment-item .comment-item__avatar{

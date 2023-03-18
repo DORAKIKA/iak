@@ -13,10 +13,15 @@ const default_style = {
     brightness: theme.brightness.default,
     headerFixed: theme.headerFixed.default,
     imageBackground: theme.imageBackground.default,
-    whiteCard: theme.whiteCard.default
+    darkMode: false,
 }
 
 const styleConfig = useLocalStorage('styleConfig', default_style)
+
+watch(() => styleConfig.value.darkMode, (darkMode) => {
+    // @ts-ignore
+    window.iak.toggleDarkMode(darkMode)
+}, {immediate: true})
 
 async function validate(){
     const schema = z.object({
@@ -25,7 +30,7 @@ async function validate(){
         brightness: z.number().min(theme.brightness.min).max(theme.brightness.max),
         headerFixed: z.boolean(),
         imageBackground: z.boolean(),
-        whiteCard: z.boolean()
+        darkMode: z.boolean()
     })
     try {
         styleConfig.value = await schema.parseAsync(styleConfig.value)
@@ -41,14 +46,7 @@ const styleHTML = computed(() => `
     :root{
         --main-color-meta: ${styleConfig.value.themeColor};
         --base-radius: ${styleConfig.value.largeBorderRadius ? '16px' : '8px'};
-        ${styleConfig.value.whiteCard ? '':`
-        --card-bg: var(--main-color);
-        --card-tab-bg: var(--white-op);
-        --card-text-color: var(--white-deep-op);
-        --card-sub-text-color: var(--white-deep-op);
-        --card-inner: var(--white-op);
-        --card-active: var(--white-deep-op);
-        `}
+
     }
     html{
         filter: brightness(${styleConfig.value.brightness})
@@ -65,7 +63,7 @@ const styleHTML = computed(() => `
             background-image: none;
             animation: none;
             background-size: unset;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.2);
         }
     ` : ''}
     ${styleConfig.value.headerFixed ? `
@@ -74,7 +72,8 @@ const styleHTML = computed(() => `
         }
         #header{
             position: fixed;
-            background: ${styleConfig.value.imageBackground ? 'rgba(0,0,0, 0.5)' : 'rgba(var(--main-color-meta), 0.9)'};
+            background: ${styleConfig.value.imageBackground ? 'var(--color-deep-op)' : 'rgba(var(--main-color-meta), 0.9)'};
+            color: ${styleConfig.value.imageBackground ? 'var(--color-deep-text)' : 'var(--color-deep-op)'};
             backdrop-filter: blur(4px);
             top: 0;
         }
@@ -114,8 +113,8 @@ useStyleTag(styleHTML)
                 <div class="value"><IakSwitch v-model:value="styleConfig.headerFixed"/></div>
             </div>
             <div class="style-item">
-                <div class="key">来点白色</div>
-                <div class="value"><IakSwitch v-model:value="styleConfig.whiteCard"/></div>
+                <div class="key">夜间模式</div>
+                <div class="value"><IakSwitch v-model:value="styleConfig.darkMode"/></div>
             </div>
             <div class="style-item">
                 <div class="key">图片背景</div>
