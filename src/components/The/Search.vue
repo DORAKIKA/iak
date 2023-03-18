@@ -149,7 +149,7 @@ window.iak.toggleSearch = toggleSearch
     width: 100%;
     height: 48px;
     line-height: 48px;
-    background-color: var(--white-op);
+    background-color: var(--color-op);
     color: var(--font-color);
     border: none;
     outline: none;
@@ -174,10 +174,10 @@ window.iak.toggleSearch = toggleSearch
     height: 8px;
 }
 .the-search .the-search-result::-webkit-scrollbar-thumb{
-    background-color: var(--white-op);
+    background-color: var(--color-op);
 }
 .the-search .search-result-item{
-    background-color: var(--white-op);
+    background-color: var(--color-op);
     border-radius: var(--base-radius);
     padding: var(--base-radius);
     text-decoration: none;

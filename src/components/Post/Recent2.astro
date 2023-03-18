@@ -1,12 +1,12 @@
 ---
-import PostCard from "@components/Post/Card.astro"
+import PostCard from "@components/Post/Card2.astro"
 import { getCollection } from "astro:content";
 const recentPosts = (await getCollection("posts")).sort((a,b) => {
     return a.data.date > b.data.date ? -1 : 1
 }).slice(0,6)
 ---
 
-<div class="post-recent">
+<div class="post-recent-2">
     <h2 class="title">最近文章</h2>
     <div class="post-list-container">
         {recentPosts.map(post => (
@@ -17,34 +17,25 @@ const recentPosts = (await getCollection("posts")).sort((a,b) => {
 
 <style>
     
-.post-recent{
+.post-recent-2{
     width: 100%;
     /* overflow: hidden; */
 }
-.post-recent>.title{
+.post-recent-2>.title{
+    color: white;
     font-size: 2rem;
     text-align: center;
 }
-.post-recent .post-list-container{
+.post-recent-2 .post-list-container{
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
+    /* gap: 1rem; */
 }
 </style>
 <style is:global>
 
-.post-recent .post-card{
-    width: calc(calc(100% - 2em) / 3);
-}
-@media (max-width: 1200px){
-    .post-recent .post-card{
-        width: calc(calc(100% - 1em) / 2);
-}
-}
-@media (max-width: 768px){
-    .post-recent .post-card{
-        width: 100%;
-    }
+.post-recent-2 .post-card{
+    width: 100%;
 }
 </style>

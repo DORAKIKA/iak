@@ -19,6 +19,13 @@ window.iak = {
             })
         }
     },
+    toggleDarkMode(flag){
+        if(flag){
+            document.documentElement.classList.add('dark');
+        }else{
+            document.documentElement.classList.remove('dark');
+        }
+    },
     // 默认函数，若相应组件内绑定失败，则使用此函数
     toggleStyle: defaultFunc('切换样式'),
     togglePanel: defaultFunc('切换面板'),

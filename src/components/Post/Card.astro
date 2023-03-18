@@ -3,31 +3,42 @@ const { post } = Astro.props
 
 ---
 
-<div class="post-card">
+<a class="post-card" href={`/post/${post.slug}`}  rel="prefetch">
     <div class="cover">
         <img src={post.data.cover} alt={post.data.title} class="cover-img" loading="lazy" />
         <span class="category">{post.data.category}</span>
     </div>
     
     <div class="meta">
-        <a href={`/post/${post.slug}`} class="title" rel="prefetch">{ post.data.title }</a>
+        <div class="title">{ post.data.title }</div>
         <div class="desc">{ post.data.description }</div>
     </div>
-</div>
+</a>
 
 <style>
+.post-card{
+    background-color: var(--color-deep-op);
+    /* padding: 1em; */
+    border-radius: var(--base-radius);
+    overflow: hidden;
+    border: 2px solid var(--card-border-color);
+    transition: 0.3s;
+    box-shadow: var(--card-shadow);
+    color: var(--card-text-color);
+}
+.post-card:is(:hover, :focus-within){
+    transform: translateY(-4px);
+    box-shadow: 0 12px 6px rgba(var(--main-color-meta), 0.2),var(--card-outline);
+    color: var(--main-color);
+    outline: none;
+}
 .post-card .cover{
     width: 100%;
     aspect-ratio: 2/1;
-    border: 4px solid rgba(255, 255, 255, 0.5);
-    border-radius: var(--base-radius);
+    /* border: 4px solid rgba(255, 255, 255, 0.5); */
     position: relative;
     overflow: hidden;
     transition: 0.3s;
-}
-.post-card:hover .cover{
-    border: 4px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
 }
 .post-card .cover-img{
     width: 100%;
@@ -39,14 +50,14 @@ const { post } = Astro.props
     top: 0.5rem;
     left: 0.5rem;
     border-radius: calc(0.75 * var(--base-radius));
-    background-color: var(--white-deep-op);
-    color: #232323;
+    background-color: var(--color-deep-op);
+    color: var(--color-deep-text);
     font-weight: bold;
     padding: 4px calc(0.75 * var(--base-radius));
     font-size: 0.7rem;
 }
 .post-card .meta{
-    color: white;
+    padding: 1em;
 }
 .post-card .title{
     display: inline-block;
@@ -55,17 +66,14 @@ const { post } = Astro.props
     line-height: 1.5;
     margin-top: 0.5rem;
     font-size: 1.25rem;
-    color: white;
+    /* color: white; */
     text-decoration: none;
-    transition: 0.3s;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.post-card .title:hover{
-    box-shadow: 0 2px white;
-}
 .post-card .desc{
+    font-weight: normal;
     line-height: 1.5;
     overflow: hidden;
     display: -webkit-box;

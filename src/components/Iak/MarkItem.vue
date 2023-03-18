@@ -20,14 +20,16 @@ const props = defineProps(['mark', 'group'])
     flex-grow: 1;
     border-radius: var(--base-radius);
     overflow: hidden;
-    box-shadow: 0 0 0 4px var(--white-op);
     position: relative;
     display: flex;
     transition: 0.3s;
-    color: var(--white-deep-op);
+    color: var(--color-deep-op);
+    border: 2px solid var(--card-border-color);
+    box-shadow: var(--card-shadow);
 }
 .mark-item:hover {
-    box-shadow: 0 0 0 4px var(--white-deep-op);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 6px rgba(var(--main-color-meta), 0.2), var(--card-outline);
 }
 .mark-item .poster{
     width: 100%;
@@ -61,7 +63,7 @@ const props = defineProps(['mark', 'group'])
 .mark-item .title{
     font-size: 1.2em;
     font-weight: 600;
-    color: var(--white-deep-op);
+    color: var(--color-deep-op);
 }
 .mark-item .time{
     font-size: 12px;

@@ -47,8 +47,6 @@ const injectAllPostString = 'iak.data.posts = ' + JSON.stringify(injectAllPost);
 
 <style>
 #header{
-    /* position: fixed; */
-    /* background-color: var(--main-color); */
     width: 100%;
     height: var(--header-height);
     padding: 0 var(--side-padding);
@@ -56,7 +54,7 @@ const injectAllPostString = 'iak.data.posts = ' + JSON.stringify(injectAllPost);
     justify-content: space-between;
     align-items: center;
     border-bottom: 4px solid rgba(255, 255, 255, 0.2);
-    color: rgba(255,255,255,0.8);
+    color: var(--color-deep-op);
     font-weight: bold;
     z-index: 200;
 }

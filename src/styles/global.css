@@ -8,19 +8,50 @@
 	--active-color: rgba(var(--active-color-meta), 1);
 
 	--font-color: rgba(255,255,255,0.8);
-  --white-deep-op: rgba(255,255,255,0.8);
-  --white-op: rgba(255,255,255,0.2);
+  --color-deep-op: rgba(255,255,255,0.8);
+  --color-op: rgba(255,255,255,0.2);
+  --color-deep-text: rgba(0,0,0,0.8);
+  --color-op-text: rgba(255,255,255,0.8);
   --kk-texture-color: rgba(255,255,255,0.2);
 
   /* card */
-  --bg: #f4f5f7;
+  --bg: #f7f9fe;
   --card-tab-bg: #ecedef;
   --card-text-color: #23272b;
   --card-sub-text-color: #9ba0a5;
   --card-bg: #ffffff;
+  --card-inner-bg: #f5f7f9;
   --card-active: var(--main-color);
-
+  --card-active-text: #ffffff;
+  --card-shadow-color: rgba(0,0,0,0.1);
+  --card-shadow: 1px 2px 8px var(--card-shadow-color);
+  --card-outline: 0 0 0 2px var(--main-color);
+  --card-border-color: #e3e8f7;
   --base-radius: 8px;
+}
+
+html.dark{
+  --font-color: rgba(0,0,0,0.8);
+  --kk-texture-color: rgba(0,0,0,0.2);
+
+  --color-op: rgba(0,0,0,0.2);
+  --color-deep-op: rgba(0,0,0,0.8);
+  --color-deep-text: rgba(255,255,255,0.8);
+  --color-op-text: rgba(0,0,0,0.8);
+
+  /* card */
+  --bg: #151617;
+  --card-tab-bg: #2b2b2b;
+  --card-text-color: #ffffff;
+  --card-sub-text-color: #9ba0a5;
+  --card-bg: #1e1e1e;
+  --card-inner-bg: #2a2a2a;
+  --card-active: var(--main-color);
+  --card-active-text: #ffffff;
+  --card-shadow-color: rgba(0,0,0,0.1);
+  --card-shadow: 1px 2px 8px var(--card-shadow-color);
+  --card-outline: 0 0 0 4px var(--main-color);
+  --card-border-color: #0c1530;
 }
 @media (max-width: 900px){
   :root{
@@ -38,10 +69,10 @@ html{
 ::-webkit-scrollbar{
   width: 4px;
   height: 4px;
-  background: var(--white-op);
+  background: var(--color-op);
 }
 ::-webkit-scrollbar-thumb{
-  background-color: var(--white-deep-op);
+  background-color: var(--color-deep-op);
 }
 body {
   margin: 0;
@@ -57,7 +88,7 @@ body {
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  color: var(--font-color);
+
   background-color: var(--main-color);
   background-image: url(/bg-zigzag.svg);
   animation: 60s linear -30s infinite alternate none running background-slide;
@@ -78,12 +109,12 @@ a{
   font-weight: 600;
 }
 svg.icon,img.icon {
-fill: currentColor;
-width: 1em;
-height: 1em;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
 }
 svg.icon path {
-fill: currentColor;
+  fill: currentColor;
 }
 
 

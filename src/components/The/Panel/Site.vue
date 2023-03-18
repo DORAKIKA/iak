@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // @ts-ignore
 import marks from "@content/mark/_index.yml"
-import MarkItem from "@components/Iak/MarkItem.vue";
 import { formatDateTime } from "src/tools/tools";
 // @ts-ignore
 const posts = iak.data.posts || [];
@@ -42,7 +41,7 @@ const mark = filterMarks[0];
 
 <template>
     <aside class="panel-site">
-        
+
         <section class="panel-card panel-tags">
             <h3 class="panel-title">TAGS</h3>
             <div class="tags">
@@ -77,7 +76,7 @@ const mark = filterMarks[0];
 .panel-card{
     padding: var(--base-radius);
     border-radius: var(--base-radius);
-    background-color: var(--card-bg);
+    background-color: var(--card-inner-bg);
 }
 .panel-title{
     font-weight: bold;
@@ -96,7 +95,7 @@ const mark = filterMarks[0];
     padding: 0.25em 0.75em;
     border-radius: 1em;
     height: fit-content;
-    background-color: var(--bg);
+    background-color: var(--card-bg);
     color: var(--card-sub-text-color);
     min-width: 3em;
     text-align: center;
@@ -104,7 +103,7 @@ const mark = filterMarks[0];
 }
 .tags .tag:hover{
     background-color: var(--card-active);
-    color: var(--bg);
+    color: var(--card-active-text);
 }
 </style>
 
@@ -151,7 +150,7 @@ const mark = filterMarks[0];
     font-size: 30px;
     opacity: 0;
     transition: 0.3s;
-    color: var(--white-deep-op);
+    color: var(--color-deep-op);
 }
 .mark-item:hover .poster__icon{
     opacity: 1;

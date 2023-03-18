@@ -76,12 +76,12 @@ const sliderClick = (num:number) => {
     display: flex;
     gap: 1rem;
     z-index: 2;
-    box-shadow: 0 0 0 2px white;
+    box-shadow: 0 0 0 2px var(--color-deep-op);
 }
 .post-slider .slider-container .slider-item{
     width: 1rem;
     height: 1rem;
-    border: 0.4rem solid white;
+    border: 0.4rem solid var(--color-deep-op);
     border-radius: 50%;
     transform: rotate(45deg);
     cursor: pointer;
@@ -105,7 +105,7 @@ const sliderClick = (num:number) => {
 .post-slider .article .cover{
     width: 50%;
     height: 100%;
-    border: 4px solid white;
+    border: 4px solid var(--color-deep-op);
     border-radius: var(--base-radius);
     object-fit: cover;
     /* position: absolute; */
@@ -115,7 +115,7 @@ const sliderClick = (num:number) => {
     width: 50%;
     height: 100%;
     padding: 0 2rem;
-    color: white;
+    color: var(--color-deep-op);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -146,8 +146,8 @@ const sliderClick = (num:number) => {
     }
 }
 .post-slider .article .category{
-    box-shadow: 0 0 0 2px white;
-    background: var(--white-op);
+    box-shadow: 0 0 0 2px var(--color-deep-op);
+    background: var(--color-op);
     padding: 4px 8px;
     border-radius: var(--base-radius);
     font-size: 0.5em;
@@ -156,14 +156,14 @@ const sliderClick = (num:number) => {
     display: inline-block;
     width: fit-content;
     padding: 2px 8px;
-    background: var(--white-op);
-    color: var(--white-deep-op);
+    background: var(--color-op);
+    color: var(--color-deep-op);
     border-radius: var(--base-radius);
     transition: 0.3s;
 }
 .post-slider .article .meta .tags .tag:is(:hover, :focus-within){
     color: var(--main-color);
-    background: var(--white-deep-op);
+    background: var(--color-deep-op);
 }
 .post-slider .article .meta .button{
     align-self: flex-end;

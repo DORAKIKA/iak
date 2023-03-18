@@ -66,13 +66,13 @@ onMounted(() => {
     max-width: 300px;
     display: flex;
     align-items: center;
-    background-color: var(--white-op);
+    background-color: var(--color-op);
     padding: var(--base-radius);
     border-radius: calc(2 * var(--base-radius));
     transition: 0.3s;
 }
 .comment-item:hover{
-    background-color: var(--white-deep-op);
+    background-color: var(--color-deep-op);
     color: var(--main-color);
 }
 .comment-item .comment-item__avatar{
