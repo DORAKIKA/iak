@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.3](///compare/v0.5.2...v0.5.3) (2023-03-18)
+
+
+### Features
+
+* 简陋的夜间模式、额外的文章卡片和轮播、一些样式修改 35009f5
+* css 修改 01733d6
+
+
+### Bug Fixes
+
+* 修复关闭twikoo时仍旧调用twikoo的问题 3bd457e
+
 ### [0.5.2](///compare/v0.5.1...v0.5.2) (2023-03-15)
 
 
