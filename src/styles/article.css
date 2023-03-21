@@ -6,7 +6,7 @@
 	border-radius: var(--base-radius);
 	/* font-size: 1rem; */
 	--font-color: #2d2d2d;
-	color: var(--font-color);
+	color: var(--card-text-color);
 }
 @media (max-width: 900px){
 	.article-block{
@@ -64,14 +64,26 @@ article h6{
     color: #0a0a0a;
 }
 article a{
-    color: var(--main-color);
-    transition: text-decoration-color 0.3s;
-    text-decoration-line: underline;
-    text-decoration-thickness: 3px;
-    text-decoration-color: transparent;
+    /* color: var(--main-color); */
+    font-weight: normal;
+    padding: 0 2px;
+    transition: 0.3s;
+    position: relative;
+    z-index: 1;
 }
-article a:is(:hover, :focus-within){
-    text-decoration-color: var(--main-color);
+article a::before{
+    content: '';
+    position: absolute;
+    top: 60%;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
+    background-color: rgba(var(--main-color-meta), 0.5);
+    z-index: -1;
+    transition: 0.3s;
+}
+article a:is(:hover, :focus-within)::before{
+    top: -3px;
 }
 article code:not(pre code){
     background-color: rgba(var(--main-color-meta), 0.15);
@@ -81,9 +93,10 @@ article code:not(pre code){
 }
 article blockquote{
     margin: 0.5em 0;
+    border: 1px solid rgba(var(--main-color-meta), 0.2);
     border-left: 4px solid rgba(var(--main-color-meta), 0.5);
     padding: 0.1rem 0 0.1rem 1rem;
-    background: rgba(var(--main-color-meta), 0.2);
+    background: rgba(var(--main-color-meta), 0.1);
     border-radius: var(--base-radius);
 }
 article .astro-code{
@@ -139,10 +152,23 @@ article table{
     border-color: rgba(var(--main-color-meta), 0.2);
     word-break: break-word;
 }
-article th, article td{
+article th{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: var(--base-radius);
+}
+article td{
     border: 1px solid rgba(0, 0, 0, 0.2);
     background-color: rgba(0, 0, 0, 0.02);
     padding: var(--base-radius);
+}
+article tr:hover{
+    background-color: rgba(var(--main-color-meta), 0.2);
+}
+article mark{
+    background-color: rgba(var(--main-color-meta), 0.5);
+    padding: 0.1em 0.2em;
+    filter: hue-rotate(180deg) brightness(1.2);
 }
 
 /* mdx */
