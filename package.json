@@ -1,6 +1,6 @@
 {
 	"name": "iak",
-	"version": "0.5.3",
+	"version": "0.6.0",
 	"license": "MIT",
 	"scripts": {
 		"dev": "astro dev",

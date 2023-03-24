@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](///compare/v0.5.3...v0.6.0) (2023-03-24)
+
+
+### Features
+
+* 添加页面与昨日书、首页添加近期碎片 48cd471
+* Markdown样式美化：链接，mark，引用 195f514
+* mdx组件自动导入 e37513a
+
 ### [0.5.3](///compare/v0.5.2...v0.5.3) (2023-03-18)
 
 
