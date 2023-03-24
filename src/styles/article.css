@@ -2,9 +2,9 @@
 	line-height: 2;
 	padding: 1rem 2rem;
 	margin: 2rem 0 0;
-	background: rgba(255, 255, 255, 0.9);
+	background: var(--card-bg);
 	border-radius: var(--base-radius);
-	/* font-size: 1rem; */
+    border: 3px solid var(--card-border-color);
 	--font-color: #2d2d2d;
 	color: var(--card-text-color);
 }
@@ -22,7 +22,7 @@ article h4>a,
 article h5>a,
 article h6>a
 {
-    color: #232323;
+    color: var(--card-text-color);
     text-decoration: none;
 }
 article h1,
@@ -36,32 +36,26 @@ article h6{
 article h1{
     font-size: 2em;
     margin: 1.25em 0 0.6em;
-    color: #0a0a0a;
 }
 article h2{
     font-size: 1.75rem;
     margin: 1.25em 0 0.6em;
-    color: #0a0a0a;
 }
 article h3{
     font-size: 1.5rem;
     margin: 1.25rem 0 1rem;
-    color: #0a0a0a;
 }
 article h4{
     font-size: 1.25rem;
     margin: 1rem 0 0.75rem;
-    color: #0a0a0a;
 }
 article h5{
     font-size: 1.1rem;
     margin: 1rem 0 0.75rem;
-    color: #0a0a0a;
 }
 article h6{
     font-size: 1rem;
     margin: 1rem 0 0.5rem;
-    color: #0a0a0a;
 }
 article a{
     /* color: var(--main-color); */
