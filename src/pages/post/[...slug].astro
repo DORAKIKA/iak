@@ -1,5 +1,6 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
+import Content from '@components/content/Content.astro';
 import { site, twikoo } from 'src/config';
 import Layout from '../../layouts/Layout.astro';
 import Twikoo from '@components/Third/Twikoo.astro';
@@ -18,7 +19,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'posts'>;
 
 const post = Astro.props;
-const { Content, headings } = await post.render();
+const { headings } = await post.render();
 const post_count = count(post.body);
 
 const keywords = post.data.tags?.concat([post.data.category??'']).join(',') || '';
@@ -79,7 +80,7 @@ const meta_og = generatePostOpenGraph(Astro, post);
 		</div>
 	</div>
 	<article id="post">
-		<Content />
+		<Content entry={post} />
 	</article>
 	<PostCopyright title={post.data.title} />
 	<Twikoo/>

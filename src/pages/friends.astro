@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro"
+import Content from "@components/content/Content.astro";
 import Twikoo from "@components/Third/Twikoo.astro"
 // @ts-ignore
 import friends from "../content/friends/_index.yml"
@@ -10,7 +11,6 @@ import { getEntryBySlug } from "astro:content";
 import { generateOpenGraph } from "src/tools/open_graph";
 
 const entry = await getEntryBySlug('friends', 'index');
-const { Content } = await entry.render();
 
 const page_meta = {
     title: '友情链接 | '+site.name,
@@ -26,11 +26,11 @@ const meta_og = generateOpenGraph(Astro, page_meta)
     meta_og={meta_og}
 >
     <article class="article-block">
-        <Content/>
+        <Content entry={entry}/>
     </article>
     <div id="friends">
         {friends.map((list:any) => (
-            <div class="friends-list">
+            <section class="friends-list">
                 <h2 class="list-name">{list.list_name}</h2>
                 <div class="list-card">
                     {list.list_data.map((friend:any) => (
@@ -44,12 +44,9 @@ const meta_og = generateOpenGraph(Astro, page_meta)
                         </a>
                     ))}
                 </div>
-            </div>
+            </section>
         )
         )}
-        <div class="list-card">
-            
-        </div>
     </div>
     <Twikoo />
 </Layout>

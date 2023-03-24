@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro"
 import { default_cover, site } from "src/config";
 import { getCollection } from "astro:content";
 import { generateOpenGraph } from "src/tools/open_graph";
+import Content from "@components/content/Content.astro"
 import '@styles/article.css'
 
 import SvgDate from '@components/Svg/Date.astro'
@@ -30,12 +31,11 @@ meta_og={meta_og}>
 <section id="memories-container">
     {
         memories.map(async (memory) => {
-            const { Content } = await memory.render();
             return (
                 <article class="article-block">
                     <h2 class="title">{memory.data.title}</h2>
                     
-                    <Content></Content>
+                    <Content entry={memory}></Content>
                     <div class="meta">
                         <span class="emoji">{memory.data.emoji}</span>
                         <time><SvgDate/><span>{memory.data.date.toLocaleDateString()}</span></time>
