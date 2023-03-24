@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import '@styles/article.css'
+
+const memories = (await getCollection("memories")).sort((a, b) => {
+    return b.data.date.getTime() - a.data.date.getTime();
+}).splice(0,5);
+
+---
+
+<section id="recent-memories">
+	<h2 class="title">近期碎片</h2>
+	<a href="/memories">
+		<ul class="recent-memories__container">
+			{memories.map((memory) => {
+				return (
+					<li class="recent-memories__item">
+						<div class="recent-memories__emoji">{memory.data.emoji}</div>
+						<div class="recent-memories__title">{memory.data.title}</div>
+						<div class="recent-memories__date">{memory.data.date.toLocaleDateString()}</div>
+					</li>
+				)
+			})}
+		</ul>
+	</a>
+</section>
+
+<style>
+#recent-memories {
+	margin: 1rem 0;
+}
+.title{
+	font-size: 2rem;
+	text-align:center;
+}
+#recent-memories .recent-memories__container {
+	background: var(--color-deep-op);
+	color: var(--card-text-color);
+	border-radius: var(--base-radius);
+	border: 2px solid var(--card-border-color);
+	list-style: none;
+	padding: 0;
+	transition: all 0.2s ease-in-out;
+}
+#recent-memories .recent-memories__container:hover{
+	color: var(--main-color);
+	translate: 0 -4px;
+}
+#recent-memories .recent-memories__item {
+	padding: 8px var(--base-radius);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.4em;
+	font-weight: normal;
+}
+#recent-memories .recent-memories__title {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+</style>

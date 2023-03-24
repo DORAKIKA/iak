@@ -2,6 +2,7 @@ import { site } from 'src/config';
 import { default_cover } from './../config';
 import { defineCollection, z } from 'astro:content';
 
+// 定义文章集合
 const posts = defineCollection({
 	schema: z.object({
 		// title：文章标题，必填
@@ -23,4 +24,17 @@ const posts = defineCollection({
 	}),
 });
 
-export const collections = { posts };
+// 定义记忆碎片集合
+const memories = defineCollection({
+	schema: z.object({
+		// 标题：爱写啥写啥
+		title: z.string().default(''),
+		// 记忆碎片日期,必填好吧！
+		date: z.date().or(z.string()).transform((date: string | Date) => typeof date === 'string' ? new Date(date) : date),
+		// 一些标签，方便分类
+		tags: z.array(z.string()).or(z.undefined()),
+		emoji: z.string().default('🤖'),
+	})
+})
+
+export const collections = { posts, memories };
