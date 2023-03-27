@@ -1,10 +1,12 @@
 ---
 import Tip from "./Tip.astro";
+import Pre from "./Pre.astro";
 const { entry } = Astro.props;
 
 const { Content } = await entry.render();
 ---
 
 <Content components = {{
-    Tip
+    Tip,
+    pre: Pre
 }}></Content>

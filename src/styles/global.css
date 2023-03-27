@@ -7,6 +7,10 @@
   --active-color-meta: 255, 85, 0;
 	--active-color: rgba(var(--active-color-meta), 1);
 
+  --red: 255, 95, 86;
+  --yellow: 255, 189, 46;
+  --green: 39, 201, 63;
+
 	--font-color: rgba(255,255,255,0.8);
   --color-deep-op: rgba(255,255,255,0.8);
   --color-op: rgba(255,255,255,0.2);
