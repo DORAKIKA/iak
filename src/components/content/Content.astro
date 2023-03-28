@@ -1,6 +1,7 @@
 ---
 import Tip from "./Tip.astro";
 import Pre from "./Pre.astro";
+import Img from "./Img.astro";
 const { entry } = Astro.props;
 
 const { Content } = await entry.render();
@@ -8,5 +9,6 @@ const { Content } = await entry.render();
 
 <Content components = {{
     Tip,
+    img: Img,
     pre: Pre
 }}></Content>

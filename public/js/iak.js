@@ -33,6 +33,11 @@ window.iak = {
     toggleSidebar: defaultFunc('切换侧边栏'),
 }
 
+window.addEventListener('DOMContentLoaded', function(){
+    // fancybox
+    Fancybox.bind("[data-fancybox]", {});
+})
+
 // 辅助函数
 function defaultFunc(msg){
     const func = function(){

@@ -1,0 +1,13 @@
+<a class="mdx-img" href={Astro.props.src} data-fancybox="gallery" data-caption={Astro.props.alt}>
+<img src={Astro.props.src} alt={Astro.props.alt}>
+</a>
+
+<style>
+/* 清除原md中a标签的样式 */
+.mdx-img {
+    position: static;
+}
+.mdx-img::before{
+    display: none;
+}
+</style>
