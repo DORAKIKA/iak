@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](///compare/v0.7.0...v0.7.1) (2023-04-01)
+
+
+### Bug Fixes
+
+* 修复误操作带来的样式bug 8b4109f
+* 页面头部布局填充 fca4da9
+
 ## [0.7.0](///compare/v0.6.0...v0.7.0) (2023-04-01)
 
 

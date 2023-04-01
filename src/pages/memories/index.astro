@@ -27,7 +27,7 @@ const meta_og = generateOpenGraph(Astro, page_meta)
 <Layout 
 page_meta={page_meta}
 meta_og={meta_og}>
-<h1>与昨日书</h1>
+<h1 slot="header">与昨日书</h1>
 <section id="memories-container">
     {
         memories.map(async (memory) => {
