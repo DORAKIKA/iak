@@ -46,7 +46,7 @@ const { className } = Astro.props
     line-height: 2;
     
 }
-.the-menu:is(::after, :focus-within)::after{
+.the-menu:is(:hover, :focus-within)::after{
     content: '';
     position: absolute;
     width: 100%;
