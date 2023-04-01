@@ -86,7 +86,7 @@ export const headings_depth = 3
 // 主题配置
 // 此配置只做选项与默认项，具体配置会读取用户浏览器的LocalStorage数据
 export const theme = {
-    main_colors: ['50, 201, 235','244,149,162', '144, 83, 144', '52, 175, 86', '47, 50, 55'],
+    main_colors: ['50, 201, 235','244,149,162', '144, 83, 144', '52, 175, 86'],
     large_border_radius: {
         default: true
     },
@@ -101,7 +101,7 @@ export const theme = {
     },
     imageBackground: {
         default: false,
-        url: 'https://img.dorakika.cn/dora/202209.png',
+        url: 'https://img.dorakika.cn/dora/201704_C.png',
         // 继承：例如在文章页面，背景会继承文章封面图
         inherit: true
     },

@@ -48,7 +48,6 @@ onMounted(() => {
 
 <style scoped>
 .title{
-    color: white;
     font-size: 2em;
     margin-bottom: 0.5em;
     text-align: center;
@@ -66,14 +65,16 @@ onMounted(() => {
     max-width: 300px;
     display: flex;
     align-items: center;
-    background-color: var(--color-op);
+    /* background-color: var(--color-op); */
+    background-color: var(--card-bg);
+    border: 2px solid var(--card-border-color);
     padding: var(--base-radius);
     border-radius: calc(2 * var(--base-radius));
     transition: 0.3s;
 }
 .comment-item:hover{
-    background-color: var(--color-deep-op);
-    color: var(--main-color);
+    background-color: var(--card-active);
+    color: var(--card-active-text);
 }
 .comment-item .comment-item__avatar{
     width: 2em;

@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
 <Layout
     page_meta={page_meta}
 >
-    <div id="mark-page">
+    <div slot="header">
         <h1 class="page-title">足迹</h1>
         <div class="group-nav">
             {
@@ -40,6 +40,8 @@ window.addEventListener('load', () => {
                 ))
             }
         </div>
+    </div>
+    <div id="mark-page">
         {marks.map((group: any, index: number) => (
             <div class={`mark-group ${group.type}${(index===0?' ':' hide')}`} data-group={group.name}>
                 {
@@ -54,7 +56,6 @@ window.addEventListener('load', () => {
 
 <style>
 .page-title{
-    margin: 2em 0;
     text-align: center;
 }
 .group-nav{
@@ -62,7 +63,6 @@ window.addEventListener('load', () => {
     justify-content: center;
     align-items: center;
     gap: 0.5em;
-    margin: 0.5em 0 1.5em 0;
 }
 .group-nav-item{
     background-color: var(--color-op);
@@ -78,6 +78,9 @@ window.addEventListener('load', () => {
 }
 .group-nav-input{
     display: none;
+}
+#mark-page{
+    padding: 4rem 0 0 0;
 }
 .mark-group {
     margin: 0 0 20px 0;

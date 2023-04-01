@@ -21,14 +21,14 @@ const { post } = Astro.props
     /* padding: 1em; */
     border-radius: var(--base-radius);
     overflow: hidden;
-    border: 2px solid var(--card-border-color);
+    border: 3px solid var(--card-border-color);
     transition: 0.3s;
-    box-shadow: var(--card-shadow);
+    /* box-shadow: var(--card-shadow); */
     color: var(--card-text-color);
 }
 .post-card:is(:hover, :focus-within){
     transform: translateY(-4px);
-    box-shadow: 0 12px 6px rgba(var(--main-color-meta), 0.2),var(--card-outline);
+    box-shadow: 0 12px 6px rgba(var(--main-color-meta), 0.2), var(--card-outline);
     color: var(--main-color);
     outline: none;
 }

@@ -19,7 +19,7 @@ const meta_og = generateOpenGraph(Astro, page_meta);
 	page_meta={page_meta}
 	meta_og={meta_og}
 >
-	<PostSlider client:load/>
+	<PostSlider slot="header" client:load/>
 	<PostRecent/>
 	<RecentMemories/>
 	{twikoo.enabled ? <TwikooRecent client:load/> : null}

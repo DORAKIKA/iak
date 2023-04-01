@@ -54,23 +54,24 @@ const styleHTML = computed(() => `
     ${styleConfig.value.imageBackground ? `
         html{
             --bg-image-url: url(${theme.imageBackground.url});
+        }
+        #header{
             background-image: ${theme.imageBackground.inherit ? 'var(--bg-image-url)' : 'url(' + theme.imageBackground.url + ')'};
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-        }
-        body{
-            background-image: none;
             animation: none;
-            background-size: unset;
-            background-color: rgba(0,0,0,0.2);
+        }
+        #header::before{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            content: '';
         }
     ` : ''}
     ${styleConfig.value.headerFixed ? `
-        body{
-            padding-top: var(--header-height);
-        }
-        #header{
+        #nav{
             position: fixed;
             background: ${styleConfig.value.imageBackground ? 'var(--color-deep-op)' : 'rgba(var(--main-color-meta), 0.9)'};
             color: ${styleConfig.value.imageBackground ? 'var(--color-deep-text)' : 'var(--color-deep-op)'};

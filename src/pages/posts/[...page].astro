@@ -26,7 +26,7 @@ const meta_og = generateOpenGraph(Astro, page_meta)
 	page_meta={page_meta}
 	meta_og={meta_og}
 >
-	<h1>文章归档 - {page.currentPage}</h1>
+	<h1 slot="header">文章归档 - {page.currentPage}</h1>
 	<section id="posts">
 		<div class="post-list">
 			<div class="post-container">
@@ -63,7 +63,7 @@ const meta_og = generateOpenGraph(Astro, page_meta)
 	flex: 1;
 	padding: 1em;
 	display: inline-block;
-	background: var(--color-op);
+	background: var(--card-bg);
 	border-radius: var(--base-radius);
 	transition: 0.3s;
 }
@@ -71,8 +71,8 @@ const meta_og = generateOpenGraph(Astro, page_meta)
 	text-align: right;
 }
 .pagination .paginate:is(:hover, :focus-within){
-	background: var(--color-deep-op);
-	color: var(--main-color);
+	background: var(--card-active);
+	color: var(--card-active-text);
 }
 </style>
 <style is:global>

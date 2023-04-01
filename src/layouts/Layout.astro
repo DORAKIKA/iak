@@ -24,7 +24,9 @@ const {
 
 	<body>
 		<script is:inline src="/js/iak.js"></script>
-		<TheHeader/>
+		<TheHeader>
+			<slot name="header"></slot>
+		</TheHeader>
 		<TheToolbar headings={headings}/>
         <main style="padding: 0 var(--side-padding)">
             <slot></slot>
