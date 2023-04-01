@@ -90,18 +90,22 @@ useStyleTag(styleHTML)
             <div class=" style-item style-theme-color">
                 <div class="label">主题色</div>
                 <div class="value">
-                    <div class="style-theme-color-item"
+                <label
                         v-for="tc in theme.main_colors"
-                        :key="tc"
-                        @click="styleConfig.themeColor=tc"
+                        :key="tc" class="style-theme-color-item"
                         :class="tc===styleConfig.themeColor?'active':''"
                         :style="`background: rgb(${tc});`"
-                    ></div>
+                >
+                    <input type="radio" name="themeColor"
+                        @click="styleConfig.themeColor=tc"
+                        :checked="tc===styleConfig.themeColor"
+                    />
+                </label>
                 </div>
             </div>
             <div class="style-item">
                 <div class="key">亮度</div>
-                <div class="value"><IakSlider :min="theme.brightness.min" :max="theme.brightness.max" :step="theme.brightness.step" v-model:value="styleConfig.brightness"/></div>
+                <div class="value"><IakSlider name="light" :min="theme.brightness.min" :max="theme.brightness.max" :step="theme.brightness.step" v-model:value="styleConfig.brightness"/></div>
             </div>
             <div class="style-item style-border-radius">
                 <div class="label">大圆角</div>
@@ -141,21 +145,26 @@ useStyleTag(styleHTML)
     align-items: center;
     justify-content: space-between;
 }
-.style-theme-color .value,
-.style-border-radius .value{
+.style-theme-color .value{
     display: flex;
     gap: 8px;
 }
-.style-theme-color .value .style-theme-color-item,
-.style-border-radius .value .style-border-radius-item{
+.style-theme-color .value .style-theme-color-item{
     width: 16px;
     height: 16px;
     border-radius: calc(0.5 * var(--base-radius));
     border: 3px solid rgba(255, 255, 255, 0.5);
     cursor: pointer;
 }
-.style-theme-color .value .style-theme-color-item.active,
-.style-border-radius .value .style-border-radius-item.active{
+.style-theme-color .value .style-theme-color-item:focus-within{
+    outline: 3px solid var(--main-color);
+}
+.style-theme-color .value .style-theme-color-item input{
+    position: absolute;
+    appearance: none;
+    opacity: 0;
+}
+.style-theme-color .value .style-theme-color-item.active{
     border: 4px solid rgba(255, 255, 255, 0.7);
 }
 

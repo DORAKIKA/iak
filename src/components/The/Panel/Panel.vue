@@ -5,7 +5,11 @@ import { ref } from 'vue';
 
 
 const panelShow = ref(false)
-const togglePanel = () => {
+const togglePanel = (flag?: boolean) => {
+    if(flag !== undefined){
+        panelShow.value = flag;
+        return;
+    }
     panelShow.value = !panelShow.value;
 }
 const currentTab = ref('style');
@@ -21,7 +25,7 @@ window.iak.togglePanel = togglePanel
     
 <teleport to='body'>
     <transition name="from-rt">
-        <div class="the-panel__wrapper" v-show="panelShow" @click.self="togglePanel()">
+        <div class="the-panel__wrapper" v-show="panelShow" @click.self="togglePanel()" @keydown.escape="togglePanel(false)">
             <aside class="the-panel__content">
                 <header class="panel-header">
                     <div class="tab-container">

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 // import { ParsedContent } from '@nuxt/content/dist/runtime/types';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import type{  CollectionEntry } from 'astro:content';
 import { post_slider } from 'src/config';
+import { useDebounceFn, useThrottleFn } from '@vueuse/shared';
 
 // const posts = ref<CollectionEntry<"posts">[]>()
 const posts = ref<CollectionEntry<"posts">[]>([])
@@ -18,7 +19,7 @@ onMounted(() => {
 });
 
 
-
+const postsScroll = ref<HTMLElement>();
 const prev = computed(() => (current.value - 1 + limit.value) % limit.value);
 const next = computed(() => (current.value + 1) % limit.value);
 const handlePrev = () => current.value = prev.value;
@@ -26,27 +27,57 @@ const handleNext = () => current.value = next.value;
 const sliderClick = (num:number) => {
     current.value = num
 }
+let prevLeft: number;
+onMounted(() => {
+    prevLeft = postsScroll.value?.scrollLeft || 0;
+    postsScroll.value?.addEventListener('scroll', () => {
+        if(!postsScroll.value) return;
+        const { scrollLeft, offsetWidth } = postsScroll.value;
+        
+        if (scrollLeft < prevLeft) {
+            if (scrollLeft + 1 < offsetWidth * current.value) {
+                handlePrev();
+            }
+        } else if(scrollLeft > prevLeft) {
+            if (scrollLeft - 1 > offsetWidth * current.value) {
+                handleNext();
+            }
+        }
+        console.log(prevLeft, scrollLeft, offsetWidth, current.value)
+        prevLeft = scrollLeft;
+        
+    })
+})
+watch(current, () => {
+    postsScroll.value?.scrollTo({
+        left: current.value * postsScroll.value.offsetWidth,
+        behavior: 'smooth'
+    })
+})
 </script>
 
 <template>
     <div class="post-slider">
-        <div
-            v-for="article,index in posts"
-            :key="article.slug"
-            class="article"
-            :class="{prev: index===prev, next: index === next, current: index === current}"
-            :style="`transform: translateX(${(index - current)*100}%)`"
-        >
-            <img :src="article.data.cover" alt="" class="cover" loading="lazy">
-            <div class="meta">
-                <div class="title">{{ article.data.title }}
-            <span class="category">{{article.data.category}}</span></div>
-                <div class="tags">
-                    <a :href="`/tag/${tag}`" rel="nofollow" class="tag" v-for="tag in article.data.tags">#{{tag}}</a>
+        <div class="posts-container" ref="postsScroll">
+        <div class="posts-scroll-container">
+            <div
+                v-for="article,index in posts"
+                :key="article.slug"
+                class="article"
+                :class="{prev: index===prev, next: index === next, current: index === current}"
+            >
+                <img :src="article.data.cover" alt="" class="cover" loading="lazy">
+                <div class="meta">
+                    <div class="title">{{ article.data.title }}
+                <span class="category">{{article.data.category}}</span></div>
+                    <div class="tags">
+                        <a :href="`/tag/${tag}`" rel="nofollow" class="tag" v-for="tag in article.data.tags">#{{tag}}</a>
+                    </div>
+                    <p class="desc">{{ article.data.description }}</p>
+                    <a :href="`/post/${article.slug}`" class="button" rel="prefetch" :title="article.data.title">GO<span style="display:inline-block;opacity:0;font-size:0;">{{ article.data.title }}</span></a>
                 </div>
-                <p class="desc">{{ article.data.description }}</p>
-                <a :href="`/post/${article.slug}`" class="button" rel="prefetch" :title="article.data.title">GO<span style="display:inline-block;opacity:0;font-size:0;">{{ article.data.title }}</span></a>
             </div>
+        </div>  
         </div>
         <div class="slider-container">
             <div class="slider-item" v-for="slider,index in posts" :key="index" @click="sliderClick(index)" :class="{active: index === current}"></div>
@@ -60,7 +91,6 @@ const sliderClick = (num:number) => {
     height: 22vw;
     min-height: 300px;
     margin: 3rem 0 1rem;
-    /* background-color: var(--main-color); */
     position: relative;
     display: flex;
     justify-content: center;
@@ -91,10 +121,24 @@ const sliderClick = (num:number) => {
     border-width: 0.3rem;
     border-radius: 0 50% 50% 50%;
 }
-.post-slider .article{
-    padding: 0 0 2rem;
-    position: absolute;
+.post-slider .posts-container{
     width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-x: scroll;
+}
+.post-slider .posts-container::-webkit-scrollbar{
+    display: none;
+}
+.post-slider .posts-scroll-container{
+    width: max-content;
+    height: 100%;
+    display: flex;
+}
+.post-slider .article{
+    float: left;
+    padding: 0 0 2rem;
+    width: calc(100vw - 2 * var(--side-padding));
     height: 100%;
     transition: 0.3s;
     display: flex;

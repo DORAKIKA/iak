@@ -4,6 +4,7 @@ interface SliderProps{
     max: number,
     step: number,
     value: number,
+    name: string,
 }
 const props = defineProps<SliderProps>();
 const emits = defineEmits<{
@@ -19,13 +20,15 @@ for(let i = props.min; i <= props.max; i+=props.step){
 
 <template>
     <div class="iak-slider">
-        <div class="button"
-        v-for="value in values"
-        :key="value"
-        :title="value.toString()"
-        @click="() => emits('update:value', value)"
-        :class="value === props.value ? 'active' : ''"
-        ></div>
+        <label class="button"
+            v-for="value in values"
+            :key="value"
+            :title="value.toString()"
+            @click="() => emits('update:value', value)"
+            :class="value === props.value ? 'active' : ''"
+        >
+            <input type="radio" :name="name" :checked="props.value === value"/>
+        </label>
     </div>
 </template>
 
@@ -38,6 +41,11 @@ for(let i = props.min; i <= props.max; i+=props.step){
     gap: 8px;
     background: var(--card-inner-bg);
 }
+.iak-slider input{
+    appearance: none;
+    position: absolute;
+    opacity: 0;
+}
 .iak-slider .button{
     width: 12px;
     height: 12px;
@@ -47,9 +55,13 @@ for(let i = props.min; i <= props.max; i+=props.step){
     cursor: pointer;
     transition: 0.3s;
 }
+.iak-slider .button:focus-within{
+    outline: 3px solid var(--card-active);
+}
 .iak-slider .button.active{
     width: 16px;
     height: 16px;
     background: var(--card-active);
+    border: 3px solid rgba(255,255,255,0.5);
 }
 </style>

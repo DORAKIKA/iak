@@ -1,64 +1,134 @@
 ---
-import TheMenus from "./Menus.astro"
+import TheMenus from "./Menus.astro";
 import { site } from "src/config";
 import { getCollection } from "astro:content";
 
+const articles = await getCollection("posts");
 
-const articles = await getCollection("posts")
-
-const injectAllPost = articles.map(post => ({
-    url: `/post/${post.slug}`,
-    slug: post.slug,
-    ...post.data,
-    data: post.data
-}))
-const injectAllPostString = 'iak.data.posts = ' + JSON.stringify(injectAllPost);
-
+const injectAllPost = articles.map((post) => ({
+  url: `/post/${post.slug}`,
+  slug: post.slug,
+  ...post.data,
+  data: post.data,
+}));
+const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
 ---
+
 <script set:html={injectAllPostString}></script>
 
 <nav id="nav">
-    <a href="/" class="site-home" rel="prefetch" style={`background-image: url('${site.favicon}')`} title={site.name}>
-        {site.name}
-    </a>
-    <ul class="nav-buttons">
-        <TheMenus className="nav-button menu-button" />
-        
-        <li class="nav-button" onclick="window.iak.randomPage()" title="随机文章">
-            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4263" width="32" height="32"><path d="M1009.942 718.058c18.746 18.746 18.746 49.138 0 67.882l-160 159.968c-30.02 30.02-81.942 8.98-81.942-33.942V832h-117.57a24.008 24.008 0 0 1-17.546-7.624l-141.112-151.192 106.666-114.286L704 672h64v-79.962c0-42.876 51.886-63.996 81.942-33.942l160 159.962zM24 352h168l105.562 113.102 106.666-114.286-141.112-151.192A23.998 23.998 0 0 0 245.57 192H24c-13.254 0-24 10.746-24 24v112c0 13.254 10.746 24 24 24z m744 0v79.968c0 42.92 51.922 63.96 81.942 33.942l160-159.968c18.746-18.746 18.746-49.138 0-67.882l-160-159.962C819.886 48.042 768 69.164 768 112.038V192h-117.57a24.008 24.008 0 0 0-17.546 7.624L192 672H24c-13.254 0-24 10.746-24 24v112c0 13.254 10.746 24 24 24h221.57c6.652 0 13.006-2.762 17.546-7.624L704 352h64z" p-id="4264"></path></svg>
-        </li>
-        <li class="nav-button" title="站点面板" onclick="window.iak.togglePanel()">
-            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16624"><path d="M910.222222 484.864H113.777778a56.888889 56.888889 0 0 1-56.888889-56.888889V140.913778a56.888889 56.888889 0 0 1 56.888889-56.888889h796.444444a56.888889 56.888889 0 0 1 56.888889 56.888889v287.004444a56.888889 56.888889 0 0 1-56.888889 56.945778z m-739.555555-113.777778h682.666666V197.802667H170.666667v173.283555zM910.222222 947.541333H113.777778a56.888889 56.888889 0 0 1-56.888889-56.888889v-287.004444a56.888889 56.888889 0 0 1 56.888889-56.888889h796.444444a56.888889 56.888889 0 0 1 56.888889 56.888889v287.004444a56.888889 56.888889 0 0 1-56.888889 56.888889z m-739.555555-113.777777h682.666666v-173.226667H170.666667v173.226667z" fill="#59677C" p-id="16625"></path><path d="M399.416889 335.644444H296.277333a51.2 51.2 0 0 1 0-102.4h103.139556a51.2 51.2 0 0 1 0 102.4zM399.416889 798.321778H296.277333a51.2 51.2 0 0 1 0-102.4h103.139556a51.2 51.2 0 0 1 0 102.4z" p-id="16626"></path></svg>
-        </li>
-        <li class="nav-button" onclick="window.iak.toggleSearch()" title="搜索">
-            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5314" width="128" height="128">
-                <path d="M1005.312 914.752l-198.528-198.464A448 448 0 1 0 0 448a448 448 0 0 0 716.288 358.784l198.4 198.4a64 64 0 1 0 90.624-90.432zM448 767.936A320 320 0 1 1 448 128a320 320 0 0 1 0 640z" p-id="5315"></path>
-            </svg>
-        </li>
-        <li class="nav-button sidebar-toggle" onclick="window.iak.toggleSidebar()" title="菜单">
-            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10746" width="32" height="32"><path d="M950.848 768l0 73.152q0 14.848-10.848 25.728t-25.728 10.848l-804.576 0q-14.848 0-25.728-10.848t-10.848-25.728l0-73.152q0-14.848 10.848-25.728t25.728-10.848l804.576 0q14.848 0 25.728 10.848t10.848 25.728zM950.848 475.424l0 73.152q0 14.848-10.848 25.728t-25.728 10.848l-804.576 0q-14.848 0-25.728-10.848t-10.848-25.728l0-73.152q0-14.848 10.848-25.728t25.728-10.848l804.576 0q14.848 0 25.728 10.848t10.848 25.728zM950.848 182.848l0 73.152q0 14.848-10.848 25.728t-25.728 10.848l-804.576 0q-14.848 0-25.728-10.848t-10.848-25.728l0-73.152q0-14.848 10.848-25.728t25.728-10.848l804.576 0q14.848 0 25.728 10.848t10.848 25.728z" p-id="10747"></path></svg>
-        </li>
-    </ul>
+  <a
+    href="/"
+    class="site-home"
+    rel="prefetch"
+    style={`background-image: url('${site.favicon}')`}
+    title={site.name}
+  >
+    {site.name}
+  </a>
+  <ul class="nav-buttons">
+    <TheMenus className="nav-button menu-button" />
+
+    <li class="nav-button" onclick="window.iak.randomPage()" title="随机文章">
+      <button class="nav-button-core">
+        <svg
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="4263"
+          width="32"
+          height="32"
+          ><path
+            d="M1009.942 718.058c18.746 18.746 18.746 49.138 0 67.882l-160 159.968c-30.02 30.02-81.942 8.98-81.942-33.942V832h-117.57a24.008 24.008 0 0 1-17.546-7.624l-141.112-151.192 106.666-114.286L704 672h64v-79.962c0-42.876 51.886-63.996 81.942-33.942l160 159.962zM24 352h168l105.562 113.102 106.666-114.286-141.112-151.192A23.998 23.998 0 0 0 245.57 192H24c-13.254 0-24 10.746-24 24v112c0 13.254 10.746 24 24 24z m744 0v79.968c0 42.92 51.922 63.96 81.942 33.942l160-159.968c18.746-18.746 18.746-49.138 0-67.882l-160-159.962C819.886 48.042 768 69.164 768 112.038V192h-117.57a24.008 24.008 0 0 0-17.546 7.624L192 672H24c-13.254 0-24 10.746-24 24v112c0 13.254 10.746 24 24 24h221.57c6.652 0 13.006-2.762 17.546-7.624L704 352h64z"
+            p-id="4264"></path></svg
+        >
+      </button>
+    </li>
+    <li class="nav-button" title="站点面板" onclick="window.iak.togglePanel()">
+      <button class="nav-button-core">
+        <svg
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="16624"
+          ><path
+            d="M910.222222 484.864H113.777778a56.888889 56.888889 0 0 1-56.888889-56.888889V140.913778a56.888889 56.888889 0 0 1 56.888889-56.888889h796.444444a56.888889 56.888889 0 0 1 56.888889 56.888889v287.004444a56.888889 56.888889 0 0 1-56.888889 56.945778z m-739.555555-113.777778h682.666666V197.802667H170.666667v173.283555zM910.222222 947.541333H113.777778a56.888889 56.888889 0 0 1-56.888889-56.888889v-287.004444a56.888889 56.888889 0 0 1 56.888889-56.888889h796.444444a56.888889 56.888889 0 0 1 56.888889 56.888889v287.004444a56.888889 56.888889 0 0 1-56.888889 56.888889z m-739.555555-113.777777h682.666666v-173.226667H170.666667v173.226667z"
+            fill="#59677C"
+            p-id="16625"></path><path
+            d="M399.416889 335.644444H296.277333a51.2 51.2 0 0 1 0-102.4h103.139556a51.2 51.2 0 0 1 0 102.4zM399.416889 798.321778H296.277333a51.2 51.2 0 0 1 0-102.4h103.139556a51.2 51.2 0 0 1 0 102.4z"
+            p-id="16626"></path></svg
+        >
+      </button>
+    </li>
+    <li class="nav-button" onclick="window.iak.toggleSearch()" title="搜索">
+      <button class="nav-button-core">
+        <svg
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="5314"
+          width="128"
+          height="128"
+        >
+          <path
+            d="M1005.312 914.752l-198.528-198.464A448 448 0 1 0 0 448a448 448 0 0 0 716.288 358.784l198.4 198.4a64 64 0 1 0 90.624-90.432zM448 767.936A320 320 0 1 1 448 128a320 320 0 0 1 0 640z"
+            p-id="5315"></path>
+        </svg></button
+      >
+    </li>
+    <li
+      class="nav-button sidebar-toggle"
+      onclick="window.iak.toggleSidebar()"
+      title="菜单"
+    >
+      <button class="nav-button-core">
+        <svg
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="10746"
+          width="32"
+          height="32"
+          ><path
+            d="M950.848 768l0 73.152q0 14.848-10.848 25.728t-25.728 10.848l-804.576 0q-14.848 0-25.728-10.848t-10.848-25.728l0-73.152q0-14.848 10.848-25.728t25.728-10.848l804.576 0q14.848 0 25.728 10.848t10.848 25.728zM950.848 475.424l0 73.152q0 14.848-10.848 25.728t-25.728 10.848l-804.576 0q-14.848 0-25.728-10.848t-10.848-25.728l0-73.152q0-14.848 10.848-25.728t25.728-10.848l804.576 0q14.848 0 25.728 10.848t10.848 25.728zM950.848 182.848l0 73.152q0 14.848-10.848 25.728t-25.728 10.848l-804.576 0q-14.848 0-25.728-10.848t-10.848-25.728l0-73.152q0-14.848 10.848-25.728t25.728-10.848l804.576 0q14.848 0 25.728 10.848t10.848 25.728z"
+            p-id="10747"></path></svg
+        >
+      </button>
+    </li>
+  </ul>
 </nav>
 <header id="header" class="the-header">
-    <slot></slot>
-    <section class="header-wave">
-        <svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-            <defs>
-                <path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path>
-            </defs>
-            <g class="parallax">
-                <use href="#gentle-wave" x="48" y="0"></use>
-                <use href="#gentle-wave" x="48" y="3"></use>
-                <use href="#gentle-wave" x="48" y="5"></use>
-                <use href="#gentle-wave" x="48" y="7"></use>
-            </g>
-        </svg>
-    </section>
+  <slot />
+  <section class="header-wave">
+    <svg
+      class="waves-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 24 150 28"
+      preserveAspectRatio="none"
+      shape-rendering="auto"
+    >
+      <defs>
+        <path
+          id="gentle-wave"
+          d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"
+        ></path>
+      </defs>
+      <g class="parallax">
+        <use href="#gentle-wave" x="48" y="0"></use>
+        <use href="#gentle-wave" x="48" y="3"></use>
+        <use href="#gentle-wave" x="48" y="5"></use>
+        <use href="#gentle-wave" x="48" y="7"></use>
+      </g>
+    </svg>
+  </section>
 </header>
 
 <style>
-#header{
+  #header {
     --wave-height: 70px;
     padding: var(--header-height) var(--side-padding) var(--wave-height);
     min-height: 500px;
@@ -74,51 +144,51 @@ const injectAllPostString = 'iak.data.posts = ' + JSON.stringify(injectAllPost);
     justify-content: center;
     align-items: center;
     color: var(--color-deep-op);
-}
-#header .header-wave{
+  }
+  #header .header-wave {
     overflow: hidden;
     position: absolute;
     bottom: 0;
     width: 100%;
     height: var(--wave-height);
-}
-.waves-svg{
+  }
+  .waves-svg {
     width: 100%;
     height: var(--wave-height);
     fill: var(--bg);
-}
-.parallax > use {
-  animation: move-forever 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-}
-.parallax > use:nth-child(1) {
-  animation-delay: -1s;
-  animation-duration: 7s;
-  opacity: 0.5;
-}
-.parallax > use:nth-child(2) {
-  animation-delay: -2s;
-  animation-duration: 10s;
-  opacity: 0.6;
-}
-.parallax > use:nth-child(3) {
-  animation-delay: -3s;
-  animation-duration: 13s;
-  opacity: 0.7;
-}
-.parallax > use:nth-child(4) {
-  animation-delay: -4s;
-  animation-duration: 20s;
-}
+  }
+  .parallax > use {
+    animation: move-forever 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -1s;
+    animation-duration: 7s;
+    opacity: 0.5;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -2s;
+    animation-duration: 10s;
+    opacity: 0.6;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -3s;
+    animation-duration: 13s;
+    opacity: 0.7;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -4s;
+    animation-duration: 20s;
+  }
 
-@keyframes move-forever {
-  0% {
-    transform: translate3d(-90px, 0, 0);
+  @keyframes move-forever {
+    0% {
+      transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+      transform: translate3d(85px, 0, 0);
+    }
   }
-  100% {
-    transform: translate3d(85px, 0, 0);
-  }
-}
-#nav{
+  #nav {
     position: absolute;
     width: 100%;
     height: var(--header-height);
@@ -130,36 +200,36 @@ const injectAllPostString = 'iak.data.posts = ' + JSON.stringify(injectAllPost);
     color: var(--color-deep-op);
     font-weight: bold;
     z-index: 200;
-}
-#nav .site-home{
+  }
+  #nav .site-home {
     width: 28px;
     height: 28px;
     font-size: 0;
     background-size: cover;
     background-position: center;
-}
-#nav .site-home img{
+  }
+  #nav .site-home img {
     width: 100%;
     height: 100%;
-}
-#nav .nav{
+  }
+  #nav .nav {
     flex: 1;
     display: flex;
     justify-content: flex-end;
-}
-#nav .nav-links{
+  }
+  #nav .nav-links {
     display: flex;
     gap: 40px;
     list-style: none;
     line-height: 2;
-}
+  }
 
-#nav .nav-buttons{
+  #nav .nav-buttons {
     display: flex;
     align-items: center;
     gap: 4px;
-}
-#nav .nav-button{
+  }
+  #nav .nav-button {
     width: 36px;
     height: 36px;
     border-radius: var(--base-radius);
@@ -168,25 +238,38 @@ const injectAllPostString = 'iak.data.posts = ' + JSON.stringify(injectAllPost);
     align-items: center;
     cursor: pointer;
     transition: 0.3s;
-}
-#nav .nav-button:hover{
+  }
+  #nav .nav-button:is(:hover, :focus-within) {
     color: var(--main-color);
     background: rgba(255, 255, 255, 0.8);
-}
-#nav .nav-button .icon{
+  }
+  #nav .nav-button-core{
+    border: none;
+    outline: none;
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    border-radius: var(--base-radius);
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  #nav .nav-button .icon {
     width: 18px;
     height: 18px;
-}
+  }
 
-#nav .sidebar-toggle{
+  #nav .sidebar-toggle {
     display: none;
-}
-@media (max-width: 900px){
-    #nav .menu-button{
-        display: none;
+  }
+  @media (max-width: 900px) {
+    #nav .menu-button {
+      display: none;
     }
-    #nav .sidebar-toggle{
-        display: flex;
+    #nav .sidebar-toggle {
+      display: flex;
     }
-}
+  }
 </style>
