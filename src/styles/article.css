@@ -63,6 +63,7 @@ article a{
     padding: 0 2px;
     transition: 0.3s;
     position: relative;
+    white-space: nowrap;
     z-index: 1;
 }
 article a::before{
@@ -188,9 +189,7 @@ article details summary{
     transition: 0.3s;
 }
 article details:is(:hover, :focus-within) summary{
-    background: rgba(var(--main-color-meta), 0.7);
-    color: var(--color-deep-op);
-    outline: none;
+    background: rgba(var(--main-color-meta), 0.5);
 }
 article details:is([open]) summary{
     background: var(--main-color);

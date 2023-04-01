@@ -40,7 +40,7 @@ const page_meta = {
 <Layout
     page_meta={page_meta}
 >
-    <h1>{ tag }</h1>
+    <h1 slot="header">{ '标签：' + tag }</h1>
     <section id="posts">
         <div class="post-container">
             {page.data.map((post: CollectionEntry<"posts">) => (

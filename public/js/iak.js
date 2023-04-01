@@ -33,7 +33,12 @@ window.iak = {
     toggleSidebar: defaultFunc('切换侧边栏'),
 }
 
+window.addEventListener('DOMContentLoaded', function(){
+    // fancybox
+    Fancybox.bind("[data-fancybox]", {});
+})
 
+// 辅助函数
 function defaultFunc(msg){
     const func = function(){
         if(SnackBar){
@@ -47,4 +52,19 @@ function defaultFunc(msg){
     }
     func.type = 'default';
     return func
+}
+
+// 取消全屏
+function cancelFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }else{
+        console.log('退出全屏失败')
+    }
 }

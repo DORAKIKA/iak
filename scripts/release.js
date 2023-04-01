@@ -31,7 +31,7 @@ async function main(){
     const { yes } = await prompt({
         type: 'confirm',
         name: 'yes',
-        message: 'Are you sure you want to release as v'+versionIncrements[versionIncrements.findIndex(i => i.name === release)].version+'?'
+        message: 'Are you sure you want to release as v'+versionIncrements[versionIncrements.findIndex(i => i.name === release)].version.join('.')+'?'
     })
 
     if(yes){

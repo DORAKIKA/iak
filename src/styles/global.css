@@ -7,6 +7,10 @@
   --active-color-meta: 255, 85, 0;
 	--active-color: rgba(var(--active-color-meta), 1);
 
+  --red: 255, 95, 86;
+  --yellow: 255, 189, 46;
+  --green: 39, 201, 63;
+
 	--font-color: rgba(255,255,255,0.8);
   --color-deep-op: rgba(255,255,255,0.8);
   --color-op: rgba(255,255,255,0.2);
@@ -25,8 +29,9 @@
   --card-active-text: #ffffff;
   --card-shadow-color: rgba(0,0,0,0.1);
   --card-shadow: 1px 2px 8px var(--card-shadow-color);
-  --card-outline: 0 0 0 2px var(--main-color);
+  --card-outline: 0 0 0 3px var(--main-color);
   --card-border-color: #e3e8f7;
+  --card-border: 3px solid var(--card-border-color);
   --base-radius: 8px;
 }
 
@@ -51,7 +56,7 @@ html.dark{
   --card-shadow-color: rgba(0,0,0,0.1);
   --card-shadow: 1px 2px 8px var(--card-shadow-color);
   --card-outline: 0 0 0 4px var(--main-color);
-  --card-border-color: #0c1530;
+  --card-border-color: #2e2e2e;
 }
 @media (max-width: 900px){
   :root{
@@ -61,6 +66,15 @@ html.dark{
 * {
   box-sizing: border-box;
 }
+/* a:focus-within,
+button:focus-within,
+input:focus-within,
+textarea:focus-within,
+select:focus-within,
+summary:focus-within,
+label:focus-within{
+  outline: 3px solid var(--main-color);
+} */
 html{
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
@@ -82,19 +96,20 @@ body {
     "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK",
     "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
   font-size: 16px;
-  color: var(--font-color);
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
 
-  background-color: var(--main-color);
+  /* background-color: var(--main-color);
   background-image: url(/bg-zigzag.svg);
   animation: 60s linear -30s infinite alternate none running background-slide;
   background-size: 1500px;
   line-height: 1.5;
-  transition: background 0.3s;
+  transition: background 0.3s; */
+  background-color: var(--bg);
+  color: var(--card-text-color);
 }
 @keyframes background-slide{
   from{

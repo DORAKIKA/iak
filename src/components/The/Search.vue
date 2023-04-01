@@ -31,9 +31,11 @@ const searchShow = ref(false)
 // const toggleSearch = useToggle(searchShow)
 const toggleSearch = (value:boolean|undefined) => {
     if(value !== undefined){
-        return searchShow.value = value
+        searchShow.value = value
+    }else{
+        searchShow.value = !searchShow.value
     }
-    return searchShow.value = !searchShow.value
+    return ;
 }
 
 query({target:{value:''}})
@@ -52,7 +54,7 @@ window.iak.toggleSearch = toggleSearch
                     </svg>
                 </div>
                 <div class="the-search">
-                    <input name="searchInput" class="the-search-input" type="text" v-model="state.searchInput" @keydown.enter="onSearch">
+                    <input name="searchInput" autofocus class="the-search-input" type="text" v-model="state.searchInput" @keydown.enter="onSearch">
                     <label for="searchInput" class="enter-emoji">↩️</label>
                     <div class="the-search-result">
                         <a
@@ -184,7 +186,7 @@ window.iak.toggleSearch = toggleSearch
     color: var(--font-color);
     transition: 0.3s;
 }
-.the-search .search-result-item:hover{
+.the-search .search-result-item:is(:hover, :focus){
     background: rgba(255, 255, 255, 0.4);
 }
 .the-search .search-result-item .title{

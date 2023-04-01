@@ -10,7 +10,7 @@ const memories = (await getCollection("memories")).sort((a, b) => {
 
 <section id="recent-memories">
 	<h2 class="title">近期碎片</h2>
-	<a href="/memories">
+	<a href="/memories" class="memories-link">
 		<ul class="recent-memories__container">
 			{memories.map((memory) => {
 				return (
@@ -34,15 +34,19 @@ const memories = (await getCollection("memories")).sort((a, b) => {
 	text-align:center;
 }
 #recent-memories .recent-memories__container {
-	background: var(--color-deep-op);
-	color: var(--card-text-color);
-	border-radius: var(--base-radius);
-	border: 2px solid var(--card-border-color);
 	list-style: none;
 	padding: 0;
+}
+#recent-memories .memories-link{
+	display: block;
+	border: 2px solid var(--card-border-color);
+	border-radius: var(--base-radius);
+	background: var(--color-deep-op);
+	color: var(--card-text-color);
 	transition: all 0.2s ease-in-out;
 }
-#recent-memories .recent-memories__container:hover{
+#recent-memories .memories-link:is(:hover, :focus-within){
+	outline: 4px solid var(--card-active);
 	color: var(--main-color);
 	translate: 0 -4px;
 }
