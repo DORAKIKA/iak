@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](///compare/v0.6.0...v0.7.0) (2023-04-01)
+
+
+### Features
+
+* 图片fancybox添加 97664b1
+* 增强tab键交互样式 1a685f6
+* mdx代码块实现折叠、全屏、复制功能 618847c
+
+
+### Bug Fixes
+
+* rss误操作恢复 3aff211
+
 ## [0.6.0](///compare/v0.5.3...v0.6.0) (2023-03-24)
 
 
