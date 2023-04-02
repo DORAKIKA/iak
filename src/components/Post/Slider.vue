@@ -29,13 +29,14 @@ const sliderClick = (num:number) => {
 }
 
 const handleWheel = (e: WheelEvent) => {
-        if (e.deltaY > 0) {
-            handleNext();
-        } else {
-            handlePrev();
-        }
-        e.preventDefault();
+    if(!e.shiftKey) return;
+    if (e.deltaY > 0) {
+        handleNext();
+    } else {
+        handlePrev();
     }
+    e.preventDefault();
+}
 const handleScroll =  useDebounceFn(() => {
     if (postsScroll.value === undefined) return;
     const { scrollLeft, scrollWidth, offsetWidth } = postsScroll.value;
