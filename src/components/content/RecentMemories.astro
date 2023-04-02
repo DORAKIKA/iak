@@ -1,10 +1,11 @@
 ---
 import { getCollection } from "astro:content";
+import { memories as m_config } from "src/config";
 import '@styles/article.css'
 
 const memories = (await getCollection("memories")).sort((a, b) => {
     return b.data.date.getTime() - a.data.date.getTime();
-}).splice(0,5);
+}).splice(0, m_config.recent_limit);
 
 ---
 
