@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.2](///compare/v0.7.1...v0.7.2) (2023-04-02)
+
+
+### Features
+
+* 添加多种头部背景效果 d812b10
+
+
+### Bug Fixes
+
+* 滚动逻辑优化，tab键聚焦时自动恢复布局 4704044
+* 仅shift+滚轮会触发滚动 20b78b1
+* 夜间模式切换同步面板配置 ed3cf43
+
 ### [0.7.1](///compare/v0.7.0...v0.7.1) (2023-04-01)
 
 
