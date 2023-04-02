@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useLocalStorage, useStyleTag, useThrottleFn } from '@vueuse/core'
 
 import IakSlider from "@components/Iak/Slider.vue"
@@ -17,6 +17,15 @@ const default_style = {
 }
 
 const styleConfig = useLocalStorage('styleConfig', default_style)
+
+onMounted(() => {
+    // @ts-ignore
+    const darkModeFn = window.iak.toggleDarkMode;
+    // @ts-ignore
+    window.iak.toggleDarkMode = (darkMode: boolean) => {
+        styleConfig.value.darkMode = darkModeFn(darkMode);
+    }
+}),
 
 watch(() => styleConfig.value.darkMode, (darkMode) => {
     // @ts-ignore
