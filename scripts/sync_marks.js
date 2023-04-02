@@ -10,7 +10,8 @@ const NOTION = {
     BOOKS_ID: '3c8344aa545c4dc787e786cbb6b4b373',
     MUSICS_ID: '8a7f7ee4c8714518b2c71432bdb7f8e8'
 }
-// 这是notion的token
+// .env文件中配置NOTION_TOKEN
+// 这是notion的token => https://www.notion.so/my-integrations
 const NOTION_API_KEY = process.env.NOTION_TOKEN || '';
 
 // 豆瓣图片需代理,不然容易403
@@ -120,7 +121,7 @@ function writeToYaml(data, path){
             }else{
                 originYaml.push({
                     name: key,
-                    type: 'horizontal',
+                    type: 'large',
                     prefix: 'star',
                     values: data[key],
                 });
