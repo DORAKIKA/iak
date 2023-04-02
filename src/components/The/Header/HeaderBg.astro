@@ -1,0 +1,21 @@
+---
+const type = 'wave'
+---
+<div class={`header-bg ${type}`}>
+
+</div>
+
+<style>
+.header-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.header-bg.wave{
+    background-image: url(/bg-zigzag.svg);
+    animation: 60s linear -30s infinite alternate none running background-slide;
+    background-size: 1500px;
+    line-height: 1.5;
+    transition: background 0.3s;
+}
+</style>

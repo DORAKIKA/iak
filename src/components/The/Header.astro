@@ -1,5 +1,6 @@
 ---
 import TheMenus from "./Menus.astro";
+import HeaderBg from "./Header/HeaderBg.astro";
 import { site } from "src/config";
 import { getCollection } from "astro:content";
 
@@ -102,7 +103,10 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
   </ul>
 </nav>
 <header id="header" class="the-header">
-  <slot />
+  <HeaderBg/>
+  <div class="main-header">
+    <slot />
+  </div>
   <section class="header-wave">
     <svg
       class="waves-svg"
@@ -130,20 +134,23 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
 <style>
   #header {
     --wave-height: 70px;
-    padding: var(--header-height) var(--side-padding) var(--wave-height);
     min-height: 500px;
     background-color: var(--main-color);
-    background-image: url(/bg-zigzag.svg);
-    animation: 60s linear -30s infinite alternate none running background-slide;
-    background-size: 1500px;
-    line-height: 1.5;
-    transition: background 0.3s;
     position: relative;
+    display: flex;
+    justify-self: center;
+    align-items: center;
     overflow: hidden;
+    color: var(--color-deep-op);
+  }
+  #header .main-header{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: var(--header-height) var(--side-padding) var(--wave-height);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--color-deep-op);
   }
   #header .header-wave {
     overflow: hidden;

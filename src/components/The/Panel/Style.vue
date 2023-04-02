@@ -55,14 +55,14 @@ const styleHTML = computed(() => `
         html{
             --bg-image-url: url(${theme.imageBackground.url});
         }
-        #header{
+        #header .header-bg{
             background-image: ${theme.imageBackground.inherit ? 'var(--bg-image-url)' : 'url(' + theme.imageBackground.url + ')'};
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             animation: none;
         }
-        #header::before{
+        #header .header-bg::before{
             position: absolute;
             width: 100%;
             height: 100%;
