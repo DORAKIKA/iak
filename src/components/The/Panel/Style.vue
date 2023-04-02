@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useLocalStorage, useStyleTag, useThrottleFn } from '@vueuse/core'
 
 import IakSlider from "@components/Iak/Slider.vue"
@@ -17,6 +17,15 @@ const default_style = {
 }
 
 const styleConfig = useLocalStorage('styleConfig', default_style)
+
+onMounted(() => {
+    // @ts-ignore
+    const darkModeFn = window.iak.toggleDarkMode;
+    // @ts-ignore
+    window.iak.toggleDarkMode = (darkMode: boolean) => {
+        styleConfig.value.darkMode = darkModeFn(darkMode);
+    }
+}),
 
 watch(() => styleConfig.value.darkMode, (darkMode) => {
     // @ts-ignore
@@ -55,14 +64,14 @@ const styleHTML = computed(() => `
         html{
             --bg-image-url: url(${theme.imageBackground.url});
         }
-        #header{
+        #header .header-bg{
             background-image: ${theme.imageBackground.inherit ? 'var(--bg-image-url)' : 'url(' + theme.imageBackground.url + ')'};
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             animation: none;
         }
-        #header::before{
+        #header .header-bg::before{
             position: absolute;
             width: 100%;
             height: 100%;

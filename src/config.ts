@@ -70,6 +70,12 @@ export const post_slider = {
     limit: 4
 }
 
+export const memories = {
+    // 在memories页面显示的最大数量
+    show_limit: 10,
+    // 在首页显示的最大数量
+    recent_limit: 5
+}
 
 // twikoo => https://twikoo.js.org/
 export const twikoo = {

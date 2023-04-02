@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro"
-import { default_cover, site } from "src/config";
+import { default_cover, site, memories as m_config } from "src/config";
 import { getCollection } from "astro:content";
 import { generateOpenGraph } from "src/tools/open_graph";
 import Content from "@components/content/Content.astro"
@@ -10,7 +10,7 @@ import SvgDate from '@components/Svg/Date.astro'
 
 const memories = (await getCollection("memories")).sort((a, b) => {
     return b.data.date.getTime() - a.data.date.getTime();
-}).splice(0,5);
+}).splice(0, m_config.show_limit);
 
 // TODO: 随机一篇
 

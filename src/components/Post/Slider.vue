@@ -22,32 +22,28 @@ onMounted(() => {
 const postsScroll = ref<HTMLElement>();
 const prev = computed(() => (current.value - 1 + limit.value) % limit.value);
 const next = computed(() => (current.value + 1) % limit.value);
-const handlePrev = () => current.value = prev.value;
-const handleNext = () => current.value = next.value;
+const handlePrev = useThrottleFn(() => current.value = prev.value, 250);
+const handleNext = useThrottleFn(() => current.value = next.value, 250);
 const sliderClick = (num:number) => {
     current.value = num
 }
-let prevLeft: number;
-onMounted(() => {
-    prevLeft = postsScroll.value?.scrollLeft || 0;
-    postsScroll.value?.addEventListener('scroll', () => {
-        if(!postsScroll.value) return;
-        const { scrollLeft, offsetWidth } = postsScroll.value;
-        
-        if (scrollLeft < prevLeft) {
-            if (scrollLeft + 1 < offsetWidth * current.value) {
-                handlePrev();
-            }
-        } else if(scrollLeft > prevLeft) {
-            if (scrollLeft - 1 > offsetWidth * current.value) {
-                handleNext();
-            }
-        }
-        console.log(prevLeft, scrollLeft, offsetWidth, current.value)
-        prevLeft = scrollLeft;
-        
-    })
-})
+
+const handleWheel = (e: WheelEvent) => {
+    if(!e.shiftKey) return;
+    if (e.deltaY > 0) {
+        handleNext();
+    } else {
+        handlePrev();
+    }
+    e.preventDefault();
+}
+const handleScroll =  useDebounceFn(() => {
+    if (postsScroll.value === undefined) return;
+    const { scrollLeft, scrollWidth, offsetWidth } = postsScroll.value;
+    const scrollPercent = scrollLeft / (scrollWidth - offsetWidth);
+    const index = Math.round(scrollPercent * (limit.value - 1));
+    current.value = index;
+}, 250)
 watch(current, () => {
     postsScroll.value?.scrollTo({
         left: current.value * postsScroll.value.offsetWidth,
@@ -58,7 +54,7 @@ watch(current, () => {
 
 <template>
     <div class="post-slider">
-        <div class="posts-container" ref="postsScroll">
+        <div class="posts-container" ref="postsScroll" @scroll="handleScroll" @wheel="handleWheel">
         <div class="posts-scroll-container">
             <div
                 v-for="article,index in posts"

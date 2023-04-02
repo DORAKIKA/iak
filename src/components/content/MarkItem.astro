@@ -1,21 +1,21 @@
-<script setup lang="ts">
-const props = defineProps(['mark', 'group'])
-</script>
-<template>
-    <a :href="mark.url" class="mark-item">
-        <img class="poster" :src="mark.poster" loading="lazy"/>
-        <div class="top">
-            <div class="icon" v-html="group ? group.icon||'' : ''"></div>
-            <div class="time">{{mark.time ? new Date(mark.time).toLocaleDateString() : ''}}</div>
-        </div>
-        <div class="bottom">
-            <div class="title">{{mark.title}}</div>
-            <div class="star">{{mark.star}}</div>
-        </div>
-    </a>
-</template>
+---
+import { formatDateTime } from "src/tools/tools";
 
-<style scoped>
+const {mark, group} = Astro.props
+---
+<a href={mark.url} class="mark-item" target="_blank">
+    <img class="poster" src={mark.poster} loading="lazy"/>
+    <div class="top">
+        <div class="icon" set:html={group ? group.icon||'' : ''}></div>
+        <div class="time">{ mark.time ? formatDateTime(new Date(mark.time)) : '' }</div>
+    </div>
+    <div class="bottom">
+        <div class="title">{mark.title}</div>
+        <div class="star">{mark.star}</div>
+    </div>
+</a>
+
+<style>
 .mark-item {
     flex-grow: 1;
     border-radius: var(--base-radius);
