@@ -1,13 +1,32 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import IakDrawer from "@components/Iak/drawer.vue"
 import { menus } from 'src/config';
 
 
 const sidebarShow = ref(false)
-const toggleSidebar = () => {
-    sidebarShow.value = !sidebarShow.value;
+const toggleSidebar = (flag?: boolean) => {
+    if (flag !== undefined) {
+        sidebarShow.value = flag
+    } else {
+        sidebarShow.value = !sidebarShow.value
+    }
 }
+
+watch(sidebarShow, () => {
+    if(sidebarShow.value){
+        setTimeout(() => {
+            let firstMenuItem: HTMLElement | null = document.querySelector('.the-sidebar .menu-item')
+            if(firstMenuItem)firstMenuItem.focus()
+        }, 300)
+    }else{
+        setTimeout(() => {
+            let trigger: HTMLElement | null = document.querySelector('#sidebar-trigger');
+            if(trigger)trigger.focus()
+        }, 300)
+    }
+})
+
 // @ts-ignore
 window.iak.toggleSidebar = toggleSidebar
 </script>

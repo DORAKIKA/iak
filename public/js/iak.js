@@ -32,15 +32,22 @@ window.iak = {
         return document.documentElement.classList.contains('dark')
     },
     // 默认函数，若相应组件内绑定失败，则使用此函数
-    toggleStyle: defaultFunc('切换样式'),
     togglePanel: defaultFunc('切换面板'),
     toggleSearch: defaultFunc('切换搜索'),
     toggleSidebar: defaultFunc('切换侧边栏'),
+    toggleHeadings: defaultFunc('切换目录'),
 }
 
 window.addEventListener('DOMContentLoaded', function(){
     // fancybox
     Fancybox.bind("[data-fancybox]", {});
+})
+window.addEventListener('blur', () => {
+    // 页面失去焦点，恢复初始状态
+    iak.togglePanel.type !== 'default' && iak.togglePanel(false);
+    iak.toggleSearch.type !== 'default' && iak.toggleSearch(false);
+    iak.toggleSidebar.type !== 'default' && iak.toggleSidebar(false);
+    iak.toggleHeadings.type !== 'default' && iak.toggleHeadings(false);
 })
 
 // 辅助函数

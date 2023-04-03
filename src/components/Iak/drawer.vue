@@ -12,7 +12,7 @@ const emits = defineEmits<{
 <template>
     <teleport to='body'>
         <transition name="slide">
-            <div class="k-drawer__wrapper" :class="props.class" v-if="props.show" @click.self="emits('update:show', false)">
+            <div class="k-drawer__wrapper" :class="props.class" v-if="props.show" @click.self="emits('update:show', false)" @keydown.escape="emits('update:show', false)">
                 <div class="k-drawer__content">
                     <div class="k-drawer__header">
                         <slot name="title"/>

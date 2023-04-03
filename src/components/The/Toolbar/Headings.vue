@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import IakDrawer from "@components/Iak/drawer.vue"
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { headings_depth } from "../../../config"
 
 const props = defineProps(['headings', 'className']);
@@ -8,20 +8,41 @@ const headings = props.headings.filter((h:any) => h.depth <= headings_depth);
 
 
 const headingsShow = ref(false)
-const toggleSidebar = () => {
-    headingsShow.value = !headingsShow.value;
+const toggleHeadings = (flag?: boolean) => {
+    if(flag !== undefined){
+        headingsShow.value = flag
+    }else{
+        headingsShow.value = !headingsShow.value
+    }
 }
+
+watch(headingsShow, () => {
+    if(headingsShow.value){
+        setTimeout(() => {
+            let firstHeadingItem: HTMLElement | null = document.querySelector('.the-sidebar .toolbar-headings-item')
+            if(firstHeadingItem)firstHeadingItem.focus()
+        }, 300)
+    }else{
+        setTimeout(() => {
+            let trigger: HTMLElement | null = document.querySelector('#headings-trigger');
+            if(trigger)trigger.focus()
+        }, 300)
+    }
+})
+
+// @ts-ignore
+window.iak.toggleHeadings = toggleHeadings
 </script>
 
 <template>
-    <div class="headings" :class="className" @click="toggleSidebar">
+    <button id="headings-trigger" class="toolbar-headings-trigger" :class="className" @click="toggleHeadings(true)">
         <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4655" width="128" height="128"><path d="M120.832 35.84h173.056v403.456h436.224V35.84h173.056v952.32H730.112v-399.36H293.888v399.36H120.832v-952.32z" p-id="4656"></path></svg>
-    </div>
+    </button>
     <IakDrawer v-model:show="headingsShow" class="the-sidebar">
         <template #title><span>目录</span></template>
         <template #default>
             <div class="toolbar-headings">
-                <a v-for="h in headings" :key="h.slug" :href="'#'+h.slug" class="toolbar-headings-item" :class="'h' + h.depth">{{ h.text }}</a>
+                <a v-for="h in headings" :key="h.slug" :href="'#'+h.slug" @click="toggleHeadings(false)" class="toolbar-headings-item" :class="'h' + h.depth">{{ h.text }}</a>
             </div>
         </template>
     </IakDrawer>

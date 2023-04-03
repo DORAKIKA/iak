@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import PanelStyle from "@components/The/Panel/Style.vue";
 import PanelSite from "@components/The/Panel/Site.vue";
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 
 const panelShow = ref(false)
@@ -14,7 +14,19 @@ const togglePanel = (flag?: boolean) => {
 }
 const currentTab = ref('style');
 
-
+watch(panelShow, () => {
+    if(panelShow.value){
+        setTimeout(() => {
+            let focusTab: HTMLElement | null = document.querySelector('.the-panel__content .tab.active');
+            if(focusTab)focusTab.focus()
+        }, 300)
+    }else{
+        setTimeout(() => {
+            let trigger: HTMLElement | null = document.querySelector('#panel-trigger');
+            if(trigger)trigger.focus()
+        }, 300)
+    }
+})
 
 
 // @ts-ignore
