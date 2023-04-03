@@ -23,13 +23,15 @@ const emits = defineEmits<{
     .iak-switch{
         width: 2.75em;
         height: 1.5em;
-        /* background: black; */
         display: block;
         padding: 0.25em 1.5em 0.25em 0.25em;
         background: var(--card-tab-bg);
         border-radius: 0.75em;
         transition: 0.3s;
         cursor: pointer;
+    }
+    .iak-switch:focus-within{
+        outline: 3px solid var(--card-active);
     }
     .iak-switch.active{
         padding: 0.25em 0.5em 0.25em 1.75em;
@@ -43,7 +45,6 @@ const emits = defineEmits<{
         background: var(--card-bg);
         box-shadow: 2px 1px 2px 0px rgba(0,0,0,0.2);
         transition: 0.3s;
-        /* opacity: 0.5; */
     }
     .iak-switch__input{
         opacity: 0;
