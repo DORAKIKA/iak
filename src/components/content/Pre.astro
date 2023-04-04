@@ -40,7 +40,8 @@
                 button.classList.add('code-fullscreen-exit');
             }else{
                 // 退出全屏
-                cancelFullscreen()
+                // @ts-ignore
+                iak.cancelFullscreen()
                 // @ts-ignore
                 button.title = '全屏';
                 button.classList.remove('code-fullscreen-exit');
