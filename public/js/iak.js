@@ -32,16 +32,40 @@ window.iak = {
         return document.documentElement.classList.contains('dark')
     },
     // 默认函数，若相应组件内绑定失败，则使用此函数
-    toggleStyle: defaultFunc('切换样式'),
     togglePanel: defaultFunc('切换面板'),
     toggleSearch: defaultFunc('切换搜索'),
     toggleSidebar: defaultFunc('切换侧边栏'),
+    toggleHeadings: defaultFunc('切换目录'),
+
+    say(str){
+        if(SnackBar){
+            SnackBar({
+                message: str,
+                fixed: true,
+                position: 'tc',
+            })
+        }
+    },
+    // 向html的class设置主题
+    setTheme(theme){
+        document.documentElement.classList.add(theme);
+    },
+    // 退出全屏
+    cancelFullscreen(){
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }else{
+            console.log('退出全屏失败')
+        }
+    }
 }
 
-window.addEventListener('DOMContentLoaded', function(){
-    // fancybox
-    Fancybox.bind("[data-fancybox]", {});
-})
 
 // 辅助函数
 function defaultFunc(msg){
@@ -59,17 +83,57 @@ function defaultFunc(msg){
     return func
 }
 
-// 取消全屏
-function cancelFullscreen() {
-    if (document.exitFullscreen) {
-        document.exitFullscreen();
-    } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-    }else{
-        console.log('退出全屏失败')
+
+(function(){
+    // 根据时间设置主题\欢迎语等等
+    const checkDate = function(){
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        const hour = now.getHours();
+
+        // 欢迎语
+        if(hour < 6){
+            iak.say('夜深了，注意休息')
+        }else if(hour < 9){
+            iak.say('早上好')
+        }else if(hour < 12){
+            iak.say('上午好')
+        }else if(hour < 14){
+            iak.say('中午好')
+        }else if(hour < 17){
+            iak.say('下午好')
+        }else if(hour < 19){
+            iak.say('傍晚好')
+        }else if(hour < 22){
+            iak.say('晚上好')
+        }else{
+            iak.say('夜深了，注意休息')
+        }
+        
+        // 设置主题
+        if(month === 4 && (day >= 4 && day <= 6)){
+            // 清明节
+            iak.setTheme('gray');
+        }
     }
-}
+
+
+    checkDate();
+    window.addEventListener('DOMContentLoaded', function(){
+        // fancybox
+        Fancybox.bind("[data-fancybox]", {});
+    })
+    window.addEventListener('blur', () => {
+        // 页面失去焦点，恢复初始状态
+        iak.togglePanel.type !== 'default' && iak.togglePanel(false);
+        iak.toggleSearch.type !== 'default' && iak.toggleSearch(false);
+        iak.toggleSidebar.type !== 'default' && iak.toggleSidebar(false);
+        iak.toggleHeadings.type !== 'default' && iak.toggleHeadings(false);
+    })
+})()
+
+
+
+

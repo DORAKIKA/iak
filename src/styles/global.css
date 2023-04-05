@@ -80,6 +80,9 @@ html{
   scroll-padding-top: var(--header-height);
   overflow-y: overlay;
 }
+html.gray{
+  filter: grayscale(1);
+}
 ::-webkit-scrollbar{
   width: 4px;
   height: 4px;

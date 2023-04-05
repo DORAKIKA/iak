@@ -17,5 +17,5 @@ const meta_og = generateOpenGraph(Astro, page_meta)
     meta_og={meta_og}
 >
     <h1 style="">404 | 页面不存在</h1>
-	<PostSlider client:load/>
+	<PostSlider slot="header" client:load/>
 </Layout>

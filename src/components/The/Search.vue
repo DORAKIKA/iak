@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useThrottleFn } from '@vueuse/core';
 import type { CollectionEntry } from 'astro:content';
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, watch } from 'vue'
 const state = reactive({
     loading: false,
     searchInput: '',
@@ -38,6 +38,20 @@ const toggleSearch = (value:boolean|undefined) => {
     return ;
 }
 
+watch(searchShow, () => {
+    if(searchShow.value){
+        setTimeout(() => {
+            let searchInput: HTMLElement | null = document.querySelector('.the-search-input')
+            if(searchInput)searchInput.focus()
+        }, 300)
+    }else{
+        setTimeout(() => {
+            let trigger: HTMLElement | null = document.querySelector('#search-trigger');
+            if(trigger)trigger.focus()
+        }, 300)
+    }
+})
+
 query({target:{value:''}})
 
 // @ts-ignore
@@ -47,7 +61,7 @@ window.iak.toggleSearch = toggleSearch
 <template>
     <teleport to='body'>
         <transition name="pop">
-            <div class="the-search-wrapper" v-show="searchShow" @click.self="toggleSearch(false)">
+            <div class="the-search-wrapper" v-show="searchShow" @click.self="toggleSearch(false)" @keydown.escape="toggleSearch(false)">
                 <div class="the-search-loading" v-show="state.loading">
                     <svg t="1670941746641" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5314" width="128" height="128">
                         <path d="M1005.312 914.752l-198.528-198.464A448 448 0 1 0 0 448a448 448 0 0 0 716.288 358.784l198.4 198.4a64 64 0 1 0 90.624-90.432zM448 767.936A320 320 0 1 1 448 128a320 320 0 0 1 0 640z" fill="#262626" p-id="5315"></path>
