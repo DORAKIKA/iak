@@ -1,0 +1,49 @@
+---
+const { type="default", title } = Astro.props
+---
+
+<div class={"md-outline"} style={{
+    "--main-color": type === "default" ? 'var(--global-main-color)' : `var(--${type})`,
+    "--main-color-meta": type === "default" ? 'var(--global-main-color-meta' : `var(--${type}-meta)`,
+}}>
+    { title ? <div class="md-outline__title">{ title }</div> : null }
+    <div class="md-outline__content">
+        <slot></slot>
+    </div>
+</div>
+
+
+<style>
+.md-outline{
+    width: 100%;
+    height: fit-content;
+    border-radius: var(--base-radius);
+    border: 2px dashed rgba(var(--main-color-meta), 0.7);
+    background-color: rgba(var(--main-color-meta), 0.1);
+    padding: var(--base-radius);
+    margin-bottom: 1rem;
+}
+:global(.dark .md-outline){
+    border-color: rgba(var(--main-color-meta), 0.3);
+    background-color: rgba(var(--main-color-meta), 0.05);
+}
+.md-outline:nth-last-child(1){
+    margin-bottom: 0;
+}
+.md-outline:only-child{
+    height: 100%;
+}
+.md-outline .md-outline__title{
+    padding: calc(var(--base-radius) / 2);
+    background-color: rgba(var(--main-color-meta), 0.2);
+    width: fit-content;
+    line-height: 1;
+    font-weight: bold;
+    color: var(--main-color);
+    border-radius: calc(var(--base-radius) / 2);
+}
+:global(.dark .md-outline .md-outline__title){
+    background-color: rgba(var(--main-color-meta), 0.1);
+    color: rgba(var(--main-color-meta), 0.7);
+}
+</style>
