@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](///compare/v0.7.3...v0.8.0) (2023-04-07)
+
+
+### Features
+
+* **content:** 去除Tip组件，转为Outline组件，添加Grid布局组件 60345d6
+
 ### [0.7.3](///compare/v0.7.2...v0.7.3) (2023-04-04)
 
 
