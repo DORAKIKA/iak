@@ -1,0 +1,19 @@
+---
+const {  colSpan=1, rowSpan=1 } = Astro.props
+---
+
+<div class="md-grid-item" style={{
+    "--col-span": colSpan,
+    "--row-span": rowSpan
+}}>
+    <slot></slot>
+</div>
+
+<style>
+.md-grid-item {
+    width: 100%;
+    height: 100%;
+    grid-column: span var(--col-span);
+    grid-row: span var(--row-span);
+}
+</style>

@@ -22,17 +22,20 @@
 
 示例网站见[Iak示例博客](https://iak.dorakika.cn)、[DORAKIKA的博客](https://blog.dorakika.cn)
 
-![DORAKIKA](https://img.dorakika.cn/md/202303081055.png)
+![20230407141533.png](https://img.dorakika.cn/md/20230407141533.png)
+
+![20230407141735.png](https://img.dorakika.cn/md/20230407141735.png)
 
 # 特色
 - 🎨多种主题配置
-- 📄支持文章页、豆瓣书影音标记、友链页
+- 📄支持文章页、豆瓣书影音标记、友链页、说说页
 - 🤖友好的SEO、OpenGraph支持、sitemap与robot.txt
 - 🖼️支持生成页面分享图片
 - 📊站点面板：标签集合、最近豆瓣标记
 - 🔀随机文章跳转
 - 🔍简易搜索功能
 - 🔔rss订阅支持
+- ✨友好的键盘交互
 
 # 如何使用
 ```shell

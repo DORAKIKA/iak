@@ -1,0 +1,34 @@
+---
+const { col=1, row=1, minWidth='300px', minCol=1 } = Astro.props;
+---
+
+<div class="md-grid" style={{
+    "--md-grid-col": col,
+    "--md-grid-row": row,
+    "--md-grid-min-width": minWidth,
+    "--md-grid-min-col": minCol
+}}>
+    <slot></slot>
+</div>
+
+<style>
+.md-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill, 
+        minmax(
+            min(
+                max(
+                    calc(100% / calc(var(--md-grid-col) + 1)),
+                    var(--md-grid-min-width)
+                ),
+                calc(calc(100% - calc(var(--md-grid-min-col)-1) * 1rem) / var(--md-grid-min-col))
+            ),
+            1fr
+        )
+    );
+    grid-template-rows: repeat(var(--md-grid-row), 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
+}
+</style>

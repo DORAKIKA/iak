@@ -4,12 +4,36 @@
   
   --main-color-meta: 50, 201, 235;
 	--main-color: rgb(var(--main-color-meta));
+
+  --global-main-color-meta: var(--main-color-meta);
+  --global-main-color: var(--main-color);
+
   --active-color-meta: 255, 85, 0;
 	--active-color: rgba(var(--active-color-meta), 1);
 
-  --red: 255, 95, 86;
-  --yellow: 255, 189, 46;
-  --green: 39, 201, 63;
+  --red-meta: 255, 95, 86;
+  --red: rgb(255, 95, 86);
+
+  --orange-meta: 255, 115, 0;
+  --orange: rgb(255, 115, 0);
+
+  --yellow-meta: 246, 195, 27;
+  --yellow: rgb(246, 195, 27);
+
+  --green-meta: 39, 201, 63;
+  --green: rgb(39, 201, 63);
+
+  --blue-meta: 0, 174, 255;
+  --blue: rgb(0, 174, 255);
+
+  --purple-meta: 163, 73, 164;
+  --purple: rgb(163, 73, 164);
+
+  --pink-meta: 255, 112, 143;
+  --pink: rgb(255, 112, 143);
+  
+  --gray-meta: 142, 142, 147;
+  --gray: rgb(142, 142, 147);
 
 	--font-color: rgba(255,255,255,0.8);
   --color-deep-op: rgba(255,255,255,0.8);
@@ -32,7 +56,7 @@
   --card-outline: 0 0 0 3px var(--main-color);
   --card-border-color: #e3e8f7;
   --card-border: 3px solid var(--card-border-color);
-  --base-radius: 8px;
+  --base-radius: 16px;
 }
 
 html.dark{
