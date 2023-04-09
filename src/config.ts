@@ -1,8 +1,17 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+import type { 
+    MenuItem, 
+    SiteConfig, 
+    DefaultAssets, 
+    PostSliderConfig, 
+    TwikooConfig, 
+    FooterConfig, 
+    MemoriesConfig, 
+    ThemeConfig, 
+    HeadingConfig
+} from './types/config'
 
 // 站点信息
-export const site = {
+export const site:SiteConfig = {
     // 你将要部署到的站点地址
     origin: 'https://iak.dorakika.cn',
     // 站点图标链接
@@ -19,7 +28,7 @@ export const site = {
     author: 'DORAKIKA'
 }
 // 顶部菜单：仅支持二级菜单
-export const menus = [
+export const menus: MenuItem[] = [
     {
         name: '时',
         children: [
@@ -35,10 +44,13 @@ export const menus = [
     }
 ]
 
-export const default_cover = "/placeholder-hero.jpg"
+export const default_assets: DefaultAssets = {
+    // 默认文章封面
+    cover: '/placeholder-hero.jpg'
+}
 
 // 页脚信息
-export const footer = {
+export const footer: FooterConfig = {
     beian: {
         enabled: true,
         value: "皖ICP备2022003488号"
@@ -66,11 +78,11 @@ export const footer = {
     ]
 }
 
-export const post_slider = {
+export const post_slider: PostSliderConfig = {
     limit: 4
 }
 
-export const memories = {
+export const memories: MemoriesConfig = {
     // 在memories页面显示的最大数量
     show_limit: 10,
     // 在首页显示的最大数量
@@ -78,7 +90,7 @@ export const memories = {
 }
 
 // twikoo => https://twikoo.js.org/
-export const twikoo = {
+export const twikoo: TwikooConfig = {
     enabled: false,
     url: "https://twikoo.you.love",
     recent_limit: 5,
@@ -86,12 +98,14 @@ export const twikoo = {
     board_url: ''
 }
 
-// 文章标题目录深度（1-6）
-export const headings_depth = 3
+export const headings: HeadingConfig = {
+    // 文章标题目录深度（1-6）
+    depth: 3
+}
 
 // 主题配置
 // 此配置只做选项与默认项，具体配置会读取用户浏览器的LocalStorage数据
-export const theme = {
+export const theme: ThemeConfig = {
     main_colors: ['50, 201, 235','244,149,162', '144, 83, 144', '52, 175, 86'],
     large_border_radius: {
         default: true

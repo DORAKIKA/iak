@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import IakDrawer from "@components/Iak/drawer.vue"
 import { ref, watch } from "vue";
-import { headings_depth } from "../../../config"
+import { headings as headingsConfig } from "../../../config"
 
 const props = defineProps(['headings', 'className']);
-const headings = props.headings.filter((h:any) => h.depth <= headings_depth);
+const headings = props.headings.filter((h:any) => h.depth <= headingsConfig.depth);
 
 
 const headingsShow = ref(false)

@@ -1,7 +1,7 @@
 ---
 
 import Layout from "@layouts/Layout.astro"
-import { default_cover, site } from "src/config";
+import { default_assets, site } from "src/config";
 import { getCollection } from "astro:content";
 import PostCard from "@components/Post/Card.astro"
 import { generateOpenGraph } from "src/tools/open_graph";
@@ -17,7 +17,7 @@ const page_meta = {
 	title: '文章归档 | ' + site.name,
 	description: '所有文章',
 	keywords: '文章归档,博客',
-	cover: default_cover
+	cover: default_assets.cover
 }
 
 const meta_og = generateOpenGraph(Astro, page_meta)
