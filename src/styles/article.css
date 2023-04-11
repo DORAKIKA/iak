@@ -57,29 +57,7 @@ article h6{
     font-size: 1rem;
     margin: 1rem 0 0.5rem;
 }
-article a{
-    /* color: var(--main-color); */
-    font-weight: normal;
-    padding: 0 2px;
-    transition: 0.3s;
-    position: relative;
-    white-space: nowrap;
-    z-index: 1;
-}
-article a::before{
-    content: '';
-    position: absolute;
-    top: 60%;
-    left: -3px;
-    bottom: -3px;
-    right: -3px;
-    background-color: rgba(var(--main-color-meta), 0.5);
-    z-index: -1;
-    transition: 0.3s;
-}
-article a:is(:hover, :focus-within)::before{
-    top: -3px;
-}
+
 article code:not(pre code){
     background-color: rgba(var(--main-color-meta), 0.15);
     padding: 4px 8px;

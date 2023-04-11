@@ -4,6 +4,7 @@ import Grid from "./Grid.astro";
 import GridItem from "./GridItem.astro"
 import Pre from "./Pre.astro";
 import Img from "./Img.astro";
+import A from "./A.astro";
 // 注释一下，防忘记，组件的margin统一设置bottom
 
 const { entry } = Astro.props;
@@ -16,5 +17,6 @@ const { Content } = await entry.render();
     GridItem,
     Outline,
     img: Img,
-    pre: Pre
+    pre: Pre,
+    a: A
 }}></Content>
