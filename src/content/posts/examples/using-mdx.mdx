@@ -31,6 +31,44 @@ const b = a;
 console.log(b);
 ```
 
+## 标签页 Tab
+
+<Tabs active="alsoAName" color="purple">
+<Fragment slot="tab.name">这是一个标签页标题</Fragment>
+<Fragment slot="tab.alsoAName">写在tab.后面</Fragment>
+<Fragment slot="tab.tab名">最后一个</Fragment>
+
+<Fragment slot="pane.name">
+这是标签页内容，pane后面的面名字需要和tab后面的名字一致
+</Fragment>
+<Fragment slot="pane.alsoAName">
+
+```mdx
+<Tabs active="alsoAName">
+<Fragment slot="tab.name">这是一个标签页标题</Fragment>
+<Fragment slot="tab.alsoAName">写在tab.后面</Fragment>
+<Fragment slot="tab.tab名">最后一个</Fragment>
+
+<Fragment slot="pane.name">
+这是标签页内容，pane后面的面名字需要和tab后面的名字一致
+</Fragment>
+<Fragment slot="pane.alsoAName">
+这是标签页2
+</Fragment>
+<Fragment slot="pane.tab名">
+这是标签页3
+</Fragment>
+
+</Tabs>
+```
+
+</Fragment>
+<Fragment slot="pane.tab名">
+这是标签页3
+</Fragment>
+
+</Tabs>
+
 ## 链接卡片 LinkCard
 
 可用于展示一些链接，如书籍、视频、音频、博文等
