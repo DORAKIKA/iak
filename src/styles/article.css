@@ -1,6 +1,6 @@
 .article-block{
 	line-height: 2;
-	padding: 1rem 2rem;
+	padding: 2rem;
 	margin: 2rem 0 0;
 	background: var(--card-bg);
 	border-radius: var(--base-radius);
@@ -10,7 +10,7 @@
 }
 @media (max-width: 900px){
 	.article-block{
-	    padding: 2rem;
+	    padding: 1rem;
 	}
 }
 /* markdown 及 mdx 样式 */
@@ -166,12 +166,18 @@ article details summary{
     cursor: pointer;
     transition: 0.3s;
 }
-article details:is(:hover, :focus-within) summary{
+article details:hover summary{
     background: rgba(var(--main-color-meta), 0.5);
 }
 article details:is([open]) summary{
     background: var(--main-color);
     color: var(--color-deep-op);
+}
+article details:has(summary:focus-visible){
+    outline: 4px solid rgba(var(--main-color-meta), 0.4);
+}
+article details summary:focus-visible{
+    outline: none;
 }
 
 

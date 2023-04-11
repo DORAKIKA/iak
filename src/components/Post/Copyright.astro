@@ -34,6 +34,9 @@ const { title } = Astro.props
     .post-copyright__href{
         color: var(--main-color);
         opacity: 0.7;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .post-copyright__href:is(:hover, :focus-within){
         opacity: 1;
