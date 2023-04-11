@@ -42,7 +42,7 @@ window.iak.toggleHeadings = toggleHeadings
         <template #title><span>目录</span></template>
         <template #default>
             <div class="toolbar-headings">
-                <a v-for="h in headings" :key="h.slug" :href="'#'+h.slug" @click="toggleHeadings(false)" class="toolbar-headings-item" :class="'h' + h.depth">{{ h.text }}</a>
+                <a v-for="h in headings" :key="h.slug" :href="'#'+h.slug" class="toolbar-headings-item" :class="'h' + h.depth">{{ h.text }}</a>
             </div>
         </template>
     </IakDrawer>
