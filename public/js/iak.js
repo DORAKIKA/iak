@@ -63,6 +63,42 @@ window.iak = {
         }else{
             console.log('退出全屏失败')
         }
+    },
+    welcome(){
+        // 根据时间设置主题\欢迎语等等
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        const hour = now.getHours();
+
+        // 欢迎语
+        if(localStorage.getItem('welcome') !== `${year}-${month}-${day}}`){
+            if(hour < 6){
+                iak.say('夜深了，注意休息')
+            }else if(hour < 9){
+                iak.say('早上好')
+            }else if(hour < 12){
+                iak.say('上午好')
+            }else if(hour < 14){
+                iak.say('中午好')
+            }else if(hour < 17){
+                iak.say('下午好')
+            }else if(hour < 19){
+                iak.say('傍晚好')
+            }else if(hour < 22){
+                iak.say('晚上好')
+            }else{
+                iak.say('夜深了，注意休息')
+            }
+            localStorage.setItem('welcome', `${year}-${month}-${day}}`);
+        }
+        
+        // 设置主题
+        if(month === 4 && (day >= 4 && day <= 6)){
+            // 清明节
+            iak.setTheme('gray');
+        }
     }
 }
 
@@ -83,44 +119,8 @@ function defaultFunc(msg){
     return func
 }
 
-
+iak.welcome();
 (function(){
-    // 根据时间设置主题\欢迎语等等
-    const checkDate = function(){
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = now.getMonth() + 1;
-        const day = now.getDate();
-        const hour = now.getHours();
-
-        // 欢迎语
-        if(hour < 6){
-            iak.say('夜深了，注意休息')
-        }else if(hour < 9){
-            iak.say('早上好')
-        }else if(hour < 12){
-            iak.say('上午好')
-        }else if(hour < 14){
-            iak.say('中午好')
-        }else if(hour < 17){
-            iak.say('下午好')
-        }else if(hour < 19){
-            iak.say('傍晚好')
-        }else if(hour < 22){
-            iak.say('晚上好')
-        }else{
-            iak.say('夜深了，注意休息')
-        }
-        
-        // 设置主题
-        if(month === 4 && (day >= 4 && day <= 6)){
-            // 清明节
-            iak.setTheme('gray');
-        }
-    }
-
-
-    checkDate();
     window.addEventListener('DOMContentLoaded', function(){
         // fancybox
         Fancybox.bind("[data-fancybox]", {});

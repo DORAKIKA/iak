@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import IakDrawer from "@components/Iak/drawer.vue"
 import { ref, watch } from "vue";
-import { headings_depth } from "../../../config"
+import { headings as headingsConfig } from "../../../config"
 
 const props = defineProps(['headings', 'className']);
-const headings = props.headings.filter((h:any) => h.depth <= headings_depth);
+const headings = props.headings.filter((h:any) => h.depth <= headingsConfig.depth);
 
 
 const headingsShow = ref(false)
@@ -42,7 +42,7 @@ window.iak.toggleHeadings = toggleHeadings
         <template #title><span>目录</span></template>
         <template #default>
             <div class="toolbar-headings">
-                <a v-for="h in headings" :key="h.slug" :href="'#'+h.slug" @click="toggleHeadings(false)" class="toolbar-headings-item" :class="'h' + h.depth">{{ h.text }}</a>
+                <a v-for="h in headings" :key="h.slug" :href="'#'+h.slug" class="toolbar-headings-item" :class="'h' + h.depth">{{ h.text }}</a>
             </div>
         </template>
     </IakDrawer>

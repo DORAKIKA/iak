@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro"
-import { default_cover, site, memories as m_config } from "src/config";
+import { default_assets, site, memories as m_config } from "src/config";
 import { getCollection } from "astro:content";
 import { generateOpenGraph } from "src/tools/open_graph";
 import Content from "@components/content/Content.astro"
@@ -18,7 +18,7 @@ const page_meta = {
 	title: '与昨日书 | ' + site.name,
 	description: site.author + '的记忆碎片',
 	keywords: '记忆碎片,博客',
-	cover: default_cover
+	cover: default_assets.cover
 }
 
 const meta_og = generateOpenGraph(Astro, page_meta)

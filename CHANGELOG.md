@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](///compare/v0.8.0...v0.9.0) (2023-04-11)
+
+
+### Features
+
+* 卡片链接LinkCard组件 912756f
+* a链接md组件 4666e4b
+* tabs组件-md 854ff55
+
+
+### Bug Fixes
+
+* 修复由于聚焦按钮导致的滚动中断问题 c273bf0
+* 已知样式问题修复 a808fa9
+
 ## [0.8.0](///compare/v0.7.3...v0.8.0) (2023-04-07)
 
 

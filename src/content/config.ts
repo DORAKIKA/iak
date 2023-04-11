@@ -1,5 +1,5 @@
 import { site } from 'src/config';
-import { default_cover } from './../config';
+import { default_assets } from './../config';
 import { defineCollection, z } from 'astro:content';
 
 // 定义文章集合
@@ -16,7 +16,7 @@ const posts = defineCollection({
 		// category：文章分类，选填
 		category: z.string().or(z.undefined()),
 		// cover：文章封面，选填
-		cover: z.string().default(default_cover),
+		cover: z.string().default(default_assets.cover),
 		// star：是否为星标文章（将按数值从小到大展示在首页），选填
 		star: z.number().or(z.undefined()),
 		// author：文章作者，选填

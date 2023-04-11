@@ -1,0 +1,33 @@
+---
+const { href } = Astro.props;
+---
+
+<a href={href} class="md-a">
+    <slot></slot>
+</a>
+
+<style>
+.md-a{
+    /* color: var(--main-color); */
+    font-weight: normal;
+    padding: 0 2px;
+    transition: 0.3s;
+    position: relative;
+    white-space: nowrap;
+    z-index: 1;
+}
+.md-a::before{
+    content: '';
+    position: absolute;
+    top: 60%;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
+    background-color: rgba(var(--main-color-meta), 0.5);
+    z-index: -1;
+    transition: 0.3s;
+}
+.md-a:is(:hover, :focus-within)::before{
+    top: -3px;
+}
+</style>
