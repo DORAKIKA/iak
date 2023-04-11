@@ -1,0 +1,109 @@
+---
+const {
+    name,
+    author = "",
+    cover,
+    description = "",
+    link,
+    link_text = "GO",
+    comment = "",
+    color
+} = Astro.props;
+---
+
+<div class="md-book" style={color ? `--main-color-meta: var(--${color}-meta)` : ''}>
+    <div class="md-book__info">
+        {cover ? <img class="md-book__cover" src={cover} loading="lazy"/> : null}
+        <div class="md-book__other">
+            <div class="md-book__name">{ name }</div>
+            {author ? <div class="md-book__author">{ author }</div> : null}
+            {description ? <div class="md-book__description">{ description }</div> : null}
+            {link ? <a class="md-book__link" href={link} target="_blank">{link_text}</a> : null}
+        </div>
+    </div>
+    {comment ? <div class="md-book__comment">『 { comment } 』</div> : null}
+</div>
+
+<style>
+.md-book{
+    --main-color: rgba(var(--main-color-meta),1);
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--base-radius);
+    background-color: var(--card-bg);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    color: var(--main-color);
+}
+.md-book:only-child{
+    width: 100%;
+}
+.md-book .md-book__info{
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(var(--main-color-meta), 0.15);
+}
+.md-book .md-book__cover{
+    max-height: 150px;
+    max-width: 50%;
+}
+.md-book .md-book__other{
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    overflow: hidden;
+}
+.md-book .md-book__name{
+    font-weight: bold;
+    line-height: 2;
+    font-size: 1.15em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.md-book .md-book__description{
+    line-height: 1.25;
+    font-size: 0.8em;
+    opacity: 0.6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.md-book .md-book__link{
+    display: inline-block;
+    padding: 0 1rem;
+    margin-top: 0.5em;
+    width: fit-content;
+    line-height: 1.8;
+    border-radius: var(--base-radius);
+    background-color: var(--main-color);
+    color: white;
+    transition: all 0.3s ease;
+}
+.md-book .md-book__link:hover{
+    opacity: 0.6;
+}
+.md-book .md-book__link:focus-visible{
+    outline: none;
+}
+.md-book:has( .md-book__link:focus-visible){
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(var(--main-color-meta), 0.5);
+}
+.md-book .md-book__comment{
+    width: 100%;
+    padding: 1.5rem;
+    background-color: rgba(var(--main-color-meta), 0.25);
+    color: var(--main-color);
+}
+</style>
