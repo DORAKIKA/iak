@@ -11,23 +11,23 @@ const {
 } = Astro.props;
 ---
 
-<div class="md-book" style={color ? `--main-color-meta: var(--${color}-meta)` : ''}>
-    <div class="md-book__info">
-        {cover ? <img class="md-book__cover" src={cover} loading="lazy"/> : null}
-        <div class="md-book__other">
-            <div class="md-book__name">{ name }</div>
-            {author ? <div class="md-book__author">{ author }</div> : null}
-            {description ? <div class="md-book__description">{ description }</div> : null}
-            {link ? <a class="md-book__link" href={link} target="_blank">{link_text}</a> : null}
+<div class="md-linkcard" style={color ? `--main-color-meta: var(--${color}-meta)` : ''}>
+    <div class="md-linkcard__info">
+        {cover ? <img class="md-linkcard__cover" src={cover} loading="lazy"/> : null}
+        <div class="md-linkcard__other">
+            <div class="md-linkcard__name">{ name }</div>
+            {author ? <div class="md-linkcard__author">{ author }</div> : null}
+            {description ? <div class="md-linkcard__description">{ description }</div> : null}
+            {link ? <a class="md-linkcard__link" href={link} target="_blank">{link_text}</a> : null}
         </div>
     </div>
-    {comment ? <div class="md-book__comment">『 { comment } 』</div> : null}
+    {comment ? <div class="md-linkcard__comment">『 { comment } 』</div> : null}
 </div>
 
 <style>
-.md-book{
+.md-linkcard{
     --main-color: rgba(var(--main-color-meta),1);
-    margin: 0 auto;
+    margin: 0.5rem auto;
     width: 100%;
     height: fit-content;
     display: flex;
@@ -40,7 +40,10 @@ const {
     overflow: hidden;
     color: var(--main-color);
 }
-.md-book .md-book__info{
+.md-linkcard:only-child{
+    margin: 0 auto;
+}
+.md-linkcard .md-linkcard__info{
     width: 100%;
     padding: 1.5rem;
     display: flex;
@@ -48,17 +51,17 @@ const {
     gap: 1rem;
     background-color: rgba(var(--main-color-meta), 0.15);
 }
-.md-book .md-book__cover{
+.md-linkcard .md-linkcard__cover{
     max-height: 150px;
     max-width: 50%;
 }
-.md-book .md-book__other{
+.md-linkcard .md-linkcard__other{
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
     overflow: hidden;
 }
-.md-book .md-book__name{
+.md-linkcard .md-linkcard__name{
     font-weight: bold;
     line-height: 2;
     font-size: 1.15em;
@@ -66,7 +69,7 @@ const {
     overflow: hidden;
     white-space: nowrap;
 }
-.md-book .md-book__description{
+.md-linkcard .md-linkcard__description{
     line-height: 1.25;
     font-size: 0.8em;
     opacity: 0.6;
@@ -76,7 +79,7 @@ const {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
-.md-book .md-book__link{
+.md-linkcard .md-linkcard__link{
     display: inline-block;
     padding: 0 1rem;
     margin-top: 0.5em;
@@ -87,17 +90,17 @@ const {
     color: white;
     transition: all 0.3s ease;
 }
-.md-book .md-book__link:hover{
+.md-linkcard .md-linkcard__link:hover{
     opacity: 0.6;
 }
-.md-book .md-book__link:focus-visible{
+.md-linkcard .md-linkcard__link:focus-visible{
     outline: none;
 }
-.md-book:has( .md-book__link:focus-visible){
+.md-linkcard:has( .md-linkcard__link:focus-visible){
     outline: none;
     box-shadow: 0 0 0 4px rgba(var(--main-color-meta), 0.5);
 }
-.md-book .md-book__comment{
+.md-linkcard .md-linkcard__comment{
     width: 100%;
     padding: 1.5rem;
     background-color: rgba(var(--main-color-meta), 0.25);
