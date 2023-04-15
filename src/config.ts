@@ -116,7 +116,13 @@ export const headings: HeadingConfig = {
 // 主题配置
 // 此配置只做选项与默认项，具体配置会读取用户浏览器的LocalStorage数据
 export const theme: ThemeConfig = {
-    main_colors: ['50, 201, 235','244,149,162', '144, 83, 144', '52, 175, 86'],
+    main_colors: [
+        'var(--blue-meta)',
+        'var(--yellow-meta)', 
+        'var(--pink-meta)', 
+        'var(--red-meta)',
+        'var(--green-meta)'
+    ],
     large_border_radius: {
         default: true
     },
