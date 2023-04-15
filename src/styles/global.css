@@ -111,12 +111,34 @@ html.gray{
   filter: grayscale(1);
 }
 ::-webkit-scrollbar{
-  width: 4px;
-  height: 4px;
-  background: var(--color-op);
+  width: 12px;
+  height: 12px;
 }
 ::-webkit-scrollbar-thumb{
-  background-color: var(--color-deep-op);
+  box-sizing: border-box;
+  border: 4px solid transparent;
+  background-image: linear-gradient(
+    rgba(var(--main-color-meta), 0.5) 0%,
+    rgba(var(--main-color-meta), 0.5) 100%
+  ),
+  linear-gradient(
+    var(--bg) 0%,
+    var(--bg) 100%
+  );
+  background-clip: content-box;
+  border-radius: 99px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-image: linear-gradient(
+    rgba(var(--main-color-meta), 0.7) 0%,
+    rgba(var(--main-color-meta), 0.7) 100%
+  ),
+  linear-gradient(
+    var(--bg) 0%,
+    var(--bg) 100%
+  );
 }
 body {
   margin: 0;
