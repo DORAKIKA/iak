@@ -23,6 +23,11 @@ MDX支持在Markdown中导入组件以JSX形式使用
 > 看到了吗？
 </details>
 
+
+## 友链@ Friend
+
+这里是<Friend name="dorakika" />的博客。友链中没有找到则像普通超链接：<Friend name="某人" link="https://dorakika.cn" />。
+
 ## 代码块
 
 ```js
@@ -74,7 +79,16 @@ console.log(b);
 可用于展示一些链接，如书籍、视频、音频、博文等
 
 
+<LinkCard
+    name="DORAKIKA"
+    description="这里是DORAKIKA"
+    cover="https://q.qlogo.cn/g?b=qq&nk=1633198089&s=100"
+    link="https://dorakika.cn"
+    link_text="前往"
+    color="purple"
+/>
 <Grid col={2} minWidth="480px">
+<GridItem>
 <LinkCard
     name="grid布局实现自适应分栏组件"
     author="DORAKIKA"
@@ -84,6 +98,8 @@ console.log(b);
     link_text="阅读"
     color="blue"
 />
+</GridItem>
+<GridItem>
 <LinkCard
     name="云彩收集者手册"
     author="加文·普雷特·平尼"
@@ -94,6 +110,7 @@ console.log(b);
     comment="自然是一朵多变的云，始终一样，却从不一样"
     color="orange"
 />
+</GridItem>
 </Grid>
 
 

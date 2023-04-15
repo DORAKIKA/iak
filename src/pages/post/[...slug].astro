@@ -82,7 +82,7 @@ const meta_og = generatePostOpenGraph(Astro, post);
 			</div>
 		</div>
 	</div>
-	<article id="post" class="article-block">
+	<article id="post" class="article-post">
 		<Content entry={post} />
 	</article>
 	<PostCopyright title={post.data.title} />
@@ -139,5 +139,8 @@ const meta_og = generatePostOpenGraph(Astro, post);
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
-
+#post{
+	margin: 2rem auto;
+	line-height: 2;
+}
 </style>

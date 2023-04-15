@@ -10,27 +10,27 @@
 
   --active-color-meta: 255, 85, 0;
 	--active-color: rgba(var(--active-color-meta), 1);
-
-  --red-meta: 255, 95, 86;
-  --red: rgb(255, 95, 86);
+  
+  --red-meta: 232, 105, 100;
+  --red: rgb(232, 105, 100);
 
   --orange-meta: 255, 115, 0;
   --orange: rgb(255, 115, 0);
 
-  --yellow-meta: 246, 195, 27;
-  --yellow: rgb(246, 195, 27);
+  --yellow-meta: 246, 169, 27;
+  --yellow: rgb(246, 169, 27);
 
-  --green-meta: 39, 201, 63;
-  --green: rgb(39, 201, 63);
+  --green-meta: 52, 175, 86;
+  --green: rgb(52, 175, 86);
 
-  --blue-meta: 0, 174, 255;
-  --blue: rgb(0, 174, 255);
+  --blue-meta: 50, 201, 235;
+  --blue: rgb(50, 201, 235);
 
-  --purple-meta: 163, 73, 164;
-  --purple: rgb(163, 73, 164);
+  --purple-meta: 144, 83, 144;
+  --purple: rgb(144, 83, 144);
 
-  --pink-meta: 255, 112, 143;
-  --pink: rgb(255, 112, 143);
+  --pink-meta: 244,149,162;
+  --pink: rgb(244,149,162);
   
   --gray-meta: 142, 142, 147;
   --gray: rgb(142, 142, 147);
@@ -43,7 +43,7 @@
   --kk-texture-color: rgba(255,255,255,0.2);
 
   /* card */
-  --bg: #f7f9fe;
+  --bg: #fcfcfd;
   --card-tab-bg: #ecedef;
   --card-text-color: #23272b;
   --card-sub-text-color: #9ba0a5;
@@ -57,6 +57,9 @@
   --card-border-color: #e3e8f7;
   --card-border: 3px solid var(--card-border-color);
   --base-radius: 16px;
+
+  /* md components */
+  --md-margin: 1rem 0;
 }
 
 html.dark{
@@ -108,12 +111,34 @@ html.gray{
   filter: grayscale(1);
 }
 ::-webkit-scrollbar{
-  width: 4px;
-  height: 4px;
-  background: var(--color-op);
+  width: 12px;
+  height: 12px;
 }
 ::-webkit-scrollbar-thumb{
-  background-color: var(--color-deep-op);
+  box-sizing: border-box;
+  border: 4px solid transparent;
+  background-image: linear-gradient(
+    rgba(var(--main-color-meta), 0.5) 0%,
+    rgba(var(--main-color-meta), 0.5) 100%
+  ),
+  linear-gradient(
+    var(--bg) 0%,
+    var(--bg) 100%
+  );
+  background-clip: content-box;
+  border-radius: 99px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-image: linear-gradient(
+    rgba(var(--main-color-meta), 0.7) 0%,
+    rgba(var(--main-color-meta), 0.7) 100%
+  ),
+  linear-gradient(
+    var(--bg) 0%,
+    var(--bg) 100%
+  );
 }
 body {
   margin: 0;

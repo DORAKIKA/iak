@@ -27,6 +27,16 @@ export const site:SiteConfig = {
     // 站点作者
     author: 'DORAKIKA'
 }
+export const author = {
+    // 作者名称
+    name: 'DORAKIKA',
+    // 作者头像
+    avatar: 'https://q.qlogo.cn/g?b=qq&nk=1633198089&s=140',
+    // 作者简介
+    description: '我是一个喜欢折腾的前端工程师，对一切新鲜事物充满好奇，希望我的文章能给你带来思考和帮助',
+    // 作者邮箱
+    email: 'dorakika@163.cm',
+}
 // 顶部菜单：仅支持二级菜单
 export const menus: MenuItem[] = [
     {
@@ -106,7 +116,13 @@ export const headings: HeadingConfig = {
 // 主题配置
 // 此配置只做选项与默认项，具体配置会读取用户浏览器的LocalStorage数据
 export const theme: ThemeConfig = {
-    main_colors: ['50, 201, 235','244,149,162', '144, 83, 144', '52, 175, 86'],
+    main_colors: [
+        'var(--blue-meta)',
+        'var(--yellow-meta)', 
+        'var(--pink-meta)', 
+        'var(--red-meta)',
+        'var(--green-meta)'
+    ],
     large_border_radius: {
         default: true
     },

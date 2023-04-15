@@ -14,6 +14,17 @@
 	}
 }
 /* markdown 及 mdx 样式 */
+
+.md-block{
+    margin: var(--md-margin);
+}
+.md-block:last-child{
+    margin-bottom: 0;
+}
+.md-block:first-child{
+    margin-top: 0;
+}
+
 article h1,
 article h1>a,
 article h2>a,

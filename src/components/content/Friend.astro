@@ -1,0 +1,92 @@
+---
+// @ts-ignore
+import fgroups from '@content/friends/_index.yml';
+let { name, link } = Astro.props;
+
+let friends = fgroups.reduce((acc: Array<any>, group: any) => {
+  return acc.concat(group.list_data);
+}, []);
+
+let friend;
+if(name) friend = friends.find((f: any) => f.name.toUpperCase() === name.toUpperCase());
+if(link) friend = friends.find((f: any) => f.link.toUpperCase() === link.toUpperCase()) || friend;
+
+name = friend?.name || name;
+link = friend?.link || link;
+
+---
+
+<span class="md-friend">
+    <a class="md-friend__trigger" href={link} target="_blank">@{name}</a>
+
+    {friend ? <span class="md-friend__card">
+        <img class="md-friend__avatar" src={ friend.avatar } alt={ friend.name } />
+        <span class="md-friend__info">
+            <span class="md-friend__name">{ friend.name }</span>
+            <span class="md-friend__desc">{ friend.descr }</span>
+        </span>
+    </span> : null}
+</span>
+
+<style>
+.md-friend {
+    position: relative;
+    white-space: nowrap;
+}
+.md-friend__trigger {
+    color: var(--main-color);
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.md-friend:is(:hover, :focus-within) .md-friend__trigger{
+    text-decoration: underline;
+}
+.md-friend .md-friend__card{
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    z-index: 1;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.5rem;
+    background: linear-gradient(
+        rgba(var(--main-color-meta), 0.2),
+        rgba(var(--main-color-meta), 0.2)),
+    linear-gradient(var(--card-bg),var(--card-bg));
+    transform: translate(-50%, 0);
+    color: var(--main-color);
+    border: 3px solid var(--main-color);
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+.md-friend .md-friend__avatar{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+.md-friend .md-friend__info{
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 1;
+}
+.md-friend .md-friend__name{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.md-friend .md-friend__desc{
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+.md-friend:is(:hover, :focus-within) .md-friend__card{
+    opacity: 1;
+    pointer-events: auto;
+}
+</style>
