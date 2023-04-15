@@ -2,7 +2,7 @@
 const { col=1, row=1, minWidth='300px', minCol=1 } = Astro.props;
 ---
 
-<div class="md-grid" style={{
+<div class="md-block md-grid" style={{
     "--md-grid-col": col,
     "--md-grid-row": row,
     "--md-grid-min-width": minWidth,
@@ -29,6 +29,5 @@ const { col=1, row=1, minWidth='300px', minCol=1 } = Astro.props;
     );
     grid-template-rows: repeat(var(--md-grid-row), 1fr);
     grid-gap: 1rem;
-    margin-bottom: 1rem;
 }
 </style>

@@ -11,7 +11,7 @@ const {
 } = Astro.props;
 ---
 
-<div class="md-linkcard" style={color ? `--main-color-meta: var(--${color}-meta)` : ''}>
+<div class="md-linkcard md-block" style={color ? `--main-color-meta: var(--${color}-meta)` : ''}>
     <div class="md-linkcard__info">
         {cover ? <img class="md-linkcard__cover" src={cover} loading="lazy"/> : null}
         <div class="md-linkcard__other">
@@ -27,7 +27,6 @@ const {
 <style>
 .md-linkcard{
     --main-color: rgba(var(--main-color-meta),1);
-    margin: 0.5rem auto;
     width: 100%;
     height: fit-content;
     display: flex;

@@ -27,7 +27,7 @@ if(!active) active = tabs[0].name;
 const tabsKey = tabs.map(tab => tab.name).join(',') + (new Date()).getTime();
 ---
 
-<div class="md-tabs" style={color && `--main-color-meta: var(--${color}-meta`}>
+<div class="md-tabs md-block" style={color && `--main-color-meta: var(--${color}-meta`}>
     <div class="md-tabs__nav">
         {
             tabs.map((tab, index) => (
@@ -71,7 +71,6 @@ buttons.forEach(btn => {
     border-radius: var(--base-radius);
     border: 2px solid var(--main-color);
     overflow: hidden;
-    margin: 0.5rem 0;
 }
 .md-tabs:only-child{
     margin: 0;

@@ -57,6 +57,9 @@
   --card-border-color: #e3e8f7;
   --card-border: 3px solid var(--card-border-color);
   --base-radius: 16px;
+
+  /* md components */
+  --md-margin: 1rem 0;
 }
 
 html.dark{

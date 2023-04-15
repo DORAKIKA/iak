@@ -2,7 +2,7 @@
 const { type="default", title } = Astro.props
 ---
 
-<div class={"md-outline"} style={{
+<div class="md-outline md-block" style={{
     "--main-color": type === "default" ? 'var(--global-main-color)' : `var(--${type})`,
     "--main-color-meta": type === "default" ? 'var(--global-main-color-meta' : `var(--${type}-meta)`,
 }}>
@@ -21,7 +21,6 @@ const { type="default", title } = Astro.props
     border: 2px dashed rgba(var(--main-color-meta), 0.7);
     background-color: rgba(var(--main-color-meta), 0.1);
     padding: 1rem;
-    margin-bottom: 1rem;
 }
 :global(.dark .md-outline){
     border-color: rgba(var(--main-color-meta), 0.3);
