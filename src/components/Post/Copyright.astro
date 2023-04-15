@@ -1,51 +1,108 @@
 ---
-import { site } from '../../config'
+import { site, author } from '../../config'
 const { title } = Astro.props
 
 ---
 
 <div class="post-copyright">
-    <div class="post-copyright__title">{ title }</div>
-    <div class="post-copyright__href"><a href={Astro.url.href}>{ Astro.url.href }</a></div>
-    <div class="post-copyright__notice">
-        除特殊注明外，本博客文章均采用
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-ND 4.0</a>
-        协议，完整转载请注明来自 
-        <a href={site.origin}>{site.author}</a>
+    <div class="post-copyright__avatar">
+        <img src={author.avatar} alt={author.name}>
     </div>
-    <svg viewBox="0 0 512 512" class="post-copyright__icon" width="1.2em" height="1.2em" style="display: inline-block;"><path fill="currentColor" d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256s114.6 256 256 256zm-56.6-199.4c31.2 31.2 81.9 31.2 113.1 0c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9c-50 50-131 50-181 0s-50-131 0-181s131-50 181 0c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0c-31.2-31.2-81.9-31.2-113.1 0s-31.2 81.9 0 113.1z"></path></svg>
+    <div class="post-copyright__main">
+        <div class="post-copyright__intro">{ author.description }</div>
+        <div class="post-copyright__author">
+            <div class="post-copyright__name">👋我是{author.name}</div>
+        </div>
+        <div class="post-copyright__c">分享作者『{site.author}』发表的文章『{title}』{Astro.url.href}</div>
+    </div>
+    <div class="post-copyright__tip">© 请您在需要时著名本文内容来源信息，若在文末注明“参考、扩展”等字样涉及转载第三方内容，请您一同复制</div>
+
 </div>
 
 <style>
-    .post-copyright{
-        margin: 1em 0;
-        background-color: var(--card-bg);
-        border: 3px solid var(--card-border-color);
-        padding: 1.5em;
-        border-radius: var(--base-radius);
-        position: relative;
-        line-height: 1,5;
+.post-copyright{
+    margin: 1rem 0;
+    margin-top: calc(60px + 1rem);
+    background-color: rgba(var(--main-color-meta), 0.1);
+    color: var(--main-color);
+    padding: 1rem 2rem 2rem;
+    border-radius: var(--base-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    line-height: 2;
+}
+.post-copyright .post-copyright__avatar{
+    margin-top: -60px;
+    background-color: rgba(var(--main-color-meta), 0.2);
+    padding: 0.5rem;
+    width: 120px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    transition: 0.3s;
+    overflow: hidden;
+}
+.post-copyright .post-copyright__avatar img{
+    background-color: var(--main-color);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.post-copyright:hover .post-copyright__avatar{
+    transform: scale(1.1);
+}
+.post-copyright .post-copyright__main{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.post-copyright .post-copyright__intro{
+    font-size: 0.8rem;
+    width: 350px;
+}
+.post-copyright .post-copyright__author{
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.post-copyright .post-copyright__name{
+    margin-top: 0.5rem;
+    font-weight: 600;
+    background-color: rgba(var(--main-color-meta), 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+}
+.post-copyright .post-copyright__c{
+    font-size: 0.8rem;
+    font-weight: 400;
+    width: 350px;
+    word-break: break-all;
+}
+.post-copyright .post-copyright__tip{
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(var(--main-color-meta), 0.6);
+}
+@media (max-width: 1200px){
+    .post-copyright .post-copyright__main{
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
-    .post-copyright__title{
-        font-weight: bold;
-        font-size: 1.25em;
-        line-height: 1.5;
+    .post-copyright .post-copyright__intro{
+        width: fit-content;
     }
-    .post-copyright__href{
-        color: var(--main-color);
-        opacity: 0.7;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+    .post-copyright .post-copyright__author{
+        order: -1;
     }
-    .post-copyright__href:is(:hover, :focus-within){
-        opacity: 1;
+    .post-copyright .post-copyright__c{
+        width: fit-content;
     }
-    .post-copyright__icon{
-        width: 1.5em;
-        height: 1.5em;
-        position: absolute;
-        top: 1em;
-        right: 1em;
-    }
+}
 </style>
