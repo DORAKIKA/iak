@@ -80,7 +80,7 @@ const styleHTML = computed(() => `
         }
     ` : ''}
     ${!styleConfig.value.headerFixed ? `
-        #nav.fixed{
+        #nav{
             position: absolute;
             background: transparent;
             border: none;

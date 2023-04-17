@@ -129,12 +129,16 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
 
 <script>
 window.addEventListener('scroll', function () {
-  const nav = document.getElementById('nav');
-  if(!nav) return;
-  if(nav.offsetTop < window.scrollY) {
-    nav.classList.add('fixed');
+  const nav = document.getElementById('nav')
+  const header = document.getElementById('header')
+  if(!nav || !header) return;
+  const headerHeight = header.offsetHeight
+  const navHeight = nav.offsetHeight
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+  if (scrollTop > headerHeight - navHeight) {
+    nav.classList.add('over')
   } else {
-    nav.classList.remove('fixed');
+    nav.classList.remove('over')
   }
 })
 </script>
@@ -169,13 +173,12 @@ window.addEventListener('scroll', function () {
     font-weight: bold;
     z-index: 200;
     top: 0;
-    position: absolute;
     transition: 0.3s;
     border-color: transparent;
     color: rgba(var(--white-meta), 0.8);
-  }
-  #nav.fixed{
     position: fixed;
+  }
+  #nav.over{
     background: var(--bg);
     border-bottom: 2px solid var(--card-border-color);
     color:var(--color-deep-text);
