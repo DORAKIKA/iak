@@ -3,6 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@/*": [
+        "src/*"
+      ],
       "@components/*": [
         "src/components/*"
       ],
@@ -20,6 +23,9 @@
       ],
       "@content/*": [
         "src/content/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
       ],
     },
     "jsx": "preserve"

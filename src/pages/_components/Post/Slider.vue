@@ -102,12 +102,12 @@ watch(current, () => {
     display: flex;
     gap: 1rem;
     z-index: 2;
-    box-shadow: 0 0 0 2px var(--color-deep-op);
+    box-shadow: 0 0 0 2px rgba(var(--white-meta), 0.8);
 }
 .post-slider .slider-container .slider-item{
     width: 1rem;
     height: 1rem;
-    border: 0.4rem solid var(--color-deep-op);
+    border: 0.4rem solid rgba(var(--white-meta), 0.8);
     border-radius: 50%;
     transform: rotate(45deg);
     cursor: pointer;
@@ -145,7 +145,7 @@ watch(current, () => {
 .post-slider .article .cover{
     width: 50%;
     height: 100%;
-    border: 4px solid var(--color-deep-op);
+    border: 4px solid rgba(var(--white-meta), 0.8);
     border-radius: var(--base-radius);
     object-fit: cover;
     /* position: absolute; */
@@ -155,7 +155,7 @@ watch(current, () => {
     width: 50%;
     height: 100%;
     padding: 0 2rem;
-    color: var(--color-deep-op);
+    color: rgba(var(--white-meta), 0.8);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -186,8 +186,8 @@ watch(current, () => {
     }
 }
 .post-slider .article .category{
-    box-shadow: 0 0 0 2px var(--color-deep-op);
-    background: var(--color-op);
+    box-shadow: 0 0 0 2px rgba(var(--white-meta), 0.8);
+    background: rgba(var(--white-meta), 0.2);
     padding: 4px 8px;
     border-radius: var(--base-radius);
     font-size: 0.5em;
@@ -196,14 +196,14 @@ watch(current, () => {
     display: inline-block;
     width: fit-content;
     padding: 2px 8px;
-    background: var(--color-op);
-    color: var(--color-deep-op);
+    background: rgba(var(--white-meta), 0.2);
+    color: rgba(var(--white-meta), 0.8);
     border-radius: var(--base-radius);
     transition: 0.3s;
 }
 .post-slider .article .meta .tags .tag:is(:hover, :focus-within){
     color: var(--main-color);
-    background: var(--color-deep-op);
+    background: rgba(var(--white-meta), 0.8);
 }
 .post-slider .article .meta .button{
     align-self: flex-end;

@@ -23,7 +23,7 @@ const {mark, group} = Astro.props
     position: relative;
     display: flex;
     transition: 0.3s;
-    color: var(--color-deep-op);
+    color: rgba(var(--white-meta), 0.8);
     border: 2px solid var(--card-border-color);
     box-shadow: var(--card-shadow);
 }
@@ -58,12 +58,16 @@ const {mark, group} = Astro.props
     position: absolute;
     bottom: 0;
     left: 0;
+    right: 0;
     padding: var(--base-radius);
+    transition: background 0.3s;
+}
+.mark-item:hover .bottom{
+    background: rgba(var(--black-meta), 0.8);
 }
 .mark-item .title{
     font-size: 1.2em;
     font-weight: 600;
-    color: var(--color-deep-op);
 }
 .mark-item .time{
     font-size: 12px;

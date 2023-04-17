@@ -79,13 +79,12 @@ const styleHTML = computed(() => `
             content: '';
         }
     ` : ''}
-    ${styleConfig.value.headerFixed ? `
+    ${!styleConfig.value.headerFixed ? `
         #nav{
-            position: fixed;
-            background: ${styleConfig.value.imageBackground ? 'var(--color-deep-op)' : 'rgba(var(--main-color-meta), 0.9)'};
-            color: ${styleConfig.value.imageBackground ? 'var(--color-deep-text)' : 'var(--color-deep-op)'};
-            backdrop-filter: blur(4px);
-            top: 0;
+            position: absolute;
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
         }
     ` : ''}
 `)

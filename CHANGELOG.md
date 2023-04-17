@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](///compare/v0.9.1...v0.9.2) (2023-04-17)
+
+
+### Features
+
+* 顶栏固定效果优化 ed9020f
+* slider样式优化 23d3d47
+* twikoo样式优化 2ffb27d
+
+
+### Bug Fixes
+
+* mark样式及日期格式化 2cacc57
+* nav超过header才变色 846c2a6
+
 ### [0.9.1](///compare/v0.9.0...v0.9.1) (2023-04-15)
 
 

@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { formatDateTime } from "@/tools/tools";
 import { memories as m_config } from "src/config";
 import '@styles/article.css'
 
@@ -18,7 +19,7 @@ const memories = (await getCollection("memories")).sort((a, b) => {
 					<li class="recent-memories__item">
 						<div class="recent-memories__emoji">{memory.data.emoji}</div>
 						<div class="recent-memories__title">{memory.data.title}</div>
-						<div class="recent-memories__date">{memory.data.date.toLocaleDateString()}</div>
+						<div class="recent-memories__date">{formatDateTime(memory.data.date)}</div>
 					</li>
 				)
 			})}

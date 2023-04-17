@@ -127,6 +127,22 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
   <HeaderWave />
 </header>
 
+<script>
+window.addEventListener('scroll', function () {
+  const nav = document.getElementById('nav')
+  const header = document.getElementById('header')
+  if(!nav || !header) return;
+  const headerHeight = header.offsetHeight
+  const navHeight = nav.offsetHeight
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+  if (scrollTop > headerHeight - navHeight) {
+    nav.classList.add('over')
+  } else {
+    nav.classList.remove('over')
+  }
+})
+</script>
+
 <style>
   #header {
     --wave-height: 70px;
@@ -137,7 +153,6 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
     justify-self: center;
     align-items: center;
     overflow: hidden;
-    color: var(--color-deep-op);
   }
   #header .main-header {
     position: absolute;
@@ -149,16 +164,25 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
     align-items: center;
   }
   #nav {
-    position: absolute;
     width: 100%;
     height: var(--header-height);
     padding: 0 var(--side-padding);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--color-deep-op);
     font-weight: bold;
     z-index: 200;
+    top: 0;
+    transition: 0.3s;
+    border-color: transparent;
+    color: rgba(var(--white-meta), 0.8);
+    position: fixed;
+  }
+  #nav.over{
+    background: var(--bg);
+    border-bottom: 2px solid var(--card-border-color);
+    color:var(--color-deep-text);
+    backdrop-filter: blur(4px);
   }
   #nav .site-home {
     width: 28px;
@@ -200,7 +224,7 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
   }
   #nav .nav-button:is(:hover, :focus-within) {
     color: var(--main-color);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(var(--white-meta), 0.8);
   }
   #nav .nav-button-core {
     border: none;
