@@ -3,7 +3,7 @@
 import Layout from "@layouts/Layout.astro"
 import { default_assets, site } from "src/config";
 import { getCollection } from "astro:content";
-import PostCard from "@components/Post/Card.astro"
+import PostCard from "@pages/_components/Post/Card.astro"
 import { generateOpenGraph } from "src/tools/open_graph";
 
 export async function getStaticPaths({ paginate } : { paginate: Function}){

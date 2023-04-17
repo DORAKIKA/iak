@@ -1,9 +1,9 @@
 ---
-import MarkItem from "@components/content/MarkItem.astro";
+import MarkItem from "@pages/_components/Mark/MarkItem.astro";
 import Layout from "@layouts/Layout.astro";
 import { site } from "src/config";
 // @ts-ignore
-import marks from "../content/mark/_index.yml"
+import marks from "@content/mark/_index.yml"
 const page_meta = {
     title: '足迹 | '+site.name,
     description: site.author + '的友链',

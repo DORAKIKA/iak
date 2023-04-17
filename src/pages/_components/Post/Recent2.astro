@@ -1,5 +1,5 @@
 ---
-import PostCard from "@components/Post/Card2.astro"
+import PostCard from "./Card2.astro"
 import { getCollection } from "astro:content";
 const recentPosts = (await getCollection("posts")).sort((a,b) => {
     return a.data.date > b.data.date ? -1 : 1

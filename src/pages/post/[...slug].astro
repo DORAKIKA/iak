@@ -2,9 +2,9 @@
 import { CollectionEntry, getCollection } from 'astro:content';
 import Content from '@components/content/Content.astro';
 import { site, twikoo } from 'src/config';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 import Twikoo from '@components/Third/Twikoo.astro';
-import PostCopyright from '@components/Post/Copyright.astro'
+import PostCopyright from '@pages/_components/Post/Copyright.astro'
 import '@styles/article.css'
 import { generatePostOpenGraph } from 'src/tools/open_graph';
 import { count } from 'src/tools/tools';
