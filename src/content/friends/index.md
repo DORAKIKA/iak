@@ -10,7 +10,7 @@ title: 友情链接
 
 可以直接在评论中申请，也可以通过邮箱与我取得联系。更改友链信息请注明原信息
 
-```yml
+```yaml
 - name: your_name
   link: site_url
   avatar: avatar_url
