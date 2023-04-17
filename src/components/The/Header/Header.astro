@@ -127,6 +127,18 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
   <HeaderWave />
 </header>
 
+<script>
+window.addEventListener('scroll', function () {
+  const nav = document.getElementById('nav');
+  if(!nav) return;
+  if(nav.offsetTop < window.scrollY) {
+    nav.classList.add('fixed');
+  } else {
+    nav.classList.remove('fixed');
+  }
+})
+</script>
+
 <style>
   #header {
     --wave-height: 70px;
@@ -149,16 +161,25 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
     align-items: center;
   }
   #nav {
-    position: absolute;
     width: 100%;
     height: var(--header-height);
     padding: 0 var(--side-padding);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--color-deep-op);
     font-weight: bold;
     z-index: 200;
+    top: 0;
+    position: absolute;
+    transition: 0.3s;
+    border-color: transparent;
+  }
+  #nav.fixed{
+    position: fixed;
+    background: var(--bg);
+    border-bottom: 2px solid var(--card-border-color);
+    color:var(--color-deep-text);
+    backdrop-filter: blur(4px);
   }
   #nav .site-home {
     width: 28px;
