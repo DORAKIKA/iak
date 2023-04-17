@@ -7,6 +7,7 @@ import Content from "@components/content/Content.astro"
 import '@styles/article.css'
 
 import SvgDate from '@components/Svg/Date.astro'
+import { formatDateTime } from "@/tools/tools";
 
 const memories = (await getCollection("memories")).sort((a, b) => {
     return b.data.date.getTime() - a.data.date.getTime();
@@ -38,7 +39,7 @@ meta_og={meta_og}>
                     <Content entry={memory}></Content>
                     <div class="meta">
                         <span class="emoji">{memory.data.emoji}</span>
-                        <time><SvgDate/><span>{memory.data.date.toLocaleDateString()}</span></time>
+                        <time><SvgDate/><span>{formatDateTime(memory.data.date)}</span></time>
                         <span class="tags">
                             {
                                 memory.data.tags?.map((tag) => {
@@ -65,7 +66,7 @@ meta_og={meta_og}>
 }
 #memories-container .article-block {
     margin: 0;
-    padding: 1rem;
+    padding: 1rem 1rem 0;
 }
 #memories-container .article-block .title {
     font-size: 1.15rem;
