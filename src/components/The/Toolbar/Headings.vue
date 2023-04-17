@@ -61,7 +61,7 @@ window.iak.toggleHeadings = toggleHeadings
     transition: 0.3s;
 }
 .toolbar-headings-item:is(:hover, :focus-within){
-    background: var(--color-deep-op);
+    background: rgba(var(--white-meta), 0.8);
     color: var(--main-color);
 }
 .toolbar-headings-item::before{
@@ -69,8 +69,8 @@ window.iak.toggleHeadings = toggleHeadings
     display: inline-block;
     width: 1.5em;
     height: 1.5em;
-    background: var(--color-op);
-    color: var(--color-deep-op);
+    background: var(--white);
+    color: var(--main-color);
     text-align: center;
     border-radius: var(--base-radius);
 }

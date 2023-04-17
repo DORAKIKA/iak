@@ -35,6 +35,12 @@
   --gray-meta: 142, 142, 147;
   --gray: rgb(142, 142, 147);
 
+  --black-meta: 0, 0, 0;
+  --black: rgb(0, 0, 0);
+
+  --white-meta: 255, 255, 255;
+  --white: rgb(255, 255, 255);
+
 	--font-color: rgba(255,255,255,0.8);
   --color-deep-op: rgba(255,255,255,0.8);
   --color-op: rgba(255,255,255,0.2);

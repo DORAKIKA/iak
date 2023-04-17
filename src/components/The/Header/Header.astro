@@ -149,7 +149,6 @@ window.addEventListener('scroll', function () {
     justify-self: center;
     align-items: center;
     overflow: hidden;
-    color: var(--color-deep-op);
   }
   #header .main-header {
     position: absolute;
@@ -173,6 +172,7 @@ window.addEventListener('scroll', function () {
     position: absolute;
     transition: 0.3s;
     border-color: transparent;
+    color: rgba(var(--white-meta), 0.8);
   }
   #nav.fixed{
     position: fixed;
@@ -221,7 +221,7 @@ window.addEventListener('scroll', function () {
   }
   #nav .nav-button:is(:hover, :focus-within) {
     color: var(--main-color);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(var(--white-meta), 0.8);
   }
   #nav .nav-button-core {
     border: none;

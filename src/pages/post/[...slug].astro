@@ -94,6 +94,7 @@ const meta_og = generatePostOpenGraph(Astro, post);
 <style>
 .article-head{
 	width: 100%;
+	color: rgba(var(--white-meta), 0.8);
 }
 .article-title{
     line-height: 2;
@@ -115,7 +116,7 @@ const meta_og = generatePostOpenGraph(Astro, post);
     justify-content: center;
     flex-direction: column;
     gap: 4px;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--color-op);
     backdrop-filter: blur(8px);
     padding: 16px;
     border-radius:var(--base-radius);
