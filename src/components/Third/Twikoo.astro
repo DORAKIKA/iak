@@ -25,6 +25,11 @@ window.addEventListener("load", () => {
     border-radius: var(--base-radius);
     color: var(--card-text-color);
     background-color: var(--card-bg);
+    border: var(--card-border);
+    overflow: hidden;
+}
+#twikoo .tk-icon.__comments{
+    color: var(--main-color);
 }
 #twikoo .tk-avatar .tk-avatar-img{
     color: var(--light-color);
@@ -98,6 +103,7 @@ window.addEventListener("load", () => {
 
 #twikoo .tk-content{
     background-color: var(--bg);
+    color: var(--card-text-color);
     padding: 8px 16px;
     border-radius: var(--base-radius);
 }
@@ -119,5 +125,29 @@ window.addEventListener("load", () => {
 #twikoo .tk-preview-container{
     border-color: var(--card-tab-bg);
     background-color: var(--bg);
+}
+
+#twikoo .tk-admin{
+    background: var(--card-bg);
+    color: var(--card-text-color);
+}
+#twikoo .tk-panel{
+    color: var(--card-text-color);
+}
+
+#twikoo .tk-panel .tk-tab.__active{
+    color: var(--main-color);
+    border-color: var(--main-color);
+}
+#twikoo .tk-admin-comment-filter-type{
+    color: var(--card-text-color);
+}
+#twikoo .tk-admin-config-input{
+    background-color: var(--bg);
+    border-color: var(--card-tab-bg);
+    color: var(--card-text-color);
+}
+#twikoo .el-button--text{
+    color: var(--main-color);
 }
 </style>
