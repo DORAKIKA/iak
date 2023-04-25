@@ -120,19 +120,79 @@ function defaultFunc(msg){
 }
 
 iak.welcome();
-(function(){
-    window.addEventListener('DOMContentLoaded', function(){
-        // fancybox
-        Fancybox.bind("[data-fancybox]", {});
-    })
+
+window.addEventListener('DOMContentLoaded', main);
+function main(){
+    // fancybox
+    Fancybox.bind("[data-fancybox]", {});
     window.addEventListener('blur', () => {
         // 页面失去焦点，恢复初始状态
         iak.togglePanel.type !== 'default' && iak.togglePanel(false);
         iak.toggleSearch.type !== 'default' && iak.toggleSearch(false);
         iak.toggleSidebar.type !== 'default' && iak.toggleSidebar(false);
         iak.toggleHeadings.type !== 'default' && iak.toggleHeadings(false);
-    })
-})()
+    });
+
+
+
+    // 记录当前阅读位置，窗口resize后恢复
+    contentBackAfterResize();
+
+
+    function contentBackAfterResize(){
+        let contentDom = document.querySelector('article#post');
+        if(contentDom){
+            const contentPositionFunc = handlerContentPosition();
+            window.addEventListener('resize', () => contentPositionFunc('resize'));
+            window.addEventListener('scroll', () => contentPositionFunc('scroll'));
+            function handlerContentPosition(){
+                let scrollPaddingTop = parseInt(getComputedStyle(document.documentElement).scrollPaddingTop);
+                let curEl = getCurEl();
+                let timer = null;
+                let resize = false;
+                let scrollTimer = null;
+    
+                return function(type){
+                    if(type === 'resize'){
+                        resize = true;
+                        clearTimeout(timer);
+                        timer = setTimeout(() => {
+                            scrollToCurEl();
+                            resize = false
+                        }, 100);
+                    }else{
+                        if(resize) return;
+                        clearTimeout(scrollTimer);
+                        scrollTimer = setTimeout(() => {
+                            curEl = getCurEl();
+                        }, 100);
+                    }
+                }
+                function getCurEl(content = contentDom){
+                    let children = content.children;
+                    for(let i = 0; i < children.length; i++){
+                        if(children[i].offsetTop - scrollPaddingTop >= window.scrollY){
+                            return children[i];
+                        }else if(children[i].clientHeight + children[i].offsetTop - scrollPaddingTop > window.scrollY && children[i].children.length){
+                            // 如果元素尾部在可视区域，则查找其子元素
+                            let child = getCurEl(children[i]);
+                            if(child){
+                                return child;
+                            }
+                        }
+                    }
+                    return null;
+                }
+                function scrollToCurEl(){
+                    if(curEl){
+                        console.log(curEl.offsetTop - scrollPaddingTop)
+                        document.documentElement.scrollTo(0, curEl.offsetTop - scrollPaddingTop);
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 
