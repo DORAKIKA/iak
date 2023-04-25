@@ -60,7 +60,7 @@
   --card-shadow-color: rgba(0,0,0,0.1);
   --card-shadow: 1px 2px 8px var(--card-shadow-color);
   --card-outline: 0 0 0 3px var(--main-color);
-  --card-border-color: #e3e8f7;
+  --card-border-color: #e7e9e8;
   --card-border: 3px solid var(--card-border-color);
   --base-radius: 16px;
 
@@ -78,18 +78,18 @@ html.dark{
   --color-op-text: rgba(0,0,0,0.8);
 
   /* card */
-  --bg: #151617;
+  --bg: #151716;
   --card-tab-bg: #2b2b2b;
   --card-text-color: #ffffff;
   --card-sub-text-color: #9ba0a5;
-  --card-bg: #1e1e1e;
+  --card-bg: #1c1e1d;
   --card-inner-bg: #2a2a2a;
   --card-active: var(--main-color);
   --card-active-text: #ffffff;
   --card-shadow-color: rgba(0,0,0,0.1);
   --card-shadow: 1px 2px 8px var(--card-shadow-color);
   --card-outline: 0 0 0 4px var(--main-color);
-  --card-border-color: #2e2e2e;
+  --card-border-color: #212322;
 }
 @media (max-width: 900px){
   :root{

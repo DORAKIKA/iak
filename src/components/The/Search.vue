@@ -145,9 +145,10 @@ window.iak.toggleSearch = toggleSearch
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 50vw;
+    width: 80vw;
     height: 50vh;
     min-width: 300px;
+    max-width: 600px;
     min-height: 300px;
     border: 4px solid white;
     background: var(--main-color);
