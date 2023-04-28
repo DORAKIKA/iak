@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](///compare/v0.9.2...v0.10.0) (2023-04-28)
+
+
+### Features
+
+* 惰性注册的右键菜单 e94596d
+* 样式修改 32ae20e
+* 阅读体验优化，窗口resize后恢复至之前阅读位置 92eafd6
+* md website 组件 f8ef26f
+
+
+### Bug Fixes
+
+* 修复tabs组件嵌套失效bug e37e0f3
+
 ### [0.9.2](///compare/v0.9.1...v0.9.2) (2023-04-17)
 
 
