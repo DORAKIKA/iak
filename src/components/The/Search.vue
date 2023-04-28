@@ -29,12 +29,13 @@ const query = async (e:any) => {
 const onSearch = useThrottleFn(query, 1000)
 const searchShow = ref(false)
 // const toggleSearch = useToggle(searchShow)
-const toggleSearch = (value:boolean|undefined) => {
+const toggleSearch = (value:boolean|undefined, text?: string) => {
     if(value !== undefined){
         searchShow.value = value
     }else{
         searchShow.value = !searchShow.value
     }
+    if(text)state.searchInput = text
     return ;
 }
 
@@ -145,9 +146,10 @@ window.iak.toggleSearch = toggleSearch
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 50vw;
+    width: 80vw;
     height: 50vh;
     min-width: 300px;
+    max-width: 600px;
     min-height: 300px;
     border: 4px solid white;
     background: var(--main-color);

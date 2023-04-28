@@ -128,7 +128,7 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
 </header>
 
 <script>
-window.addEventListener('scroll', function () {
+function checkScroll(){
   const nav = document.getElementById('nav')
   const header = document.getElementById('header')
   if(!nav || !header) return;
@@ -140,7 +140,9 @@ window.addEventListener('scroll', function () {
   } else {
     nav.classList.remove('over')
   }
-})
+}
+checkScroll()
+window.addEventListener('scroll', checkScroll)
 </script>
 
 <style>

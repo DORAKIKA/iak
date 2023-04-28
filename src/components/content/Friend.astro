@@ -16,7 +16,7 @@ link = friend?.link || link;
 
 ---
 
-<span class="md-friend">
+<span class="md-friend" data-role="md-friend">
     <a class="md-friend__trigger" href={link} target="_blank">@{name}</a>
 
     {friend ? <span class="md-friend__card">
@@ -27,6 +27,25 @@ link = friend?.link || link;
         </span>
     </span> : null}
 </span>
+
+<script>
+// @ts-ignore
+window.iak.contextMenu["md-friend"] = {
+    type: 'line',
+    children: [
+        {
+            text: '打开',
+            icon: 'fas fa-link',
+            action(el:HTMLElement){
+                const link = el.querySelector('.md-friend__trigger');
+                // @ts-ignore
+                if(link) link.click();
+            },
+            tag: '友链',
+        }
+    ]
+}
+</script>
 
 <style>
 .md-friend {

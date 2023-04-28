@@ -2,9 +2,35 @@
 const { href } = Astro.props;
 ---
 
-<a href={href} class="md-a">
+<a href={href} class="md-a" data-role="md-a">
     <slot></slot>
 </a>
+
+<script>
+// @ts-ignore
+window.iak.contextMenu["md-a"] = {
+    type: 'line',
+    children: [
+        {
+            text: '本页打开',
+            icon: 'fas fa-link',
+            action(el:HTMLElement){
+                // @ts-ignore
+                window.open(el.getAttribute('href'))
+            },
+            tag: '链接'
+        },{
+            text: '新标签打开',
+            icon: 'fas fa-link',
+            tag: '链接',
+            action(el:HTMLElement){
+                // @ts-ignore
+                window.open(el.getAttribute('href'), '_blank')
+            },
+        }
+    ]
+}
+</script>
 
 <style>
 .md-a{

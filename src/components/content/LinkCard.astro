@@ -11,7 +11,7 @@ const {
 } = Astro.props;
 ---
 
-<div class="md-linkcard md-block" style={color ? `--main-color-meta: var(--${color}-meta)` : ''}>
+<div class="md-linkcard md-block" style={color ? `--main-color-meta: var(--${color}-meta)` : ''} data-role="md-linkcard">
     <div class="md-linkcard__info">
         {cover ? <img class="md-linkcard__cover" src={cover} loading="lazy"/> : null}
         <div class="md-linkcard__other">
@@ -23,6 +23,25 @@ const {
     </div>
     {comment ? <div class="md-linkcard__comment">『 { comment } 』</div> : null}
 </div>
+
+<script>
+// @ts-ignore
+window.iak.contextMenu["md-linkcard"] = {
+    type: 'line',
+    children: [{
+            text: '新标签打开',
+            icon: 'fas fa-link',
+            tag: '链接',
+            action(el:HTMLElement){
+                const link = el.querySelector('.md-linkcard__link') as HTMLAnchorElement;
+                if(link){
+                    window.open(link.href);
+                }
+            },
+        }
+    ]
+}
+</script>
 
 <style>
 .md-linkcard{

@@ -66,31 +66,36 @@ window.iak.togglePanel = togglePanel
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.1);
     z-index: 3000;
+    transition: opacity 0.3s;
 }
 .the-panel__content{
     position: absolute;
-    right: 3em;
-    bottom: 2em;
-    width: 40vw;
+    right: 0;
+    bottom: 1em;
+    left: 0;
+    margin: auto;
+    width: 60vw;
     height: 60vh;
-    min-width: 100px;
+    min-width: 200px;
     min-height: 250px;
     padding: 1em 0.5em;
     border-radius: var(--base-radius);
     background: var(--card-bg);
     color: var(--card-text-color);
-    box-shadow: 0.5vw 0.5vw 16px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 16px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s cubic-bezier(.34,.99,.6,1);
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .the-panel__content{
-        right: 6vw;
-        width: 88vw;
+        width: 100vw;
+        bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
 }
 .panel-header{
@@ -144,9 +149,9 @@ window.iak.togglePanel = togglePanel
     transition: 0.3s cubic-bezier(.34,.99,.6,1);
 }
 .from-rt-enter-from .the-panel__content, .from-rt-leave-to .the-panel__content{
-    transform: translate(calc(100% + 2em), 50%);
+    transform: translateY(100%);
 }
 .from-rt-enter-to .the-panel__content, .from-rt-leave-from .the-panel__content{
-    transform: translate(0,0);
+    transform: translateY(0);
 }
 </style>

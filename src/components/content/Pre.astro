@@ -1,4 +1,4 @@
-<section class="code-block md-block">
+<section class="code-block md-block" data-role="md-code-block">
 <pre class='code-block-main' style={Astro.props.style}><slot></slot></pre>
 <div class="code-buttons">
     <button class="code-button code-fold" title="折叠"><svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4563" width="128" height="128"><path d="M1024 877.714286l-146.285714 146.285714-365.714286-365.714286L146.285714 1024l-146.285714-146.285714 365.714286-365.714286L0 146.285714l146.285714-146.285714 365.714286 365.714286L877.714286 0l146.285714 146.285714-365.714286 365.714286z" fill="#7dc5eb" p-id="4564"></path><path d="M292.571429 877.714286l-146.285715 146.285714-146.285714-146.285714 146.285714-146.285715 146.285715 146.285715zM1024 146.285714l-146.285714 146.285715-146.285715-146.285715 146.285715-146.285714 146.285714 146.285714z m-292.571429 731.428572l146.285715 146.285714 146.285714-146.285714-146.285714-146.285715-146.285715 146.285715zM0 146.285714l146.285714 146.285715 146.285715-146.285715-146.285715-146.285714-146.285714 146.285714z" fill="#333333" p-id="4565"></path></svg></button>
@@ -13,7 +13,7 @@
     const foldButtons = document.querySelectorAll('.code-block .code-fold');
     foldButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const code = button.parentElement?.parentElement?.querySelector('pre');
+            const code = button.parentElement?.parentElement;
             if(code){
                 code.classList.toggle('code-block-fold');
                 if(code.classList.contains('code-block-fold')){
@@ -62,6 +62,28 @@
             }
         })
     })
+    // @ts-ignore
+    window.iak.contextMenu['md-code-block'] = {
+        type: 'line',
+        children: [
+            {
+                text: '全屏',
+                icon: 'fa-solid fa-expand',
+                action(el:HTMLElement){
+                    // @ts-ignore
+                    iak.requestFullscreen(el);
+                },
+                tag: '代码'
+            },{
+                text: '折叠/展开',
+                icon: 'fa-solid fa-compress',
+                action(el:HTMLElement){
+                    el.classList.toggle('code-block-fold');
+                },
+                tag: '代码'
+            }
+        ]
+    }
 })()
 </script>
 
@@ -78,7 +100,7 @@
     font-family: monospace;
     line-height: 1.5;
 }
-.code-block-fold{
+.code-block-fold .code-block-main{
     max-height: 3rem;
     padding: 3rem 0 0 0;
     overflow: hidden;

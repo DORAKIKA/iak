@@ -74,6 +74,70 @@ console.log(b);
 
 </Tabs>
 
+嵌套测试
+
+<Tabs active="red">
+<Fragment slot="tab.red">红色</Fragment>
+<Fragment slot="tab.green">绿色</Fragment>
+<Fragment slot="tab.blue">蓝色</Fragment>
+
+<Fragment slot="pane.red">
+    <Tabs active="red" color="red">
+    <Fragment slot="tab.red">红色</Fragment>
+    <Fragment slot="tab.green">绿色</Fragment>
+    <Fragment slot="tab.blue">蓝色</Fragment>
+
+    <Fragment slot="pane.red">
+    1
+    </Fragment>
+    <Fragment slot="pane.green">
+    2
+    </Fragment>
+    <Fragment slot="pane.blue">
+    3
+    </Fragment>
+
+    </Tabs>
+</Fragment>
+<Fragment slot="pane.green">
+    <Tabs active="green" color="green">
+    <Fragment slot="tab.red">红色</Fragment>
+    <Fragment slot="tab.green">绿色</Fragment>
+    <Fragment slot="tab.blue">蓝色</Fragment>
+
+    <Fragment slot="pane.red">
+    1
+    </Fragment>
+    <Fragment slot="pane.green">
+    2
+    </Fragment>
+    <Fragment slot="pane.blue">
+    3
+    </Fragment>
+
+    </Tabs>
+</Fragment>
+<Fragment slot="pane.blue">
+    <Tabs active="blue" color="blue">
+    <Fragment slot="tab.red">红色</Fragment>
+    <Fragment slot="tab.green">绿色</Fragment>
+    <Fragment slot="tab.blue">蓝色</Fragment>
+
+    <Fragment slot="pane.red">
+    1
+    </Fragment>
+    <Fragment slot="pane.green">
+    2
+    </Fragment>
+    <Fragment slot="pane.blue">
+    3
+    </Fragment>
+
+    </Tabs>
+</Fragment>
+
+</Tabs>
+
 ## 链接卡片 LinkCard
 
 可用于展示一些链接，如书籍、视频、音频、博文等
@@ -182,6 +246,10 @@ console.log(b);
 
 ![Doraemon](https://img.dorakika.cn/dora/202210.png)
 </Grid>
+
+
+## 嵌入网页
+<Website src="https://1024code.com/embed-ide/@DORAKIKA/51kpone" link={false} />
 
 
 ## Links
