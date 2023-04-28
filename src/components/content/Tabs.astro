@@ -27,7 +27,7 @@ if(!active) active = tabs[0].name;
 const tabsKey = tabs.map(tab => tab.name).join(',') + (new Date()).getTime();
 ---
 
-<div class="md-tabs md-block" style={color && `--main-color-meta: var(--${color}-meta`}>
+<div class="md-tabs md-block" style={color && `--main-color-meta: var(--${color}-meta`} data-role="md-tabs">
     <div class="md-tabs__nav">
         {
             tabs.map((tab, index) => (
@@ -60,7 +60,25 @@ buttons.forEach(btn => {
     });
 })
 
+// @ts-ignore
+window.iak.contextMenu["md-tabs"] = {
+    type: 'line',
+    children: [
+        {
+            text: '下一栏',
+            icon: 'fas fa-hand-point-right',
+            action(el:HTMLElement){
+                const inputs = el.querySelectorAll('input');
+                const active = Array.prototype.findIndex.call(inputs, (input:HTMLInputElement) => input.checked);
+                if(active === -1) return;
+                active === inputs.length - 1 ? inputs[0].click() : inputs[active + 1].click();
 
+                el.scrollIntoView();
+            },
+            tag: 'Tab',
+        }
+    ]
+}
 </script>
 
 <style>

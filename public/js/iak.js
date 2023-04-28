@@ -64,6 +64,11 @@ window.iak = {
             console.log('退出全屏失败')
         }
     },
+    // 进入全屏
+    requestFullscreen(el){
+        console.log(el)
+        el?.requestFullscreen()
+    },
     welcome(){
         // 根据时间设置主题\欢迎语等等
         const now = new Date();
@@ -101,6 +106,114 @@ window.iak = {
         }
     }
 }
+
+
+
+
+
+
+// 右键菜单配置
+iak.contextMenu = {
+    'base': [{
+        type: 'small',
+        children: [
+            {
+                icon: 'fa-solid fa-arrow-up',
+                action(){
+                    scrollTo(0, 0);
+                }
+            },{
+                icon: 'fas fa-refresh',
+                action(){
+                    location.reload();
+                }
+            },{
+                icon: 'fa-solid fa-arrow-left',
+                action(){
+                    history.back();
+                }
+            },{
+                icon: 'fa-solid fa-arrow-right',
+                action(){
+                    history.forward();
+                }
+            }
+        ]
+    }],
+    'global': {
+        type: 'line',
+        children: [
+            {
+                icon: 'fa-solid fa-moon',
+                text: '夜间模式',
+                action(){
+                    iak.toggleDarkMode();
+                },
+                tag: '全局'
+            },{
+                icon: 'fa-solid fa-random',
+                text: '随机文章',
+                action(){
+                    iak.randomPage();
+                },
+                tag: '全局'
+            }
+        ]
+    },
+    'selection': [
+        {
+            type: 'line',
+            name: '选区',
+            children: [
+                {
+                  icon: 'fa-solid fa-copy',
+                  text: '复制',
+                  action(obj){
+                    let text = obj.value;
+                    if(text){
+                        if(typeof text === 'string'){
+                            text = text.trim();
+                        }
+                        if(text){
+                            navigator.clipboard.writeText(text).then(function() {
+                                SnackBar({
+                                    message: '复制成功',
+                                    fixed: true,
+                                    position: 'tc',
+                                })
+                            }, function() {
+                                SnackBar({
+                                    message: '复制失败',
+                                    fixed: true,
+                                    position: 'tc',
+                                })
+                            });
+                        }
+                    }
+                  }  
+                },
+                {
+                    icon: 'fa-solid fa-search',
+                    text: '站内搜索',
+                    action(obj){
+                        console.log(obj)
+                        iak.toggleSearch(true, obj.value);
+                    },
+                },{
+                    icon: 'fa-solid fa-search',
+                    text: '站外搜索',
+                    action(obj){
+                        console.log(obj)
+                        window.open(`https://cn.bing.com/search?q=${obj.value}`)
+                    }
+                }
+            ]
+        }
+    ],
+
+}
+
+
 
 
 // 辅助函数

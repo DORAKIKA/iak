@@ -29,12 +29,13 @@ const query = async (e:any) => {
 const onSearch = useThrottleFn(query, 1000)
 const searchShow = ref(false)
 // const toggleSearch = useToggle(searchShow)
-const toggleSearch = (value:boolean|undefined) => {
+const toggleSearch = (value:boolean|undefined, text?: string) => {
     if(value !== undefined){
         searchShow.value = value
     }else{
         searchShow.value = !searchShow.value
     }
+    if(text)state.searchInput = text
     return ;
 }
 
