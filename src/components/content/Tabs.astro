@@ -53,9 +53,13 @@ buttons.forEach(btn => {
         const mdTabs = btn.closest('.md-tabs');
 
         // 找到对应的pane
-        const pane = mdTabs?.querySelector(`.md-tabs__pane[data-name="${name}"]`);
-        const panes = mdTabs?.querySelectorAll('.md-tabs__pane');
-        panes?.forEach(pane => pane.classList.remove('active'));
+        // const pane = mdTabs?.querySelector(`.md-tabs__pane[data-name="${name}"]`);
+        const panes = mdTabs?.querySelector(`.md-tabs__panes`)?.children || [];
+
+        const pane = Array.prototype.find.call(panes, (pane:HTMLElement) => pane.getAttribute('data-name') === name);
+
+        // const panes = mdTabs?.querySelectorAll('.md-tabs__pane');
+        Array.prototype.forEach.call(panes, pane => pane.classList.remove('active'));
         pane?.classList.add('active');
     });
 })
@@ -68,8 +72,10 @@ window.iak.contextMenu["md-tabs"] = {
             text: '下一栏',
             icon: 'fas fa-hand-point-right',
             action(el:HTMLElement){
-                const inputs = el.querySelectorAll('input');
-                const active = Array.prototype.findIndex.call(inputs, (input:HTMLInputElement) => input.checked);
+                const inputs = (el.querySelector('.md-tabs__nav')?.children || []) as HTMLInputElement[];
+                if(!inputs.length) return;
+
+                const active = Array.prototype.findIndex.call(inputs, (input:HTMLInputElement) => input.querySelector('input')?.checked);
                 if(active === -1) return;
                 active === inputs.length - 1 ? inputs[0].click() : inputs[active + 1].click();
 
