@@ -1,0 +1,50 @@
+---
+const { time, color } = Astro.props;
+---
+
+<div class="iak-timeline-item">
+    <div class="iak-timeline-item__dot" style={color && `--main-color-meta: var(--${color}-meta)`}></div>
+    <div class="iak-timeline-item__date">
+        <slot name="time">{time}</slot>
+    </div>
+    <div class="iak-timeline-item__line"></div>
+    <div class="iak-timeline-item__content">
+        <slot></slot>
+    </div>
+</div>
+
+<style>
+.iak-timeline-item {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    place-items: center;
+    --main-color: rgb(var(--main-color-meta));
+}
+.iak-timeline-item__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--main-color);
+}
+.iak-timeline-item__line {
+    width: 2px;
+    height: 100%;
+    background-color: rgba(var(--main-color-meta), 0.2);
+}
+.iak-timeline-item__date {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+}
+.iak-timeline-item__content {
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    background: var(--card-bg);
+    border: var(--card-border);
+    padding: 1rem;
+    border-radius: var(--base-radius);
+}
+
+</style>
