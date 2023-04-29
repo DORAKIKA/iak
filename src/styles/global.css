@@ -60,7 +60,7 @@
   --card-shadow-color: rgba(0,0,0,0.1);
   --card-shadow: 1px 2px 8px var(--card-shadow-color);
   --card-outline: 0 0 0 3px var(--main-color);
-  --card-border-color: #e7e9e8;
+  --card-border-color: #eef1ef;
   --card-border: 3px solid var(--card-border-color);
   --base-radius: 16px;
 
