@@ -159,6 +159,7 @@ const addConfig = (role: string, el?: HTMLElement | {value: any}) => {
     outline: none;
     border: none;
     background: transparent;
+    color: var(--card-text-color);
     text-align: left;
     transition: all 0.3s;
 }
