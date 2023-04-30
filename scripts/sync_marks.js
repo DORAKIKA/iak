@@ -1,6 +1,8 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 const { prompt } = require('enquirer');
+var axios = require('axios');
+const { log, setLogType } = require('./log.js');
 require('dotenv').config();
 
 // 使用的是github项目将豆瓣数据同步到notion，参考：https://github.com/lizheming/doumark-action 进行配置
@@ -18,8 +20,7 @@ const NOTION_API_KEY = process.env.NOTION_TOKEN || '';
 const img_prefix = "https://images.weserv.nl/?url=";
 const yaml_path = './src/content/mark/_index.yml';
 
-var axios = require('axios');
-
+setLogType('sync douban')
 
 async function main() {
     let movies, books, musics;
@@ -37,7 +38,7 @@ async function main() {
             { message: '音乐', name: 'musics' },
         ]
     })
-    console.log(type)
+    
     if(type === 'all' || type === 'movies'){
         movies = await syncUnit('movies', NOTION.MOVIES_ID);
     }
@@ -50,16 +51,16 @@ async function main() {
 
 
 
-    console.log(`- write to ${yaml_path} ...`)
+    log(`write to ${yaml_path} ...`)
     writeToYaml({movies,books,musics}, yaml_path);
-    console.log("*write completed")
+    log("write completed")
 }
 
 async function syncUnit(type, id){
-    console.log(`- get ${type} ...`);
-    if(!id.trim()) return console.log('id is null');
+    log(`get ${type} ...`);
+    if(!id.trim()) return log('id is null');
     res = await getFromNotion(id);
-    console.log(`${type}: `, res && res.length || 0);
+    log(`${type}: `, res && res.length || 0);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return res;
 }
@@ -126,7 +127,7 @@ function writeToYaml(data, path){
                     values: data[key],
                 });
             }
-            console.log('update ', key, data[key].length);
+            log('update ', key, data[key].length);
         }
     }
 
