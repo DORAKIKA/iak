@@ -1,8 +1,11 @@
 
 const chalk = require('chalk');
+
+let log_type = 'deploy'
+
 exports.log =  function log(opt){
     let msg = '';
-    let tag = 'deploy';
+    let tag = log_type;
     let color = 'cyanBright';
     if(typeof opt === 'string'){
         msg = opt;
@@ -14,4 +17,8 @@ exports.log =  function log(opt){
     
     const time = new Date().toLocaleTimeString();
     console.log(chalk.gray(time),chalk.bold[color](`[${tag}]`), msg);
+}
+
+exports.setLogType = function(type){
+    log_type = type;
 }
