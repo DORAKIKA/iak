@@ -34,6 +34,7 @@ const memories = defineCollection({
 		// 一些标签，方便分类
 		tags: z.array(z.string()).or(z.undefined()),
 		emoji: z.string().default('🤖'),
+		card: z.boolean().default(false),
 	})
 })
 
