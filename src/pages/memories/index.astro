@@ -48,14 +48,10 @@ meta_og={meta_og}>
                             }
                         </span>
                     </div>
-                    <article class="memory">
+                    <article class={"memory " + (memory.data.card ? 'card' : '')}>
                         <Content entry={memory}></Content>
                     </article>
                 </TimelineItem>
-                // <article class="article-block">
-                //     <h2 class="title">{memory.data.title}</h2>
-                    
-                // </article>
             )
         })
     }
@@ -95,5 +91,12 @@ meta_og={meta_og}>
     background: rgba(var(--main-color-meta), 0.2);
     color: rgba(var(--main-color-meta), 0.8);
     border: 1px solid rgba(var(--main-color-meta), 0.4);
+}
+
+#memories-container .memory.card{
+    border-radius: var(--base-radius);
+    background: var(--card-bg);
+    border: var(--card-border);
+    padding: 1rem;
 }
 </style>
