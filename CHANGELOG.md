@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.2](///compare/v0.10.1...v0.10.2) (2023-05-04)
+
+
+### Features
+
+* memory可选配置card样式 8378d2f
+
+
+### Bug Fixes
+
+* header字体颜色 28f73f9
+
 ### [0.10.1](///compare/v0.10.0...v0.10.1) (2023-04-29)
 
 
