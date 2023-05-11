@@ -43,12 +43,12 @@ const memories = (await getCollection("memories")).sort((a, b) => {
 	display: block;
 	border: 2px solid var(--card-border-color);
 	border-radius: var(--base-radius);
-	background: var(--color-deep-op);
+	background: var(--card-bg);
 	color: var(--card-text-color);
 	transition: all 0.2s ease-in-out;
 }
 #recent-memories .memories-link:is(:hover, :focus-within){
-	outline: 4px solid var(--card-active);
+	box-shadow: var(--card-outline), 0 6px 12px -2px var(--card-active);
 	color: var(--main-color);
 	translate: 0 -4px;
 }
