@@ -10,7 +10,8 @@ import GlobalInject from '@components/The/GlobalInject.astro';
 const {
 	page_meta,
 	headings,
-	meta_og
+	meta_og,
+	header
  } = Astro.props;
 ---
 
@@ -24,7 +25,7 @@ const {
 
 	<body>
 		<script is:inline src="/js/iak.js"></script>
-		<TheHeader>
+		<TheHeader header={header}>
 			<slot name="header"></slot>
 		</TheHeader>
 		<TheToolbar headings={headings}/>
