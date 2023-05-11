@@ -123,6 +123,17 @@ window.iak.contextMenu["md-linkcard"] = {
     width: 100%;
     padding: 1.5rem;
     background-color: rgba(var(--main-color-meta), 0.25);
-    color: var(--main-color);
+}
+:global(.dark .md-linkcard){
+    color: rgba(var(--main-color-meta), 0.7);
+}
+:global(.dark .md-linkcard .md-linkcard__info){
+    background-color: rgba(var(--main-color-meta), 0.07);
+}
+:global(.dark .md-linkcard .md-linkcard__comment){
+    background-color: rgba(var(--main-color-meta), 0.15);
+}
+:global(.dark .md-linkcard .md-linkcard__link){
+    background-color: rgba(var(--main-color-meta), 0.7);
 }
 </style>
