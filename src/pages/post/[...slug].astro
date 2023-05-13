@@ -116,7 +116,7 @@ const meta_og = generatePostOpenGraph(Astro, post);
     justify-content: center;
     flex-direction: column;
     gap: 4px;
-    background: var(--color-op);
+	background: rgba(var(--white-meta), 0.2);
     backdrop-filter: blur(8px);
     padding: 16px;
     border-radius:var(--base-radius);
@@ -143,5 +143,28 @@ const meta_og = generatePostOpenGraph(Astro, post);
 #post{
 	margin: 2rem auto;
 	line-height: 2;
+}
+@media(max-width: 768px){
+	.article-meta{
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.article-meta .meta-section{
+		max-width: 100%;
+		gap: 4px;
+	}
+	.article-meta .meta-item{
+		width: fit-content;
+		flex: 0 1 auto;
+		flex-direction: row;
+		padding: 4px 8px;
+		border-radius: 999px;
+	}
+	.article-meta .meta-item .key{
+		display: none;
+	}
+	.meta-section:has(.description){
+		display: none;
+	}
 }
 </style>

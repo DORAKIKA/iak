@@ -3,7 +3,7 @@ import TheMenus from "@components/The/Menus.astro";
 import HeaderBg from "@components/The/Header/HeaderBg.astro";
 import { site } from "src/config";
 import { getCollection } from "astro:content";
-import HeaderWave from "@components/The/Header/HeaderWave.astro";
+import HeaderBottom from "@components/The/Header/HeaderBottom.astro";
 
 const articles = await getCollection("posts");
 
@@ -14,6 +14,8 @@ const injectAllPost = articles.map((post) => ({
   data: post.data,
 }));
 const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
+
+const { header } = Astro.props;
 ---
 
 <script set:html={injectAllPostString}></script>
@@ -120,11 +122,11 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
   </ul>
 </nav>
 <header id="header" class="the-header">
-  <HeaderBg />
+  <HeaderBg type={header?.bg_type} />
   <div class="main-header">
     <slot />
   </div>
-  <HeaderWave />
+  <HeaderBottom type={header?.bottom_type} />
 </header>
 
 <script>
@@ -156,6 +158,9 @@ window.addEventListener('scroll', checkScroll)
     justify-self: center;
     align-items: center;
     overflow: hidden;
+  }
+  :global(.dark #header){
+    background-color: rgba(var(--main-color-meta), 0.4);
   }
   #header .main-header {
     position: absolute;

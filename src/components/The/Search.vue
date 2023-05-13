@@ -151,7 +151,7 @@ window.iak.toggleSearch = toggleSearch
     min-width: 300px;
     max-width: 600px;
     min-height: 300px;
-    border: 4px solid white;
+    border: 4px solid var(--white);
     background: var(--main-color);
     border-radius: var(--base-radius);
     padding: 16px;
@@ -167,7 +167,7 @@ window.iak.toggleSearch = toggleSearch
     width: 100%;
     height: 48px;
     line-height: 48px;
-    background-color: var(--color-op);
+    background-color: rgba(var(--white-meta), 0.2);
     color: var(--font-color);
     border: none;
     outline: none;
@@ -176,7 +176,7 @@ window.iak.toggleSearch = toggleSearch
     transition: 0.3s;
 }
 .the-search .the-search-input:focus{
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(var(--white-meta), 0.5);
 }
 .the-search .the-search-result{
     overflow-y: overlay;
@@ -192,18 +192,18 @@ window.iak.toggleSearch = toggleSearch
     height: 8px;
 }
 .the-search .the-search-result::-webkit-scrollbar-thumb{
-    background-color: var(--color-op);
+    background-color: rgba(var(--white-meta), 0.2);
 }
 .the-search .search-result-item{
-    background-color: var(--color-op);
+    background-color: rgba(var(--white-meta), 0.2);
     border-radius: var(--base-radius);
     padding: var(--base-radius);
     text-decoration: none;
-    color: var(--font-color);
+    color: var(--white);
     transition: 0.3s;
 }
 .the-search .search-result-item:is(:hover, :focus){
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(var(--white-meta), 0.4);
 }
 .the-search .search-result-item .title{
     font-size: 1.2em;

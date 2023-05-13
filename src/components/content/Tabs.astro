@@ -1,4 +1,5 @@
 ---
+import { getComponentKey } from "@/store/key";
 let { active, color } = Astro.props
 
 const slots = Astro.slots;
@@ -24,10 +25,10 @@ if(tabs.length !== panes.length) throw new Error('Tabs and panes must be equal i
 
 if(!active) active = tabs[0].name;
 
-const tabsKey = tabs.map(tab => tab.name).join(',') + (new Date()).getTime();
+const tabsKey = getComponentKey();
 ---
 
-<div class="md-tabs md-block" style={color && `--main-color-meta: var(--${color}-meta`} data-role="md-tabs">
+<div class="md-tabs md-block" style={color && `--main-color-meta: var(--${color}-meta)`} data-role="md-tabs">
     <div class="md-tabs__nav">
         {
             tabs.map((tab, index) => (
@@ -96,6 +97,9 @@ window.iak.contextMenu["md-tabs"] = {
     border: 2px solid var(--main-color);
     overflow: hidden;
 }
+:global(.dark .md-tabs){
+    border-color: rgba(var(--main-color-meta), 0.4);
+}
 .md-tabs:only-child{
     margin: 0;
 }
@@ -123,6 +127,9 @@ window.iak.contextMenu["md-tabs"] = {
     background-color: rgba(var(--main-color-meta), 0.2);
     transition: all 0.2s ease;
 }
+:global(.md-tabs .md-tabs__button){
+    background-color: rgba(var(--main-color-meta), 0.1);
+}
 .md-tabs .md-tabs__button input{
     appearance: none;
     position: absolute;
@@ -131,6 +138,9 @@ window.iak.contextMenu["md-tabs"] = {
 .md-tabs .md-tabs__button:has(input:checked){
     background-color: var(--main-color);
     color: white;
+}
+:global(.dark .md-tabs .md-tabs__button:has(input:checked)){
+    background-color: rgba(var(--main-color-meta), 0.5);
 }
 .md-tabs .md-tabs__panes{
     flex: 1;

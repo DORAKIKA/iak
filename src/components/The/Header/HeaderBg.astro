@@ -1,14 +1,6 @@
 ---
-enum header_bg_type {
-  wave = "wave",
-  grid = "grid",
-  circle = "circle",
-  star = "star",
-  cell = "cell",
-  twill = "twill",
-  hotpoint = "hotpoint",
-}
-const type = header_bg_type.twill;
+// wave\grid\circle\star\cell\twill\hotpoint
+const {type="grid"} = Astro.props;
 ---
 
 <div class={`header-bg ${type}`}></div>
@@ -119,8 +111,8 @@ const type = header_bg_type.twill;
   /* 细格子 */
 
   .header-bg.grid {
-    --base: 40px;
-    --line: 4px;
+    --base: 30px;
+    --line: 1px;
     background-image: repeating-linear-gradient(
         90deg,
         var(--bg-color) 0,

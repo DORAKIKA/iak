@@ -99,15 +99,11 @@ html.dark{
 * {
   box-sizing: border-box;
 }
-/* a:focus-within,
-button:focus-within,
-input:focus-within,
-textarea:focus-within,
-select:focus-within,
-summary:focus-within,
-label:focus-within{
-  outline: 3px solid var(--main-color);
-} */
+::selection {
+  background: rgba(var(--main-color-meta), 0.5);
+  color: white;
+  text-shadow: 0 0 6px currentColor;
+}
 html{
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
