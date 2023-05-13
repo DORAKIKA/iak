@@ -8,7 +8,7 @@ require('dotenv').config();
 // 使用的是github项目将豆瓣数据同步到notion，参考：https://github.com/lizheming/doumark-action 进行配置
 // 这是notion的数据库id
 const NOTION = {
-    MOVIES_ID: '',
+    MOVIES_ID: '2287a920f0f9426184325a3cac878531',
     BOOKS_ID: '3c8344aa545c4dc787e786cbb6b4b373',
     MUSICS_ID: '8a7f7ee4c8714518b2c71432bdb7f8e8'
 }
