@@ -184,11 +184,11 @@ console.log(b);
 使用外框组件可以用于展示一些总结性内容，让内容突出显示
 </Outline>
 
-<Outline type="red" title="主题色">
+<Outline color="red" title="主题色">
     默认是主题色，可指定type为red、orange、yellow、green、blue、purple、pink、gray设定颜色。
     Outline颜色类型会影响内部的主题色，所以如下链接变成了红色
     [在MDX中使用组件](https://docs.astro.build/en/guides/markdown-content/#using-components-in-mdx)
-    <Outline type="green" title="嵌套">
+    <Outline color="green" title="嵌套">
     这是绿色（由于背景是有透明的，所以叠加之后可能会看上去不太像原来的颜色）
 </Outline>
 
@@ -200,19 +200,19 @@ console.log(b);
 
 
 <GridItem>
-<Outline type="blue">
+<Outline color="blue">
 这是蓝色
 </Outline>
 </GridItem>
 
 <GridItem rowSpan={2} colSpan={1}>
-<Outline type="purple" title="关于Outline">
+<Outline color="purple" title="关于Outline">
 这是紫色，占了两行，当Outline为唯一的子元素时，会填满容器（此处为GridItem的唯一子元素）。你也可以不使用GridItem，如下方的灰色
 </Outline>
 </GridItem>
 
 <GridItem>
-<Outline type="yellow">
+<Outline color="yellow">
 这是黄色 ,使用GridItem包裹，会自动撑起内容
 </Outline>
 </GridItem>
@@ -222,18 +222,18 @@ console.log(b);
 
 <Grid col={4} minCol={2}>
 <GridItem>
-<Outline type="orange" title="橙色">
+<Outline color="orange" title="橙色">
 默认最小宽度为300px，可通过指定minWidth属性来设置最小宽度
 </Outline>
 </GridItem>
 <GridItem colSpan={2}>
-<Outline type="pink" title="粉色">
+<Outline color="pink" title="粉色">
 当指定的多栏布局无法满足时，会自动处理;此处为4栏，可缩小窗口大小查看自适应效果.
 
 有时，指定了GridItem横跨多列，但是小屏下无法满足最低宽度，会自动调整至1列布局导致此多列GridItem溢出。此时可指定Grid的minCol属性，来指定最小列数（优先级高于minWidth）
 </Outline>
 </GridItem>
-<Outline type="gray" title="灰色">
+<Outline color="gray" title="灰色">
 此处指定了最小列数为2列，所以即使小屏下，每一列不满足300px，依旧会保持2列布局
 </Outline>
 </Grid>
