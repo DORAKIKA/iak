@@ -15,7 +15,7 @@ export const site:SiteConfig = {
     // 你将要部署到的站点地址
     origin: 'https://iak.dorakika.cn',
     // 站点图标链接
-    favicon: '/favicon.svg',
+    favicon: '/iak.png',
     // 站点名称
     name: 'IAK',
     // 站点标语
