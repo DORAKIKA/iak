@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.4](///compare/v0.10.3...v0.10.4) (2023-05-16)
+
+
+### Features
+
+* 颜色修改 65a177c
+* 组件主题色属性修改为color属性 af420cd
+* header-bg配置 cd84ff3
+* mark时间轴布局 030fa0d
+
 ### [0.10.3](///compare/v0.10.2...v0.10.3) (2023-05-11)
 
 
