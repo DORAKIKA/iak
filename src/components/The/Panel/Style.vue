@@ -12,7 +12,6 @@ const default_style = {
     largeBorderRadius: theme.large_border_radius.default,
     brightness: theme.brightness.default,
     headerFixed: theme.headerFixed.default,
-    imageBackground: theme.imageBackground.default,
     darkMode: false,
 }
 
@@ -38,7 +37,6 @@ async function validate(){
         largeBorderRadius: z.boolean(),
         brightness: z.number().min(theme.brightness.min).max(theme.brightness.max),
         headerFixed: z.boolean(),
-        imageBackground: z.boolean(),
         darkMode: z.boolean()
     })
     try {
@@ -60,25 +58,6 @@ const styleHTML = computed(() => `
     html{
         filter: brightness(${styleConfig.value.brightness})
     }
-    ${styleConfig.value.imageBackground ? `
-        html{
-            --bg-image-url: url(${theme.imageBackground.url});
-        }
-        #header .header-bg{
-            background-image: ${theme.imageBackground.inherit ? 'var(--bg-image-url)' : 'url(' + theme.imageBackground.url + ')'};
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            animation: none;
-        }
-        #header .header-bg::before{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            content: '';
-        }
-    ` : ''}
     ${!styleConfig.value.headerFixed ? `
         #nav{
             position: absolute;
@@ -128,10 +107,6 @@ useStyleTag(styleHTML)
             <div class="style-item">
                 <div class="key">夜间模式</div>
                 <div class="value"><IakSwitch v-model:value="styleConfig.darkMode"/></div>
-            </div>
-            <div class="style-item">
-                <div class="key">图片背景</div>
-                <div class="value"><IakSwitch v-model:value="styleConfig.imageBackground"/></div>
             </div>
         </div>
     </section>

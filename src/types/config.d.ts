@@ -98,13 +98,6 @@ export interface ThemeConfig {
     headerFixed: {
         default: boolean
     },
-    // 背景图
-    imageBackground: {
-        default: boolean,
-        url: string,
-        // 继承：例如在文章页面，背景会继承文章封面图
-        inherit: boolean
-    },
     // 白色卡片
     whiteCard: {
         default: boolean,

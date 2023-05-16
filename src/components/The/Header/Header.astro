@@ -122,7 +122,10 @@ const { header } = Astro.props;
   </ul>
 </nav>
 <header id="header" class="the-header">
-  <HeaderBg type={header?.bg_type} />
+  <HeaderBg type={header?.bg_type}>
+    <slot name="header-bg"/>
+  </HeaderBg>
+  
   <div class="main-header">
     <slot />
   </div>
