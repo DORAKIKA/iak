@@ -11,8 +11,8 @@
   --active-color-meta: 255, 85, 0;
 	--active-color: rgba(var(--active-color-meta), 1);
   
-  --red-meta: 232, 105, 100;
-  --red: rgb(232, 105, 100);
+  --red-meta: 225, 123, 123;
+  --red: rgb(225, 123, 123);
 
   --orange-meta: 255, 115, 0;
   --orange: rgb(255, 115, 0);
@@ -20,8 +20,8 @@
   --yellow-meta: 246, 169, 27;
   --yellow: rgb(246, 169, 27);
 
-  --green-meta: 52, 175, 86;
-  --green: rgb(52, 175, 86);
+  --green-meta: 30, 229, 137;
+  --green: rgb(30, 229, 137);
 
   --blue-meta: 50, 201, 235;
   --blue: rgb(50, 201, 235);
