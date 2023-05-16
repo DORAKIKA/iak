@@ -1,5 +1,6 @@
 ---
 import PostCard from "./Card.astro"
+import Grid from "@components/content/Grid.astro"
 import { getCollection } from "astro:content";
 const recentPosts = (await getCollection("posts")).sort((a,b) => {
     return a.data.date > b.data.date ? -1 : 1
@@ -8,11 +9,11 @@ const recentPosts = (await getCollection("posts")).sort((a,b) => {
 
 <div class="post-recent">
     <h2 class="title">最近文章</h2>
-    <div class="post-list-container">
-        {recentPosts.map(post => (
-            <PostCard post={post} />
-        ))}
-    </div>
+    <Grid col={3}>
+        {
+            recentPosts.map(post => <PostCard post={post} />)
+        }
+    </Grid>
 </div>
 
 <style>
@@ -30,21 +31,5 @@ const recentPosts = (await getCollection("posts")).sort((a,b) => {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-}
-</style>
-<style is:global>
-
-.post-recent .post-card{
-    width: calc(calc(100% - 2em) / 3);
-}
-@media (max-width: 1200px){
-    .post-recent .post-card{
-        width: calc(calc(100% - 1em) / 2);
-}
-}
-@media (max-width: 768px){
-    .post-recent .post-card{
-        width: 100%;
-    }
 }
 </style>

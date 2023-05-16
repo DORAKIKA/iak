@@ -2,15 +2,27 @@
 
 import Layout from "@layouts/Layout.astro"
 import { default_assets, site } from "src/config";
-import { getCollection } from "astro:content";
-import PostCard from "@pages/_components/Post/Card.astro"
+import { CollectionEntry, getCollection } from "astro:content";
+import PostCard from "@pages/_components/Post/Card.astro";
+import Grid from "@components/content/Grid.astro"
 import { generateOpenGraph } from "src/tools/open_graph";
 
+// 分页
 export async function getStaticPaths({ paginate } : { paginate: Function}){
 	const posts = (await getCollection('posts')).sort((a,b) => a.data.date > b.data.date ? -1 : 1);
 	return paginate(posts, { pageSize: 12 })
 }
 
+interface Props {
+	page: {
+		data: CollectionEntry<'posts'>[],
+		currentPage: number,
+		url: {
+			prev: string,
+			next: string
+		}
+	}
+}
 const { page } = Astro.props
 
 const page_meta = {
@@ -29,11 +41,11 @@ const meta_og = generateOpenGraph(Astro, page_meta)
 	<h1 slot="header">文章归档 - {page.currentPage}</h1>
 	<section id="posts">
 		<div class="post-list">
-			<div class="post-container">
-				{page.data.map((post: any) => (
-                    <PostCard post={post} />
-				))}
-			</div>
+			<Grid col={4}>
+					{
+							page.data.map(post => <PostCard post={post} />)
+					}
+			</Grid>
 			<div class="pagination">
 				{page.url.prev ? <a href={page.url.prev} class="paginate prev">上一页</a> : null}
 				{page.url.next ? <a href={page.url.next} class="paginate next">下一页</a> : null}
@@ -46,13 +58,7 @@ const meta_og = generateOpenGraph(Astro, page_meta)
 #posts{
 	margin: 1rem 0 0;
 }
-	
-#posts .post-container{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-}
+
 .pagination{
 	display: flex;
 	justify-content: space-between;
@@ -73,26 +79,5 @@ const meta_og = generateOpenGraph(Astro, page_meta)
 .pagination .paginate:is(:hover, :focus-within){
 	background: var(--card-active);
 	color: var(--card-active-text);
-}
-</style>
-<style is:global>
-
-#posts .post-card{
-    width: calc(calc(100% - 3em) / 4);
-}
-@media (max-width: 1500px){
-    #posts .post-card{
-        width: calc(calc(100% - 2em) / 3);
-    }
-}
-@media (max-width: 1200px){
-    #posts .post-card{
-        width: calc(calc(100% - 1em) / 2);
-    }
-}
-@media (max-width: 768px){
-    #posts .post-card{
-        width: 100%;
-    }
 }
 </style>

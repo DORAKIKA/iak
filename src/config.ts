@@ -15,7 +15,7 @@ export const site:SiteConfig = {
     // 你将要部署到的站点地址
     origin: 'https://iak.dorakika.cn',
     // 站点图标链接
-    favicon: '/favicon.svg',
+    favicon: '/iak.png',
     // 站点名称
     name: 'IAK',
     // 站点标语
@@ -56,7 +56,7 @@ export const menus: MenuItem[] = [
 
 export const default_assets: DefaultAssets = {
     // 默认文章封面
-    cover: '/placeholder-hero.jpg'
+    cover: '/images/placeholder.png'
 }
 
 // 页脚信息
@@ -134,12 +134,6 @@ export const theme: ThemeConfig = {
     },
     headerFixed: {
         default: false
-    },
-    imageBackground: {
-        default: false,
-        url: 'https://img.dorakika.cn/dora/201704_C.png',
-        // 继承：例如在文章页面，背景会继承文章封面图
-        inherit: true
     },
     whiteCard: {
         default: true,

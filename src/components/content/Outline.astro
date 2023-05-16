@@ -1,10 +1,10 @@
 ---
-const { type="default", title } = Astro.props
+const { color="default", title } = Astro.props
 ---
 
 <div class="md-outline md-block" style={{
-    "--main-color": type === "default" ? 'var(--global-main-color)' : `var(--${type})`,
-    "--main-color-meta": type === "default" ? 'var(--global-main-color-meta' : `var(--${type}-meta)`,
+    "--main-color": color === "default" ? 'var(--global-main-color)' : `var(--${color})`,
+    "--main-color-meta": color === "default" ? 'var(--global-main-color-meta' : `var(--${color}-meta)`,
 }}>
     { title ? <div class="md-outline__title">{ title }</div> : null }
     <div class="md-outline__content">

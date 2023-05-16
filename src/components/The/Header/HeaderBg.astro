@@ -3,7 +3,7 @@
 const {type="grid"} = Astro.props;
 ---
 
-<div class={`header-bg ${type}`}></div>
+<div class={`header-bg ${type}`}><slot></slot></div>
 
 <style>
   .header-bg {
@@ -13,6 +13,9 @@ const {type="grid"} = Astro.props;
     --bg-color: rgba(255, 255, 255, 0.1);
     background-attachment: fixed;
     background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .header-bg.wave {
     background-image: url(/bg-zigzag.svg);

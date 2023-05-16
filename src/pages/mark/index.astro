@@ -1,9 +1,29 @@
 ---
 import MarkItem from "@pages/_components/Mark/MarkItem.astro";
 import Layout from "@layouts/Layout.astro";
+import TimelineItem from "@components/Iak/TimelineItem.astro"
 import { site } from "src/config";
 // @ts-ignore
 import marks from "@content/mark/_index.yml"
+import {formatDateTime} from "@/tools/tools"
+
+const markGroup = marks.map((group: { values: any[]; }) => {
+    const map = {} as Record<string, any>;
+    group.values.forEach(mark => {
+        const date = formatDateTime(mark.time).substr(0, 7);
+        map[date] ? map[date].push(mark) : map[date]=[mark];
+    })
+    const arr = [];
+    for(let key in map){
+        arr.push([key, map[key]])
+    }
+    arr.sort((a,b) => a[0]>b[0]?-1:1)
+    return {
+        ...group,
+        values: arr
+    }
+})
+
 const page_meta = {
     title: '足迹 | '+site.name,
     description: site.author + '的友链',
@@ -36,7 +56,7 @@ window.addEventListener('load', () => {
         <h1 class="page-title">足迹</h1>
         <div class="group-nav">
             {
-                marks.map((group: any, index: number) => (
+                markGroup.map((group: any, index: number) => (
                     <label class="group-nav-item">
                         <input class="group-nav-input" checked={index === 0 ? true : false} type="radio" name="mark-group" value={group.name}/>
                         <span set:html={group.icon || group.name}></span>
@@ -46,12 +66,21 @@ window.addEventListener('load', () => {
         </div>
     </div>
     <div id="mark-page">
-        {marks.map((group: any, index: number) => (
-            <div class={`mark-group ${group.type}${(index===0?' ':' hide')}`} data-group={group.name}>
+        {markGroup.map((group: any, index: number) => (
+            <div class={`mark-group ${(index===0?' ':' hide')}`} data-group={group.name}>
                 {
-                    group.values.slice(0,group.limit || 20).map((mark: any) => (
-                        <MarkItem group={group} mark={mark} />
-                    ))
+                    // group.values.slice(0,group.limit || 20).map((mark: any) => (
+                    //     <MarkItem group={group} mark={mark} />
+                    // ))
+                    group.values.map(tg => {
+                        return <TimelineItem time={tg[0]}>
+                            <div class={`mark-timebox ${group.type}`}>
+                                {
+                                    tg[1].map(mark => <MarkItem group={group} mark={mark}/>)
+                                }
+                            </div>
+                        </TimelineItem>
+                    })
                 }
             </div>
         ))}
@@ -95,7 +124,7 @@ window.addEventListener('load', () => {
     font-weight: 600;
     margin: 0 0 10px 0;
 }
-.mark-group{
+.mark-timebox{
     display: grid;
     gap: 2em;
 }
@@ -107,13 +136,13 @@ window.addEventListener('load', () => {
 .mark-group.hide{
     display: none;
 }
-.mark-group.large {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+.mark-timebox.large {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
-.mark-group.medium {
+.mark-timebox.medium {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
-.mark-group.small {
+.mark-timebox.small {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 }
 </style>
