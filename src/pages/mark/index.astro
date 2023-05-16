@@ -1,14 +1,14 @@
 ---
 import MarkItem from "@pages/_components/Mark/MarkItem.astro";
 import Layout from "@layouts/Layout.astro";
-import TimelineItem from "@components/iak/TimelineItem.astro"
+import TimelineItem from "@components/Iak/TimelineItem.astro"
 import { site } from "src/config";
 // @ts-ignore
 import marks from "@content/mark/_index.yml"
 import {formatDateTime} from "@/tools/tools"
 
-const markGroup = marks.map(group => {
-    const map = {};
+const markGroup = marks.map((group: { values: any[]; }) => {
+    const map = {} as Record<string, any>;
     group.values.forEach(mark => {
         const date = formatDateTime(mark.time).substr(0, 7);
         map[date] ? map[date].push(mark) : map[date]=[mark];
