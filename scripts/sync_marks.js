@@ -60,7 +60,7 @@ async function syncUnit(type, id){
     log(`get ${type} ...`);
     if(!id.trim()) return log('id is null');
     res = await getFromNotion(id);
-    log(`${type}: `, res && res.length || 0);
+    log(`${type}: ` + (res && res.length) || 0);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return res;
 }
@@ -117,7 +117,7 @@ function writeToYaml(data, path){
 
     for(let key in data){
         if(data[key] !== undefined){
-            if(cache[key]){
+            if(cache[key] !== undefined){
                 originYaml[cache[key]].values = data[key];
             }else{
                 originYaml.push({
