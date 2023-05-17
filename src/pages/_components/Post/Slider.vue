@@ -14,7 +14,15 @@ onMounted(() => {
     // @ts-ignore
     posts.value = window.iak.data.posts.filter(post => post.data.star)
     limit.value = Math.min(post_slider.limit, posts.value.length);
-    posts.value.sort((a,b)=>a.data.star&&b.data.star&&a.data.star>b.data.star?1:-1);
+    posts.value.sort((a,b)=>{
+        if(!a.data.star || !b.data.star) return 0;
+
+        if(a.data.star !== b.data.star){
+            return a.data.star > b.data.star ? -1 : 1;
+        }else{
+            return a.data.date > b.data.date ? -1 : 1;
+        }
+    });
     posts.value.length = limit.value;
 });
 
