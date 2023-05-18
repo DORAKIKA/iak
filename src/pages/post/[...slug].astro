@@ -40,7 +40,7 @@ const meta_og = generatePostOpenGraph(Astro, post);
 	headings={headings}
 	meta_og={meta_og}
 >
-	<img src={post.data.cover} alt="" slot="header-bg">
+	<img src={post.data.cover} alt="" slot="header-bg" style="flex:1;object-fit:cover;">
 	<div class="article-head" slot="header">
 			
 		<h1 class="article-title">{ post.data.title }</h1>
