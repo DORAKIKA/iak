@@ -1,10 +1,11 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
 import Content from '@components/content/Content.astro';
-import { site, twikoo } from 'src/config';
+import { site } from 'src/config';
 import Layout from '@layouts/Layout.astro';
 import Twikoo from '@components/Third/Twikoo.astro';
-import PostCopyright from '@pages/_components/Post/Copyright.astro'
+import PostCopyright from '@pages/_components/Post/Copyright.astro';
+import PostAdditional from '@pages/_components/Post/Additional.astro';
 import '@styles/article.css'
 import { generatePostOpenGraph } from 'src/tools/open_graph';
 import { count } from 'src/tools/tools';
@@ -87,6 +88,7 @@ const meta_og = generatePostOpenGraph(Astro, post);
 		<Content entry={post} />
 	</article>
 	<PostCopyright title={post.data.title} />
+	<PostAdditional post={post} />
 	<Twikoo/>
 </Layout>
 

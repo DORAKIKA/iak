@@ -1,35 +1,17 @@
 <script setup lang="ts">
-// import { ParsedContent } from '@nuxt/content/dist/runtime/types';
-import { ref, computed, onMounted, watch } from 'vue';
-import type{  CollectionEntry } from 'astro:content';
+import { ref, computed, watch } from 'vue';
 import { post_slider } from 'src/config';
 import { useDebounceFn, useThrottleFn } from '@vueuse/shared';
+import { getStarPosts } from '@/pages/_contents/posts';
 
-// const posts = ref<CollectionEntry<"posts">[]>()
-const posts = ref<CollectionEntry<"posts">[]>([])
 
-const limit = ref(0)
+const limit = post_slider.limit;
 const current = ref(0)
-onMounted(() => {
-    // @ts-ignore
-    posts.value = window.iak.data.posts.filter(post => post.data.star)
-    limit.value = Math.min(post_slider.limit, posts.value.length);
-    posts.value.sort((a,b)=>{
-        if(!a.data.star || !b.data.star) return 0;
-
-        if(a.data.star !== b.data.star){
-            return a.data.star > b.data.star ? -1 : 1;
-        }else{
-            return a.data.date > b.data.date ? -1 : 1;
-        }
-    });
-    posts.value.length = limit.value;
-});
-
+const posts = getStarPosts(limit);
 
 const postsScroll = ref<HTMLElement>();
-const prev = computed(() => (current.value - 1 + limit.value) % limit.value);
-const next = computed(() => (current.value + 1) % limit.value);
+const prev = computed(() => (current.value - 1 + limit) % limit);
+const next = computed(() => (current.value + 1) % limit);
 const handlePrev = useThrottleFn(() => current.value = prev.value, 250);
 const handleNext = useThrottleFn(() => current.value = next.value, 250);
 const sliderClick = (num:number) => {
@@ -49,7 +31,7 @@ const handleScroll =  useDebounceFn(() => {
     if (postsScroll.value === undefined) return;
     const { scrollLeft, scrollWidth, offsetWidth } = postsScroll.value;
     const scrollPercent = scrollLeft / (scrollWidth - offsetWidth);
-    const index = Math.round(scrollPercent * (limit.value - 1));
+    const index = Math.round(scrollPercent * (limit - 1));
     current.value = index;
 }, 250)
 watch(current, () => {

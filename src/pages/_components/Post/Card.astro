@@ -1,9 +1,10 @@
 ---
+import { getUrlForPost } from "@/pages/_contents/posts";
 const { post } = Astro.props
 
 ---
 
-<a class="post-card" href={`/post/${post.slug}`}  rel="prefetch">
+<a class="post-card" href={getUrlForPost(post)}  rel="prefetch">
     <div class="cover">
         <img src={post.data.cover} alt={post.data.title} class="cover-img" loading="lazy" />
         <span class="category">{post.data.category}</span>
