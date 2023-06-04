@@ -14,15 +14,16 @@ const { col=1, row=1, minWidth='300px', minCol=1 } = Astro.props;
 <style>
 .md-grid {
     display: grid;
+    --gap: 1rem;
     grid-template-columns: repeat(
         auto-fill, 
         minmax(
             min(
                 max(
-                    calc(100% / calc(var(--md-grid-col) + 1)),
+                    calc(100% / var(--md-grid-col) - var(--gap) * (var(--md-grid-col) - 1) / var(--md-grid-col)),
                     var(--md-grid-min-width)
                 ),
-                calc(calc(100% - calc(var(--md-grid-min-col)-1) * 1rem) / var(--md-grid-min-col))
+                calc((100% - (var(--md-grid-min-col) - 1) * var(--gap)) / var(--md-grid-min-col))
             ),
             1fr
         )

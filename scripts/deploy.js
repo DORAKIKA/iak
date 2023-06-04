@@ -20,6 +20,7 @@ const CONFIG = {
     username: process.env.SSH_USERNAME,
     password: process.env.SSH_PASSWORD,
     pathUrl: process.env.SSH_DIST_URL,
+    port: process.env.SSH_PORT
 }
 
 
@@ -42,7 +43,7 @@ function uploadFile() {
       host: CONFIG.host,
       username: CONFIG.username,
       password: CONFIG.password,
-      port: 22,
+      port: CONFIG.port,
     })
     .then(() => {
       log({

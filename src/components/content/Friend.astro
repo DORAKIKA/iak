@@ -1,4 +1,5 @@
 ---
+import IakImg from '../Iak/Img.astro';
 // @ts-ignore
 import fgroups from '@content/friends/_index.yml';
 let { name, link } = Astro.props;
@@ -20,7 +21,7 @@ link = friend?.link || link;
     <a class="md-friend__trigger" href={link} target="_blank">@{name}</a>
 
     {friend ? <span class="md-friend__card">
-        <img class="md-friend__avatar" src={ friend.avatar } alt={ friend.name } />
+        <IakImg className="md-friend__avatar" src={ friend.avatar } alt={ friend.name } callback="/images/error-avatar.png" />
         <span class="md-friend__info">
             <span class="md-friend__name">{ friend.name }</span>
             <span class="md-friend__desc">{ friend.descr }</span>

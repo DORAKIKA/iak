@@ -1,32 +1,16 @@
 <script setup lang="ts">
-// import { ParsedContent } from '@nuxt/content/dist/runtime/types';
-import { ref, computed, onMounted } from 'vue';
-import type{  CollectionEntry } from 'astro:content';
+import { ref, computed } from 'vue';
 import { post_slider } from 'src/config';
+import { getStarPosts } from '@/pages/_contents/posts';
 
-// const posts = ref<CollectionEntry<"posts">[]>()
-const posts = ref<CollectionEntry<"posts">[]>([])
-
-const limit = ref(0)
+const limit = post_slider.limit;
 const current = ref(0)
-onMounted(() => {
-    // @ts-ignore
-    posts.value = window.iak.data.posts.filter(post => post.data.star)
-    limit.value = Math.min(post_slider.limit, posts.value.length);
-    posts.value.sort((a,b)=>a.data.star&&b.data.star&&a.data.star>b.data.star?1:-1);
-    posts.value.length = limit.value;
-});
+const posts = getStarPosts(limit);
 
-
-
-const prev = computed(() => (current.value - 1 + limit.value) % limit.value);
-const next = computed(() => (current.value + 1) % limit.value);
-const handlePrev = () => current.value = prev.value;
-const handleNext = () => current.value = next.value;
 const sliderClick = (num:number) => {
     current.value = num
 }
-const active = computed(() => posts.value[current.value]);
+const active = computed(() => posts[current.value]);
 </script>
 <template>
     <div class="post-slider" v-if="posts.length">

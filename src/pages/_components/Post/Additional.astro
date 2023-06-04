@@ -1,0 +1,54 @@
+---
+import {
+  getRelatedPosts,
+  getPrevAndNext,
+} from "@/pages/_contents/posts";
+import Tabs from "@components/content/Tabs.astro";
+import PostCard from "./Card2.astro";
+const { post } = Astro.props;
+
+const relatedPosts = getRelatedPosts(post, 3);
+const [prevPost, nextPost] = getPrevAndNext(post);
+
+let activeTab = 'related';
+if(nextPost) activeTab = 'next'
+---
+
+<Tabs active={activeTab}>
+  {nextPost ? <Fragment slot={nextPost ? "tab.next" : ''}>下一篇</Fragment> : null}
+  {
+    nextPost ? (
+      <Fragment slot={nextPost ? "pane.next" : ''}>
+        <PostCard post={nextPost} />
+      </Fragment>
+    ) : null
+  }
+
+  {prevPost ? <Fragment slot={prevPost ? "tab.prev" : ''}>上一篇</Fragment> : null}
+  {
+    prevPost ? (
+      <Fragment slot={prevPost ? "pane.prev" : ''}>
+        <PostCard post={prevPost} />
+      </Fragment>
+    ) : null
+  }
+
+  <Fragment slot="tab.related">相关文章</Fragment>
+  <Fragment slot="pane.related">
+    <section class="related-posts">
+      {
+        relatedPosts.map((p) => (
+          <PostCard post={p} />
+        ))
+      }
+    </section>
+  </Fragment>
+</Tabs>
+
+<style>
+  .related-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>

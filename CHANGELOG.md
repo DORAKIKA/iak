@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.5](///compare/v0.10.4...v0.10.5) (2023-06-04)
+
+
+### Features
+
+* 添加图片错误后的默认图片替换 762d11a
+* 文章底部额外信息组件、文章数据获取逻辑抽离 f014d58
+* deploy脚本可配置ssh端口 b7a437b
+
+
+### Bug Fixes
+
+* 豆瓣同步脚本bug 125f69c
+* 文件导入大小写修复 e2e0aea
+* 文章头图布局bug 921d1f4
+* Grid布局错误修复 0c4d308
+* PostSlider排序修复 b965e8f
+
 ### [0.10.4](///compare/v0.10.3...v0.10.4) (2023-05-16)
 
 

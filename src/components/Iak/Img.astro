@@ -1,0 +1,53 @@
+---
+const { src, alt, callback="/images/placeholder.png", loading="lazy", className } = Astro.props;
+
+---
+
+<img class={'iak-img loading ' + className} src={callback} alt={alt} data-callback={callback} data-src={src} />
+
+<script>
+const iak_imgs = document.getElementsByClassName('iak-img');
+Array.prototype.forEach.call(iak_imgs, (img) => {
+  if(!img)return;
+
+  const src = img.getAttribute('data-src');
+
+  if(!window.imgCache) window.imgCache = {};
+  if(!window.imgCache[src]){
+    const aImg = new Image();
+    aImg.src = src
+    window.imgCache[src] = aImg;
+  }else{
+    img.src = src;
+    img.classList.remove('loading')
+    return;
+  }
+  const aImg = window.imgCache[src];
+
+  aImg.onload = function(){
+    img.src = src;
+    img.classList.remove('loading')
+    delete window.imgCache[src];
+    window.imgCache[src] = true;
+  }
+  aImg.onerror = function(){
+    img.src = img.getAttribute('data-callback');
+    img.classList.remove('loading')
+    delete window.imgCache[src];
+    window.imgCache[src] = true;
+  }
+})
+</script>
+
+<style>
+.loading{
+  animation: opacity 1s infinite alternate-reverse;
+}
+@keyframes opacity {
+  from{
+    opacity: 1;
+  }to{
+    opacity: 0.6;
+  }
+}
+</style>

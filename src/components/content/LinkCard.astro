@@ -1,4 +1,5 @@
 ---
+import IakImg from "../Iak/Img.astro";
 const {
     name,
     author = "",
@@ -13,7 +14,7 @@ const {
 
 <div class="md-linkcard md-block" style={color ? `--main-color-meta: var(--${color}-meta)` : ''} data-role="md-linkcard">
     <div class="md-linkcard__info">
-        {cover ? <img class="md-linkcard__cover" src={cover} loading="lazy"/> : null}
+        {cover ? <IakImg className="md-linkcard__cover" src={cover} /> : null}
         <div class="md-linkcard__other">
             <div class="md-linkcard__name">{ name }</div>
             {author ? <div class="md-linkcard__author">{ author }</div> : null}

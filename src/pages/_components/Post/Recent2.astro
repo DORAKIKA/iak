@@ -1,9 +1,8 @@
 ---
+import { getRecentPosts } from "@/pages/_contents/posts";
 import PostCard from "./Card2.astro"
-import { getCollection } from "astro:content";
-const recentPosts = (await getCollection("posts")).sort((a,b) => {
-    return a.data.date > b.data.date ? -1 : 1
-}).slice(0,6)
+
+const recentPosts = getRecentPosts(6);
 ---
 
 <div class="post-recent-2">

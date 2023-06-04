@@ -1,10 +1,11 @@
 ---
 import { formatDateTime } from "src/tools/tools";
+import IakImg from "@/components/Iak/Img.astro";
 
 const {mark, group} = Astro.props
 ---
 <a href={mark.url} class="mark-item" target="_blank">
-    <img class="poster" src={mark.poster} loading="lazy"/>
+    <IakImg className="poster" src={mark.poster} loading="lazy"/>
     <div class="top">
         <div class="icon" set:html={group ? group.icon||'' : ''}></div>
         <div class="time">{ mark.time ? formatDateTime(new Date(mark.time)) : '' }</div>
@@ -26,6 +27,8 @@ const {mark, group} = Astro.props
     color: rgba(var(--white-meta), 0.8);
     border: 2px solid var(--card-border-color);
     box-shadow: var(--card-shadow);
+    min-height: 8em;
+    background-color: var(--main-color);
 }
 .mark-item:hover {
     transform: translateY(-4px);
