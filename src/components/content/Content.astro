@@ -1,4 +1,6 @@
 ---
+import Card from "./Card.astro";
+
 import Tabs from "./Tabs.astro";
 import LinkCard from "./LinkCard.astro";
 import Outline from "./Outline.astro";
@@ -12,12 +14,9 @@ import Img from "./Img.astro";
 import A from "./A.astro";
 // 注释一下，防忘记，组件的margin标准为上下0.5rem
 
-const { entry } = Astro.props;
+const { entry, source } = Astro.props;
 
-const { Content } = await entry.render();
----
-
-<Content components = {{
+const components: Record<string, any> = {
     Grid,
     GridItem,
     LinkCard,
@@ -28,5 +27,14 @@ const { Content } = await entry.render();
     
     img: Img,
     pre: Pre,
-    a: A
-}}></Content>
+    a: A,
+}
+
+if(source !== 'card'){
+    components.Card = Card
+}
+
+const { Content } = await entry.render();
+---
+
+<Content components={components}></Content>

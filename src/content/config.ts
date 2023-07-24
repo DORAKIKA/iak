@@ -1,6 +1,6 @@
 import { site } from 'src/config';
 import { default_assets } from './../config';
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z, reference } from 'astro:content';
 
 // 定义文章集合
 const posts = defineCollection({
@@ -38,4 +38,12 @@ const memories = defineCollection({
 	})
 })
 
-export const collections = { posts, memories };
+const cards = defineCollection({
+	schema: z.object({
+		title: z.string().default(''),
+		related: z.array(reference('cards')).or(reference('cards')).optional(),
+		color: z.enum(['red','orange','yellow','green','blue','cyan','purple','pink','gray','black','white']).optional()
+	})
+})
+
+export const collections = { posts, memories, cards };

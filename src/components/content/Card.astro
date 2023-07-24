@@ -1,0 +1,35 @@
+---
+import { getEntryBySlug } from "astro:content";
+import Content from "./Content.astro";
+
+interface Props{
+  slug: string,
+  color?: string,
+  open?: boolean
+}
+
+const { slug, color, open } = Astro.props;
+let entry = await getEntryBySlug('cards', slug)
+
+if(!entry) throw new Error(`卡片${slug}不存在`)
+
+const card_color = color ?? entry.data.color;
+---
+
+<details class="mdx-card" open={open} style={card_color ? `--main-color-meta: var(--${card_color}-meta)`: null}>
+  <summary class="header">
+    <div class="title"><i class="fas fa-pager"></i>{entry?.data?.title ?? '卡片不存在'}</div>
+    <a class="link" href={`/cards/${slug}`}><i class="fas fa-link"></i></a>
+  </summary>
+  <div class="content"><Content entry={entry} source="card" /></div>
+</details>
+
+<style>
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+.fa-pager{
+  margin-right: 0.5em
+}
+</style>
