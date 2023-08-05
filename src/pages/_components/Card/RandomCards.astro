@@ -11,12 +11,12 @@ const filterCards = cards.slice(0, limit);
   {
     filterCards.map(card => 
       (
-        <div class={"card " + (card.data.type || 'dot')} style={card.data.color ? `--main-color-meta: var(--${card.data.color}-meta)` : null}>
+        <a href={`/cards/${card.slug}`} class={"card " + (card.data.type || 'dot')} style={card.data.color ? `--main-color-meta: var(--${card.data.color}-meta)` : null}>
           <div class="title"><i class="fas fa-card"></i>{card.data.title}</div>
           {card.data.tags ? <div class="tags">
               {card.data.tags.map(tag => <span class="tag">{tag}</span>)}
             </div> : null}
-        </div>
+        </a>
       )
     )
   }
