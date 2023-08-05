@@ -4,6 +4,7 @@ import PostSlider from "@pages/_components/Post/Slider.vue"
 import PostRecent from "@pages/_components/Post/Recent.astro"
 import TwikooRecent from "@components/Third/TwikooRecent.vue";
 import RecentMemories from "@pages/_components/Memo/RecentMemories.astro";
+import RandomCards from "@pages/_components/Card/RandomCards.astro"
 
 import { site, twikoo } from "src/config";
 import { generateOpenGraph } from "src/tools/open_graph";
@@ -21,6 +22,7 @@ const meta_og = generateOpenGraph(Astro, page_meta);
 >
 	<PostSlider slot="header" client:load/>
 	<PostRecent/>
+	<RandomCards/>
 	<RecentMemories/>
 	{twikoo.enabled ? <TwikooRecent client:load/> : null}
 </Layout>

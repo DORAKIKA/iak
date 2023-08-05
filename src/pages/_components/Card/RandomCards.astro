@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+const cards = await getCollection('cards');
+
+const limit = 3;
+const filterCards = cards.slice(0, limit);
+---
+
+<h2 style="text-align:center;font-size: 2rem;">知识卡片</h2>
+<div class="randomCards">
+  {
+    filterCards.map(card => 
+      (
+        <div class={"card " + (card.data.type || 'dot')} style={card.data.color ? `--main-color-meta: var(--${card.data.color}-meta)` : null}>
+          <div class="title"><i class="fas fa-card"></i>{card.data.title}</div>
+          {card.data.tags ? <div class="tags">
+              {card.data.tags.map(tag => <span class="tag">{tag}</span>)}
+            </div> : null}
+        </div>
+      )
+    )
+  }
+</div>
+
+<style>
+.randomCards{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--base-radius);
+}
+.card{
+  flex-grow: 1;
+  max-width: 350px;
+  background-color: rgba(var(--main-color-meta), 1);
+  padding: var(--base-radius);
+  border-radius: var(--base-radius);
+  color: var(--white);
+}
+.card.dot{
+  position: relative;
+}
+.card.dot::after{
+  content: '';
+  position: absolute;
+  width: 30%;
+  height: 60%;
+  top: 20%;
+  right: 0;
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  background-image: radial-gradient(circle at center, rgba(var(--black-meta), 0.14) 2px, transparent 2px);
+  background-size: 8px 8px;
+}
+.title{
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: var(--base-radius);
+  width: 150px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+.tag{
+  padding: 0 calc(var(--base-radius) / 2);
+  border-radius: calc(var(--base-radius) / 2);
+  background-color: var(--white);
+  color: var(--main-color);
+}
+:global(.dark .randomCards .card){
+  background-color: rgba(var(--main-color-meta), 0.8);
+}
+</style>

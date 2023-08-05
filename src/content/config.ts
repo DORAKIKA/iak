@@ -42,7 +42,9 @@ const cards = defineCollection({
 	schema: z.object({
 		title: z.string().default(''),
 		related: z.array(reference('cards')).or(reference('cards')).optional(),
-		color: z.enum(['red','orange','yellow','green','blue','cyan','purple','pink','gray','black','white']).optional()
+		color: z.enum(['red','orange','yellow','green','blue','cyan','purple','pink','gray','black','white']).optional(),
+		tags: z.array(z.string()).optional(),
+		type: z.enum(['dot']).default('dot')
 	})
 })
 
