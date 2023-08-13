@@ -162,7 +162,7 @@ article details{
     border: 2px solid rgba(var(--main-color-meta), 0.4);
     padding: 3rem 1.5rem 0;
     border-radius: var(--base-radius);
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-bottom: 1rem;
 }
 article details summary{
@@ -174,6 +174,7 @@ article details summary{
     padding: 0 1rem;
     user-select: none;
     cursor: pointer;
+    border-radius: calc(var(--base-radius) - 2px);
     background: rgba(var(--main-color-meta), 0.05);
     transition: 0.3s;
 }
@@ -183,6 +184,8 @@ article details:hover summary{
 article details:is([open]) summary{
     background: var(--main-color);
     color: var(--white);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 article details:has(summary:focus-visible){
     outline: 4px solid rgba(var(--main-color-meta), 0.4);

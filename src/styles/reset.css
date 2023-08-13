@@ -1,0 +1,9 @@
+button{
+  border: none;
+  background-color: unset;
+  color: inherit;
+  padding: unset;
+}
+button:focus{
+  outline: none;
+}

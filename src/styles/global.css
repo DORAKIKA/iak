@@ -1,3 +1,4 @@
+@import url('./reset.css');
 :root {
 	--header-height: 70px;
 	--side-padding: 7vw;
