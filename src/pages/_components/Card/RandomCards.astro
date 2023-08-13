@@ -35,6 +35,10 @@ const filterCards = cards.slice(0, limit);
   padding: var(--base-radius);
   border-radius: var(--base-radius);
   color: var(--white);
+  transition: 0.3s;
+}
+.card:is(:hover, :focus-visible){
+  transform: scale(1.02);
 }
 .card.dot{
   position: relative;

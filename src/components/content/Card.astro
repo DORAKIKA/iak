@@ -1,7 +1,8 @@
 ---
 import { getEntryBySlug } from "astro:content";
 import Content from "./Content.astro";
-
+import Popover from "../Iak/Popover.vue";
+import { getRelatedCards } from "@/pages/_contents/cards";
 interface Props{
   slug: string,
   color?: string,
@@ -13,13 +14,30 @@ let entry = await getEntryBySlug('cards', slug)
 
 if(!entry) throw new Error(`卡片${slug}不存在`)
 
+const related = await getRelatedCards(entry)
+
 const card_color = color ?? entry.data.color;
 ---
 
 <details class="mdx-card" open={open} style={card_color ? `--main-color-meta: var(--${card_color}-meta)`: null}>
   <summary class="header">
     <div class="title"><i class="fas fa-pager"></i>{entry?.data?.title ?? '卡片不存在'}</div>
-    <a class="link" href={`/cards/${slug}`}><i class="fas fa-link"></i></a>
+    <div class="right-buttons">
+      {
+        related
+        ? <Popover client:load class="right-button">
+            <i class="fas fa-server"></i>
+            <Fragment slot="panel">
+              {
+                related.map(entry => <a class="relate-item" href={`/cards/${entry.slug}`}>{entry.title}</a>)
+              }
+              
+            </Fragment>
+          </Popover>
+        : null
+      }
+      <a class="link right-button" href={`/cards/${slug}`}><i class="fas fa-link"></i></a>
+    </div>
   </summary>
   <div class="content"><Content entry={entry} source="card" /></div>
 </details>
@@ -30,6 +48,61 @@ const card_color = color ?? entry.data.color;
   justify-content: space-between;
 }
 .fa-pager{
-  margin-right: 0.5em
+  margin-right: 0.5rem;
+}
+.right-buttons{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.right-button{
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(var(--white-meta), 0.2);
+  border-radius: 0.5rem;
+}
+.right-button:hover{
+  background: rgba(var(--white-meta), 0.4);
+}
+.mdx-card :global(.iak-popover){
+  position: relative;
+}
+.mdx-card :global(.iak-popover__trigger){
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.mdx-card :global(.iak-popover__panel){
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  cursor: default;
+  transform: translateX(-50%);
+  background: rgba(var(--main-color-meta), 0.2);
+  background-image: linear-gradient(
+    rgba(var(--white-meta), 0.3),
+    rgba(var(--white-meta), 0.4)
+  );
+  border-radius: var(--base-radius);
+  padding: calc(var(--base-radius) / 2);
+  border: 2px solid rgba(var(--main-color-meta), 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+}
+.relate-item{
+  width: max-content;
+  line-height: 1;
+  padding: var(--base-radius);
+  border-radius: calc(var(--base-radius) / 2);
+  color: var(--main-color);
+
+}
+.relate-item:hover{
+  background-color: var(--main-color);
+  color: var(--white);
 }
 </style>

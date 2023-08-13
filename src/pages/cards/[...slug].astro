@@ -38,7 +38,7 @@ const meta_og = generateOpenGraph(Astro, page_meta)
 	<div slot="header">
 		<h1 class="article-title">{ card.data.title }</h1>
 	</div>
-	<article>
+	<article class="article">
 		<Content entry={card} />
 	</article>
   {related.length ? <h2>卡片链接</h2> : null}
@@ -54,6 +54,9 @@ const meta_og = generateOpenGraph(Astro, page_meta)
 #post{
 	margin: 2rem auto;
 	line-height: 2;
+}
+.article{
+	margin-top: 4rem;
 }
 .related-cards{
   display: flex;
