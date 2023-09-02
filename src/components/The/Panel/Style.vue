@@ -1,48 +1,53 @@
 <script setup lang="ts">
-import { computed, onMounted, watch } from 'vue'
+import { computed, onMounted, watch, ref } from 'vue'
 import { useLocalStorage, useStyleTag, useThrottleFn } from '@vueuse/core'
+import {
+    RadioGroup,
+    RadioGroupLabel,
+    RadioGroupOption
+} from '@headlessui/vue'
 
 import IakSlider from "@components/Iak/Slider.vue"
 import IakSwitch from "@components/Iak/Switch.vue"
-import { theme } from '../../../config'
+import { themeOptions, brightnessOptions } from '@/config/theme'
+import themeConfig from '@/config/theme'
 import { z } from 'zod'
 
 const default_style = {
-    themeColor: theme.main_colors[0],
-    largeBorderRadius: theme.large_border_radius.default,
-    brightness: theme.brightness.default,
-    headerFixed: theme.headerFixed.default,
-    darkMode: false,
+    brightness: themeConfig.brightness,
+    headerFixed: themeConfig.headerFixed,
+    themeMode: themeConfig.themeMode
 }
 
+// 其他样式
 const styleConfig = useLocalStorage('styleConfig', default_style)
 
-onMounted(() => {
-    // @ts-ignore
-    const darkModeFn = window.iak.toggleDarkMode;
-    // @ts-ignore
-    window.iak.toggleDarkMode = (darkMode: boolean) => {
-        styleConfig.value.darkMode = darkModeFn(darkMode);
-    }
-}),
-
-watch(() => styleConfig.value.darkMode, (darkMode) => {
-    // @ts-ignore
-    window.iak.toggleDarkMode(darkMode)
-}, {immediate: true})
+// 主题配置
+function setThemeMode(theme){
+  if(themeOptions[theme]){
+    styleConfig.value.themeMode = theme;
+  }else{
+    const keys = Object.keys(themeOptions);
+    const activeIndex = keys.findIndex(k => k == styleConfig.value.themeMode);
+    styleConfig.value.themeMode = keys[(activeIndex + 1) % keys.length]
+  }
+  console.log(styleConfig.value.themeMode)
+  document.documentElement.setAttribute('data-theme', styleConfig.value.themeMode)
+}
+window.iak.setThemeMode = setThemeMode;
+watch(() => styleConfig.value.themeMode, setThemeMode, {immediate: true})
 
 async function validate(){
     const schema = z.object({
-        themeColor: z.string(),
-        largeBorderRadius: z.boolean(),
-        brightness: z.number().min(theme.brightness.min).max(theme.brightness.max),
+        brightness: z.number(),
         headerFixed: z.boolean(),
-        darkMode: z.boolean()
+        themeMode: z.string()
     })
     try {
         styleConfig.value = await schema.parseAsync(styleConfig.value)
     } catch (error) {
         styleConfig.value = default_style;
+        console.log(error)
         // @ts-ignore
         SnackBar({message: '样式配置错误，已重置为默认配置', type: 'error', fixed: true, position: 'bl'})
     }
@@ -50,11 +55,6 @@ async function validate(){
 watch(styleConfig, useThrottleFn(validate), {immediate: true});
 
 const styleHTML = computed(() => `
-    :root{
-        --main-color-meta: ${styleConfig.value.themeColor};
-        --base-radius: ${styleConfig.value.largeBorderRadius ? '16px' : '8px'};
-
-    }
     html{
         filter: brightness(${styleConfig.value.brightness})
     }
@@ -71,45 +71,51 @@ useStyleTag(styleHTML)
 
 </script>
 <template>
-    <section class="panel-style">
-        <h3 class="panel-title">主题配置</h3>
-        <div class="style-container">
-            <div class=" style-item style-theme-color">
-                <div class="label">主题色</div>
-                <div class="value">
-                <label
-                        v-for="tc in theme.main_colors"
-                        :key="tc" class="style-theme-color-item"
-                        :class="tc===styleConfig.themeColor?'active':''"
-                        :style="`background: rgb(${tc});`"
-                >
-                    <input type="radio" name="themeColor"
-                        @click="styleConfig.themeColor=tc"
-                        :checked="tc===styleConfig.themeColor"
-                    />
-                </label>
-                </div>
-            </div>
-            <div class="style-item">
-                <div class="key">亮度</div>
-                <div class="value"><IakSlider name="light" :min="theme.brightness.min" :max="theme.brightness.max" :step="theme.brightness.step" v-model:value="styleConfig.brightness"/></div>
-            </div>
-            <div class="style-item style-border-radius">
-                <div class="label">大圆角</div>
-                <div class="value">
-                    <IakSwitch v-model:value="styleConfig.largeBorderRadius" />
-                </div>
-            </div>
-            <div class="style-item">
-                <div class="key">顶栏固定</div>
-                <div class="value"><IakSwitch v-model:value="styleConfig.headerFixed"/></div>
-            </div>
-            <div class="style-item">
-                <div class="key">夜间模式</div>
-                <div class="value"><IakSwitch v-model:value="styleConfig.darkMode"/></div>
-            </div>
+  <section class="panel-style">
+    <h3 class="panel-title">主题配置</h3>
+    <div class="style-container">
+      <RadioGroup class="style-item theme-radio__group" v-model="styleConfig.themeMode">
+        <RadioGroupLabel class="key">主题</RadioGroupLabel>
+        <div class="value">
+          <RadioGroupOption
+            v-for="(item, key) in themeOptions"
+            :key="key"
+            v-slot="{checked, active}"
+            class="theme-radio__option"
+            as="template"
+            :data-theme="key" 
+            :value="key" 
+          >
+          <div :class="{checked, active}">
+            <div class="theme-radio__dot"></div>
+            <div class="theme-radio__card"></div>
+          </div>
+          </RadioGroupOption>
         </div>
-    </section>
+      </RadioGroup>
+
+      <RadioGroup class="style-item" v-model="styleConfig.brightness">
+        <RadioGroupLabel class="key">亮度</RadioGroupLabel>
+        <div class="value">
+          <RadioGroupOption
+            v-for="item in brightnessOptions"
+            :key="item"
+            :value="item"
+            as="template"
+            v-slot="{ checked, active }">
+            <div
+            class="brightness-radio__option"
+            :class="{checked, active}" 
+            :style="`--filter-brightness: ${item}`"></div>
+          </RadioGroupOption>
+        </div>
+      </RadioGroup>
+      <div class="style-item">
+          <div class="key">顶栏固定</div>
+          <div class="value"><IakSwitch v-model:value="styleConfig.headerFixed"/></div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>
@@ -119,36 +125,56 @@ useStyleTag(styleHTML)
     color: var(--card-text-color);
     margin: 0;
 }
-
+.theme-radio__option{
+  background-color: var(--bg);
+  padding: var(--round-sm);
+  border-radius: var(--round-md);
+  display: flex;
+  gap: var(--round-sm);
+}
+.theme-radio__option.active,
+.brightness-radio__option.active{
+  outline: 4px solid rgba(var(--main-color-meta), 0.2);
+}
+.theme-radio__option.checked,
+.brightness-radio__option.checked{
+  outline: 4px solid rgba(var(--main-color-meta), 0.6);
+}
+.theme-radio__dot{
+  border-radius: var(--round-sm);
+  padding: var(--round-sm);
+  background: var(--card-border-color);
+  border: 1px solid var(--card-border-color);
+  background: var(--main-color);
+}
+.theme-radio__card{
+  padding: var(--round-sm);
+  width: calc(4 * var(--round-sm));
+  border-radius: var(--round-sm);
+  background-color: var(--card-bg);
+  color: var(--card-text-color);
+  border: 1px solid var(--card-border-color)
+}
 /* TheStyle */
-.style-item{
+:deep(.style-item){
     padding: 0 16px;
     height: 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.style-theme-color .value{
-    display: flex;
-    gap: 8px;
+:deep(.style-item .value){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--round-md);
 }
-.style-theme-color .value .style-theme-color-item{
-    width: 16px;
-    height: 16px;
-    border-radius: calc(0.5 * var(--base-radius));
-    border: 3px solid rgba(255, 255, 255, 0.5);
-    cursor: pointer;
+.brightness-radio__option{
+  padding: var(--round-sm);
+  border: 4px solid var(--card-bg);
+  border-radius: var(--round-md);
+  background: var(--card-text-color);
+  box-shadow: 0 0 0 4px var(--card-border-color);
+  filter: brightness(var(--filter-brightness));
 }
-.style-theme-color .value .style-theme-color-item:focus-within{
-    outline: 3px solid var(--main-color);
-}
-.style-theme-color .value .style-theme-color-item input{
-    position: absolute;
-    appearance: none;
-    opacity: 0;
-}
-.style-theme-color .value .style-theme-color-item.active{
-    border: 4px solid rgba(255, 255, 255, 0.7);
-}
-
 </style>

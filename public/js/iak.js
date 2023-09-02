@@ -9,7 +9,6 @@ window.iak = {
   },
   // 前往随机文章页面
   randomPage() {
-    console.log(111, this.data);
     if (this.data.posts.length) {
       const rand = Math.floor(Math.random() * this.data.posts.length);
       SnackBar({
@@ -146,9 +145,11 @@ iak.contextMenu = {
     children: [
       {
         icon: "fa-solid fa-moon",
-        text: "夜间模式",
+        // text: "夜间模式",
+        text: "切换主题",
         action() {
-          iak.toggleDarkMode();
+          //   iak.toggleDarkMode();
+          iak.setThemeMode();
         },
         tag: "全局",
       },
