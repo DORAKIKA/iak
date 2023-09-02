@@ -1,0 +1,77 @@
+---
+import BaseHead from '@components/BaseHead/BaseHead.astro';
+import TheHeader from "@components/The/Header/Header.astro"
+import TheFooter from '@components/The/Footer.astro';
+import TheToolbar from '@components/The/Toolbar/Toolbar.astro'
+import GlobalInject from '@components/The/GlobalInject.astro';
+import Sidebar from './_cardLayout/Sidebar.vue'
+import Header from './_cardLayout/Header.vue'
+
+const {
+	page_meta,
+	headings,
+	meta_og,
+	header,
+    mainTransBg,
+    bgRGB
+ } = Astro.props;
+---
+
+<html lang="zh-CN">
+	<head>
+		<BaseHead
+			page_meta={page_meta}
+			meta_og={meta_og}
+		/>
+	</head>
+
+	<body>
+        <div id="app-container">
+            <Sidebar client:load />
+            <main id="app-main" class={mainTransBg ? 'transparent' : ''}>
+                <Header bgRGB={bgRGB} client:load title={page_meta.title} />
+                <slot></slot>
+		        <TheFooter />
+            </main>
+        </div>
+		<script is:inline src="/js/iak.js"></script>
+
+		<!-- <TheToolbar headings={headings}/> -->
+
+		<GlobalInject/>
+	</body>
+</html>
+
+<style>
+#app-container{
+    --base-radius: 12px;
+    --bg: #0a0a0a;
+    --card-bg: #121212;
+    --card-border-color: #141618;
+    --card-text-color: #ffffff;
+    --card-sub-text-color: #aaaaaa;
+    --main-padding: 30px;
+
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg);
+    color: var(--card-sub-text-color);
+    padding: var(--base-radius);
+    display: flex;
+    gap: var(--base-radius);
+}
+
+#app-main{
+    position: relative;
+    overflow: overlay;
+    background-color: var(--card-bg);
+    border-radius: var(--base-radius);
+    border: 2px soild var(--card-border-color);
+}
+#app-main::-webkit-scrollbar{
+    display: none;
+}
+#app-main.transparent{
+    background-color: unset;
+}
+</style>

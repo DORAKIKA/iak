@@ -1,17 +1,17 @@
-@import url('./reset.css');
+@import url("./reset.css");
 :root {
-	--header-height: 70px;
-	--side-padding: 7vw;
-  
+  --header-height: 70px;
+  --side-padding: 7vw;
+
   --main-color-meta: 50, 201, 235;
-	--main-color: rgb(var(--main-color-meta));
+  --main-color: rgb(var(--main-color-meta));
 
   --global-main-color-meta: var(--main-color-meta);
   --global-main-color: var(--main-color);
 
   --active-color-meta: 255, 85, 0;
-	--active-color: rgba(var(--active-color-meta), 1);
-  
+  --active-color: rgba(var(--active-color-meta), 1);
+
   --red-meta: 225, 123, 123;
   --red: rgb(225, 123, 123);
 
@@ -30,9 +30,9 @@
   --purple-meta: 144, 83, 144;
   --purple: rgb(144, 83, 144);
 
-  --pink-meta: 244,149,162;
-  --pink: rgb(244,149,162);
-  
+  --pink-meta: 244, 149, 162;
+  --pink: rgb(244, 149, 162);
+
   --gray-meta: 142, 142, 147;
   --gray: rgb(142, 142, 147);
 
@@ -42,12 +42,12 @@
   --white-meta: 255, 255, 255;
   --white: rgb(255, 255, 255);
 
-	--font-color: rgba(255,255,255,0.8);
-  --color-deep-op: rgba(255,255,255,0.8);
-  --color-op: rgba(255,255,255,0.2);
-  --color-deep-text: rgba(0,0,0,0.8);
-  --color-op-text: rgba(255,255,255,0.8);
-  --kk-texture-color: rgba(255,255,255,0.2);
+  --font-color: rgba(255, 255, 255, 0.8);
+  --color-deep-op: rgba(255, 255, 255, 0.8);
+  --color-op: rgba(255, 255, 255, 0.2);
+  --color-deep-text: rgba(0, 0, 0, 0.8);
+  --color-op-text: rgba(255, 255, 255, 0.8);
+  --kk-texture-color: rgba(255, 255, 255, 0.2);
 
   /* card */
   --bg: #fcfcfd;
@@ -58,7 +58,7 @@
   --card-inner-bg: #f5f7f9;
   --card-active: var(--main-color);
   --card-active-text: #ffffff;
-  --card-shadow-color: rgba(0,0,0,0.1);
+  --card-shadow-color: rgba(0, 0, 0, 0.1);
   --card-shadow: 1px 2px 8px var(--card-shadow-color);
   --card-outline: 0 0 0 3px var(--main-color);
   --card-border-color: #eef1ef;
@@ -69,14 +69,14 @@
   --md-margin: 1rem 0;
 }
 
-html.dark{
-  --font-color: rgba(0,0,0,0.8);
-  --kk-texture-color: rgba(0,0,0,0.2);
+html.dark {
+  --font-color: rgba(0, 0, 0, 0.8);
+  --kk-texture-color: rgba(0, 0, 0, 0.2);
 
-  --color-op: rgba(0,0,0,0.2);
-  --color-deep-op: rgba(0,0,0,0.8);
-  --color-deep-text: rgba(255,255,255,0.8);
-  --color-op-text: rgba(0,0,0,0.8);
+  --color-op: rgba(0, 0, 0, 0.2);
+  --color-deep-op: rgba(0, 0, 0, 0.8);
+  --color-deep-text: rgba(255, 255, 255, 0.8);
+  --color-op-text: rgba(0, 0, 0, 0.8);
 
   /* card */
   --bg: #151716;
@@ -87,13 +87,13 @@ html.dark{
   --card-inner-bg: #2a2a2a;
   --card-active: var(--main-color);
   --card-active-text: #ffffff;
-  --card-shadow-color: rgba(0,0,0,0.1);
+  --card-shadow-color: rgba(0, 0, 0, 0.1);
   --card-shadow: 1px 2px 8px var(--card-shadow-color);
   --card-outline: 0 0 0 4px var(--main-color);
   --card-border-color: #212322;
 }
-@media (max-width: 900px){
-  :root{
+@media (max-width: 900px) {
+  :root {
     --side-padding: 3vw;
   }
 }
@@ -105,43 +105,37 @@ html.dark{
   color: white;
   text-shadow: 0 0 6px currentColor;
 }
-html{
+html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
   overflow-y: overlay;
 }
-html.gray{
+html.gray {
   filter: grayscale(1);
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   box-sizing: border-box;
   border: 4px solid transparent;
   background-image: linear-gradient(
-    rgba(var(--main-color-meta), 0.5) 0%,
-    rgba(var(--main-color-meta), 0.5) 100%
-  ),
-  linear-gradient(
-    var(--bg) 0%,
-    var(--bg) 100%
-  );
+      rgba(var(--main-color-meta), 0.5) 0%,
+      rgba(var(--main-color-meta), 0.5) 100%
+    ),
+    linear-gradient(var(--bg) 0%, var(--bg) 100%);
   background-clip: content-box;
   border-radius: 99px;
   opacity: 0.6;
   cursor: pointer;
 }
-::-webkit-scrollbar-thumb:hover{
+::-webkit-scrollbar-thumb:hover {
   background-image: linear-gradient(
-    rgba(var(--main-color-meta), 0.7) 0%,
-    rgba(var(--main-color-meta), 0.7) 100%
-  ),
-  linear-gradient(
-    var(--bg) 0%,
-    var(--bg) 100%
-  );
+      rgba(var(--main-color-meta), 0.7) 0%,
+      rgba(var(--main-color-meta), 0.7) 100%
+    ),
+    linear-gradient(var(--bg) 0%, var(--bg) 100%);
 }
 body {
   margin: 0;
@@ -166,19 +160,21 @@ body {
   background-color: var(--bg);
   color: var(--card-text-color);
 }
-@keyframes background-slide{
-  from{
+@keyframes background-slide {
+  from {
     background-position: 0 0;
-  }to{
+  }
+  to {
     background-position: 1500px 0;
   }
 }
-a{
+a {
   color: currentColor;
   text-decoration: none;
   font-weight: 600;
 }
-svg.icon,img.icon {
+svg.icon,
+img.icon {
   fill: currentColor;
   width: 1em;
   height: 1em;
@@ -187,4 +183,30 @@ svg.icon path {
   fill: currentColor;
 }
 
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: 300ms;
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
 
+.scale-enter-from,
+.scale-leave-to {
+  transform: scale(0);
+  opacity: 0;
+}
+.scale-enter-active,
+.scale-leave-active {
+  transition: 300ms;
+}
+.scale-enter-to,
+.scale-leave-from {
+  transform: scale(1);
+  opacity: 1;
+}

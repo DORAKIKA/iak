@@ -1,9 +1,12 @@
-button{
+button {
   border: none;
   background-color: unset;
   color: inherit;
   padding: unset;
 }
-button:focus{
+button:focus {
   outline: none;
+}
+li {
+  list-style: none;
 }
