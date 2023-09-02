@@ -50,7 +50,11 @@ const toggleSidebar = () => (isSidebarShow.value = !isSidebarShow.value);
       <div class="aside-nav">
         <button class="nav-button" @click="toggleSidebar">
           <i class="nav-button__icon fas fa-align-left"></i>
-          <span v-if="isSidebarShow" class="nav-button__title">侧边栏</span>
+          <transition name="fade"
+            ><span v-if="isSidebarShow" class="nav-button__title"
+              >侧边栏</span
+            ></transition
+          >
         </button>
       </div>
     </section>
@@ -90,7 +94,7 @@ const toggleSidebar = () => (isSidebarShow.value = !isSidebarShow.value);
   display: flex;
   gap: 16px;
   align-items: center;
-  font-weight: 100;
+  font-weight: 400;
   cursor: pointer;
   transition: 300ms;
 }

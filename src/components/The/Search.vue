@@ -78,7 +78,7 @@ query({ target: { value: "" } });
     <transition name="pop">
       <div
         class="the-search-wrapper"
-        v-show="searchShow"
+        v-if="searchShow"
         @click.self="toggleSearch(false)"
         @keydown.escape="toggleSearch(false)"
       >
