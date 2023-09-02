@@ -78,33 +78,6 @@ export interface HeadingConfig {
 }
 
 
-// 主题配置
-// 此配置只做选项与默认项，具体配置会读取用户浏览器的LocalStorage数据
-export interface ThemeConfig {
-    // 主题色
-    main_colors: string[],
-    // 大圆角
-    large_border_radius: {
-        default: boolean
-    },
-    // 亮度
-    brightness: {
-        default: number,
-        min: number,
-        max: number,
-        step: number
-    },
-    // 固定头部
-    headerFixed: {
-        default: boolean
-    },
-    // 白色卡片
-    whiteCard: {
-        default: boolean,
-    }
-}
-
-
 export interface IakConfig {
     site: SiteConfig,
     menus: MenuItem[],
@@ -114,5 +87,4 @@ export interface IakConfig {
     memories: MemoriesConfig,
     twikoo: TwikooConfig,
     heading: HeadingConfig,
-    theme: ThemeConfig
 }
