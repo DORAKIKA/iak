@@ -1,0 +1,160 @@
+:root,
+[data-theme="light"] {
+  --header-height: 70px;
+  --side-padding: 7vw;
+  --round-sm: 8px;
+  --round-md: 16px;
+  --round-lg: 24px;
+
+  --size-sm: 8px;
+  --size-md: 16px;
+  --size-lg: 32px;
+
+  --font-sm: 12px;
+  --font-md: 14px;
+  --font-normal: 16px;
+  --font-lg: 18px;
+
+  --text-in-img: #ffffff;
+
+  --glassic-bgRGB: 255, 255, 255;
+  --glassic-textRGB: 0, 0, 0;
+  --glassic-blur: blur(4px);
+
+  --main-color-meta: 50, 201, 235;
+  --main-color: rgb(var(--main-color-meta));
+
+  --global-main-color-meta: var(--main-color-meta);
+  --global-main-color: var(--main-color);
+
+  --active-color-meta: 255, 85, 0;
+  --active-color: rgba(var(--active-color-meta), 1);
+
+  --red-meta: 225, 123, 123;
+  --red: rgb(225, 123, 123);
+
+  --orange-meta: 255, 115, 0;
+  --orange: rgb(255, 115, 0);
+
+  --yellow-meta: 246, 169, 27;
+  --yellow: rgb(246, 169, 27);
+
+  --green-meta: 30, 229, 137;
+  --green: rgb(30, 229, 137);
+
+  --blue-meta: 50, 201, 235;
+  --blue: rgb(50, 201, 235);
+
+  --purple-meta: 144, 83, 144;
+  --purple: rgb(144, 83, 144);
+
+  --pink-meta: 244, 149, 162;
+  --pink: rgb(244, 149, 162);
+
+  --gray-meta: 142, 142, 147;
+  --gray: rgb(142, 142, 147);
+
+  --black-meta: 0, 0, 0;
+  --black: rgb(0, 0, 0);
+
+  --white-meta: 255, 255, 255;
+  --white: rgb(255, 255, 255);
+
+  --font-color: rgba(255, 255, 255, 0.8);
+  --color-deep-op: rgba(255, 255, 255, 0.8);
+  --color-op: rgba(255, 255, 255, 0.2);
+  --color-deep-text: rgba(0, 0, 0, 0.8);
+  --color-op-text: rgba(255, 255, 255, 0.8);
+  --kk-texture-color: rgba(255, 255, 255, 0.2);
+
+  /* card */
+  --bg: #fcfcfd;
+  --card-tab-bg: #ecedef;
+  --card-text-color: #23272b;
+  --card-sub-text-color: #9ba0a5;
+  --card-bg: #ffffff;
+  --card-inner-bg: #f5f7f9;
+  --card-active: var(--black);
+  --card-active-text: #ffffff;
+  --card-shadow-color: rgba(0, 0, 0, 0.1);
+  --card-shadow: 1px 2px 8px var(--card-shadow-color);
+  --card-outline: 0 0 0 3px var(--main-color);
+  --card-border-color: #eef1ef;
+  --card-border: 3px solid var(--card-border-color);
+  --base-radius: 16px;
+
+  /* md components */
+  --md-margin: 1rem 0;
+}
+
+html.dark,
+[data-theme="dark"] {
+  --font-color: rgba(0, 0, 0, 0.8);
+  --kk-texture-color: rgba(0, 0, 0, 0.2);
+
+  --color-op: rgba(0, 0, 0, 0.2);
+  --color-deep-op: rgba(0, 0, 0, 0.8);
+  --color-deep-text: rgba(255, 255, 255, 0.8);
+  --color-op-text: rgba(0, 0, 0, 0.8);
+
+  --glassic-bgRGB: 21, 22, 23;
+  --glassic-textRGB: 255, 255, 255;
+  --glassic-blur: blur(4px);
+
+  /* card */
+  --bg: #151716;
+  --card-tab-bg: #2b2b2b;
+  --card-text-color: #ffffff;
+  --card-sub-text-color: #9ba0a5;
+  --card-bg: #1c1e1d;
+  --card-inner-bg: #2a2a2a;
+  --card-active: var(--main-color);
+  --card-active-text: #ffffff;
+  --card-shadow-color: rgba(0, 0, 0, 0.1);
+  --card-shadow: 1px 2px 8px var(--card-shadow-color);
+  --card-outline: 0 0 0 4px var(--main-color);
+  --card-border-color: #212322;
+
+  --main-color-meta: var(--purple-meta);
+  --main-color: var(--purple);
+}
+[data-theme="purple"] {
+  --color-op: rgba(0, 0, 0, 0.2);
+  --color-deep-op: rgba(0, 0, 0, 0.8);
+  --color-deep-text: rgba(255, 255, 255, 0.8);
+  --color-op-text: rgba(0, 0, 0, 0.8);
+
+  --glassic-bgRGB: 41, 45, 60;
+  --glassic-textRGB: 255, 255, 255;
+  --glassic-blur: blur(4px);
+
+  --bg: #1b1e2b;
+  --card-tab-bg: #161823;
+  --card-text-color: #afb2cd;
+  --card-sub-text-color: #666a8d;
+  --card-bg: #292d3e;
+  --card-inner-bg: #2f3448;
+  --card-active: #3c4052;
+  --card-active-text: #7fcac3;
+  --card-border-color: #262939;
+  --red-meta: 234, 140, 108;
+  --red: rgb(234, 140, 108);
+  --orange-meta: 226, 157, 46;
+  --orange: rgb(226, 157, 46);
+  --yellow-meta: 255, 202, 40;
+  --yellow: rgb(255, 202, 40);
+  --green-meta: 195, 232, 141;
+  --cyan-meta: 137, 221, 255;
+  --cyan: rgb(137, 221, 255);
+  --blue-meta: 107, 170, 255;
+  --blue: rgb(107, 170, 255);
+  --purple-meta: 199, 146, 234;
+  --purple: rgb(199, 146, 234);
+  --main-color: rgb(127, 202, 195);
+  --main-color-meta: 127, 202, 195;
+}
+@media (max-width: 900px) {
+  :root {
+    --side-padding: 3vw;
+  }
+}

@@ -31,13 +31,13 @@ const { post } = Astro.props
     position: relative;
     overflow: hidden;
 }
-.post-card-2 .cover-img{
+.post-card-2 :global(.cover-img){
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: 0.3s;
 }
-.post-card-2:hover .cover-img{
+.post-card-2:hover :global(.cover-img){
     opacity: 0.5;
 }
 .post-card-2 .meta{
@@ -58,7 +58,7 @@ const { post } = Astro.props
     white-space: nowrap;
 }
 .post-card-2 .title:hover{
-    color: var(--card-active);
+    color: var(--main-color);
 }
 .post-card-2 .desc{
     line-height: 1.5;

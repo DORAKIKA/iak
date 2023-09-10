@@ -1,83 +1,97 @@
 ---
-
-import Layout from "@layouts/Layout.astro"
 import { default_assets, site } from "src/config";
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import PostCard from "@pages/_components/Post/Card.astro";
-import Grid from "@components/content/Grid.astro"
+import Grid from "@components/content/Grid.astro";
 import { generateOpenGraph } from "src/tools/open_graph";
+import CardLayout from "@/layouts/CardLayout.astro";
 
 // 分页
-export async function getStaticPaths({ paginate } : { paginate: Function}){
-	const posts = (await getCollection('posts')).sort((a,b) => a.data.date > b.data.date ? -1 : 1);
-	return paginate(posts, { pageSize: 12 })
+export async function getStaticPaths({ paginate }: { paginate: Function }) {
+  const posts = (await getCollection("posts")).sort((a, b) =>
+    a.data.date > b.data.date ? -1 : 1
+  );
+  return paginate(posts, { pageSize: 12 });
 }
 
 interface Props {
-	page: {
-		data: CollectionEntry<'posts'>[],
-		currentPage: number,
-		url: {
-			prev: string,
-			next: string
-		}
-	}
+  page: {
+    data: CollectionEntry<"posts">[];
+    currentPage: number;
+    url: {
+      prev: string;
+      next: string;
+    };
+  };
 }
-const { page } = Astro.props
+const { page } = Astro.props;
 
 const page_meta = {
-	title: '文章归档 | ' + site.name,
-	description: '所有文章',
-	keywords: '文章归档,博客',
-	cover: default_assets.cover
-}
+  title: "文章归档 | " + site.name,
+  description: "所有文章",
+  keywords: "文章归档,博客",
+  cover: default_assets.cover,
+};
 
-const meta_og = generateOpenGraph(Astro, page_meta)
+const meta_og = generateOpenGraph(Astro, page_meta);
 ---
-<Layout
-	page_meta={page_meta}
-	meta_og={meta_og}
->
-	<h1 slot="header">文章归档 - {page.currentPage}</h1>
-	<section id="posts">
-		<div class="post-list">
-			<Grid col={4}>
-					{
-							page.data.map(post => <PostCard post={post} />)
-					}
-			</Grid>
-			<div class="pagination">
-				{page.url.prev ? <a href={page.url.prev} class="paginate prev">上一页</a> : null}
-				{page.url.next ? <a href={page.url.next} class="paginate next">下一页</a> : null}
-			</div>
-		</div>
-	</section>
-</Layout>
+
+<CardLayout page_meta={page_meta} meta_og={meta_og}>
+  <div id="page-posts">
+    <h1>文章归档 - {page.currentPage}</h1>
+    <section id="posts">
+      <div class="post-list">
+        <Grid col={4}>
+          {page.data.map((post) => <PostCard post={post} />)}
+        </Grid>
+        <div class="pagination">
+          {
+            page.url.prev ? (
+              <a href={page.url.prev} class="paginate prev">
+                上一页
+              </a>
+            ) : null
+          }
+          {
+            page.url.next ? (
+              <a href={page.url.next} class="paginate next">
+                下一页
+              </a>
+            ) : null
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</CardLayout>
 
 <style>
-#posts{
-	margin: 1rem 0 0;
-}
+  #page-posts {
+    padding: 3rem var(--size-lg);
+  }
+  #posts {
+    margin: 1rem 0 0;
+  }
 
-.pagination{
-	display: flex;
-	justify-content: space-between;
-	margin: 1em 0 0 0;
-	gap: 1em;
-}
-.pagination .paginate{
-	flex: 1;
-	padding: 1em;
-	display: inline-block;
-	background: var(--card-bg);
-	border-radius: var(--base-radius);
-	transition: 0.3s;
-}
-.pagination .next{
-	text-align: right;
-}
-.pagination .paginate:is(:hover, :focus-within){
-	background: var(--card-active);
-	color: var(--card-active-text);
-}
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0 0 0;
+    gap: 1em;
+  }
+  .pagination .paginate {
+    flex: 1;
+    padding: 1em;
+    display: inline-block;
+    background: var(--card-bg);
+    border-radius: var(--base-radius);
+    transition: 0.3s;
+  }
+  .pagination .next {
+    text-align: right;
+  }
+  .pagination .paginate:is(:hover, :focus-within) {
+    background: var(--card-active);
+    color: var(--card-active-text);
+  }
 </style>

@@ -90,7 +90,7 @@ onMounted(() => {
             </div>
           </header>
           <div class="panel-container">
-            <PanelSite v-show="currentTab === 'site'" />
+            <Suspense><PanelSite v-show="currentTab === 'site'" /></Suspense>
             <PanelStyle v-show="currentTab === 'style'" />
           </div>
         </aside>

@@ -1,28 +1,33 @@
 ---
-import Layout from "@layouts/Layout.astro"
-import PostSlider from "@pages/_components/Post/Slider.vue"
-import PostRecent from "@pages/_components/Post/Recent.astro"
+import Layout from "@layouts/Layout.astro";
+import CardLayout from "@/layouts/CardLayout.astro";
+import PostSlider from "@pages/_components/Post/Slider2.vue";
+import PostRecent from "@pages/_components/Post/Recent.astro";
 import TwikooRecent from "@components/Third/TwikooRecent.vue";
 import RecentMemories from "@pages/_components/Memo/RecentMemories.astro";
-import RandomCards from "@pages/_components/Card/RandomCards.astro"
+import RandomCards from "@pages/_components/Card/RandomCards.astro";
 
 import { site, twikoo } from "src/config";
 import { generateOpenGraph } from "src/tools/open_graph";
 const page_meta = {
-	title: site.name + ' | ' + site.slogan,
-	description: site.description,
+  title: site.name + " | " + site.slogan,
+  description: site.description,
 };
 const meta_og = generateOpenGraph(Astro, page_meta);
 ---
 
+<CardLayout page_meta={page_meta} meta_og={meta_og}>
+  <div id="home">
+    <PostSlider client:load />
+    <PostRecent />
+    <RandomCards />
+    <RecentMemories />
+    {twikoo.enabled ? <TwikooRecent client:load /> : null}
+  </div>
+</CardLayout>
 
-<Layout
-	page_meta={page_meta}
-	meta_og={meta_og}
->
-	<PostSlider slot="header" client:load/>
-	<PostRecent/>
-	<RandomCards/>
-	<RecentMemories/>
-	{twikoo.enabled ? <TwikooRecent client:load/> : null}
-</Layout>
+<style>
+  #home {
+    padding: var(--size-lg);
+  }
+</style>

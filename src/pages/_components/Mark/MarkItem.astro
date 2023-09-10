@@ -34,7 +34,7 @@ const {mark, group} = Astro.props
     transform: translateY(-4px);
     box-shadow: 0 12px 6px rgba(var(--main-color-meta), 0.2), var(--card-outline);
 }
-.mark-item .poster{
+.mark-item :global(.poster){
     width: 100%;
     object-fit: cover;
     filter: brightness(0.7);

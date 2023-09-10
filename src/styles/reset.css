@@ -10,3 +10,8 @@ button:focus {
 li {
   list-style: none;
 }
+ul,
+p {
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,49 @@
+:root {
+  --tooltip-layer: 8000;
+}
+[data-radix-popper-content-wrapper] {
+  z-index: var(--tooltip-layer) !important;
+}
+.tooltip_content {
+  background-color: var(--bg);
+  border: 1px solid var(--card-border-color);
+  padding: var(--size-sm);
+  border-radius: var(--round-sm);
+  font-size: var(--font-sm);
+  transition: 300ms;
+  animation: scaleIn 100ms ease-out;
+}
+
+.navigation_menu_root {
+  position: relative;
+  z-index: 99;
+}
+.navigation_menu_content {
+  position: absolute;
+  width: max-content;
+  background-color: var(--card-inner-bg);
+  color: var(--card-text-color);
+  border: 1px solid var(--card-border-color);
+  box-shadow: 0 2px 4px var(--bg);
+  padding: var(--size-sm);
+  border-radius: var(--round-sm);
+}
+.navigation_menu_content[data-state="open"] {
+  animation: scaleIn 100ms;
+}
+.navigation_menu_content[data-state="closed"] {
+  opacity: 0;
+  animation: fadeOut 100ms;
+}
+.navigation_menu_content[data-motion="from-start"] {
+  animation: enterFromLeft 100ms;
+}
+.navigation_menu_content[data-motion="from-end"] {
+  animation: enterFromRight 100ms;
+}
+.navigation_menu_content[data-motion="to-start"] {
+  animation: exitToLeft 100ms;
+}
+.navigation_menu_content[data-motion="to-end"] {
+  animation: exitToRight 100ms;
+}

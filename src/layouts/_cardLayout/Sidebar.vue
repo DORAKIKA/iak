@@ -1,76 +1,129 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, onMounted } from "vue";
+import { $isSidebarExpand, toggleSidebar } from "@/store/menu";
+import { isSmallScreen } from "@/store/app";
+import { userStarPosts, STORAGE_STAR_POSTS_KEY } from "@/store/content";
+import { useStore } from "@nanostores/vue";
+import SidebarButtons from "./SidebarButtons.vue";
 
-const navBtns = [
+const btns = [
   {
+    id: "randomPost",
     title: "随机文章",
-    onclick: () => window.iak.randomPage(),
+    icon: "fas fa-shuffle",
+    // @ts-ignore
+    onClick: () => window.iak.randomPage(),
   },
   {
+    id: "openPanel",
     title: "打开面板",
-    onclick: () => window.iak.togglePanel(),
+    // @ts-ignore
+    onClick: () => window.iak.togglePanel(),
     icon: "fas fa-brush",
   },
+];
+const basicBtns = [
   {
-    title: "主页",
-    icon: "fas fa-home",
+    id: "toggleSidebar",
+    title: "侧边栏",
+    onClick: toggleSidebar,
+    icon: "fas fa-align-left",
   },
   {
+    id: "toggleSearch",
     title: "搜索",
-    onclick: () => window.iak.toggleSearch(),
+    // @ts-ignore
+    onClick: () => window.iak.toggleSearch(),
     icon: "fa-solid fa-magnifying-glass",
   },
 ];
+const topMenus = computed(() => {
+  if ($isSidebarExpand.value) {
+    return basicBtns.concat(btns);
+  } else {
+    return basicBtns;
+  }
+});
 
-const isSidebarShow = ref(false);
-const toggleSidebar = () => (isSidebarShow.value = !isSidebarShow.value);
+const $userStarPosts = useStore(userStarPosts);
+const basicMenus = {
+  home: {
+    id: "home",
+    title: "主页",
+    icon: "fas fa-home",
+    href: "/",
+  },
+};
+const menus = computed(() => {
+  return {
+    ...basicMenus,
+    ...$userStarPosts.value,
+  };
+});
+onMounted(() => {
+  console.log("mounted");
+  const localUserStarPosts = JSON.parse(
+    localStorage.getItem(STORAGE_STAR_POSTS_KEY) ?? "{}"
+  );
+  userStarPosts.set(localUserStarPosts);
+});
 </script>
 
 <template>
-  <aside id="app-aside" :class="isSidebarShow ? 'expand' : ''">
-    <section class="aside-card aside-nav">
-      <button
-        v-for="btn in navBtns"
-        :key="btn.title"
-        class="nav-button"
-        @click="btn.onclick"
-      >
-        <i
-          class="nav-button__icon"
-          :class="btn.icon ?? 'far fa-circle-dot'"
-        ></i>
-        <transition name="fade">
-          <span v-if="isSidebarShow" class="nav-button__title">{{
-            btn.title
-          }}</span>
-        </transition>
-      </button>
-    </section>
-    <section class="aside-card card-grow">
-      <div class="aside-nav">
-        <button class="nav-button" @click="toggleSidebar">
-          <i class="nav-button__icon fas fa-align-left"></i>
-          <transition name="fade"
-            ><span v-if="isSidebarShow" class="nav-button__title"
-              >侧边栏</span
-            ></transition
-          >
-        </button>
-      </div>
-    </section>
-  </aside>
+  <transition name="fade">
+    <aside
+      v-show="$isSidebarExpand || !isSmallScreen"
+      id="app-aside"
+      :class="{
+        expand: $isSidebarExpand,
+        fixed: isSmallScreen,
+      }"
+    >
+      <nav class="aside-card aside-nav">
+        <SidebarButtons :actions="topMenus" :is-expand="$isSidebarExpand" />
+      </nav>
+      <section class="aside-card card-grow">
+        <div class="aside-nav">
+          <SidebarButtons :actions="menus" :is-expand="$isSidebarExpand" />
+        </div>
+      </section>
+    </aside>
+  </transition>
 </template>
 
 <style scoped>
 #app-aside {
   flex-shrink: 0;
   position: relative;
-  width: 60px;
+  width: calc(44px + var(--base-radius) * 2);
   display: flex;
   flex-direction: column;
   gap: var(--base-radius);
   font-size: 24px;
   transition: 300ms;
+  /* animation: marginLeftIn 300ms; */
+}
+#app-aside.fixed {
+  box-sizing: content-box;
+  position: absolute;
+  top: var(--base-radius);
+  left: calc(-44px - 2 * var(--base-radius));
+  bottom: var(--base-radius);
+  background-color: var(--bg);
+  pointer-events: none;
+  z-index: 10;
+}
+#app-aside.expand.fixed {
+  pointer-events: all;
+  left: var(--base-radius);
+}
+@keyframes marginLeftIn {
+  from {
+    margin-left: calc(-44px - var(--base-radius) * 2);
+  }
+  to {
+    margin-left: 0;
+  }
 }
 #app-aside.expand {
   width: 250px;
@@ -88,34 +141,5 @@ const toggleSidebar = () => (isSidebarShow.value = !isSidebarShow.value);
 }
 .aside-card.card-grow {
   flex-grow: 1;
-}
-.nav-button {
-  height: 32px;
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  font-weight: 400;
-  cursor: pointer;
-  transition: 300ms;
-}
-.nav-button:hover {
-  color: var(--card-text-color);
-}
-.nav-button__icon {
-  flex-shrink: 0;
-  width: 30px;
-  height: 30px;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.nav-button__title {
-  font-size: 16px;
-  flex-grow: 1;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 </style>

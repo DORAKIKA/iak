@@ -2,6 +2,8 @@ import { site } from 'src/config';
 import { default_assets } from './../config';
 import { defineCollection, z, reference } from 'astro:content';
 
+const colors = []
+
 // 定义文章集合
 const posts = defineCollection({
 	schema: z.object({
@@ -21,6 +23,8 @@ const posts = defineCollection({
 		star: z.number().or(z.undefined()),
 		// author：文章作者，选填
 		author: z.string().default(site.author),
+		// bgRGB: 背景rgb
+		bgRGB: z.string().optional()
 	}),
 });
 

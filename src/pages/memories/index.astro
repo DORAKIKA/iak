@@ -1,102 +1,103 @@
 ---
-import Layout from "@layouts/Layout.astro"
+import Layout from "@layouts/Layout.astro";
 import TimelineItem from "@components/Iak/TimelineItem.astro";
 import { default_assets, site, memories as m_config } from "src/config";
 import { getCollection } from "astro:content";
 import { generateOpenGraph } from "src/tools/open_graph";
-import Content from "@components/content/Content.astro"
-import '@styles/article.css'
+import Content from "@components/content/Content.astro";
+import "@styles/article.css";
 
-import SvgDate from '@components/Svg/Date.astro'
 import { formatDateTime } from "@/tools/tools";
+import CardLayout from "@/layouts/CardLayout.astro";
 
-const memories = (await getCollection("memories")).sort((a, b) => {
+const memories = (await getCollection("memories"))
+  .sort((a, b) => {
     return b.data.date.getTime() - a.data.date.getTime();
-}).splice(0, m_config.show_limit);
+  })
+  .splice(0, m_config.show_limit);
 
 // TODO: 随机一篇
 
 const page_meta = {
-	title: '与昨日书 | ' + site.name,
-	description: site.author + '的记忆碎片',
-	keywords: '记忆碎片,博客',
-	cover: default_assets.cover
-}
+  title: "与昨日书 | " + site.name,
+  description: site.author + "的记忆碎片",
+  keywords: "记忆碎片,博客",
+  cover: default_assets.cover,
+};
 
-const meta_og = generateOpenGraph(Astro, page_meta)
+const meta_og = generateOpenGraph(Astro, page_meta);
 ---
 
-<Layout 
-page_meta={page_meta}
-meta_og={meta_og}>
-<h1 slot="header">与昨日书</h1>
-<section id="memories-container">
-    {
+<CardLayout page_meta={page_meta} meta_og={meta_og}>
+  <div id="page-memories">
+    <h1>与昨日书</h1>
+    <section id="memories-container">
+      {
         memories.map(async (memory) => {
-            return (
-                <TimelineItem time={formatDateTime(memory.data.date)}>
-                    <div class="meta" slot="time">
-                        <time>{formatDateTime(memory.data.date)}</time>
-                        <span class="emoji">{memory.data.emoji}</span>
-                        <span class="tags">
-                            {
-                                memory.data.tags?.map((tag) => {
-                                    return (
-                                        <span class="tag">{tag}</span>
-                                    )
-                                })
-                            }
-                        </span>
-                    </div>
-                    <article class={"memory " + (memory.data.card ? 'card' : '')}>
-                        <Content entry={memory}></Content>
-                    </article>
-                </TimelineItem>
-            )
+          return (
+            <TimelineItem time={formatDateTime(memory.data.date)}>
+              <div class="meta" slot="time">
+                <time>{formatDateTime(memory.data.date)}</time>
+                <span class="emoji">{memory.data.emoji}</span>
+                <span class="tags">
+                  {memory.data.tags?.map((tag) => {
+                    return <span class="tag">{tag}</span>;
+                  })}
+                </span>
+              </div>
+              <article class={"memory " + (memory.data.card ? "card" : "")}>
+                <Content entry={memory} />
+              </article>
+            </TimelineItem>
+          );
         })
-    }
-</section>
-</Layout>
+      }
+    </section>
+  </div>
+</CardLayout>
 
 <style>
-#memories-container {
+  #page-memories {
+    padding: 3rem var(--size-lg);
+  }
+  #memories-container {
     margin-top: 1rem;
-}
-#memories-container .title {
+  }
+  #memories-container .title {
     font-size: 1.15rem;
     margin: 0.5rem 0 1rem;
-}
-#memories-container .meta {
+  }
+  #memories-container .meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     font-size: 0.8rem;
     gap: 0.5em;
-}
-#memories-container .meta .emoji {
+  }
+  #memories-container .meta .emoji {
     border-radius: var(--base-radius);
     background: var(--card-inner-bg);
     border: 1px solid var(--card-border-color);
     padding: 0.2rem 0.8rem;
-}
-#memories-container .meta .tags {
+  }
+  #memories-container .meta .tags {
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
     font-weight: bold;
-}
-#memories-container .meta .tags .tag {
+  }
+  #memories-container .meta .tags .tag {
     padding: 0.2rem 0.8rem;
     border-radius: var(--base-radius);
     background: rgba(var(--main-color-meta), 0.2);
     color: rgba(var(--main-color-meta), 0.8);
     border: 1px solid rgba(var(--main-color-meta), 0.4);
-}
+  }
 
-#memories-container .memory.card{
+  #memories-container .memory.card {
     border-radius: var(--base-radius);
     background: var(--card-bg);
     border: var(--card-border);
     padding: 1rem;
-}
+  }
 </style>

@@ -1,148 +1,170 @@
 ---
 import MarkItem from "@pages/_components/Mark/MarkItem.astro";
 import Layout from "@layouts/Layout.astro";
-import TimelineItem from "@components/Iak/TimelineItem.astro"
+import TimelineItem from "@components/Iak/TimelineItem.astro";
 import { site } from "src/config";
 // @ts-ignore
-import marks from "@content/mark/_index.yml"
-import {formatDateTime} from "@/tools/tools"
+import marks from "@content/mark/_index.yml";
+import { formatDateTime } from "@/tools/tools";
+import CardLayout from "@/layouts/CardLayout.astro";
 
-const markGroup = marks.map((group: { values: any[]; }) => {
-    const map = {} as Record<string, any>;
-    group.values.forEach(mark => {
-        const date = formatDateTime(mark.time).substr(0, 7);
-        map[date] ? map[date].push(mark) : map[date]=[mark];
-    })
-    const arr = [];
-    for(let key in map){
-        arr.push([key, map[key]])
-    }
-    arr.sort((a,b) => a[0]>b[0]?-1:1)
-    return {
-        ...group,
-        values: arr
-    }
-})
+const markGroup = marks.map((group: { values: any[] }) => {
+  const map = {} as Record<string, any>;
+  group.values.forEach((mark) => {
+    const date = formatDateTime(mark.time).substr(0, 7);
+    map[date] ? map[date].push(mark) : (map[date] = [mark]);
+  });
+  const arr = [];
+  for (let key in map) {
+    arr.push([key, map[key]]);
+  }
+  arr.sort((a, b) => (a[0] > b[0] ? -1 : 1));
+  return {
+    ...group,
+    values: arr,
+  };
+});
 
 const page_meta = {
-    title: '足迹 | '+site.name,
-    description: site.author + '的友链',
-}
+  title: "足迹 | " + site.name,
+  description: site.author + "的友链",
+};
 ---
+
 <script is:inline>
-window.addEventListener('load', () => {
-    const groupNav = document.querySelectorAll('.group-nav-input');
-    Array.prototype.forEach.call(groupNav, input => {
-        input.addEventListener('change', onMarkGroupChange)
-    })
+  window.addEventListener("load", () => {
+    const groupNav = document.querySelectorAll(".group-nav-input");
+    Array.prototype.forEach.call(groupNav, (input) => {
+      input.addEventListener("change", onMarkGroupChange);
+    });
     function onMarkGroupChange(e) {
-        const group = e.target.value;
-        const groups = document.querySelectorAll('.mark-group');
-        groups.forEach((group) => {
-            group.classList.add('hide')
-        })
-        document.querySelector(`.mark-group[data-group="${group}"]`).classList.remove('hide')
+      const group = e.target.value;
+      const groups = document.querySelectorAll(".mark-group");
+      groups.forEach((group) => {
+        group.classList.add("hide");
+      });
+      document
+        .querySelector(`.mark-group[data-group="${group}"]`)
+        .classList.remove("hide");
     }
-})
+  });
 </script>
-<Layout
-    page_meta={page_meta}
-    header={{
-        bg_type: 'wave',
-        bottom_type: 'gradient'
-    }}
+<CardLayout
+  page_meta={page_meta}
+  header={{
+    bg_type: "wave",
+    bottom_type: "gradient",
+  }}
 >
-    <div slot="header">
-        <h1 class="page-title">足迹</h1>
-        <div class="group-nav">
-            {
-                markGroup.map((group: any, index: number) => (
-                    <label class="group-nav-item">
-                        <input class="group-nav-input" checked={index === 0 ? true : false} type="radio" name="mark-group" value={group.name}/>
-                        <span set:html={group.icon || group.name}></span>
-                    </label>
-                ))
-            }
-        </div>
+  <div id="page-mark">
+    <div>
+      <h1 class="page-title">足迹</h1>
+      <div class="group-nav">
+        {
+          markGroup.map((group: any, index: number) => (
+            <label class="group-nav-item">
+              <input
+                class="group-nav-input"
+                checked={index === 0 ? true : false}
+                type="radio"
+                name="mark-group"
+                value={group.name}
+              />
+              <span set:html={group.icon || group.name} />
+            </label>
+          ))
+        }
+      </div>
     </div>
     <div id="mark-page">
-        {markGroup.map((group: any, index: number) => (
-            <div class={`mark-group ${(index===0?' ':' hide')}`} data-group={group.name}>
-                {
-                    // group.values.slice(0,group.limit || 20).map((mark: any) => (
-                    //     <MarkItem group={group} mark={mark} />
-                    // ))
-                    group.values.map(tg => {
-                        return <TimelineItem time={tg[0]}>
-                            <div class={`mark-timebox ${group.type}`}>
-                                {
-                                    tg[1].map(mark => <MarkItem group={group} mark={mark}/>)
-                                }
-                            </div>
-                        </TimelineItem>
-                    })
-                }
-            </div>
-        ))}
+      {
+        markGroup.map((group: any, index: number) => (
+          <div
+            class={`mark-group ${index === 0 ? " " : " hide"}`}
+            data-group={group.name}
+          >
+            {
+              // group.values.slice(0,group.limit || 20).map((mark: any) => (
+              //     <MarkItem group={group} mark={mark} />
+              // ))
+              group.values.map((tg) => {
+                return (
+                  <TimelineItem time={tg[0]}>
+                    <div class={`mark-timebox ${group.type}`}>
+                      {tg[1].map((mark) => (
+                        <MarkItem group={group} mark={mark} />
+                      ))}
+                    </div>
+                  </TimelineItem>
+                );
+              })
+            }
+          </div>
+        ))
+      }
     </div>
-</Layout>
+  </div>
+</CardLayout>
 
 <style>
-.page-title{
+  #page-mark {
+    padding: 3rem var(--size-lg);
+  }
+  .page-title {
     text-align: center;
-}
-.group-nav{
+  }
+  .group-nav {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5em;
-}
-.group-nav-item{
+  }
+  .group-nav-item {
     background-color: rgba(var(--white-meta), 0.2);
     padding: 4px var(--base-radius);
     border-radius: var(--base-radius);
     cursor: pointer;
     user-select: none;
     transition: 0.3s;
-}
-.group-nav-item:has(input:checked){
+  }
+  .group-nav-item:has(input:checked) {
     background-color: rgba(var(--white-meta), 0.8);
     color: var(--main-color);
-}
-.group-nav-input{
+  }
+  .group-nav-input {
     display: none;
-}
-#mark-page{
+  }
+  #mark-page {
     padding: 4rem 0 0 0;
-}
-.mark-group {
+  }
+  .mark-group {
     margin: 0 0 20px 0;
     user-select: none;
-}
-.mark-group .group-name {
+  }
+  .mark-group .group-name {
     font-size: 20px;
     font-weight: 600;
     margin: 0 0 10px 0;
-}
-.mark-timebox{
+  }
+  .mark-timebox {
     display: grid;
     gap: 2em;
-}
-@media (max-width: 1200px){
-    .mark-group{
-        gap: 1em;
+  }
+  @media (max-width: 1200px) {
+    .mark-group {
+      gap: 1em;
     }
-}
-.mark-group.hide{
+  }
+  .mark-group.hide {
     display: none;
-}
-.mark-timebox.large {
+  }
+  .mark-timebox.large {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-}
-.mark-timebox.medium {
+  }
+  .mark-timebox.medium {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
-.mark-timebox.small {
+  }
+  .mark-timebox.small {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-}
+  }
 </style>

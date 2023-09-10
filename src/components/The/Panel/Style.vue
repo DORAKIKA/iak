@@ -34,6 +34,7 @@ function setThemeMode(theme) {
   );
 }
 onMounted(() => {
+  console.log("setThemeMode");
   // @ts-ignore
   window.iak.setThemeMode = setThemeMode;
 });

@@ -1,24 +1,28 @@
 ---
 import IakImg from "@/components/Iak/Img.astro";
 import { getUrlForPost } from "@/pages/_contents/posts";
-const { post } = Astro.props
-
+const { post } = Astro.props;
 ---
 
-<a class="post-card" href={getUrlForPost(post)}  rel="prefetch">
-    <div class="cover">
-        <IakImg src={post.data.cover} alt={post.data.title} className="cover-img" />
-        <span class="category">{post.data.category}</span>
-    </div>
-    
-    <div class="meta">
-        <div class="title">{ post.data.title }</div>
-        <div class="desc">{ post.data.description }</div>
-    </div>
+<a class="post-card" href={getUrlForPost(post)} rel="prefetch">
+  <div class="cover">
+    <img
+      transition:name=`post ${post.id} cover`
+      src={post.data.cover}
+      alt={post.data.title}
+      class="cover-img"
+    />
+    <span class="category">{post.data.category}</span>
+  </div>
+
+  <div class="meta">
+    <div class="title">{post.data.title}</div>
+    <div class="desc">{post.data.description}</div>
+  </div>
 </a>
 
 <style>
-.post-card{
+  .post-card {
     background-color: var(--card-bg);
     /* padding: 1em; */
     border-radius: var(--base-radius);
@@ -27,27 +31,29 @@ const { post } = Astro.props
     transition: 0.3s;
     /* box-shadow: var(--card-shadow); */
     color: var(--card-text-color);
-}
-.post-card:is(:hover, :focus-within){
+  }
+  .post-card:is(:hover, :focus-within) {
     transform: translateY(-4px);
-    box-shadow: 0 12px 6px rgba(var(--main-color-meta), 0.2), var(--card-outline);
+    box-shadow:
+      0 12px 6px rgba(var(--main-color-meta), 0.2),
+      var(--card-outline);
     color: var(--main-color);
     outline: none;
-}
-.post-card .cover{
+  }
+  .post-card .cover {
     width: 100%;
     aspect-ratio: 2/1;
     /* border: 4px solid rgba(255, 255, 255, 0.5); */
     position: relative;
     overflow: hidden;
     transition: 0.3s;
-}
-.post-card .cover-img{
+  }
+  .post-card :global(.cover-img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-.post-card .category{
+  }
+  .post-card .category {
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
@@ -57,11 +63,11 @@ const { post } = Astro.props
     font-weight: bold;
     padding: 4px calc(0.75 * var(--base-radius));
     font-size: 0.7rem;
-}
-.post-card .meta{
+  }
+  .post-card .meta {
     padding: 1em;
-}
-.post-card .title{
+  }
+  .post-card .title {
     display: inline-block;
     max-width: 100%;
     font-weight: bold;
@@ -73,14 +79,13 @@ const { post } = Astro.props
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-.post-card .desc{
+  }
+  .post-card .desc {
     font-weight: normal;
     line-height: 1.5;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-}
-
+  }
 </style>

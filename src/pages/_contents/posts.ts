@@ -1,4 +1,4 @@
-import { CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import _ from 'lodash';
 
 const getPosts = await (async function(){

@@ -1,67 +1,67 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
-import Content from '@components/content/Content.astro';
-import { default_assets, site } from 'src/config';
-import Layout from '@layouts/Layout.astro';
-import Twikoo from '@components/Third/Twikoo.astro';
-import '@styles/article.css'
-import { generateOpenGraph } from 'src/tools/open_graph';
-import { getRelatedCards } from '../_contents/cards';
-import A from '@/components/content/A.astro';
+import { CollectionEntry, getCollection } from "astro:content";
+import Content from "@components/content/Content.astro";
+import { default_assets, site } from "src/config";
+import Layout from "@layouts/Layout.astro";
+import Twikoo from "@components/Third/Twikoo.astro";
+import "@styles/article.css";
+import { generateOpenGraph } from "src/tools/open_graph";
+import { getRelatedCards } from "../_contents/cards";
+import A from "@/components/content/A.astro";
+import CardLayout from "@/layouts/CardLayout.astro";
 
 export async function getStaticPaths() {
-	const cards = await getCollection('cards');
-	return cards.map((card) => ({
-		params: { slug: card.slug },
-		props: card,
-	}));
+  const cards = await getCollection("cards");
+  return cards.flatMap((card) => ({
+    params: { slug: card.slug },
+    props: card,
+  }));
 }
-type Props = CollectionEntry<'cards'>;
+type Props = CollectionEntry<"cards">;
 
 const card = Astro.props;
 const { headings } = await card.render();
 const related = await getRelatedCards(card);
 
 const page_meta = {
-	title: card.data.title,
-	cover: default_assets.cover
-}
+  title: card.data.title,
+  cover: default_assets.cover,
+};
 
-const meta_og = generateOpenGraph(Astro, page_meta)
+const meta_og = generateOpenGraph(Astro, page_meta);
 ---
 
-<Layout
-	page_meta={page_meta}
-	headings={headings}
-	meta_og={meta_og}
->
-	<div slot="header">
-		<h1 class="article-title">{ card.data.title }</h1>
-	</div>
-	<article class="article">
-		<Content entry={card} />
-	</article>
-  {related.length ? <h2>卡片链接</h2> : null}
-  <div class="related-cards">
-    {
-      related.map(r => <A href={`/cards/${r.slug}`}>{r.title}</A>)
-    }
+<CardLayout page_meta={page_meta} headings={headings} meta_og={meta_og}>
+  <div id="page-card">
+    <div>
+      <h1 class="article-title">{card.data.title}</h1>
+    </div>
+    <article class="article">
+      <Content entry={card} />
+    </article>
+    {related.length ? <h2>卡片链接</h2> : null}
+    <div class="related-cards">
+      {related.map((r) => <A href={`/cards/${r.slug}`}>{r.title}</A>)}
+    </div>
+    <Twikoo />
   </div>
-	<Twikoo/>
-</Layout>
+</CardLayout>
 
 <style>
-#post{
-	margin: 2rem auto;
-	line-height: 2;
-}
-.article{
-	margin-top: 4rem;
-}
-.related-cards{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  padding: 0.5em 0;
-}
+  #page-card {
+    padding: 3rem var(--size-lg);
+  }
+  #post {
+    margin: 2rem auto;
+    line-height: 2;
+  }
+  .article {
+    margin-top: 4rem;
+  }
+  .related-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    padding: 0.5em 0;
+  }
 </style>
