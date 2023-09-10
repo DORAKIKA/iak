@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useAstroPageLoad } from "@/hooks/useAstro";
 import { useThrottleFn } from "@vueuse/core";
 import type { CollectionEntry } from "astro:content";
 import { ref, reactive, onMounted, watch } from "vue";
@@ -8,13 +9,14 @@ const state = reactive({
   articles: [] as CollectionEntry<"posts">[],
   results: [] as CollectionEntry<"posts">[],
 });
-onMounted(() => {
+const addFunc = () => {
   // @ts-ignore
   state.articles = [...window.iak.data.posts];
   state.results = state.articles;
   // @ts-ignore
   window.iak.toggleSearch = toggleSearch;
-});
+};
+useAstroPageLoad(addFunc, { immediate: true });
 
 const query = async (e: any) => {
   state.loading = true;

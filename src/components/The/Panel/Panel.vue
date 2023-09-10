@@ -2,6 +2,7 @@
 import PanelStyle from "@components/The/Panel/Style.vue";
 import PanelSite from "@components/The/Panel/Site.vue";
 import { ref, watch, onMounted } from "vue";
+import { useAstroPageLoad } from "@/hooks/useAstro";
 
 const panelShow = ref(false);
 const togglePanel = (flag?: boolean) => {
@@ -30,10 +31,11 @@ watch(panelShow, () => {
   }
 });
 
-onMounted(() => {
+const addFunc = () => {
   // @ts-ignore
   window.iak.togglePanel = togglePanel;
-});
+};
+useAstroPageLoad(addFunc, { immediate: true });
 </script>
 
 <template>

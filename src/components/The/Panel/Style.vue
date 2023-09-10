@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, onMounted, watch, ref } from "vue";
+import { computed, onMounted, watch, ref, onUnmounted } from "vue";
 import { useLocalStorage, useStyleTag, useThrottleFn } from "@vueuse/core";
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
+import { useAstroPageLoad } from "@/hooks/useAstro";
 
 import IakSlider from "@components/Iak/Slider.vue";
 import IakSwitch from "@components/Iak/Switch.vue";
@@ -19,7 +20,7 @@ const default_style = {
 const styleConfig = useLocalStorage("styleConfig", default_style);
 
 // 主题配置
-function setThemeMode(theme) {
+function setThemeMode(theme: string) {
   if (themeOptions[theme]) {
     styleConfig.value.themeMode = theme;
   } else {
@@ -33,11 +34,14 @@ function setThemeMode(theme) {
     styleConfig.value.themeMode
   );
 }
-onMounted(() => {
+
+const addFunc = () => {
   console.log("setThemeMode");
   // @ts-ignore
   window.iak.setThemeMode = setThemeMode;
-});
+};
+useAstroPageLoad(addFunc, { immediate: true });
+
 watch(() => styleConfig.value.themeMode, setThemeMode, { immediate: true });
 
 async function validate() {

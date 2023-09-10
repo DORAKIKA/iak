@@ -34,7 +34,7 @@ const { page_meta, headings, meta_og, header, mainTransBg, bgRGB } =
 
     <!-- <TheToolbar headings={headings}/> -->
 
-    <GlobalInject />
+    <GlobalInject transition:persist="global-inject" />
     <style>
       #app-container {
         --base-radius: 12px;

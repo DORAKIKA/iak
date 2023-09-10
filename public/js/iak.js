@@ -149,6 +149,7 @@ iak.contextMenu = {
         text: "切换主题",
         action() {
           //   iak.toggleDarkMode();
+          console.log(iak);
           iak.setThemeMode();
         },
         tag: "全局",

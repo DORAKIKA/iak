@@ -1,6 +1,6 @@
 // 预定义的主题选项
 // 可在variables里面定义css变量，或在css中[data-theme=xxx]{}形式进行定义
-export const themeOptions = {
+export const themeOptions: Record<string, any> = {
   light: {
     label: '空日白',
     variables: {
