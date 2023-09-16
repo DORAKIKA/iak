@@ -19,18 +19,6 @@ window.iak = {
       });
     }
   },
-  toggleDarkMode(flag) {
-    if (flag === undefined) {
-      document.documentElement.classList.toggle("dark");
-    } else {
-      if (flag) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    }
-    return document.documentElement.classList.contains("dark");
-  },
   // 默认函数，若相应组件内绑定失败，则使用此函数
   togglePanel: defaultFunc("切换面板"),
   toggleSearch: defaultFunc("切换搜索"),
@@ -148,7 +136,6 @@ iak.contextMenu = {
         // text: "夜间模式",
         text: "切换主题",
         action() {
-          //   iak.toggleDarkMode();
           console.log(iak);
           iak.setThemeMode();
         },
