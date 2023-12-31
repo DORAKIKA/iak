@@ -1,52 +1,69 @@
 ---
 import IakImg from "../Iak/Img.astro";
 const {
-    name,
-    author = "",
-    cover,
-    description = "",
-    link,
-    link_text = "GO",
-    comment = "",
-    color
+  name,
+  author = "",
+  cover,
+  description = "",
+  link,
+  link_text = "GO",
+  comment = "",
+  color,
 } = Astro.props;
 ---
 
-<div class="md-linkcard md-block" style={color ? `--main-color-meta: var(--${color}-meta)` : ''} data-role="md-linkcard">
-    <div class="md-linkcard__info">
-        {cover ? <IakImg className="md-linkcard__cover" src={cover} /> : null}
-        <div class="md-linkcard__other">
-            <div class="md-linkcard__name">{ name }</div>
-            {author ? <div class="md-linkcard__author">{ author }</div> : null}
-            {description ? <div class="md-linkcard__description">{ description }</div> : null}
-            {link ? <a class="md-linkcard__link" href={link} target="_blank">{link_text}</a> : null}
-        </div>
+<div
+  class="md-linkcard md-block"
+  style={color ? `--main-color-meta: var(--${color}-meta)` : ""}
+  data-role="md-linkcard"
+>
+  <div class="md-linkcard__info">
+    {cover ? <IakImg className="md-linkcard__cover" src={cover} /> : null}
+    <div class="md-linkcard__other">
+      <div class="md-linkcard__name">{name}</div>
+      {author ? <div class="md-linkcard__author">{author}</div> : null}
+      {
+        description ? (
+          <div class="md-linkcard__description">{description}</div>
+        ) : null
+      }
+      {
+        link ? (
+          <a class="md-linkcard__link" href={link} target="_blank">
+            {link_text}
+          </a>
+        ) : null
+      }
     </div>
-    {comment ? <div class="md-linkcard__comment">『 { comment } 』</div> : null}
+  </div>
+  {comment ? <div class="md-linkcard__comment">『 {comment} 』</div> : null}
 </div>
 
 <script>
-// @ts-ignore
-window.iak.contextMenu["md-linkcard"] = {
-    type: 'line',
-    children: [{
-            text: '新标签打开',
-            icon: 'fas fa-link',
-            tag: '链接',
-            action(el:HTMLElement){
-                const link = el.querySelector('.md-linkcard__link') as HTMLAnchorElement;
-                if(link){
-                    window.open(link.href);
-                }
-            },
-        }
-    ]
-}
+  // @ts-ignore
+  window.iak.contextMenu["md-linkcard"] = {
+    type: "line",
+    children: [
+      {
+        text: "新标签打开",
+        icon: "fas fa-link",
+        tag: "链接",
+        action(el: HTMLElement) {
+          const link = el.querySelector(
+            ".md-linkcard__link"
+          ) as HTMLAnchorElement;
+          if (link) {
+            window.open(link.href);
+          }
+        },
+      },
+    ],
+  };
 </script>
 
 <style>
-.md-linkcard{
-    --main-color: rgba(var(--main-color-meta),1);
+  .md-linkcard {
+    --main-color: rgba(var(--main-color-meta), 1);
     width: 100%;
     height: fit-content;
     display: flex;
@@ -58,38 +75,38 @@ window.iak.contextMenu["md-linkcard"] = {
     transition: all 0.3s ease;
     overflow: hidden;
     color: var(--main-color);
-}
-.md-linkcard:only-child{
+  }
+  .md-linkcard:only-child {
     margin: 0 auto;
-}
-.md-linkcard .md-linkcard__info{
+  }
+  .md-linkcard .md-linkcard__info {
     width: 100%;
     padding: 1.5rem;
     display: flex;
     align-items: center;
     gap: 1rem;
     background-color: rgba(var(--main-color-meta), 0.15);
-}
-.md-linkcard .md-linkcard__cover{
+  }
+  .md-linkcard :global(.md-linkcard__cover) {
     max-height: 150px;
     max-width: 50%;
     border-radius: 2px;
-}
-.md-linkcard .md-linkcard__other{
+  }
+  .md-linkcard .md-linkcard__other {
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
     overflow: hidden;
-}
-.md-linkcard .md-linkcard__name{
+  }
+  .md-linkcard .md-linkcard__name {
     font-weight: bold;
     line-height: 2;
     font-size: 1.15em;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-}
-.md-linkcard .md-linkcard__description{
+  }
+  .md-linkcard .md-linkcard__description {
     line-height: 1.25;
     font-size: 0.8em;
     opacity: 0.6;
@@ -98,8 +115,8 @@ window.iak.contextMenu["md-linkcard"] = {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-}
-.md-linkcard .md-linkcard__link{
+  }
+  .md-linkcard .md-linkcard__link {
     display: inline-block;
     padding: 0 1rem;
     margin-top: 0.5em;
@@ -109,32 +126,32 @@ window.iak.contextMenu["md-linkcard"] = {
     background-color: var(--main-color);
     color: white;
     transition: all 0.3s ease;
-}
-.md-linkcard .md-linkcard__link:hover{
+  }
+  .md-linkcard .md-linkcard__link:hover {
     opacity: 0.6;
-}
-.md-linkcard .md-linkcard__link:focus-visible{
+  }
+  .md-linkcard .md-linkcard__link:focus-visible {
     outline: none;
-}
-.md-linkcard:has( .md-linkcard__link:focus-visible){
+  }
+  .md-linkcard:has(.md-linkcard__link:focus-visible) {
     outline: none;
     box-shadow: 0 0 0 4px rgba(var(--main-color-meta), 0.5);
-}
-.md-linkcard .md-linkcard__comment{
+  }
+  .md-linkcard .md-linkcard__comment {
     width: 100%;
     padding: 1.5rem;
     background-color: rgba(var(--main-color-meta), 0.25);
-}
-:global(.dark .md-linkcard){
+  }
+  :global(.dark .md-linkcard) {
     color: rgba(var(--main-color-meta), 0.7);
-}
-:global(.dark .md-linkcard .md-linkcard__info){
+  }
+  :global(.dark .md-linkcard .md-linkcard__info) {
     background-color: rgba(var(--main-color-meta), 0.07);
-}
-:global(.dark .md-linkcard .md-linkcard__comment){
+  }
+  :global(.dark .md-linkcard .md-linkcard__comment) {
     background-color: rgba(var(--main-color-meta), 0.15);
-}
-:global(.dark .md-linkcard .md-linkcard__link){
+  }
+  :global(.dark .md-linkcard .md-linkcard__link) {
     background-color: rgba(var(--main-color-meta), 0.7);
-}
+  }
 </style>

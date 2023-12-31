@@ -13,17 +13,17 @@
 		"sync-mark": "node ./scripts/sync_marks.js"
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^0.18.0",
-		"@astrojs/prefetch": "^0.2.0",
-		"@astrojs/rss": "^2.2.0",
-		"@astrojs/sitemap": "^1.2.0",
-		"@astrojs/vue": "^2.1.0",
-		"@rollup/plugin-yaml": "^4.0.1",
-		"@vueuse/core": "^9.13.0",
-		"astro": "^2.4.5",
-		"astro-robots-txt": "^0.4.0",
-		"astrojs-service-worker": "^0.0.9",
-		"vue": "^3.2.47"
+		"@astrojs/mdx": "^2.0.3",
+		"@astrojs/prefetch": "^0.4.1",
+		"@astrojs/rss": "^4.0.1",
+		"@astrojs/sitemap": "^3.0.4",
+		"@astrojs/vue": "^4.0.6",
+		"@rollup/plugin-yaml": "^4.1.2",
+		"@vueuse/core": "^10.7.1",
+		"astro": "^4.0.8",
+		"astro-robots-txt": "^1.0.0",
+		"astrojs-service-worker": "^2.0.0",
+		"vue": "^3.4.3"
 	},
 	"devDependencies": {
 		"archiver": "^5.3.1",

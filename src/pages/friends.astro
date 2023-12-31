@@ -1,69 +1,72 @@
 ---
-import Layout from "@layouts/Layout.astro"
+import Layout from "@layouts/Layout.astro";
 import Content from "@components/content/Content.astro";
-import Twikoo from "@components/Third/Twikoo.astro"
+import Twikoo from "@components/Third/Twikoo.astro";
 import IakImg from "@/components/Iak/Img.astro";
 // @ts-ignore
-import friends from "../content/friends/_index.yml"
-import "@styles/article.css"
+import friends from "../content/friends/_index.yml";
+import "@styles/article.css";
 
 import { default_assets, site } from "src/config";
 import { getEntryBySlug } from "astro:content";
 import { generateOpenGraph } from "src/tools/open_graph";
 
-const entry = await getEntryBySlug('friends', 'index');
+const entry = await getEntryBySlug("friends", "index");
 
 const page_meta = {
-    title: '友情链接 | '+site.name,
-    description: site.author + '的友链',
-    keywords: '友链,IAK,DORAKIKA',
-    cover: default_assets.cover,
-}
-const meta_og = generateOpenGraph(Astro, page_meta)
+  title: "友情链接 | " + site.name,
+  description: site.author + "的友链",
+  keywords: "友链,IAK,DORAKIKA",
+  cover: default_assets.cover,
+};
+const meta_og = generateOpenGraph(Astro, page_meta);
 ---
 
-<Layout
-    page_meta={page_meta}
-    meta_og={meta_og}
->
-    <h1 slot="header">友情链接</h1>
-    <article class="article-block">
-        <Content entry={entry}/>
-    </article>
-    <div id="friends">
-        {friends.map((list:any) => (
-            <section class="friends-list">
-                <h2 class="list-name">{list.list_name}</h2>
-                <div class="list-card">
-                    {list.list_data.map((friend:any) => (
-                        <a class="friend-item" href={friend.link} target="_blank">
-                            {friend.tag ? (<span class="tag">{friend.tag}</span>) : null}
-                            <IakImg src={friend.avatar} alt={friend.name} className="avatar" callback="/images/error-avatar.png" loading="lazy"/>
-                            <div class="info">
-                                <div class="name">{friend.name}</div>
-                                <div class="desc">{friend.descr}</div>
-                            </div>
-                        </a>
-                    ))}
+<Layout page_meta={page_meta} meta_og={meta_og}>
+  <h1 slot="header">友情链接</h1>
+  <article class="article-block">
+    <Content entry={entry} />
+  </article>
+  <div id="friends">
+    {
+      friends.map((list: any) => (
+        <section class="friends-list">
+          <h2 class="list-name">{list.list_name}</h2>
+          <div class="list-card">
+            {list.list_data.map((friend: any) => (
+              <a class="friend-item" href={friend.link} target="_blank">
+                {friend.tag ? <span class="tag">{friend.tag}</span> : null}
+                <IakImg
+                  src={friend.avatar}
+                  alt={friend.name}
+                  className="avatar"
+                  callback="/images/error-avatar.png"
+                  loading="lazy"
+                />
+                <div class="info">
+                  <div class="name">{friend.name}</div>
+                  <div class="desc">{friend.descr}</div>
                 </div>
-            </section>
-        )
-        )}
-    </div>
-    <Twikoo />
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+  <Twikoo />
 </Layout>
 
-
 <style>
-#friends{
+  #friends {
     margin: 1rem 0;
-}
-.list-card{
+  }
+  .list-card {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 16px;
-}
-.list-card .friend-item{
+  }
+  .list-card .friend-item {
     padding: 16px;
     border-radius: var(--base-radius);
     background-color: var(--card-bg);
@@ -76,8 +79,8 @@ const meta_og = generateOpenGraph(Astro, page_meta)
     position: relative;
     overflow: hidden;
     --avatar: 64px;
-}
-.list-card .friend-item .tag{
+  }
+  .list-card .friend-item .tag {
     position: absolute;
     right: 0px;
     top: 0px;
@@ -87,30 +90,30 @@ const meta_og = generateOpenGraph(Astro, page_meta)
     display: inline-block;
     padding: 4px 8px;
     border-bottom-left-radius: var(--base-radius);
-}
-.list-card .friend-item:is(:hover, :focus-within){
+  }
+  .list-card .friend-item:is(:hover, :focus-within) {
     background: var(--card-active);
     color: var(--card-active-text);
     --avatar: 0px;
-}
-.list-card .friend-item .avatar{
+  }
+  .list-card .friend-item :global(.avatar) {
     width: var(--avatar);
     height: var(--avatar);
     border-radius: 50%;
     transition: 0.3s;
-}
-.list-card .friend-item .info{
+  }
+  .list-card .friend-item .info {
     width: calc(100% - var(--avatar) - 16px);
-}
-.list-card .friend-item .name{
+  }
+  .list-card .friend-item .name {
     font-size: 20px;
     font-weight: bold;
     line-height: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-.list-card .friend-item .desc{
+  }
+  .list-card .friend-item .desc {
     height: 34px;
     font-size: 12px;
     line-height: 17px;
@@ -118,5 +121,5 @@ const meta_og = generateOpenGraph(Astro, page_meta)
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-}
+  }
 </style>
