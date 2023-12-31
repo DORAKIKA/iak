@@ -1,52 +1,58 @@
 ---
 import IakImg from "@/components/Iak/Img.astro";
 import { getUrlForPost } from "@/pages/_contents/posts";
-const { post } = Astro.props
-
+const { post } = Astro.props;
 ---
 
 <div class="post-card-2">
-    <div class="cover">
-        <IakImg src={post.data.cover} alt={post.data.title} className="cover-img" loading="lazy" />
-    </div>
-    
-    <div class="meta">
-        <a href={getUrlForPost(post)} class="title" rel="prefetch">{ post.data.title }</a>
-        <div class="desc">{ post.data.description }</div>
-    </div>
+  <div class="cover">
+    <IakImg
+      src={post.data.cover}
+      alt={post.data.title}
+      className="cover-img"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="meta">
+    <a href={getUrlForPost(post)} class="title" rel="prefetch"
+      >{post.data.title}</a
+    >
+    <div class="desc">{post.data.description}</div>
+  </div>
 </div>
 
 <style>
-.post-card-2{
+  .post-card-2 {
     display: flex;
     width: 100%;
     margin: 0 auto;
     gap: 1em;
-}
-.post-card-2 .cover{
+  }
+  .post-card-2 .cover {
     width: 200px;
     aspect-ratio: 2/1;
     border-radius: var(--base-radius);
     background-color: var(--main-color);
     position: relative;
     overflow: hidden;
-}
-.post-card-2 .cover-img{
+  }
+  .post-card-2 :global(.cover-img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: 0.3s;
-}
-.post-card-2:hover .cover-img{
+  }
+  .post-card-2:hover :global(.cover-img) {
     opacity: 0.5;
-}
-.post-card-2 .meta{
+  }
+  .post-card-2 .meta {
     width: calc(100% - 200px);
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-.post-card-2 .title{
+  }
+  .post-card-2 .title {
     display: inline-block;
     max-width: 100%;
     font-weight: bold;
@@ -56,27 +62,27 @@ const { post } = Astro.props
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-.post-card-2 .title:hover{
+  }
+  .post-card-2 .title:hover {
     color: var(--card-active);
-}
-.post-card-2 .desc{
+  }
+  .post-card-2 .desc {
     line-height: 1.5;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-}
+  }
 
-@media (max-width: 600px){
-    .post-card-2{
-        flex-direction: column;
+  @media (max-width: 600px) {
+    .post-card-2 {
+      flex-direction: column;
     }
-    .post-card-2 .meta{
-        width: 100%;
+    .post-card-2 .meta {
+      width: 100%;
     }
-    .post-card-2 .cover{
-        width: 100%;
+    .post-card-2 .cover {
+      width: 100%;
     }
-}
+  }
 </style>

@@ -2,22 +2,25 @@
 import { formatDateTime } from "src/tools/tools";
 import IakImg from "@/components/Iak/Img.astro";
 
-const {mark, group} = Astro.props
+const { mark, group } = Astro.props;
 ---
+
 <a href={mark.url} class="mark-item" target="_blank">
-    <IakImg className="poster" src={mark.poster} loading="lazy"/>
-    <div class="top">
-        <div class="icon" set:html={group ? group.icon||'' : ''}></div>
-        <div class="time">{ mark.time ? formatDateTime(new Date(mark.time)) : '' }</div>
+  <IakImg className="poster" src={mark.poster} loading="lazy" />
+  <div class="top">
+    <div class="icon" set:html={group ? group.icon || "" : ""} />
+    <div class="time">
+      {mark.time ? formatDateTime(new Date(mark.time)) : ""}
     </div>
-    <div class="bottom">
-        <div class="title">{mark.title}</div>
-        <div class="star">{mark.star}</div>
-    </div>
+  </div>
+  <div class="bottom">
+    <div class="title">{mark.title}</div>
+    <div class="star">{mark.star}</div>
+  </div>
 </a>
 
 <style>
-.mark-item {
+  .mark-item {
     flex-grow: 1;
     border-radius: var(--base-radius);
     overflow: hidden;
@@ -29,21 +32,23 @@ const {mark, group} = Astro.props
     box-shadow: var(--card-shadow);
     min-height: 8em;
     background-color: var(--main-color);
-}
-.mark-item:hover {
+  }
+  .mark-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 6px rgba(var(--main-color-meta), 0.2), var(--card-outline);
-}
-.mark-item .poster{
+    box-shadow:
+      0 12px 6px rgba(var(--main-color-meta), 0.2),
+      var(--card-outline);
+  }
+  .mark-item :global(.poster) {
     width: 100%;
     object-fit: cover;
     filter: brightness(0.7);
     transition: 0.3s;
-}
-.mark-item:hover .poster{
+  }
+  .mark-item:hover :global(.poster) {
     filter: brightness(1);
-}
-.mark-item .top{
+  }
+  .mark-item .top {
     position: absolute;
     top: 0;
     left: 0;
@@ -53,27 +58,27 @@ const {mark, group} = Astro.props
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.mark-item .icon{
+  }
+  .mark-item .icon {
     font-size: 1.25em;
-}
-.mark-item .bottom{
+  }
+  .mark-item .bottom {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     padding: var(--base-radius);
     transition: background 0.3s;
-}
-.mark-item:hover .bottom{
+  }
+  .mark-item:hover .bottom {
     background: rgba(var(--black-meta), 0.8);
-}
-.mark-item .title{
+  }
+  .mark-item .title {
     font-size: 1.2em;
     font-weight: 600;
-}
-.mark-item .time{
+  }
+  .mark-item .time {
     font-size: 12px;
     font-weight: 900;
-}
+  }
 </style>

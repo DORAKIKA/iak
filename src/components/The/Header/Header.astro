@@ -1,10 +1,10 @@
 ---
-import TheMenus from "@components/The/Menus.astro";
 import HeaderBg from "@components/The/Header/HeaderBg.astro";
 import { site } from "src/config";
 import { getCollection } from "astro:content";
 import HeaderBottom from "@components/The/Header/HeaderBottom.astro";
 
+import { menus } from "src/config";
 const articles = await getCollection("posts");
 
 const injectAllPost = articles.map((post) => ({
@@ -18,7 +18,7 @@ const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
 const { header } = Astro.props;
 ---
 
-<script set:html={injectAllPostString}></script>
+<script set:html={injectAllPostString} />
 
 <nav id="nav">
   <a
@@ -31,8 +31,29 @@ const { header } = Astro.props;
     {site.name}
   </a>
   <ul class="nav-buttons">
-    <TheMenus className="nav-button menu-button" />
-
+    {
+      menus.map((menu) => (
+        <li class={"the-menu nav-button menu-button"}>
+          <div class="trigger">
+            <span>{menu.name}</span>
+          </div>
+          <ul class="children">
+            {menu.children.map((menuItem) => (
+              <li>
+                <a
+                  class="menu-item"
+                  href={menuItem.href}
+                  rel="prefetch"
+                  title={menuItem.name}
+                >
+                  {menuItem.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
     <li class="nav-button">
       <button
         id="random-post-trigger"
@@ -123,9 +144,9 @@ const { header } = Astro.props;
 </nav>
 <header id="header" class="the-header">
   <HeaderBg type={header?.bg_type}>
-    <slot name="header-bg"/>
+    <slot name="header-bg" />
   </HeaderBg>
-  
+
   <div class="main-header">
     <slot />
   </div>
@@ -133,21 +154,22 @@ const { header } = Astro.props;
 </header>
 
 <script>
-function checkScroll(){
-  const nav = document.getElementById('nav')
-  const header = document.getElementById('header')
-  if(!nav || !header) return;
-  const headerHeight = header.offsetHeight
-  const navHeight = nav.offsetHeight
-  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-  if (scrollTop > headerHeight - navHeight) {
-    nav.classList.add('over')
-  } else {
-    nav.classList.remove('over')
+  function checkScroll() {
+    const nav = document.getElementById("nav");
+    const header = document.getElementById("header");
+    if (!nav || !header) return;
+    const headerHeight = header.offsetHeight;
+    const navHeight = nav.offsetHeight;
+    const scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop > headerHeight - navHeight) {
+      nav.classList.add("over");
+    } else {
+      nav.classList.remove("over");
+    }
   }
-}
-checkScroll()
-window.addEventListener('scroll', checkScroll)
+  checkScroll();
+  window.addEventListener("scroll", checkScroll);
 </script>
 
 <style>
@@ -162,7 +184,7 @@ window.addEventListener('scroll', checkScroll)
     align-items: center;
     overflow: hidden;
   }
-  :global(.dark #header){
+  :global(.dark #header) {
     background-color: rgba(var(--main-color-meta), 0.4);
   }
   #header .main-header {
@@ -189,10 +211,10 @@ window.addEventListener('scroll', checkScroll)
     color: rgba(var(--white-meta), 0.8);
     position: fixed;
   }
-  #nav.over{
+  #nav.over {
     background: var(--bg);
     border-bottom: 2px solid var(--card-border-color);
-    color:var(--color-deep-text);
+    color: var(--color-deep-text);
     backdrop-filter: blur(4px);
   }
   #nav .site-home {
@@ -265,5 +287,61 @@ window.addEventListener('scroll', checkScroll)
     #nav .sidebar-toggle {
       display: flex;
     }
+  }
+
+  .the-menu {
+    position: relative;
+  }
+  .the-menu .children {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    padding: 0.5rem;
+    background-color: var(--main-color);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--base-radius);
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    line-height: 2;
+  }
+  .the-menu:is(:hover, :focus-within)::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    top: 100%;
+  }
+  .the-menu:is(:hover, :focus-within) .children {
+    opacity: 1;
+    pointer-events: all;
+    animation: menu 0.2s;
+  }
+  @keyframes menu {
+    from {
+      transform: translate(-50%) scale(0.5);
+    }
+    to {
+      transform: translate(-50%) scale(1);
+    }
+  }
+  .the-menu .children .menu-item {
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border-radius: calc(0.5 * var(--base-radius));
+    color: rgba(var(--white-meta), 0.8);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .the-menu .children .menu-item:is(:hover, :focus-within) {
+    background-color: var(--color-deep-op);
+    color: var(--main-color);
+    outline: none;
   }
 </style>

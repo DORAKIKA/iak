@@ -3,7 +3,7 @@ import Tabs from "./Tabs.astro";
 import LinkCard from "./LinkCard.astro";
 import Outline from "./Outline.astro";
 import Grid from "./Grid.astro";
-import GridItem from "./GridItem.astro"
+import GridItem from "./GridItem.astro";
 import Friend from "./Friend.astro";
 import Website from "./Website.astro";
 
@@ -12,12 +12,15 @@ import Img from "./Img.astro";
 import A from "./A.astro";
 // 注释一下，防忘记，组件的margin标准为上下0.5rem
 
+import BentoBase from "@/components/Bento/Base.astro";
+
 const { entry } = Astro.props;
 
 const { Content } = await entry.render();
 ---
 
-<Content components = {{
+<Content
+  components={{
     Grid,
     GridItem,
     LinkCard,
@@ -25,8 +28,11 @@ const { Content } = await entry.render();
     Tabs,
     Friend,
     Website,
-    
+
     img: Img,
     pre: Pre,
-    a: A
-}}></Content>
+    a: A,
+
+    BentoBase,
+  }}
+/>
