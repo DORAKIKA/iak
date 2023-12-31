@@ -1,0 +1,33 @@
+---
+interface Props {
+  caption: string;
+  bentoBg: string;
+  bentoCaptionColor: string
+}
+
+const { caption, bentoBg, bentoCaptionColor, class: _class } = Astro.props;
+---
+
+<figure class:list={["bento-card", _class]}>
+  <figcaption class="bento-caption">
+    <slot name="caption">
+      {caption}
+    </slot>
+  </figcaption>
+  <slot/>
+</figure>
+
+<style define:vars={{ bentoBg, bentoCaptionColor }}>
+  .bento-card {
+    margin: 0;
+    padding: var(--base-radius);
+    border: 1px solid var(--card-border-color);
+    background: var(--bentoBg, var(--background-secondary));
+    border-radius: var(--base-radius);
+    color: var(--text-normal)
+  }
+  .bento-caption {
+    font-size: 0.8em;
+    color: var(--bentoCaptionColor, var(--text-muted))
+  }
+</style>

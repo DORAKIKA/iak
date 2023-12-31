@@ -149,7 +149,7 @@ const addConfig = (role: string, el?: HTMLElement | { value: any }) => {
   z-index: 1000;
   min-width: 200px;
   background: var(--card-bg);
-  border-radius: 4px;
+  border-radius: var(--base-radius);
   padding: 0.5em;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   pointer-events: auto;
@@ -175,7 +175,7 @@ const addConfig = (role: string, el?: HTMLElement | { value: any }) => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border-radius: 0.2rem;
+  border-radius: calc(var(--base-radius) / 2);
   outline: none;
   border: none;
   background: transparent;
