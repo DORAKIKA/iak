@@ -6,88 +6,96 @@ import { site } from "src/config";
 import Grid from "@/components/content/Grid.astro";
 
 export async function getStaticPaths({ paginate }: any) {
-	const posts = await getCollection('posts');
+  const posts = await getCollection("posts");
 
-    const bucket = new Map();
+  const bucket = new Map();
 
-    posts.forEach(post => {
-        post.data.tags?.forEach(tag => {
-            if (!bucket.has(tag)) {
-                bucket.set(tag, [])
-            }
-            bucket.get(tag).push(post)
-        })
-    })
+  posts.forEach((post) => {
+    post.data.tags?.forEach((tag) => {
+      if (!bucket.has(tag)) {
+        bucket.set(tag, []);
+      }
+      bucket.get(tag).push(post);
+    });
+  });
 
-    return Array.from(bucket.keys()).map(tag => {
-        
-        const filteredPosts = bucket.get(tag)
-        return paginate(filteredPosts, {
-            params: { tag },
-            pageSize: 12
-        });
-    })
+  return Array.from(bucket.keys()).flatMap((tag) => {
+    const filteredPosts = bucket.get(tag);
+    return paginate(filteredPosts, {
+      params: { tag },
+      pageSize: 12,
+    });
+  });
 }
 
 const { tag } = Astro.params;
 
-
 interface Props {
-	page: {
-		data: CollectionEntry<'posts'>[],
-		currentPage: number,
-		url: {
-			prev: string,
-			next: string
-		}
-	}
+  page: {
+    data: CollectionEntry<"posts">[];
+    currentPage: number;
+    url: {
+      prev: string;
+      next: string;
+    };
+  };
 }
 // 取出tag对应的所有文章
 const { page } = Astro.props;
 
 const page_meta = {
-	title: '标签：' + tag + ' | ' + site.name,
-}
+  title: "标签：" + tag + " | " + site.name,
+};
 ---
 
-<Layout
-    page_meta={page_meta}
->
-    <h1 slot="header">{ '标签：' + tag }</h1>
-    <section id="posts">
-        <Grid col={4}>
-            {page.data.map(post => <PostCard post={post}/>)}
-        </Grid>
-        <div class="pagination">
-            {page.url.prev ? <a href={page.url.prev} class="paginate prev">上一页</a> : null}
-            {page.url.next ? <a href={page.url.next} class="paginate next">下一页</a> : null}
-        </div>
-    </section>
+<Layout page_meta={page_meta}>
+  <h1 slot="header">{"标签：" + tag}</h1>
+  <section id="posts">
+    <Grid col={4}>
+      {page.data.map((post) => <PostCard post={post} />)}
+    </Grid>
+    <div class="pagination">
+      {
+        page.url.prev ? (
+          <a href={page.url.prev} class="paginate prev">
+            上一页
+          </a>
+        ) : null
+      }
+      {
+        page.url.next ? (
+          <a href={page.url.next} class="paginate next">
+            下一页
+          </a>
+        ) : null
+      }
+    </div>
+  </section>
 </Layout>
 
 <style>
-#posts{
+  #posts {
     margin: 1rem 0 0;
-}
-.pagination{
+  }
+  .pagination {
     display: flex;
     justify-content: space-between;
     margin: 1em 0 0 0;
     gap: 1em;
-}
-.pagination .paginate{
+  }
+  .pagination .paginate {
     flex: 1;
     padding: 1em;
     display: inline-block;
     background: var(--color-op);
     border-radius: var(--base-radius);
     transition: 0.3s;
-}
-.pagination .next{
+  }
+  .pagination .next {
     text-align: right;
-}
-.pagination .paginate:is(:hover, :focus-within){
+  }
+  .pagination .paginate:is(:hover, :focus-within) {
     background: var(--color-deep-op);
     color: var(--main-color);
-}
+  }
 </style>
