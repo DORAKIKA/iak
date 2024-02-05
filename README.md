@@ -22,9 +22,9 @@
 
 示例网站见[Iak示例博客](https://iak.dorakika.cn)、[DORAKIKA的博客](https://blog.dorakika.cn)
 
-![20230407141533.png](https://img.dorakika.cn/md/20230407141533.png)
+![20230407141533.png](https://img.dorakika.cn/md/20230407141533.webp)
 
-![20230407141735.png](https://img.dorakika.cn/md/20230407141735.png)
+![20230407141735.png](https://img.dorakika.cn/md/20230407141735.webp)
 
 # 特色
 - 🎨多种主题配置
