@@ -95,6 +95,25 @@
   --card-outline: 0 0 0 4px var(--main-color);
   --card-border-color: #212322;
 }
+
+::view-transition-new(root),
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+.dark::view-transition-old(root) {
+  z-index: 1;
+}
+.dark::view-transition-new(root) {
+  z-index: 999;
+}
+::view-transition-old(root) {
+  z-index: 999;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}
+
 @media (max-width: 900px) {
   :root {
     --side-padding: 3vw;
