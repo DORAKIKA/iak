@@ -11,11 +11,9 @@ window.iak = {
   randomPage() {
     if (this.data.posts.length) {
       const rand = Math.floor(Math.random() * this.data.posts.length);
-      SnackBar({
-        message: `随机文章为 <a href="${this.data.posts[rand].url}" target="_self">「${this.data.posts[rand].title}」</a>`,
-        fixed: true,
-        position: "tc",
-        timeout: 5000,
+      const msg = `随机文章为 <a href="${this.data.posts[rand].url}" target="_self">「${this.data.posts[rand].title}」</a>`;
+      window.IakApp.toast(msg, {
+        duration: 5000,
       });
     }
   },
@@ -24,16 +22,6 @@ window.iak = {
   toggleSearch: defaultFunc("切换搜索"),
   toggleSidebar: defaultFunc("切换侧边栏"),
   toggleHeadings: defaultFunc("切换目录"),
-
-  say(str) {
-    if (SnackBar) {
-      SnackBar({
-        message: str,
-        fixed: true,
-        position: "tc",
-      });
-    }
-  },
   // 退出全屏
   cancelFullscreen() {
     if (document.exitFullscreen) {
@@ -64,21 +52,21 @@ window.iak = {
     // 欢迎语
     if (localStorage.getItem("welcome") !== `${year}-${month}-${day}}`) {
       if (hour < 6) {
-        iak.say("夜深了，注意休息");
+        window.IakApp.toast("夜深了，注意休息");
       } else if (hour < 9) {
-        iak.say("早上好");
+        window.IakApp.toast("早上好");
       } else if (hour < 12) {
-        iak.say("上午好");
+        window.IakApp.toast("上午好");
       } else if (hour < 14) {
-        iak.say("中午好");
+        window.IakApp.toast("中午好");
       } else if (hour < 17) {
-        iak.say("下午好");
+        window.IakApp.toast("下午好");
       } else if (hour < 19) {
-        iak.say("傍晚好");
+        window.IakApp.toast("傍晚好");
       } else if (hour < 22) {
-        iak.say("晚上好");
+        window.IakApp.toast("晚上好");
       } else {
-        iak.say("夜深了，注意休息");
+        window.IakApp.toast("夜深了，注意休息");
       }
       localStorage.setItem("welcome", `${year}-${month}-${day}}`);
     }
@@ -161,18 +149,10 @@ iak.contextMenu = {
               if (text) {
                 navigator.clipboard.writeText(text).then(
                   function () {
-                    SnackBar({
-                      message: "复制成功",
-                      fixed: true,
-                      position: "tc",
-                    });
+                    window.IakApp.toast("复制成功");
                   },
                   function () {
-                    SnackBar({
-                      message: "复制失败",
-                      fixed: true,
-                      position: "tc",
-                    });
+                    window.IakApp.toast("复制失败");
                   }
                 );
               }
@@ -203,14 +183,7 @@ iak.contextMenu = {
 // 辅助函数
 function defaultFunc(msg) {
   const func = function () {
-    if (SnackBar) {
-      SnackBar({
-        message: msg,
-        fixed: true,
-      });
-    } else {
-      console.warn(msg);
-    }
+    window.IakApp.toast(msg);
   };
   func.type = "default";
   return func;
