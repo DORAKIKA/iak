@@ -1,10 +1,19 @@
 ---
 import IakImg from "@/components/Iak/Img.astro";
+import { IakCard } from "@/lib/ui";
 import { getUrlForPost } from "@/pages/_contents/posts";
+
 const { post } = Astro.props;
 ---
 
-<a class="post-card" href={getUrlForPost(post)} rel="prefetch">
+<IakCard
+  {...{
+    as: "a",
+    class: "post-card",
+    href: getUrlForPost(post),
+    ref: "prefetch",
+  }}
+>
   <div class="cover">
     <IakImg src={post.data.cover} alt={post.data.title} className="cover-img" />
     <span class="category">{post.data.category}</span>
@@ -14,26 +23,12 @@ const { post } = Astro.props;
     <div class="title">{post.data.title}</div>
     <div class="desc">{post.data.description}</div>
   </div>
-</a>
+</IakCard>
 
 <style>
   .post-card {
-    background-color: var(--card-bg);
-    /* padding: 1em; */
-    border-radius: var(--base-radius);
+    padding: 0;
     overflow: hidden;
-    border: 3px solid var(--card-border-color);
-    transition: 0.3s;
-    /* box-shadow: var(--card-shadow); */
-    color: var(--card-text-color);
-  }
-  .post-card:is(:hover, :focus-within) {
-    transform: translateY(-4px);
-    box-shadow:
-      0 12px 6px rgba(var(--main-color-meta), 0.2),
-      var(--card-outline);
-    color: var(--main-color);
-    outline: none;
   }
   .post-card .cover {
     width: 100%;
