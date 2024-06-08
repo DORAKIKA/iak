@@ -1,39 +1,35 @@
 ---
-import BaseHead from '@components/BaseHead/BaseHead.astro';
-import TheHeader from "@components/The/Header/Header.astro"
-import TheFooter from '@components/The/Footer.astro';
-import TheToolbar from '@components/The/Toolbar/Toolbar.astro'
-import GlobalInject from '@components/The/GlobalInject.astro';
+import BaseHead from "@components/BaseHead/BaseHead.astro";
+import TheHeader from "@components/The/Header/Header.astro";
+import TheFooter from "@components/The/Footer.astro";
+import TheToolbar from "@components/The/Toolbar/Toolbar.astro";
+import GlobalInject from "@components/The/GlobalInject.astro";
 
-
-const {
-	page_meta,
-	headings,
-	meta_og,
-	header
- } = Astro.props;
+const { page_meta, headings, meta_og, header } = Astro.props;
 ---
 
 <html lang="zh-CN">
-	<head>
-		<BaseHead
-			page_meta={page_meta}
-			meta_og={meta_og}
-		/>
-	</head>
+  <head>
+    <BaseHead page_meta={page_meta} meta_og={meta_og} />
+  </head>
 
-	<body>
-		<script is:inline src="/js/iak.js"></script>
-		<TheHeader header={header}>
-			<slot name="header"></slot>
-			<slot name="header-bg" slot="header-bg"></slot>
-		</TheHeader>
-		<TheToolbar headings={headings}/>
-        <main style="padding: 0 var(--side-padding)">
-            <slot></slot>
-        </main>
-		<TheFooter />
+  <body>
+    <script is:inline src="/js/iak.js"></script>
+    <TheHeader header={header}>
+      <slot name="header" />
+      <slot name="header-bg" slot="header-bg" />
+    </TheHeader>
+    <script>
+      import App from "@/lib/app";
+      console.log(App.initTheme());
+      window.IakApp = App;
+    </script>
+    <TheToolbar headings={headings} />
+    <main style="padding: 0 var(--side-padding)">
+      <slot />
+    </main>
+    <TheFooter />
 
-		<GlobalInject/>
-	</body>
+    <GlobalInject />
+  </body>
 </html>

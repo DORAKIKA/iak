@@ -161,7 +161,7 @@ html {
   --text-muted: rgb(120, 120, 124);
   --text-faint: rgb(124, 124, 124);
 }
-.dark .theme-ios {
+[data-theme="dark"] .theme-ios {
   --background-primary: rgb(17, 17, 17);
   --background-secondary: rgb(33, 33, 34);
   --text-normal: rgb(243, 243, 246);

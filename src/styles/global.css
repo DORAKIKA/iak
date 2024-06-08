@@ -1,7 +1,7 @@
 @import url("./theme.css");
 
 :root,
-.light {
+[data-theme="light"] {
   --header-height: 70px;
   --side-padding: 7vw;
 
@@ -72,7 +72,7 @@
   --md-margin: 1rem 0;
 }
 
-.dark {
+[data-theme="dark"] {
   --font-color: rgba(0, 0, 0, 0.8);
   --kk-texture-color: rgba(0, 0, 0, 0.2);
 
@@ -80,6 +80,8 @@
   --color-deep-op: rgba(0, 0, 0, 0.8);
   --color-deep-text: rgba(255, 255, 255, 0.8);
   --color-op-text: rgba(0, 0, 0, 0.8);
+
+  --main-color-meta: var(--purple-meta);
 
   /* card */
   --bg: #151716;
@@ -101,10 +103,10 @@
   animation: none;
   mix-blend-mode: normal;
 }
-.dark::view-transition-old(root) {
+[data-theme]::view-transition-old(root) {
   z-index: 1;
 }
-.dark::view-transition-new(root) {
+[data-theme]::view-transition-new(root) {
   z-index: 999;
 }
 ::view-transition-old(root) {
@@ -197,4 +199,29 @@ img.icon {
 }
 svg.icon path {
   fill: currentColor;
+}
+
+/*
+--theme
+*/
+[data-theme="red"] {
+  --main-color-meta: var(--red-meta);
+}
+[data-theme="pink"] {
+  --main-color-meta: var(--pink-meta);
+}
+[data-theme="orange"] {
+  --main-color-meta: var(--orange-meta);
+}
+[data-theme="yellow"] {
+  --main-color-meta: var(--yellow-meta);
+}
+[data-theme="green"] {
+  --main-color-meta: var(--green-meta);
+}
+[data-theme="blue"] {
+  --main-color-meta: var(--blue-meta);
+}
+[data-theme="purple"] {
+  --main-color-meta: var(--purple-meta);
 }

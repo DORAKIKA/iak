@@ -12,11 +12,7 @@ const {
 } = Astro.props;
 ---
 
-<div
-  class="md-linkcard md-block"
-  style={color ? `--main-color-meta: var(--${color}-meta)` : ""}
-  data-role="md-linkcard"
->
+<div class="md-linkcard md-block" data-theme={color} data-role="md-linkcard">
   <div class="md-linkcard__info">
     {cover ? <IakImg className="md-linkcard__cover" src={cover} /> : null}
     <div class="md-linkcard__other">
@@ -142,16 +138,16 @@ const {
     padding: 1.5rem;
     background-color: rgba(var(--main-color-meta), 0.25);
   }
-  :global(.dark .md-linkcard) {
+  :global([data-theme="dark"] .md-linkcard) {
     color: rgba(var(--main-color-meta), 0.7);
   }
-  :global(.dark .md-linkcard .md-linkcard__info) {
+  :global([data-theme="dark"] .md-linkcard .md-linkcard__info) {
     background-color: rgba(var(--main-color-meta), 0.07);
   }
-  :global(.dark .md-linkcard .md-linkcard__comment) {
+  :global([data-theme="dark"] .md-linkcard .md-linkcard__comment) {
     background-color: rgba(var(--main-color-meta), 0.15);
   }
-  :global(.dark .md-linkcard .md-linkcard__link) {
+  :global([data-theme="dark"] .md-linkcard .md-linkcard__link) {
     background-color: rgba(var(--main-color-meta), 0.7);
   }
 </style>

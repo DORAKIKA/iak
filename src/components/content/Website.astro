@@ -1,18 +1,36 @@
 ---
-const { src, width="100%", height="300px", title="A WebSite", color="black", link=true } = Astro.props;
+const {
+  src,
+  width = "100%",
+  height = "300px",
+  title = "A WebSite",
+  color,
+  link = true,
+} = Astro.props;
 ---
 
-<div class="md-website" style={{
+<div
+  class="md-website"
+  style={{
     width,
     height,
-    "--main-color-meta": color ?`var(--${color}-meta)` : 'var(--global-main-color-meta)',
-}}>
-    {link ? <div class="md-website__source"><a class="md-website__link" href={src} title={title} target="_blank">{ src }</a></div> : null}
-    <iframe class="md-website__iframe" src={ src } tabindex="-1"></iframe>
+  }}
+  data-theme={color}
+>
+  {
+    link ? (
+      <div class="md-website__source">
+        <a class="md-website__link" href={src} title={title} target="_blank">
+          {src}
+        </a>
+      </div>
+    ) : null
+  }
+  <iframe class="md-website__iframe" src={src} tabindex="-1"></iframe>
 </div>
 
 <style>
-.md-website{
+  .md-website {
     --main-color: rgb(var(--main-color-meta));
     background: rgba(var(--main-color-meta), 0.25);
     border: 2px solid rgba(var(--main-color-meta), 0.5);
@@ -22,24 +40,24 @@ const { src, width="100%", height="300px", title="A WebSite", color="black", lin
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
-}
-.md-website:focus-within{
+  }
+  .md-website:focus-within {
     outline: 4px solid rgba(var(--main-color-meta), 0.4);
-}
-.md-website__source{
+  }
+  .md-website__source {
     color: var(--main-color);
     text-align: center;
     padding: 0.5rem;
     font-size: 0.8rem;
     font-family: monospace;
     font-weight: bold;
-}
-.md-website .md-website__link:focus{
+  }
+  .md-website .md-website__link:focus {
     outline: none;
-}
-.md-website__iframe{
+  }
+  .md-website__iframe {
     flex: 1;
     border: none;
     margin: 0;
-}
+  }
 </style>

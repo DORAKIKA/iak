@@ -1,112 +1,134 @@
 ---
 import { getComponentKey } from "@/store/key";
-let { active, color } = Astro.props
+let { active, color } = Astro.props;
 
 const slots = Astro.slots;
 const keys = Object.keys(slots);
 
-const tabs:any[] = [];
-const panes:any[] = [];
+const tabs: any[] = [];
+const panes: any[] = [];
 
-for(let i = 0; i < keys.length; i++){
-    const key = keys[i];
-    const slot = await slots.render(key);
-    if(key.startsWith('tab.')) tabs.push({
-        html: slot,
-        name: key.substring(4)
+for (let i = 0; i < keys.length; i++) {
+  const key = keys[i];
+  const slot = await slots.render(key);
+  if (key.startsWith("tab."))
+    tabs.push({
+      html: slot,
+      name: key.substring(4),
     });
-    if(key.startsWith('pane.')) panes.push({
-        html: slot,
-        name: key.substring(5)
+  if (key.startsWith("pane."))
+    panes.push({
+      html: slot,
+      name: key.substring(5),
     });
 }
 
-if(tabs.length !== panes.length) throw new Error('Tabs and panes must be equal in number');
+if (tabs.length !== panes.length)
+  throw new Error("Tabs and panes must be equal in number");
 
-if(!active) active = tabs[0].name;
+if (!active) active = tabs[0].name;
 
 const tabsKey = getComponentKey();
 ---
 
-<div class="md-tabs md-block" style={color && `--main-color-meta: var(--${color}-meta)`} data-role="md-tabs">
-    <div class="md-tabs__nav">
-        {
-            tabs.map((tab, index) => (
-                <label class={`md-tabs__button`} data-name={tab.name}>
-                    {tab.html}
-                    <input type="radio" name={tabsKey} checked={tab.name === active}/>
-                </label>))
-        }
-    </div>
-    <div class="md-tabs__panes">
-        {
-            panes.map((pane, index) => <div class={`md-tabs__pane ${pane.name === active ? 'active' : ''}`} data-name={pane.name} set:html={pane.html}></div>)
-        }
-    </div>
+<div class="md-tabs md-block" data-theme={color} data-role="md-tabs">
+  <div class="md-tabs__nav">
+    {
+      tabs.map((tab, index) => (
+        <label class={`md-tabs__button`} data-name={tab.name}>
+          {tab.html}
+          <input type="radio" name={tabsKey} checked={tab.name === active} />
+        </label>
+      ))
+    }
+  </div>
+  <div class="md-tabs__panes">
+    {
+      panes.map((pane, index) => (
+        <div
+          class={`md-tabs__pane ${pane.name === active ? "active" : ""}`}
+          data-name={pane.name}
+          set:html={pane.html}
+        />
+      ))
+    }
+  </div>
 </div>
 
 <script>
-const buttons: NodeListOf<HTMLElement> = document.querySelectorAll('.md-tabs__button');
-buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const name = btn.getAttribute('data-name');
-        // 找到所在的md-tabs
-        const mdTabs = btn.closest('.md-tabs');
+  const buttons: NodeListOf<HTMLElement> =
+    document.querySelectorAll(".md-tabs__button");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const name = btn.getAttribute("data-name");
+      // 找到所在的md-tabs
+      const mdTabs = btn.closest(".md-tabs");
 
-        // 找到对应的pane
-        // const pane = mdTabs?.querySelector(`.md-tabs__pane[data-name="${name}"]`);
-        const panes = mdTabs?.querySelector(`.md-tabs__panes`)?.children || [];
+      // 找到对应的pane
+      // const pane = mdTabs?.querySelector(`.md-tabs__pane[data-name="${name}"]`);
+      const panes = mdTabs?.querySelector(`.md-tabs__panes`)?.children || [];
 
-        const pane = Array.prototype.find.call(panes, (pane:HTMLElement) => pane.getAttribute('data-name') === name);
+      const pane = Array.prototype.find.call(
+        panes,
+        (pane: HTMLElement) => pane.getAttribute("data-name") === name
+      );
 
-        // const panes = mdTabs?.querySelectorAll('.md-tabs__pane');
-        Array.prototype.forEach.call(panes, pane => pane.classList.remove('active'));
-        pane?.classList.add('active');
+      // const panes = mdTabs?.querySelectorAll('.md-tabs__pane');
+      Array.prototype.forEach.call(panes, (pane) =>
+        pane.classList.remove("active")
+      );
+      pane?.classList.add("active");
     });
-})
+  });
 
-// @ts-ignore
-window.iak.contextMenu["md-tabs"] = {
-    type: 'line',
+  // @ts-ignore
+  window.iak.contextMenu["md-tabs"] = {
+    type: "line",
     children: [
-        {
-            text: '下一栏',
-            icon: 'fas fa-hand-point-right',
-            action(el:HTMLElement){
-                const inputs = (el.querySelector('.md-tabs__nav')?.children || []) as HTMLInputElement[];
-                if(!inputs.length) return;
+      {
+        text: "下一栏",
+        icon: "fas fa-hand-point-right",
+        action(el: HTMLElement) {
+          const inputs = (el.querySelector(".md-tabs__nav")?.children ||
+            []) as HTMLInputElement[];
+          if (!inputs.length) return;
 
-                const active = Array.prototype.findIndex.call(inputs, (input:HTMLInputElement) => input.querySelector('input')?.checked);
-                if(active === -1) return;
-                active === inputs.length - 1 ? inputs[0].click() : inputs[active + 1].click();
+          const active = Array.prototype.findIndex.call(
+            inputs,
+            (input: HTMLInputElement) => input.querySelector("input")?.checked
+          );
+          if (active === -1) return;
+          active === inputs.length - 1
+            ? inputs[0].click()
+            : inputs[active + 1].click();
 
-                el.scrollIntoView();
-            },
-            tag: 'Tab',
-        }
-    ]
-}
+          el.scrollIntoView();
+        },
+        tag: "Tab",
+      },
+    ],
+  };
 </script>
 
 <style>
-.md-tabs {
+  .md-tabs {
     --main-color: rgb(var(--main-color-meta));
     display: flex;
     flex-direction: column;
     border-radius: var(--base-radius);
     border: 2px solid var(--main-color);
     overflow: hidden;
-}
-:global(.dark .md-tabs){
+  }
+  :global([data-theme="dark"] .md-tabs) {
     border-color: rgba(var(--main-color-meta), 0.4);
-}
-.md-tabs:only-child{
+  }
+  .md-tabs:only-child {
     margin: 0;
-}
-.md-tabs:has(.md-tabs__nav input:focus-visible){
+  }
+  .md-tabs:has(.md-tabs__nav input:focus-visible) {
     outline: 4px solid rgba(var(--main-color-meta), 0.5);
-}
-.md-tabs .md-tabs__nav{
+  }
+  .md-tabs .md-tabs__nav {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -115,8 +137,8 @@ window.iak.contextMenu["md-tabs"] = {
     color: var(--main-color);
     border-bottom: 2px solid rgba(var(--main-color-meta), 0.2);
     padding: 0.5em;
-}
-.md-tabs .md-tabs__button{
+  }
+  .md-tabs .md-tabs__button {
     padding: 0.5em 1rem;
     border: none;
     background-color: transparent;
@@ -126,31 +148,31 @@ window.iak.contextMenu["md-tabs"] = {
     border-radius: calc(var(--base-radius) / 1.4);
     background-color: rgba(var(--main-color-meta), 0.2);
     transition: all 0.2s ease;
-}
-:global(.md-tabs .md-tabs__button){
+  }
+  :global(.md-tabs .md-tabs__button) {
     background-color: rgba(var(--main-color-meta), 0.1);
-}
-.md-tabs .md-tabs__button input{
+  }
+  .md-tabs .md-tabs__button input {
     appearance: none;
     position: absolute;
     opacity: 0;
-}
-.md-tabs .md-tabs__button:has(input:checked){
+  }
+  .md-tabs .md-tabs__button:has(input:checked) {
     background-color: var(--main-color);
     color: white;
-}
-:global(.dark .md-tabs .md-tabs__button:has(input:checked)){
+  }
+  :global([data-theme="dark"] .md-tabs .md-tabs__button:has(input:checked)) {
     background-color: rgba(var(--main-color-meta), 0.5);
-}
-.md-tabs .md-tabs__panes{
+  }
+  .md-tabs .md-tabs__panes {
     flex: 1;
     width: 100%;
-}
-.md-tabs .md-tabs__pane{
+  }
+  .md-tabs .md-tabs__pane {
     display: none;
     padding: 1rem;
-}
-.md-tabs .md-tabs__pane.active{
+  }
+  .md-tabs .md-tabs__pane.active {
     display: block;
-}
+  }
 </style>

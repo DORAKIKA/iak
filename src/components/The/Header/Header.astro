@@ -3,7 +3,6 @@ import HeaderBg from "@components/The/Header/HeaderBg.astro";
 import { site } from "src/config";
 import { getCollection } from "astro:content";
 import HeaderBottom from "@components/The/Header/HeaderBottom.astro";
-import { MoonIcon } from "lucide-vue-next";
 
 import { menus } from "src/config";
 const articles = await getCollection("posts");
@@ -120,16 +119,6 @@ const { header } = Astro.props;
         </svg></button
       >
     </li>
-    <li class="nav-button">
-      <button
-        id="search-trigger"
-        class="nav-button-core"
-        title="搜索"
-        onclick="window.iak.toggleDarkModeV2(...arguments)"
-      >
-        <MoonIcon />
-      </button>
-    </li>
     <li class="nav-button sidebar-toggle">
       <button
         id="sidebar-trigger"
@@ -195,7 +184,7 @@ const { header } = Astro.props;
     align-items: center;
     overflow: hidden;
   }
-  :global(.dark #header) {
+  :global([data-theme="dark"] #header) {
     background-color: rgba(var(--main-color-meta), 0.4);
   }
   #header .main-header {

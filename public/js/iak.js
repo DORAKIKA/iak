@@ -7,41 +7,6 @@ window.iak = {
     // 友链列表
     friends: [],
   },
-  toggleDarkModeV2(e) {
-    const x = e.clientX;
-    const y = e.clientY;
-    const endRadius = Math.hypot(
-      Math.max(x, innerWidth - x),
-      Math.max(y, innerHeight - y)
-    );
-
-    let isDark;
-    const transition = document.startViewTransition(() => {
-      const root = document.documentElement;
-      isDark = root.classList.contains("dark");
-      root.classList.remove(isDark ? "dark" : "light");
-      root.classList.add(isDark ? "light" : "dark");
-    });
-
-    transition.ready.then(() => {
-      const clipPath = [
-        `circle(0px at ${x}px ${y}px)`,
-        `circle(${endRadius}px at ${x}px ${y}px)`,
-      ];
-      document.documentElement.animate(
-        {
-          clipPath: isDark ? clipPath.reverse() : clipPath,
-        },
-        {
-          duration: 300,
-          easing: "ease-in",
-          pseudoElement: isDark
-            ? "::view-transition-old(root)"
-            : "::view-transition-new(root)",
-        }
-      );
-    });
-  },
   // 前往随机文章页面
   randomPage() {
     if (this.data.posts.length) {
@@ -53,18 +18,6 @@ window.iak = {
         timeout: 5000,
       });
     }
-  },
-  toggleDarkMode(flag) {
-    if (flag === undefined) {
-      document.documentElement.classList.toggle("dark");
-    } else {
-      if (flag) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    }
-    return document.documentElement.classList.contains("dark");
   },
   // 默认函数，若相应组件内绑定失败，则使用此函数
   togglePanel: defaultFunc("切换面板"),
@@ -80,10 +33,6 @@ window.iak = {
         position: "tc",
       });
     }
-  },
-  // 向html的class设置主题
-  setTheme(theme) {
-    document.documentElement.classList.add(theme);
   },
   // 退出全屏
   cancelFullscreen() {
@@ -137,7 +86,6 @@ window.iak = {
     // 设置主题
     if (month === 4 && day >= 4 && day <= 6) {
       // 清明节
-      // iak.setTheme('gray');
     }
   },
 };
@@ -182,7 +130,7 @@ iak.contextMenu = {
         icon: "fa-solid fa-moon",
         text: "夜间模式",
         action() {
-          iak.toggleDarkMode();
+          window.IakApp.setTheme("dark");
         },
         tag: "全局",
       },
