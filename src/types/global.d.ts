@@ -10,4 +10,7 @@ declare global {
   interface Window {
     IakApp: typeof App;
   }
+  interface WindowEventMap {
+    "iak:mounted": undefined;
+  }
 }

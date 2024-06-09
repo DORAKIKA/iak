@@ -1,7 +1,7 @@
 ---
 import IakImg from "@/components/Iak/Img.astro";
 import { IakCard } from "@/lib/ui";
-import { getUrlForPost } from "@/pages/_contents/posts";
+import { getPostUrl } from "@/lib/utils/content";
 
 const { post } = Astro.props;
 ---
@@ -10,7 +10,7 @@ const { post } = Astro.props;
   {...{
     as: "a",
     class: "post-card",
-    href: getUrlForPost(post),
+    href: getPostUrl(post),
     ref: "prefetch",
   }}
 >

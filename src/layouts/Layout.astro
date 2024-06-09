@@ -14,16 +14,14 @@ const { page_meta, headings, meta_og, header } = Astro.props;
   </head>
 
   <body>
-    <script is:inline src="/js/iak.js"></script>
+    <script>
+      import { mountIak } from "@/lib/app";
+      mountIak();
+    </script>
     <TheHeader header={header}>
       <slot name="header" />
       <slot name="header-bg" slot="header-bg" />
     </TheHeader>
-    <script>
-      import App from "@/lib/app";
-      console.log(App.initTheme());
-      window.IakApp = App;
-    </script>
     <TheToolbar headings={headings} />
     <main style="padding: 0 var(--side-padding)">
       <slot />

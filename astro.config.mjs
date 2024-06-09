@@ -17,8 +17,11 @@ import serviceWorker from "astrojs-service-worker";
 // 预加载链接
 import prefetch from "@astrojs/prefetch";
 
+import vercelServerless from "@astrojs/vercel/serverless";
+
 import iak from "./integrations/iak";
 
+/** @type { import("astro/config").AstroUserConfig } */
 const baseConfig = {
   site: site.origin,
   markdown: {
@@ -26,6 +29,8 @@ const baseConfig = {
       theme: "github-dark-dimmed",
     },
   },
+  output: "hybrid",
+  adapter: vercelServerless(),
   integrations: [
     mdx(),
     sitemap(),

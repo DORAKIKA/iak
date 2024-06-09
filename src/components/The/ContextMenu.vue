@@ -1,26 +1,12 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, type Ref } from "vue";
-
-interface ContextItem {
-  text: string;
-  icon?: string;
-  action: (target: any) => void;
-  tag?: string;
-  color?: string;
-}
-interface ContextGroup {
-  name?: string;
-  type: string;
-  color?: string;
-  children: ContextItem[];
-  target?: any;
-}
+import { getContextMenuByRole, type ContextGroup } from "@/lib/app/contextmenu";
 
 const show = ref(false);
 const config = reactive([] as ContextGroup[]);
 const position = reactive({ x: 0, y: 0 });
 const contextmenuRef: Ref<HTMLElement | null> = ref(null);
-let lastFocus: HTMLElement | null = null;
+
 onMounted(() => {
   window.addEventListener("contextmenu", (e) => {
     e.preventDefault();
@@ -76,8 +62,7 @@ const findConfig = (el: any) => {
   }
 };
 const addConfig = (role: string, el?: HTMLElement | { value: any }) => {
-  // @ts-ignore
-  let group = iak.contextMenu[role];
+  let group = getContextMenuByRole(role);
   // let color = el && el.getAttribute('data-color');
   let color: string;
   if (el instanceof HTMLElement) {
@@ -97,8 +82,6 @@ const addConfig = (role: string, el?: HTMLElement | { value: any }) => {
     }
   }
 };
-// @ts-ignore
-// window.iak.toggleSearch = toggleSearch
 </script>
 
 <template>

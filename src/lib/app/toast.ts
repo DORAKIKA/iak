@@ -11,7 +11,7 @@ interface ToastOptions {
  * @param message 提示消息
  * @param options 选项
  */
-export function toast(message: string, options: ToastOptions) {
+export function toast(message: string, options?: ToastOptions) {
   const { duration = 3000 } = options ?? {};
   /** @ts-ignore */
   window.SnackBar({

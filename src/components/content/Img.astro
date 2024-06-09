@@ -1,34 +1,47 @@
 ---
 import IakImg from "../Iak/Img.astro";
 ---
-<a class="mdx-img" href={Astro.props.src} data-fancybox="gallery" data-caption={Astro.props.alt} data-role="md-img">
-<IakImg src={Astro.props.src} alt={Astro.props.alt} callback="/images/img-error.png" />
-<!-- <img src={Astro.props.src} alt={Astro.props.alt}> -->
+
+<a
+  class="mdx-img"
+  href={Astro.props.src}
+  data-fancybox="gallery"
+  data-caption={Astro.props.alt}
+  data-role="md-img"
+>
+  <IakImg
+    src={Astro.props.src}
+    alt={Astro.props.alt}
+    callback="/images/img-error.png"
+  />
+  <!-- <img src={Astro.props.src} alt={Astro.props.alt}> -->
 </a>
 
 <script>
-// @ts-ignore
-window.iak.contextMenu["md-img"] = {
-    type: 'line',
-    children: [{
-            text: '新标签打开',
-            icon: 'fas fa-link',
-            tag: '图片',
-            action(el:HTMLElement){
-                // @ts-ignore
-                window.open(el.getAttribute('href'), '_blank')
-            },
-        }
-    ]
-}
+  import { registerContextMenu } from "@/lib/app/contextmenu";
+
+  registerContextMenu("md-img", {
+    type: "line",
+    children: [
+      {
+        text: "新标签打开",
+        icon: "fas fa-link",
+        tag: "图片",
+        action(el: HTMLElement) {
+          // @ts-ignore
+          window.open(el.getAttribute("href"), "_blank");
+        },
+      },
+    ],
+  });
 </script>
 
 <style>
-/* 清除原md中a标签的样式 */
-.mdx-img {
+  /* 清除原md中a标签的样式 */
+  .mdx-img {
     position: static;
-}
-.mdx-img::before{
+  }
+  .mdx-img::before {
     display: none;
-}
+  }
 </style>

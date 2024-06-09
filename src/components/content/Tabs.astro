@@ -56,6 +56,8 @@ const tabsKey = getComponentKey();
 </div>
 
 <script>
+  import { registerContextMenu } from "@/lib/app/contextmenu";
+
   const buttons: NodeListOf<HTMLElement> =
     document.querySelectorAll(".md-tabs__button");
   buttons.forEach((btn) => {
@@ -81,8 +83,7 @@ const tabsKey = getComponentKey();
     });
   });
 
-  // @ts-ignore
-  window.iak.contextMenu["md-tabs"] = {
+  registerContextMenu("md-tabs", {
     type: "line",
     children: [
       {
@@ -107,7 +108,7 @@ const tabsKey = getComponentKey();
         tag: "Tab",
       },
     ],
-  };
+  });
 </script>
 
 <style>

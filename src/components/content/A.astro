@@ -3,37 +3,39 @@ const { href } = Astro.props;
 ---
 
 <a href={href} class="md-a" data-role="md-a">
-    <slot></slot>
+  <slot />
 </a>
 
 <script>
-// @ts-ignore
-window.iak.contextMenu["md-a"] = {
-    type: 'line',
+  import { registerContextMenu } from "@/lib/app/contextmenu";
+
+  registerContextMenu("md-a", {
+    type: "line",
     children: [
-        {
-            text: '本页打开',
-            icon: 'fas fa-link',
-            action(el:HTMLElement){
-                // @ts-ignore
-                window.open(el.getAttribute('href'))
-            },
-            tag: '链接'
-        },{
-            text: '新标签打开',
-            icon: 'fas fa-link',
-            tag: '链接',
-            action(el:HTMLElement){
-                // @ts-ignore
-                window.open(el.getAttribute('href'), '_blank')
-            },
-        }
-    ]
-}
+      {
+        text: "本页打开",
+        icon: "fas fa-link",
+        action(el: HTMLElement) {
+          // @ts-ignore
+          window.open(el.getAttribute("href"));
+        },
+        tag: "链接",
+      },
+      {
+        text: "新标签打开",
+        icon: "fas fa-link",
+        tag: "链接",
+        action(el: HTMLElement) {
+          // @ts-ignore
+          window.open(el.getAttribute("href"), "_blank");
+        },
+      },
+    ],
+  });
 </script>
 
 <style>
-.md-a{
+  .md-a {
     /* color: var(--main-color); */
     font-weight: normal;
     padding: 0 2px;
@@ -41,9 +43,9 @@ window.iak.contextMenu["md-a"] = {
     position: relative;
     white-space: nowrap;
     z-index: 1;
-}
-.md-a::before{
-    content: '';
+  }
+  .md-a::before {
+    content: "";
     position: absolute;
     top: 60%;
     left: -3px;
@@ -52,8 +54,8 @@ window.iak.contextMenu["md-a"] = {
     background-color: rgba(var(--main-color-meta), 0.5);
     z-index: -1;
     transition: 0.3s;
-}
-.md-a:is(:hover, :focus-within)::before{
+  }
+  .md-a:is(:hover, :focus-within)::before {
     top: -3px;
-}
+  }
 </style>

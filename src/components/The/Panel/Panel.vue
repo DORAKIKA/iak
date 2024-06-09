@@ -1,7 +1,12 @@
 <script lang="ts" setup>
 import PanelStyle from "@components/The/Panel/Style.vue";
 import PanelSite from "@components/The/Panel/Site.vue";
-import { ref, watch } from "vue";
+import { ref, watch, type PropType } from "vue";
+import { registryFunction } from "@/lib/app/dynamic";
+
+defineProps({
+  tags: Array as PropType<string[]>,
+});
 
 const panelShow = ref(false);
 const togglePanel = (flag?: boolean) => {
@@ -30,8 +35,7 @@ watch(panelShow, () => {
   }
 });
 
-// @ts-ignore
-window.iak.togglePanel = togglePanel;
+registryFunction("togglePanel", togglePanel);
 </script>
 
 <template>
@@ -88,7 +92,7 @@ window.iak.togglePanel = togglePanel;
             </div>
           </header>
           <div class="panel-container">
-            <PanelSite v-show="currentTab === 'site'" />
+            <PanelSite v-show="currentTab === 'site'" :tags="tags" />
             <PanelStyle v-show="currentTab === 'style'" />
           </div>
         </aside>

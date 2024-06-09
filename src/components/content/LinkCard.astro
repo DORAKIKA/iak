@@ -36,8 +36,9 @@ const {
 </div>
 
 <script>
-  // @ts-ignore
-  window.iak.contextMenu["md-linkcard"] = {
+  import { registerContextMenu } from "@/lib/app/contextmenu";
+
+  registerContextMenu("md-linkcard", {
     type: "line",
     children: [
       {
@@ -54,7 +55,7 @@ const {
         },
       },
     ],
-  };
+  });
 </script>
 
 <style>
