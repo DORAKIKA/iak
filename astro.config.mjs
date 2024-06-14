@@ -16,10 +16,10 @@ import serviceWorker from "astrojs-service-worker";
 
 // 预加载链接
 import prefetch from "@astrojs/prefetch";
-
 import vercelServerless from "@astrojs/vercel/serverless";
-
+import AuthAstro from "auth-astro";
 import iak from "./integrations/iak";
+import db from "@astrojs/db";
 
 /** @type { import("astro/config").AstroUserConfig } */
 const baseConfig = {
@@ -41,6 +41,10 @@ const baseConfig = {
       host: true,
     }),
     iak(),
+    AuthAstro({
+      injectEndpoints: false,
+    }),
+    db(),
   ],
   vite: {
     plugins: [yaml()],
