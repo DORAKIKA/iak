@@ -4,6 +4,7 @@ import TheSearch from "@components/The/Search.vue";
 import TheSidebar from "@components/The/Sidebar.vue";
 import ThePanel from "@components/The/Panel/Panel.vue";
 import TheContextMenu from "@components/The/ContextMenu.vue";
+import Auth from "@/components/auth/index.vue";
 import { getPostTags } from "@/lib/utils/content";
 import { getCollection } from "astro:content";
 
@@ -15,6 +16,7 @@ const siteTags = getPostTags(posts);
 <TheSidebar client:only="vue" />
 <ThePanel client:only="vue" tags={siteTags} />
 <TheContextMenu client:only="vue" />
+<Auth client:only="vue" />
 <link
   rel="stylesheet"
   href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6/css/all.min.css"

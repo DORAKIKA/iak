@@ -5,9 +5,8 @@ export function useApiRoute(func: APIRoute) {
     try {
       return await func(context);
     } catch (e) {
-      return new Response(null, {
+      return new Response("", {
         status: 500,
-        statusText: "出错了嗷！",
       });
     }
   };

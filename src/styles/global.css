@@ -1,4 +1,5 @@
 @import url("./theme.css");
+@import url("./transition.css");
 
 :root,
 [data-theme="light"] {

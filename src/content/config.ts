@@ -1,6 +1,7 @@
 import { site } from "src/config";
 import { default_assets } from "./../config";
 import { defineCollection, z } from "astro:content";
+import iakConfig from "iak.config";
 
 // 定义文章集合
 const posts = defineCollection({
@@ -28,6 +29,11 @@ const posts = defineCollection({
     author: z.string().default(site.author),
     // 是否为草稿
     draft: z.boolean().default(false),
+    // 反应功能
+    reactions: z
+      .boolean()
+      .or(z.array(z.string()))
+      .default(iakConfig.reactions.posts),
   }),
 });
 
