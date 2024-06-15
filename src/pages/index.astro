@@ -1,26 +1,24 @@
 ---
-import Layout from "@layouts/Layout.astro"
-import PostSlider from "@pages/_components/Post/Slider.vue"
-import PostRecent from "@pages/_components/Post/Recent.astro"
+import Layout from "@layouts/Layout.astro";
+import PostSlider from "@pages/_components/Post/Slider.vue";
+import PostRecent from "@pages/_components/Post/Recent.astro";
 import TwikooRecent from "@components/Third/TwikooRecent.vue";
 import RecentMemories from "@pages/_components/Memo/RecentMemories.astro";
 
-import { site, twikoo } from "src/config";
+import { post_slider, site, twikoo } from "src/config";
 import { generateOpenGraph } from "src/tools/open_graph";
+import { getStarPosts } from "./_contents/posts";
 const page_meta = {
-	title: site.name + ' | ' + site.slogan,
-	description: site.description,
+  title: site.name + " | " + site.slogan,
+  description: site.description,
 };
 const meta_og = generateOpenGraph(Astro, page_meta);
+const sliderPosts = await getStarPosts(post_slider.limit);
 ---
 
-
-<Layout
-	page_meta={page_meta}
-	meta_og={meta_og}
->
-	<PostSlider slot="header" client:load/>
-	<PostRecent/>
-	<RecentMemories/>
-	{twikoo.enabled ? <TwikooRecent client:load/> : null}
+<Layout page_meta={page_meta} meta_og={meta_og}>
+  <PostSlider slot="header" client:load posts={sliderPosts} />
+  <PostRecent />
+  <RecentMemories />
+  {twikoo.enabled ? <TwikooRecent client:load /> : null}
 </Layout>

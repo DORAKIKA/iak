@@ -94,11 +94,6 @@ export function getRelatedPosts(
   return posts;
 }
 
-// 获取文章链接
-export function getUrlForPost(post: CollectionEntry<"posts">) {
-  return `/post/${post.slug}`;
-}
-
 // 获取下一篇文章
 export function getPrevAndNext(target: CollectionEntry<"posts">) {
   let nextPost: CollectionEntry<"posts"> | undefined,

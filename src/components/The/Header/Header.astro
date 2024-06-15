@@ -1,25 +1,10 @@
 ---
 import HeaderBg from "@components/The/Header/HeaderBg.astro";
-import { site } from "src/config";
-import { getCollection } from "astro:content";
+import { site, menus } from "src/config";
 import HeaderBottom from "@components/The/Header/HeaderBottom.astro";
-import { MoonIcon } from "lucide-vue-next";
-
-import { menus } from "src/config";
-const articles = await getCollection("posts");
-
-const injectAllPost = articles.map((post) => ({
-  url: `/post/${post.slug}`,
-  slug: post.slug,
-  ...post.data,
-  data: post.data,
-}));
-const injectAllPostString = "iak.data.posts = " + JSON.stringify(injectAllPost);
 
 const { header } = Astro.props;
 ---
-
-<script set:html={injectAllPostString} />
 
 <nav id="nav">
   <a
@@ -59,7 +44,7 @@ const { header } = Astro.props;
       <button
         id="random-post-trigger"
         class="nav-button-core"
-        onclick="window.iak.randomPage()"
+        onclick="window.IakApp.getRandomPost()"
         title="随机文章"
       >
         <svg
@@ -81,7 +66,7 @@ const { header } = Astro.props;
         class="nav-button-core"
         id="panel-trigger"
         title="站点面板"
-        onclick="window.iak.togglePanel()"
+        onclick="window.IakApp.execFunction('togglePanel')"
       >
         <svg
           class="icon"
@@ -103,7 +88,7 @@ const { header } = Astro.props;
         id="search-trigger"
         class="nav-button-core"
         title="搜索"
-        onclick="window.iak.toggleSearch()"
+        onclick="window.IakApp.execFunction('toggleSearch')"
       >
         <svg
           class="icon"
@@ -120,22 +105,12 @@ const { header } = Astro.props;
         </svg></button
       >
     </li>
-    <li class="nav-button">
-      <button
-        id="search-trigger"
-        class="nav-button-core"
-        title="搜索"
-        onclick="window.iak.toggleDarkModeV2(...arguments)"
-      >
-        <MoonIcon />
-      </button>
-    </li>
     <li class="nav-button sidebar-toggle">
       <button
         id="sidebar-trigger"
         class="nav-button-core"
         title="菜单"
-        onclick="window.iak.toggleSidebar()"
+        onclick="window.IakApp.execFunction('toggleSidebar')"
       >
         <svg
           class="icon"
@@ -195,7 +170,7 @@ const { header } = Astro.props;
     align-items: center;
     overflow: hidden;
   }
-  :global(.dark #header) {
+  :global([data-theme="dark"] #header) {
     background-color: rgba(var(--main-color-meta), 0.4);
   }
   #header .main-header {

@@ -1,87 +1,13 @@
 <script setup lang="ts">
-import { computed, onMounted, watch } from "vue";
-import { useLocalStorage, useStyleTag, useThrottleFn } from "@vueuse/core";
+import { useLocalStorage } from "@vueuse/core";
+import iakConfig from "iak.config";
+import { setTheme } from "@/lib/app/theme";
 
-import IakSlider from "@components/Iak/Slider.vue";
-import IakSwitch from "@components/Iak/Switch.vue";
-import { theme } from "../../../config";
-import { z } from "zod";
+const localTheme = useLocalStorage("iak.theme", iakConfig.defaultTheme);
 
-const default_style = {
-  themeColor: theme.main_colors[0],
-  largeBorderRadius: theme.large_border_radius.default,
-  brightness: theme.brightness.default,
-  headerFixed: theme.headerFixed.default,
-  darkMode: false,
-};
-
-const styleConfig = useLocalStorage("styleConfig", default_style);
-
-onMounted(() => {
-  // @ts-ignore
-  const darkModeFn = window.iak.toggleDarkMode;
-  // @ts-ignore
-  window.iak.toggleDarkMode = (darkMode: boolean) => {
-    styleConfig.value.darkMode = darkModeFn(darkMode);
-  };
-}),
-  watch(
-    () => styleConfig.value.darkMode,
-    (darkMode) => {
-      // @ts-ignore
-      window.iak.toggleDarkMode(darkMode);
-    },
-    { immediate: true }
-  );
-
-async function validate() {
-  const schema = z.object({
-    themeColor: z.string(),
-    largeBorderRadius: z.boolean(),
-    brightness: z.number().min(theme.brightness.min).max(theme.brightness.max),
-    headerFixed: z.boolean(),
-    darkMode: z.boolean(),
-  });
-  try {
-    styleConfig.value = await schema.parseAsync(styleConfig.value);
-  } catch (error) {
-    styleConfig.value = default_style;
-    // @ts-ignore
-    SnackBar({
-      message: "样式配置错误，已重置为默认配置",
-      type: "error",
-      fixed: true,
-      position: "bl",
-    });
-  }
+function onThemeChange(e: MouseEvent, theme: any) {
+  setTheme(theme, { x: e.clientX, y: e.clientY });
 }
-watch(styleConfig, useThrottleFn(validate), { immediate: true });
-
-const styleHTML = computed(
-  () => `
-    :root{
-        --main-color-meta: ${styleConfig.value.themeColor};
-        --base-radius: ${styleConfig.value.largeBorderRadius ? "16px" : "8px"};
-
-    }
-    html{
-        filter: brightness(${styleConfig.value.brightness})
-    }
-    ${
-      !styleConfig.value.headerFixed
-        ? `
-        #nav{
-            position: absolute;
-            background: transparent;
-            border: none;
-            backdrop-filter: none;
-        }
-    `
-        : ""
-    }
-`
-);
-useStyleTag(styleHTML);
 </script>
 <template>
   <section class="panel-style">
@@ -91,49 +17,21 @@ useStyleTag(styleHTML);
         <div class="label">主题色</div>
         <div class="value">
           <label
-            v-for="tc in theme.main_colors"
+            v-for="tc in iakConfig.themes"
             :key="tc"
+            :data-theme="tc"
             class="style-theme-color-item"
-            :class="tc === styleConfig.themeColor ? 'active' : ''"
-            :style="`background: rgb(${tc});`"
+            :class="tc === localTheme ? 'active' : ''"
+            :style="`background: rgb(--main-color-meta);`"
           >
+            <div class="theme-main-color"></div>
             <input
               type="radio"
               name="themeColor"
-              @click="styleConfig.themeColor = tc"
-              :checked="tc === styleConfig.themeColor"
+              @click="onThemeChange($event, tc)"
+              :checked="tc === localTheme"
             />
           </label>
-        </div>
-      </div>
-      <div class="style-item">
-        <div class="key">亮度</div>
-        <div class="value">
-          <IakSlider
-            name="light"
-            :min="theme.brightness.min"
-            :max="theme.brightness.max"
-            :step="theme.brightness.step"
-            v-model:value="styleConfig.brightness"
-          />
-        </div>
-      </div>
-      <div class="style-item style-border-radius">
-        <div class="label">大圆角</div>
-        <div class="value">
-          <IakSwitch v-model:value="styleConfig.largeBorderRadius" />
-        </div>
-      </div>
-      <div class="style-item">
-        <div class="key">顶栏固定</div>
-        <div class="value">
-          <IakSwitch v-model:value="styleConfig.headerFixed" />
-        </div>
-      </div>
-      <div class="style-item">
-        <div class="key">夜间模式</div>
-        <div class="value">
-          <IakSwitch v-model:value="styleConfig.darkMode" />
         </div>
       </div>
     </div>
@@ -161,14 +59,21 @@ useStyleTag(styleHTML);
   gap: 8px;
 }
 .style-theme-color .value .style-theme-color-item {
-  width: 16px;
+  width: 32px;
   height: 16px;
+  padding: 2px;
   border-radius: calc(0.5 * var(--base-radius));
-  border: 3px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--card-border-color);
+  background: var(--card-bg);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 }
-.style-theme-color .value .style-theme-color-item:focus-within {
-  outline: 3px solid var(--main-color);
+.style-theme-color .theme-main-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(var(--main-color-meta));
 }
 .style-theme-color .value .style-theme-color-item input {
   position: absolute;
@@ -176,6 +81,6 @@ useStyleTag(styleHTML);
   opacity: 0;
 }
 .style-theme-color .value .style-theme-color-item.active {
-  border: 4px solid rgba(255, 255, 255, 0.7);
+  border: 2px solid rgb(var(--main-color-meta));
 }
 </style>

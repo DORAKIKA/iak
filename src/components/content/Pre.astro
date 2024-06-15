@@ -1,111 +1,184 @@
 <section class="code-block md-block" data-role="md-code-block">
-<pre class='code-block-main' style={Astro.props.style}><slot></slot></pre>
-<div class="code-buttons">
-    <button class="code-button code-fold" title="折叠"><svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4563" width="128" height="128"><path d="M1024 877.714286l-146.285714 146.285714-365.714286-365.714286L146.285714 1024l-146.285714-146.285714 365.714286-365.714286L0 146.285714l146.285714-146.285714 365.714286 365.714286L877.714286 0l146.285714 146.285714-365.714286 365.714286z" fill="#7dc5eb" p-id="4564"></path><path d="M292.571429 877.714286l-146.285715 146.285714-146.285714-146.285714 146.285714-146.285715 146.285715 146.285715zM1024 146.285714l-146.285714 146.285715-146.285715-146.285715 146.285715-146.285714 146.285714 146.285714z m-292.571429 731.428572l146.285715 146.285714 146.285714-146.285714-146.285714-146.285715-146.285715 146.285715zM0 146.285714l146.285714 146.285715 146.285715-146.285715-146.285715-146.285714-146.285714 146.285714z" fill="#333333" p-id="4565"></path></svg></button>
-    <button class="code-button code-fullscreen" title="全屏"><svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5544" width="128" height="128"><path d="M692.705882 24.094118h240.941177c36.141176 0 60.235294 24.094118 60.235294 60.235294s-24.094118 60.235294-60.235294 60.235294h-240.941177c-36.141176 0-60.235294-24.094118-60.235294-60.235294s24.094118-60.235294 60.235294-60.235294z" fill="#1E2330" p-id="5545"></path><path d="M933.647059 24.094118c36.141176 0 60.235294 24.094118 60.235294 60.235294v240.941176c0 36.141176-24.094118 60.235294-60.235294 60.235294s-60.235294-24.094118-60.235294-60.235294v-240.941176c0-36.141176 24.094118-60.235294 60.235294-60.235294z" fill="#1E2330" p-id="5546"></path><path d="M915.576471 96.376471c18.070588 24.094118 18.070588 60.235294 0 84.329411l-246.964706 246.964706c-24.094118 24.094118-60.235294 24.094118-84.329412 0-24.094118-24.094118-24.094118-60.235294 0-84.329412l246.964706-246.964705c24.094118-18.070588 60.235294-18.070588 84.329412 0zM90.352941 867.388235h240.941177c36.141176 0 60.235294 24.094118 60.235294 60.235294s-24.094118 60.235294-60.235294 60.235295H90.352941c-36.141176 0-60.235294-24.094118-60.235294-60.235295s24.094118-60.235294 60.235294-60.235294z" fill="#1E2330" p-id="5547"></path><path d="M90.352941 626.447059c36.141176 0 60.235294 24.094118 60.235294 60.235294v240.941176c0 36.141176-24.094118 60.235294-60.235294 60.235295s-60.235294-24.094118-60.235294-60.235295v-240.941176c0-36.141176 24.094118-60.235294 60.235294-60.235294z" fill="#1E2330" p-id="5548"></path><path d="M102.4 909.552941c-24.094118-24.094118-24.094118-60.235294 0-84.329412l246.964706-246.964705c24.094118-24.094118 60.235294-24.094118 84.329412 0 24.094118 24.094118 24.094118 60.235294 0 84.329411l-246.964706 246.964706c-24.094118 18.070588-60.235294 18.070588-84.329412 0zM90.352941 24.094118h240.941177c36.141176 0 60.235294 24.094118 60.235294 60.235294s-24.094118 60.235294-60.235294 60.235294H90.352941c-36.141176 0-60.235294-24.094118-60.235294-60.235294s24.094118-60.235294 60.235294-60.235294z" fill="#1E2330" p-id="5549"></path><path d="M90.352941 24.094118c36.141176 0 60.235294 24.094118 60.235294 60.235294v240.941176c0 36.141176-24.094118 60.235294-60.235294 60.235294s-60.235294-24.094118-60.235294-60.235294v-240.941176c0-36.141176 24.094118-60.235294 60.235294-60.235294z" fill="#1E2330" p-id="5550"></path><path d="M102.4 96.376471c-18.070588 24.094118-18.070588 60.235294 0 84.329411l246.964706 246.964706c24.094118 24.094118 60.235294 24.094118 84.329412 0 24.094118-24.094118 24.094118-60.235294 0-84.329412L186.729412 96.376471c-24.094118-18.070588-60.235294-18.070588-84.329412 0zM692.705882 867.388235h240.941177c36.141176 0 60.235294 24.094118 60.235294 60.235294s-24.094118 60.235294-60.235294 60.235295h-240.941177c-36.141176 0-60.235294-24.094118-60.235294-60.235295s24.094118-60.235294 60.235294-60.235294z" fill="#1E2330" p-id="5551"></path><path d="M933.647059 626.447059c36.141176 0 60.235294 24.094118 60.235294 60.235294v240.941176c0 36.141176-24.094118 60.235294-60.235294 60.235295s-60.235294-24.094118-60.235294-60.235295v-240.941176c0-36.141176 24.094118-60.235294 60.235294-60.235294z" fill="#1E2330" p-id="5552"></path><path d="M915.576471 909.552941c24.094118-24.094118 24.094118-60.235294 0-84.329412l-246.964706-246.964705c-24.094118-24.094118-60.235294-24.094118-84.329412 0-24.094118 24.094118-24.094118 60.235294 0 84.329411l246.964706 246.964706c24.094118 18.070588 60.235294 18.070588 84.329412 0z" fill="#1E2330" p-id="5553"></path></svg></button>
-    <button class="code-button code-copy" title="复制代码"><svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9508" width="128" height="128"><path d="M911.36 273.92h-103.22944V165.28384c0-70.5792-57.4208-128-128-128H162.56c-70.5792 0-128 57.4208-128 128V682.8544c0 70.5792 57.4208 128 128 128h110.8864v100.9792c0 42.24 34.56 76.8 76.8 76.8H911.36c42.24 0 76.8-34.56 76.8-76.8V350.72c0-42.24-34.56-76.8-76.8-76.8zM162.56 708.4544c-13.87776 0-25.6-11.72224-25.6-25.6V165.28384c0-13.87776 11.72224-25.6 25.6-25.6h517.57056c13.87776 0 25.6 11.72224 25.6 25.6V273.92h-355.4816c-42.24 0-76.8 34.56-76.8 76.8v357.7344H162.56z" fill="#41CC79" p-id="9509" data-spm-anchor-id="a313x.7781069.0.i17" class="selected"></path></svg></button>
-</div>
+  <pre class="code-block-main" style={Astro.props.style}><slot /></pre>
+  <div class="code-buttons">
+    <button class="code-button code-fold" title="折叠"
+      ><svg
+        class="icon"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="4563"
+        width="128"
+        height="128"
+        ><path
+          d="M1024 877.714286l-146.285714 146.285714-365.714286-365.714286L146.285714 1024l-146.285714-146.285714 365.714286-365.714286L0 146.285714l146.285714-146.285714 365.714286 365.714286L877.714286 0l146.285714 146.285714-365.714286 365.714286z"
+          fill="#7dc5eb"
+          p-id="4564"></path><path
+          d="M292.571429 877.714286l-146.285715 146.285714-146.285714-146.285714 146.285714-146.285715 146.285715 146.285715zM1024 146.285714l-146.285714 146.285715-146.285715-146.285715 146.285715-146.285714 146.285714 146.285714z m-292.571429 731.428572l146.285715 146.285714 146.285714-146.285714-146.285714-146.285715-146.285715 146.285715zM0 146.285714l146.285714 146.285715 146.285715-146.285715-146.285715-146.285714-146.285714 146.285714z"
+          fill="#333333"
+          p-id="4565"></path></svg
+      ></button
+    >
+    <button class="code-button code-fullscreen" title="全屏"
+      ><svg
+        class="icon"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="5544"
+        width="128"
+        height="128"
+        ><path
+          d="M692.705882 24.094118h240.941177c36.141176 0 60.235294 24.094118 60.235294 60.235294s-24.094118 60.235294-60.235294 60.235294h-240.941177c-36.141176 0-60.235294-24.094118-60.235294-60.235294s24.094118-60.235294 60.235294-60.235294z"
+          fill="#1E2330"
+          p-id="5545"></path><path
+          d="M933.647059 24.094118c36.141176 0 60.235294 24.094118 60.235294 60.235294v240.941176c0 36.141176-24.094118 60.235294-60.235294 60.235294s-60.235294-24.094118-60.235294-60.235294v-240.941176c0-36.141176 24.094118-60.235294 60.235294-60.235294z"
+          fill="#1E2330"
+          p-id="5546"></path><path
+          d="M915.576471 96.376471c18.070588 24.094118 18.070588 60.235294 0 84.329411l-246.964706 246.964706c-24.094118 24.094118-60.235294 24.094118-84.329412 0-24.094118-24.094118-24.094118-60.235294 0-84.329412l246.964706-246.964705c24.094118-18.070588 60.235294-18.070588 84.329412 0zM90.352941 867.388235h240.941177c36.141176 0 60.235294 24.094118 60.235294 60.235294s-24.094118 60.235294-60.235294 60.235295H90.352941c-36.141176 0-60.235294-24.094118-60.235294-60.235295s24.094118-60.235294 60.235294-60.235294z"
+          fill="#1E2330"
+          p-id="5547"></path><path
+          d="M90.352941 626.447059c36.141176 0 60.235294 24.094118 60.235294 60.235294v240.941176c0 36.141176-24.094118 60.235294-60.235294 60.235295s-60.235294-24.094118-60.235294-60.235295v-240.941176c0-36.141176 24.094118-60.235294 60.235294-60.235294z"
+          fill="#1E2330"
+          p-id="5548"></path><path
+          d="M102.4 909.552941c-24.094118-24.094118-24.094118-60.235294 0-84.329412l246.964706-246.964705c24.094118-24.094118 60.235294-24.094118 84.329412 0 24.094118 24.094118 24.094118 60.235294 0 84.329411l-246.964706 246.964706c-24.094118 18.070588-60.235294 18.070588-84.329412 0zM90.352941 24.094118h240.941177c36.141176 0 60.235294 24.094118 60.235294 60.235294s-24.094118 60.235294-60.235294 60.235294H90.352941c-36.141176 0-60.235294-24.094118-60.235294-60.235294s24.094118-60.235294 60.235294-60.235294z"
+          fill="#1E2330"
+          p-id="5549"></path><path
+          d="M90.352941 24.094118c36.141176 0 60.235294 24.094118 60.235294 60.235294v240.941176c0 36.141176-24.094118 60.235294-60.235294 60.235294s-60.235294-24.094118-60.235294-60.235294v-240.941176c0-36.141176 24.094118-60.235294 60.235294-60.235294z"
+          fill="#1E2330"
+          p-id="5550"></path><path
+          d="M102.4 96.376471c-18.070588 24.094118-18.070588 60.235294 0 84.329411l246.964706 246.964706c24.094118 24.094118 60.235294 24.094118 84.329412 0 24.094118-24.094118 24.094118-60.235294 0-84.329412L186.729412 96.376471c-24.094118-18.070588-60.235294-18.070588-84.329412 0zM692.705882 867.388235h240.941177c36.141176 0 60.235294 24.094118 60.235294 60.235294s-24.094118 60.235294-60.235294 60.235295h-240.941177c-36.141176 0-60.235294-24.094118-60.235294-60.235295s24.094118-60.235294 60.235294-60.235294z"
+          fill="#1E2330"
+          p-id="5551"></path><path
+          d="M933.647059 626.447059c36.141176 0 60.235294 24.094118 60.235294 60.235294v240.941176c0 36.141176-24.094118 60.235294-60.235294 60.235295s-60.235294-24.094118-60.235294-60.235295v-240.941176c0-36.141176 24.094118-60.235294 60.235294-60.235294z"
+          fill="#1E2330"
+          p-id="5552"></path><path
+          d="M915.576471 909.552941c24.094118-24.094118 24.094118-60.235294 0-84.329412l-246.964706-246.964705c-24.094118-24.094118-60.235294-24.094118-84.329412 0-24.094118 24.094118-24.094118 60.235294 0 84.329411l246.964706 246.964706c24.094118 18.070588 60.235294 18.070588 84.329412 0z"
+          fill="#1E2330"
+          p-id="5553"></path></svg
+      ></button
+    >
+    <button class="code-button code-copy" title="复制代码"
+      ><svg
+        class="icon"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="9508"
+        width="128"
+        height="128"
+        ><path
+          d="M911.36 273.92h-103.22944V165.28384c0-70.5792-57.4208-128-128-128H162.56c-70.5792 0-128 57.4208-128 128V682.8544c0 70.5792 57.4208 128 128 128h110.8864v100.9792c0 42.24 34.56 76.8 76.8 76.8H911.36c42.24 0 76.8-34.56 76.8-76.8V350.72c0-42.24-34.56-76.8-76.8-76.8zM162.56 708.4544c-13.87776 0-25.6-11.72224-25.6-25.6V165.28384c0-13.87776 11.72224-25.6 25.6-25.6h517.57056c13.87776 0 25.6 11.72224 25.6 25.6V273.92h-355.4816c-42.24 0-76.8 34.56-76.8 76.8v357.7344H162.56z"
+          fill="#41CC79"
+          p-id="9509"
+          data-spm-anchor-id="a313x.7781069.0.i17"
+          class="selected"></path></svg
+      ></button
+    >
+  </div>
 </section>
 
 <script>
-(function(){
+  import { registerContextMenu } from "@/lib/app/contextmenu";
+
+  (function () {
     // 代码折叠功能
-    const foldButtons = document.querySelectorAll('.code-block .code-fold');
-    foldButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const code = button.parentElement?.parentElement;
-            if(code){
-                code.classList.toggle('code-block-fold');
-                if(code.classList.contains('code-block-fold')){
-                    // @ts-ignore
-                    button.title = '展开';
-                }else{
-                    // @ts-ignore
-                    button.title = '折叠';
-                }
-            }
-        })
-    })
+    const foldButtons = document.querySelectorAll(".code-block .code-fold");
+    foldButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const code = button.parentElement?.parentElement;
+        if (code) {
+          code.classList.toggle("code-block-fold");
+          if (code.classList.contains("code-block-fold")) {
+            // @ts-ignore
+            button.title = "展开";
+          } else {
+            // @ts-ignore
+            button.title = "折叠";
+          }
+        }
+      });
+    });
 
     // 代码全屏功能
-    const fullscreenButtons = document.querySelectorAll('.code-block .code-fullscreen');
-    fullscreenButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const code = button.parentElement?.parentElement;
-            // 全屏
-            if(!document.fullscreenElement){
-                code?.requestFullscreen();
-                // @ts-ignore
-                button.title = '退出全屏';
-                button.classList.add('code-fullscreen-exit');
-            }else{
-                // 退出全屏
-                // @ts-ignore
-                iak.cancelFullscreen()
-                // @ts-ignore
-                button.title = '全屏';
-                button.classList.remove('code-fullscreen-exit');
-            }
-        })
-    })
+    const fullscreenButtons = document.querySelectorAll(
+      ".code-block .code-fullscreen"
+    );
+    fullscreenButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const code = button.parentElement?.parentElement;
+        // 全屏
+        if (!document.fullscreenElement) {
+          code?.requestFullscreen();
+          // @ts-ignore
+          button.title = "退出全屏";
+          button.classList.add("code-fullscreen-exit");
+        } else {
+          // 退出全屏
+          window.IakApp.cancelFullscreen();
+          // @ts-ignore
+          button.title = "全屏";
+          button.classList.remove("code-fullscreen-exit");
+        }
+      });
+    });
 
     // 代码复制功能
-    const copyButtons = document.querySelectorAll('.code-block .code-copy');
-    copyButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const code = button.parentElement?.parentElement?.querySelector('pre');
-            const codeText = code?.innerText;
-            if(codeText){
-                navigator.clipboard.writeText(codeText);
-                // @ts-ignore
-                SnackBar({message: '代码已复制！', fixed: true, timeout: 1500})
-            }
-        })
-    })
-    // @ts-ignore
-    window.iak.contextMenu['md-code-block'] = {
-        type: 'line',
-        children: [
-            {
-                text: '全屏',
-                icon: 'fa-solid fa-expand',
-                action(el:HTMLElement){
-                    // @ts-ignore
-                    iak.requestFullscreen(el);
-                },
-                tag: '代码'
-            },{
-                text: '折叠/展开',
-                icon: 'fa-solid fa-compress',
-                action(el:HTMLElement){
-                    el.classList.toggle('code-block-fold');
-                },
-                tag: '代码'
-            }
-        ]
-    }
-})()
+    const copyButtons = document.querySelectorAll(".code-block .code-copy");
+    copyButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const code = button.parentElement?.parentElement?.querySelector("pre");
+        const codeText = code?.innerText;
+        if (codeText) {
+          navigator.clipboard.writeText(codeText);
+          window.IakApp.toast("代码已复制！", { duration: 1500 });
+        }
+      });
+    });
+
+    registerContextMenu("md-code-block", {
+      type: "line",
+      children: [
+        {
+          text: "全屏",
+          icon: "fa-solid fa-expand",
+          action(el: HTMLElement) {
+            el.requestFullscreen();
+          },
+          tag: "代码",
+        },
+        {
+          text: "折叠/展开",
+          icon: "fa-solid fa-compress",
+          action(el: HTMLElement) {
+            el.classList.toggle("code-block-fold");
+          },
+          tag: "代码",
+        },
+      ],
+    });
+  })();
 </script>
 
 <style>
-.code-block{
+  .code-block {
     position: relative;
     overflow: hidden;
     border-radius: var(--base-radius);
-}
-.code-block-main{
+  }
+  .code-block-main {
     padding: 3rem 1rem 1rem;
     margin: 0;
     position: relative;
     font-family: monospace;
     line-height: 1.5;
-}
-.code-block-fold .code-block-main{
+  }
+  .code-block-fold .code-block-main {
     max-height: 3rem;
     padding: 3rem 0 0 0;
     overflow: hidden;
-}
-.code-buttons{
+  }
+  .code-buttons {
     position: absolute;
     left: 0;
     width: 100%;
@@ -118,8 +191,8 @@
     gap: 0.4rem;
     outline: none;
     border: none;
-}
-.code-button{
+  }
+  .code-button {
     width: 1.4rem;
     height: 1.4rem;
     border-radius: 50%;
@@ -132,25 +205,25 @@
     border: none;
     transition: 0.3s;
     cursor: pointer;
-}
-.code-button:nth-child(1){
+  }
+  .code-button:nth-child(1) {
     --main-color: var(--red);
-}
-.code-button:nth-child(2){
+  }
+  .code-button:nth-child(2) {
     --main-color: var(--yellow);
-}
-.code-button:nth-child(3){
+  }
+  .code-button:nth-child(3) {
     --main-color: var(--green);
-}
-.code-button:is(:hover, :focus){
+  }
+  .code-button:is(:hover, :focus) {
     color: var(--color-deep-op);
     transform: scale(1.1);
-}
-.icon{
+  }
+  .icon {
     width: 1rem;
     height: 1rem;
-}
-.code-block>code{
-    background: rgba(0,0,0,0.2);
-}
+  }
+  .code-block > code {
+    background: rgba(0, 0, 0, 0.2);
+  }
 </style>

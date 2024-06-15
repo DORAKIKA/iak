@@ -1,5 +1,5 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import Content from "@components/content/Content.astro";
 import IakImg from "@components/Iak/Img.astro";
 import { site } from "src/config";
@@ -10,6 +10,7 @@ import PostAdditional from "@pages/_components/Post/Additional.astro";
 import "@styles/article.css";
 import { generatePostOpenGraph } from "src/tools/open_graph";
 import { count } from "src/tools/tools";
+import Reactions from "@/components/reactions/index.vue";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -173,6 +174,16 @@ const meta_og = generatePostOpenGraph(Astro, post);
   </article>
   <PostCopyright title={post.data.title} />
   <PostAdditional post={post} />
+  {
+    post.data.reactions ? (
+      <Reactions
+        client:idle
+        scope="post"
+        slug={post.slug}
+        reactions={post.data.reactions}
+      />
+    ) : null
+  }
   <Twikoo />
 </Layout>
 

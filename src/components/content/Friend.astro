@@ -44,8 +44,9 @@ link = friend?.link || link;
 </span>
 
 <script>
-  // @ts-ignore
-  window.iak.contextMenu["md-friend"] = {
+  import { registerContextMenu } from "@/lib/app/contextmenu";
+
+  registerContextMenu("md-friend", {
     type: "line",
     children: [
       {
@@ -59,7 +60,7 @@ link = friend?.link || link;
         tag: "友链",
       },
     ],
-  };
+  });
 </script>
 
 <style>

@@ -1,6 +1,6 @@
 ---
 import IakImg from "@/components/Iak/Img.astro";
-import { getUrlForPost } from "@/pages/_contents/posts";
+import { getPostUrl } from "@/lib/utils/content";
 const { post } = Astro.props;
 ---
 
@@ -15,8 +15,7 @@ const { post } = Astro.props;
   </div>
 
   <div class="meta">
-    <a href={getUrlForPost(post)} class="title" rel="prefetch"
-      >{post.data.title}</a
+    <a href={getPostUrl(post)} class="title" rel="prefetch">{post.data.title}</a
     >
     <div class="desc">{post.data.description}</div>
   </div>
